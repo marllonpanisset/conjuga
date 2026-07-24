@@ -12,7 +12,7 @@ export const siteConfig = {
   description:
     "Estúdio digital especializado em desenvolvimento web, sistemas personalizados e automações para pequenas e médias empresas.",
 
-  url: "https://fyrmma.com",
+  url: "https://fyrmma.vercel.app",
 
   locale: "pt-BR",
 
@@ -44,11 +44,33 @@ export const siteConfig = {
    */
   author: {
     name: "Fyrmma Estúdio Digital",
-    url: "https://fyrmma.com",
+    url: "https://fyrmma.vercel.app",
   },
 
+  /**
+   * Structured social profiles used by SEO schemas.
+   *
+   * Search engines can associate these profiles with the organization
+   * represented by this website.
+   */
+  sameAs: ["https://instagram.com/fyrmma.estudio"],
+
+  contact: {
+    email: "fyrmma@outlook.com",
+  },
+
+  social: {
+    linkedin: "https://linkedin.com/company/fyrmma",
+
+    instagram: "https://instagram.com/fyrmma.estudio",
+  },
+
+  /**
+   * Legacy link grouping kept temporarily to avoid breaking existing
+   * components while the application migrates to semantic fields.
+   */
   links: {
-    email: "contato@fyrmma.com",
+    email: "fyrmma@outlook.com",
 
     linkedin: "https://linkedin.com/company/fyrmma",
 

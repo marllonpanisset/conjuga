@@ -12,7 +12,12 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { Container } from "@/components/ui";
 import { Button } from "@/components/ui/Button";
-import { servicesNav, nichesNav, mainNav, type NavItem } from "@/config/navigation";
+import {
+  servicesNav,
+  nichesNav,
+  mainNav,
+  type NavItem,
+} from "@/config/navigation";
 import { MobileNav } from "./MobileNav";
 import { cn } from "@/lib/utils";
 
@@ -52,7 +57,10 @@ function NavDropdown({ label, items }: NavDropdownProps) {
      * keeps mouse behavior aligned with native menus without intercepting links.
      */
     function handlePointerDown(event: PointerEvent) {
-      if (event.target instanceof Node && !dropdownRef.current?.contains(event.target)) {
+      if (
+        event.target instanceof Node &&
+        !dropdownRef.current?.contains(event.target)
+      ) {
         setOpen(false);
       }
     }
@@ -83,8 +91,11 @@ function NavDropdown({ label, items }: NavDropdownProps) {
   }
 
   function handleMenuKeyDown(event: KeyboardEvent<HTMLUListElement>) {
-    const currentItem = event.target instanceof HTMLAnchorElement ? event.target : null;
-    const currentIndex = currentItem ? itemRefs.current.indexOf(currentItem) : -1;
+    const currentItem =
+      event.target instanceof HTMLAnchorElement ? event.target : null;
+    const currentIndex = currentItem
+      ? itemRefs.current.indexOf(currentItem)
+      : -1;
 
     if (event.key === "Escape") {
       event.preventDefault();
@@ -122,7 +133,10 @@ function NavDropdown({ label, items }: NavDropdownProps) {
   function handleFocusOut(event: FocusEvent<HTMLDivElement>) {
     const nextFocusedElement = event.relatedTarget;
 
-    if (!(nextFocusedElement instanceof Node) || !event.currentTarget.contains(nextFocusedElement)) {
+    if (
+      !(nextFocusedElement instanceof Node) ||
+      !event.currentTarget.contains(nextFocusedElement)
+    ) {
       setOpen(false);
     }
   }
@@ -153,7 +167,10 @@ function NavDropdown({ label, items }: NavDropdownProps) {
         onKeyDown={handleTriggerKeyDown}
       >
         {label}
-        <ChevronDown size={14} className={cn("transition-transform", open && "rotate-180")} />
+        <ChevronDown
+          size={14}
+          className={cn("transition-transform", open && "rotate-180")}
+        />
       </button>
 
       {open && (
@@ -176,9 +193,13 @@ function NavDropdown({ label, items }: NavDropdownProps) {
                   className="block rounded-[10px] px-4 py-3 transition-colors hover:bg-surface"
                   onClick={() => setOpen(false)}
                 >
-                  <span className="block text-[0.9375rem] font-medium text-text-primary">{item.label}</span>
+                  <span className="block text-[0.9375rem] font-medium text-text-primary">
+                    {item.label}
+                  </span>
                   {item.description && (
-                    <span className="mt-0.5 block text-[0.8125rem] text-text-muted">{item.description}</span>
+                    <span className="mt-0.5 block text-[0.8125rem] text-text-muted">
+                      {item.description}
+                    </span>
                   )}
                 </Link>
               </li>
@@ -194,11 +215,17 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between">
-        <Link href="/" className="font-display text-[1.125rem] font-semibold tracking-[-0.01em] text-text-primary">
-          Fyrmma
+        <Link
+          href="/"
+          className="font-display text-[1.125rem] font-medium tracking-[-0.04em] text-text-primary"
+        >
+          FYRMMA
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Navegação principal">
+        <nav
+          className="hidden items-center gap-8 md:flex"
+          aria-label="Navegação principal"
+        >
           <NavDropdown label="Serviços" items={servicesNav} />
           <NavDropdown label="Soluções por segmento" items={nichesNav} />
           {mainNav.map((item) => (
