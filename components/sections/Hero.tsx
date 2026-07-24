@@ -11,41 +11,68 @@ interface HeroProps {
   align?: "center" | "left";
 }
 
-export function Hero({ eyebrow, title, description, actions, align = "center" }: HeroProps) {
+export function Hero({
+  eyebrow,
+  title,
+  description,
+  actions,
+  align = "center",
+}: HeroProps) {
   const isCenter = align === "center";
 
   return (
-    <div className="relative pt-24 pb-16 md:pt-32 md:pb-20">
+    <section className="relative overflow-hidden pt-24 pb-20 md:pt-36 md:pb-28">
       <div className="hero-glow" aria-hidden="true" />
+
       <Container>
-        <div className={isCenter ? "mx-auto max-w-3xl text-center" : "max-w-2xl"}>
-          <FadeIn>
-            {eyebrow && (
+        <div
+          className={cn(
+            "relative",
+            isCenter ? "mx-auto max-w-4xl text-center" : "max-w-3xl",
+          )}
+        >
+          {eyebrow && (
+            <FadeIn>
               <Badge
                 className={cn(
-                  "mb-6 border-signal/25 bg-signal-soft text-signal-strong",
-                  isCenter && "mx-auto"
+                  "mb-6 border-border bg-surface text-text-secondary",
+                  isCenter && "mx-auto",
                 )}
               >
                 {eyebrow}
               </Badge>
-            )}
-          </FadeIn>
+            </FadeIn>
+          )}
+
           <FadeIn delay={0.05}>
-            <Heading as="h1">{title}</Heading>
+            <Heading as="h1" className="tracking-[-0.04em]">
+              {title}
+            </Heading>
           </FadeIn>
+
           <FadeIn delay={0.1}>
-            <Text variant="lead" className={isCenter ? "mx-auto mt-6 max-w-xl" : "mt-6"}>
+            <Text
+              variant="lead"
+              className={cn(
+                "mt-6 text-text-secondary",
+                isCenter && "mx-auto max-w-2xl",
+              )}
+            >
               {description}
             </Text>
           </FadeIn>
+
           {actions && (
             <FadeIn delay={0.15}>
-              <div className={`mt-10 flex flex-wrap gap-4 ${isCenter ? "justify-center" : ""}`}>{actions}</div>
+              <div
+                className={cn("mt-10 flex gap-4", isCenter && "justify-center")}
+              >
+                {actions}
+              </div>
             </FadeIn>
           )}
         </div>
       </Container>
-    </div>
+    </section>
   );
 }
