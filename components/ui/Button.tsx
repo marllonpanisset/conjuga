@@ -1,4 +1,9 @@
-import type { ButtonHTMLAttributes, PropsWithChildren } from "react";
+// components/ui/Button.tsx
+import type {
+  ButtonHTMLAttributes,
+  ComponentProps,
+  PropsWithChildren,
+} from "react";
 import Link from "next/link";
 import type { Route } from "next";
 import { cn } from "@/lib/utils";
@@ -17,9 +22,10 @@ interface ButtonAsButton
   href?: undefined;
 }
 
-interface ButtonAsLink extends BaseProps {
-  href: Route;
-}
+type ButtonAsLink = BaseProps &
+  Omit<ComponentProps<typeof Link>, "href" | "className" | "children"> & {
+    href: Route;
+  };
 
 type ButtonProps = ButtonAsButton | ButtonAsLink;
 
@@ -48,27 +54,20 @@ export function Button({
 }: ButtonProps) {
   const classes = cn(base, variantStyles[variant], sizeStyles[size], className);
 
-  if ("href" in props && props.href) {
-    const { href, ...rest } = props as ButtonAsLink;
+  if (props.href !== undefined) {
+    const { href, ...linkProps } = props;
+
+    // O Link recebe suas props nativas (incluindo eventos como onClick) para
+    // preservar o comportamento de navegação do Next.js e a tipagem do elemento <a>.
     return (
-      <Link
-        href={href}
-        className={classes}
-        {...(rest as Omit<
-          ButtonAsLink,
-          "href" | "variant" | "size" | "children" | "className"
-        >)}
-      >
+      <Link href={href} className={classes} {...linkProps}>
         {children}
       </Link>
     );
   }
 
   return (
-    <button
-      className={classes}
-      {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
-    >
+    <button className={classes} {...props}>
       {children}
     </button>
   );
