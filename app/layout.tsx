@@ -1,28 +1,10 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { Header, Footer } from "@/components/layout";
 import { MotionProvider } from "@/components/motion";
 import { siteConfig } from "@/config/site";
 import { organizationJsonLd } from "@/lib/seo";
 import "./globals.css";
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
 
 /**
  * Global metadata provides default SEO information for all routes.
@@ -97,6 +79,57 @@ export const metadata: Metadata = {
     images: [siteConfig.ogImage],
   },
 };
+
+const spaceGrotesk = localFont({
+  src: [
+    {
+      path: "./fonts/SpaceGrotesk/SpaceGrotesk-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/SpaceGrotesk/SpaceGrotesk-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/SpaceGrotesk/SpaceGrotesk-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const inter = localFont({
+  src: "./fonts/Inter/Inter-VariableFont_opsz,wght.ttf",
+  variable: "--font-body",
+  display: "swap",
+  weight: "100 900",
+});
+
+const jetbrainsMono = localFont({
+  src: [
+    {
+      path: "./fonts/JetBrainsMono/JetBrainsMono-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/JetBrainsMono/JetBrainsMono-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/JetBrainsMono/JetBrainsMono-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
