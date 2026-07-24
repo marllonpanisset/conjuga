@@ -38,16 +38,15 @@ export async function generateMetadata({
 }
 
 /**
- * Generates structured data for portfolio case studies.
+ * Structured data for project references.
  *
- * CreativeWork helps search engines understand that this page
- * represents a documented project result instead of a generic page.
+ * Represents a documented digital solution concept
+ * created by Fyrmma.
  */
 function projectJsonLd(caseStudy: {
   title: string;
   summary: string;
   slug: string;
-  client: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -62,8 +61,6 @@ function projectJsonLd(caseStudy: {
       "@type": "Organization",
       name: "Fyrmma Estúdio Digital",
     },
-
-    about: caseStudy.client,
 
     url: `https://fyrmma.com/projetos/${caseStudy.slug}`,
   };
@@ -109,7 +106,7 @@ export default async function CasePage({
         }}
       />
 
-      {/* Portfolio project structured data. */}
+      {/* Project reference structured data. */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -128,7 +125,7 @@ export default async function CasePage({
         <Container>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
             <div>
-              <Text variant="caption">Cliente</Text>
+              <Text variant="caption">Contexto do projeto</Text>
 
               <Text variant="body" className="mt-2 text-text-primary">
                 {caseStudy.client}
@@ -145,7 +142,7 @@ export default async function CasePage({
 
             {relatedService && (
               <div>
-                <Text variant="caption">Serviço</Text>
+                <Text variant="caption">Solução aplicada</Text>
 
                 <Text variant="body" className="mt-2 text-text-primary">
                   {relatedService.name}
@@ -159,7 +156,7 @@ export default async function CasePage({
       <Section>
         <Container>
           <div className="max-w-2xl">
-            <Heading as="h2">Resultado</Heading>
+            <Heading as="h2">Objetivo da solução</Heading>
 
             <Text variant="lead" className="mt-4">
               {caseStudy.result}
@@ -170,11 +167,11 @@ export default async function CasePage({
 
       <Section>
         <CTASection
-          title="Quer um resultado parecido para sua empresa?"
-          description="Conte o contexto da sua operação e vamos planejar a solução ideal."
+          title="Tem um desafio parecido?"
+          description="Conte o contexto da sua empresa e vamos analisar a melhor solução digital para sua necessidade."
           actions={
             <Button href="/contato" size="lg">
-              Solicitar proposta
+              Solicitar diagnóstico
             </Button>
           }
         />
