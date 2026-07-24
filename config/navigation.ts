@@ -5,13 +5,31 @@ export interface NavItem {
 }
 
 export const servicesNav: NavItem[] = [
-  { label: "Landing Pages", href: "/servicos/landing-pages", description: "Páginas de conversão de alta performance" },
-  { label: "Sites Institucionais", href: "/servicos/sites-institucionais", description: "Presença digital completa e profissional" },
-  { label: "Sistemas Web Personalizados", href: "/servicos/sistemas-web", description: "Ferramentas sob medida para o seu processo" },
-  { label: "Automações e Integrações", href: "/servicos/automacoes-integracoes", description: "Processos conectados, sem trabalho manual" },
+  { label: "Todos os serviços", href: "/servicos" },
+  {
+    label: "Landing Pages",
+    href: "/servicos/landing-pages",
+    description: "Páginas de conversão de alta performance",
+  },
+  {
+    label: "Sites Institucionais",
+    href: "/servicos/sites-institucionais",
+    description: "Presença digital completa e profissional",
+  },
+  {
+    label: "Sistemas Web Personalizados",
+    href: "/servicos/sistemas-web",
+    description: "Ferramentas sob medida para o seu processo",
+  },
+  {
+    label: "Automações e Integrações",
+    href: "/servicos/automacoes-integracoes",
+    description: "Processos conectados, sem trabalho manual",
+  },
 ];
 
 export const nichesNav: NavItem[] = [
+  { label: "Ver todas soluções", href: "/solucoes" },
   { label: "Clínicas e Saúde", href: "/solucoes/saude" },
   { label: "Advocacia", href: "/solucoes/advocacia" },
   { label: "Contabilidade", href: "/solucoes/contabilidade" },
