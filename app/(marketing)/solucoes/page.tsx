@@ -2,35 +2,34 @@ import type { Metadata } from "next";
 
 import { PageWrapper } from "@/components/layout";
 import { Container, Section, Grid } from "@/components/ui";
-
-import { Hero, ServiceCard, CTASection } from "@/components/sections";
+import { Hero, NicheCard, CTASection } from "@/components/sections";
 import { Button } from "@/components/ui/Button";
 
-import { services } from "@/content/servicos";
+import { niches } from "@/content/nichos";
 
 import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Serviços",
+  title: "Soluções por segmento",
   description:
-    "Landing Pages, Sites Institucionais, Sistemas Web Personalizados e Automações e Integrações para empresas que precisam evoluir digitalmente.",
-  path: "/servicos",
+    "Soluções digitais personalizadas para clínicas, advocacia, contabilidade, consultorias, serviços locais e negócios B2B.",
+  path: "/solucoes",
 });
 
-function servicesListJsonLd() {
+function solutionsListJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    itemListElement: services.map((service, index) => ({
+    itemListElement: niches.map((niche, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      name: service.name,
-      url: `https://fyrmma.com/servicos/${service.slug}`,
+      name: niche.name,
+      url: `https://fyrmma.com/solucoes/${niche.slug}`,
     })),
   };
 }
 
-export default function ServicosPage() {
+export default function SolucoesPage() {
   return (
     <PageWrapper>
       <script
@@ -43,8 +42,8 @@ export default function ServicosPage() {
                 path: "/",
               },
               {
-                name: "Serviços",
-                path: "/servicos",
+                name: "Soluções",
+                path: "/solucoes",
               },
             ]),
           ),
@@ -54,21 +53,21 @@ export default function ServicosPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(servicesListJsonLd()),
+          __html: JSON.stringify(solutionsListJsonLd()),
         }}
       />
 
       <Hero
-        eyebrow="Serviços"
-        title="Soluções digitais construídas para desafios reais de negócio"
-        description="Criamos experiências digitais, sistemas personalizados e automações considerando os objetivos, processos e necessidades específicas de cada empresa."
+        eyebrow="Soluções por segmento"
+        title="Tecnologia aplicada às necessidades de cada negócio"
+        description="Cada empresa possui desafios específicos. A Fyrmma cria soluções digitais considerando o contexto, os processos e os objetivos de cada segmento."
       />
 
       <Section>
         <Container>
-          <Grid cols={2}>
-            {services.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
+          <Grid cols={3}>
+            {niches.map((niche) => (
+              <NicheCard key={niche.slug} niche={niche} />
             ))}
           </Grid>
         </Container>
@@ -76,8 +75,8 @@ export default function ServicosPage() {
 
       <Section>
         <CTASection
-          title="Não sabe qual solução faz sentido?"
-          description="Conte o contexto da sua empresa e vamos identificar o caminho digital mais adequado para o seu momento."
+          title="Sua empresa tem um desafio específico?"
+          description="Conte o contexto do seu negócio e vamos identificar a solução digital mais adequada."
           actions={
             <Button href="/contato" size="lg">
               Conversar com a Fyrmma
