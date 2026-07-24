@@ -7,6 +7,19 @@ import { services } from "@/content/servicos";
 
 type Status = "idle" | "loading" | "success" | "error";
 
+function getErrorMessage(value: unknown): string {
+  if (
+    typeof value === "object" &&
+    value !== null &&
+    "error" in value &&
+    typeof value.error === "string"
+  ) {
+    return value.error;
+  }
+
+  return "Não foi possível enviar sua mensagem.";
+}
+
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -27,8 +40,14 @@ export function ContactForm() {
       });
 
       if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error ?? "Não foi possível enviar sua mensagem.");
+        let data: unknown;
+        try {
+          data = await response.json();
+        } catch {
+          throw new Error("Não foi possível enviar sua mensagem.");
+        }
+
+        throw new Error(getErrorMessage(data));
       }
 
       setStatus("success");
@@ -51,6 +70,12 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      {/* Campo invisível para pessoas e leitores de tela; robôs que o preenchem são descartados pela API. */}
+      <div className="absolute h-px w-px overflow-hidden whitespace-nowrap opacity-0" aria-hidden="true">
+        <label htmlFor="website">Não preencha este campo</label>
+        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-2 block text-[0.875rem] text-text-secondary">
@@ -60,6 +85,8 @@ export function ContactForm() {
             id="name"
             name="name"
             required
+            maxLength={120}
+            autoComplete="name"
             className="h-11 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
           />
         </div>
@@ -72,6 +99,8 @@ export function ContactForm() {
             name="email"
             type="email"
             required
+            maxLength={254}
+            autoComplete="email"
             className="h-11 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
           />
         </div>
@@ -85,6 +114,8 @@ export function ContactForm() {
           <input
             id="company"
             name="company"
+            maxLength={160}
+            autoComplete="organization"
             className="h-11 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
           />
         </div>
@@ -116,14 +147,18 @@ export function ContactForm() {
           name="message"
           required
           rows={5}
+          minLength={10}
+          maxLength={5000}
           className="w-full rounded-[10px] border border-border bg-surface px-4 py-3 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
         />
       </div>
 
       {status === "error" && (
-        <Text variant="body" className="text-warning">
-          {errorMessage}
-        </Text>
+        <div role="alert">
+          <Text variant="body" className="text-warning">
+            {errorMessage}
+          </Text>
+        </div>
       )}
 
       <Button type="submit" size="lg" disabled={status === "loading"} className="w-full sm:w-fit">
