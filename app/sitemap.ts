@@ -5,31 +5,95 @@ import { niches } from "@/content/nichos";
 import { caseStudies } from "@/content/projetos";
 import { getAllPostSlugs } from "@/lib/mdx";
 
+const createUrl = (path: string) => new URL(path, siteConfig.url).toString();
+
+/**
+ * Generates the application sitemap.
+ *
+ * Keeping route generation centralized ensures all public pages are
+ * discoverable by search engines while avoiding duplicated URL logic.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/servicos", "/solucoes", "/sobre", "/projetos", "/blog", "/contato"].map((path) => ({
-    url: `${siteConfig.url}${path}`,
-    lastModified: new Date(),
+  const lastModified = new Date();
+
+  const staticRoutes: MetadataRoute.Sitemap = [
+    {
+      url: createUrl("/"),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 1,
+    },
+    {
+      url: createUrl("/servicos"),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: createUrl("/solucoes"),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: createUrl("/sobre"),
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.5,
+    },
+    {
+      url: createUrl("/projetos"),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: createUrl("/blog"),
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: createUrl("/contato"),
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.6,
+    },
+  ];
+
+  const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
+    url: createUrl(`/servicos/${service.slug}`),
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.8,
   }));
 
-  const serviceRoutes = services.map((service) => ({
-    url: `${siteConfig.url}/servicos/${service.slug}`,
-    lastModified: new Date(),
+  const nicheRoutes: MetadataRoute.Sitemap = niches.map((niche) => ({
+    url: createUrl(`/solucoes/${niche.slug}`),
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.8,
   }));
 
-  const nicheRoutes = niches.map((niche) => ({
-    url: `${siteConfig.url}/solucoes/${niche.slug}`,
-    lastModified: new Date(),
+  const caseRoutes: MetadataRoute.Sitemap = caseStudies.map((project) => ({
+    url: createUrl(`/projetos/${project.slug}`),
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.7,
   }));
 
-  const caseRoutes = caseStudies.map((c) => ({
-    url: `${siteConfig.url}/projetos/${c.slug}`,
-    lastModified: new Date(),
+  const blogRoutes: MetadataRoute.Sitemap = getAllPostSlugs().map((slug) => ({
+    url: createUrl(`/blog/${slug}`),
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.7,
   }));
 
-  const blogRoutes = getAllPostSlugs().map((slug) => ({
-    url: `${siteConfig.url}/blog/${slug}`,
-    lastModified: new Date(),
-  }));
-
-  return [...staticRoutes, ...serviceRoutes, ...nicheRoutes, ...caseRoutes, ...blogRoutes];
+  return [
+    ...staticRoutes,
+    ...serviceRoutes,
+    ...nicheRoutes,
+    ...caseRoutes,
+    ...blogRoutes,
+  ];
 }
