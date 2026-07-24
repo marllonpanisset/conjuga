@@ -27,7 +27,7 @@ const principles = [
   {
     title: "Tecnologia aplicada a objetivos reais",
     description:
-      "Utilizamos tecnologia para melhorar presença digital, organizar processos e criar novas oportunidades para empresas.",
+      "Aplicamos tecnologia para resolver problemas específicos, melhorar processos e criar oportunidades reais para empresas.",
   },
 ];
 
@@ -35,7 +35,7 @@ const differentiators = [
   {
     title: "Engenharia digital",
     description:
-      "Projetamos soluções com arquitetura, performance e evolução em mente, não apenas páginas isoladas.",
+      "Projetamos soluções considerando arquitetura, performance e evolução, não apenas páginas isoladas.",
   },
   {
     title: "Foco no problema",
@@ -50,7 +50,7 @@ const differentiators = [
   {
     title: "Tecnologia moderna",
     description:
-      "Aplicamos ferramentas atuais para criar soluções rápidas, seguras e preparadas para crescer.",
+      "Aplicamos tecnologias atuais para criar soluções eficientes, sustentáveis e preparadas para evolução.",
   },
 ];
 
@@ -59,8 +59,8 @@ export default function SobrePage() {
     <PageWrapper>
       <Hero
         eyebrow="Sobre a Fyrmma"
-        title="Um estúdio digital criado para transformar desafios em soluções"
-        description="A Fyrmma desenvolve sites, sistemas e automações sob medida para empresas que precisam melhorar sua presença digital, organizar processos e evoluir através da tecnologia."
+        title="Um estúdio digital que transforma desafios de negócio em soluções digitais"
+        description="A Fyrmma desenvolve sites, sistemas e automações sob medida para empresas que precisam melhorar sua presença digital, organizar processos e criar novas oportunidades através da tecnologia."
       />
 
       <Section surface>
@@ -134,7 +134,7 @@ export default function SobrePage() {
 
       <Section>
         <CTASection
-          title="Tem um desafio digital para resolver?"
+          title="Tem um processo ou oportunidade para melhorar?"
           description="Conte o contexto da sua empresa e vamos avaliar a solução mais adequada para o seu momento."
           actions={
             <Button href="/contato" size="lg">
