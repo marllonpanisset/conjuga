@@ -3,34 +3,37 @@ import type { CaseStudy } from "@/types/case-study";
 export const caseStudies: CaseStudy[] = [
   {
     slug: "clinica-vitta",
-    title: "Novo site institucional e agendamento automatizado",
-    client: "Clínica Vitta",
+    title: "Presença digital e jornada de agendamento para clínica",
+    client: "Conceito aplicado para clínicas",
     segment: "Saúde",
     summary:
-      "Reestruturação completa da presença digital de uma clínica multiespecialidade, com foco em autoridade médica e redução de trabalho manual na recepção.",
-    result: "Redução no tempo gasto com agendamento manual e aumento de contatos qualificados via site.",
+      "Estruturação de uma experiência digital para clínicas que precisam transmitir confiança, apresentar especialidades e facilitar o contato com novos pacientes.",
+    result:
+      "Solução de referência focada em autoridade digital, organização das informações e melhoria da jornada de atendimento.",
     serviceSlug: "sites-institucionais",
     coverImage: "/images/cases/clinica-vitta.jpg",
   },
   {
     slug: "silva-associados",
-    title: "Site institucional e captação de casos qualificados",
-    client: "Silva & Associados Advocacia",
-    segment: "Advocacia",
+    title: "Site institucional para serviços profissionais",
+    client: "Conceito aplicado para escritórios profissionais",
+    segment: "Serviços Profissionais",
     summary:
-      "Site institucional organizado por área de atuação, com página de autoridade dos sócios e formulário de triagem de casos.",
-    result: "Maior organização na entrada de novos casos e comunicação mais clara das áreas de atuação.",
+      "Estrutura digital criada para apresentar áreas de atuação, fortalecer autoridade profissional e facilitar novos contatos comerciais.",
+    result:
+      "Solução de referência focada em posicionamento digital, clareza das informações e geração de oportunidades comerciais.",
     serviceSlug: "sites-institucionais",
     coverImage: "/images/cases/silva-associados.jpg",
   },
   {
     slug: "operacao-flow",
-    title: "Sistema interno de gestão de ordens de serviço",
-    client: "Flow Manutenção Predial",
-    segment: "Serviços Locais",
+    title: "Sistema web para organização operacional",
+    client: "Conceito aplicado para operações B2B",
+    segment: "Negócios B2B",
     summary:
-      "Sistema web sob medida para substituir planilhas na gestão de ordens de serviço, equipes e orçamentos.",
-    result: "Processo operacional centralizado, com visibilidade em tempo real do status de cada ordem de serviço.",
+      "Ferramenta digital planejada para centralizar processos internos, substituir controles dispersos e melhorar a visibilidade da operação.",
+    result:
+      "Solução de referência focada em organização operacional, redução de tarefas manuais e apoio à tomada de decisão.",
     serviceSlug: "sistemas-web",
     coverImage: "/images/cases/operacao-flow.jpg",
   },

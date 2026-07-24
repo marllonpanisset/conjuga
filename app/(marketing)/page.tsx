@@ -36,33 +36,33 @@ const processSteps = [
   {
     title: "Diagnóstico",
     description:
-      "Analisamos seu negócio, processos e objetivos para entender o problema correto antes da solução.",
+      "Entendemos seu negócio, processos e objetivos para identificar a solução mais adequada ao problema real.",
   },
   {
     title: "Arquitetura",
     description:
-      "Definimos estrutura, tecnologia e experiência antes de iniciar o desenvolvimento.",
+      "Planejamos estrutura, tecnologia e experiência antes do desenvolvimento para criar uma base sólida.",
   },
   {
     title: "Desenvolvimento",
     description:
-      "Construímos soluções personalizadas com código limpo, performance e escalabilidade.",
+      "Construímos soluções digitais com código organizado, boas práticas e foco em performance.",
   },
   {
     title: "Evolução contínua",
     description:
-      "Acompanhamos melhorias e novas necessidades conforme seu negócio cresce.",
+      "Evoluímos a solução conforme sua empresa cresce e novos desafios aparecem.",
   },
 ];
 
 const stats = [
   {
     value: "4",
-    label: "linhas de solução digital",
+    label: "soluções digitais",
   },
   {
-    value: "6",
-    label: "segmentos atendidos",
+    value: "3",
+    label: "segmentos estratégicos",
   },
   {
     value: "100%",
@@ -70,7 +70,7 @@ const stats = [
   },
   {
     value: "1",
-    label: "estúdio, um único processo",
+    label: "processo completo de entrega",
   },
 ];
 
@@ -179,10 +179,10 @@ export default function HomePage() {
       <Section surface>
         <Container>
           <FadeIn>
-            <Text variant="caption">Projetos</Text>
+            <Text variant="caption">Projetos de referência</Text>
 
             <Heading as="h2" className="mt-3 max-w-lg">
-              Estudos de soluções digitais
+              Soluções digitais pensadas para desafios reais de negócio
             </Heading>
 
             <Text variant="lead" className="mt-4 max-w-xl">

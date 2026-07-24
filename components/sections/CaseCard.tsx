@@ -13,7 +13,7 @@ export function CaseCard({ caseStudy }: { caseStudy: CaseStudy }) {
         <div className="flex flex-wrap gap-2">
           <Tag className="w-fit">{caseStudy.segment}</Tag>
 
-          <Tag className="w-fit">Estudo de projeto</Tag>
+          <Tag className="w-fit">Projeto de referência</Tag>
         </div>
 
         <Heading as="h3" className="mt-5">
