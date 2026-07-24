@@ -36,22 +36,22 @@ const processSteps = [
   {
     title: "Diagnóstico",
     description:
-      "Entendemos seu negócio, seus processos e os objetivos antes de definir qualquer solução.",
+      "Analisamos seu negócio, processos e objetivos para entender o problema correto antes da solução.",
   },
   {
     title: "Arquitetura",
     description:
-      "Planejamos a estrutura da solução digital pensando em experiência, tecnologia e crescimento.",
+      "Definimos estrutura, tecnologia e experiência antes de iniciar o desenvolvimento.",
   },
   {
     title: "Desenvolvimento",
     description:
-      "Construímos páginas, sistemas e integrações sob medida, sem depender de templates genéricos.",
+      "Construímos soluções personalizadas com código limpo, performance e escalabilidade.",
   },
   {
     title: "Evolução contínua",
     description:
-      "A solução pode evoluir junto com sua operação conforme novas necessidades aparecem.",
+      "Acompanhamos melhorias e novas necessidades conforme seu negócio cresce.",
   },
 ];
 
