@@ -1,91 +1,129 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import { PageWrapper } from "@/components/layout";
-import { Container, Section, Grid } from "@/components/ui";
-
-import { Hero, ServiceCard, CTASection } from "@/components/sections";
-
+import { Container, Section, Heading, Text, Grid } from "@/components/ui";
 import { Button } from "@/components/ui/Button";
+import { Hero, CTASection, ServiceCard } from "@/components/sections";
+import { AlertCircle } from "lucide-react";
 
+import { niches, getNicheBySlug } from "@/content/nichos";
 import { services } from "@/content/servicos";
+import { buildMetadata } from "@/lib/seo";
 
-import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
-
-export const metadata: Metadata = buildMetadata({
-  title: "Serviços",
-
-  description:
-    "Conheça as soluções digitais da Fyrmma: landing pages, sites institucionais, sistemas personalizados e automações para empresas.",
-
-  path: "/servicos",
-});
-
-function servicesListJsonLd() {
-  return {
-    "@context": "https://schema.org",
-
-    "@type": "ItemList",
-
-    itemListElement: services.map((service, index) => ({
-      "@type": "ListItem",
-
-      position: index + 1,
-
-      name: service.name,
-
-      url: `https://fyrmma.com/servicos/${service.slug}`,
-    })),
-  };
+export function generateStaticParams() {
+  return niches.map((niche) => ({
+    nicho: niche.slug,
+  }));
 }
 
-export default function ServicosPage() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ nicho: string }>;
+}): Promise<Metadata> {
+  const { nicho } = await params;
+
+  const niche = getNicheBySlug(nicho);
+
+  if (!niche) return {};
+
+  return buildMetadata({
+    title: `Soluções para ${niche.name}`,
+    description: niche.heroDescription,
+    path: `/solucoes/${niche.slug}`,
+  });
+}
+
+export default async function NichoPage({
+  params,
+}: {
+  params: Promise<{ nicho: string }>;
+}) {
+  const { nicho } = await params;
+
+  const niche = getNicheBySlug(nicho);
+
+  if (!niche) notFound();
+
+  const relatedServices = services.filter((service) =>
+    niche.relatedServiceSlugs.includes(service.slug),
+  );
+
   return (
     <PageWrapper>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbJsonLd([
-              {
-                name: "Home",
-                path: "/",
-              },
-              {
-                name: "Serviços",
-                path: "/servicos",
-              },
-            ]),
-          ),
-        }}
-      />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(servicesListJsonLd()),
-        }}
-      />
-
       <Hero
-        eyebrow="Serviços"
-        title="Soluções digitais construídas para diferentes desafios do negócio"
-        description="Estruturamos experiências digitais, sistemas e automações considerando o contexto de cada empresa, seus processos e seus objetivos."
+        eyebrow={niche.name}
+        title={niche.heroTitle}
+        description={niche.heroDescription}
+        actions={
+          <Button href="/contato" size="lg">
+            Avaliar minha necessidade
+          </Button>
+        }
       />
 
-      <Section>
+      <Section surface>
         <Container>
-          <Grid cols={2}>
-            {services.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
+          <Text variant="caption">Desafios comuns</Text>
+
+          <Heading as="h2" className="mt-3 max-w-lg">
+            Obstáculos que podem limitar a evolução do negócio
+          </Heading>
+
+          <div className="mt-10 flex flex-col gap-6">
+            {niche.painPoints.map((pain) => (
+              <div key={pain} className="flex items-start gap-3">
+                <AlertCircle
+                  size={18}
+                  className="mt-0.5 shrink-0 text-signal-strong"
+                />
+
+                <Text variant="body">{pain}</Text>
+              </div>
             ))}
-          </Grid>
+          </div>
         </Container>
       </Section>
 
       <Section>
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <Text variant="caption">Possibilidades de solução</Text>
+
+            <Heading as="h2" className="mt-3">
+              Como a Fyrmma pode ajudar
+            </Heading>
+
+            <Text variant="lead" className="mt-4">
+              {niche.solution}
+            </Text>
+          </div>
+        </Container>
+      </Section>
+
+      {relatedServices.length > 0 && (
+        <Section surface>
+          <Container>
+            <Text variant="caption">Serviços relacionados</Text>
+
+            <Heading as="h2" className="mt-3 max-w-lg">
+              Soluções aplicadas a esse contexto
+            </Heading>
+
+            <Grid cols={2} className="mt-10">
+              {relatedServices.map((service) => (
+                <ServiceCard key={service.slug} service={service} />
+              ))}
+            </Grid>
+          </Container>
+        </Section>
+      )}
+
+      <Section>
         <CTASection
-          title="Qual solução faz sentido para sua empresa?"
-          description="Conte o contexto do seu negócio e vamos identificar o caminho digital mais adequado para sua necessidade."
+          title="Pronto para evoluir sua operação digital?"
+          description="Conte o contexto da sua empresa e vamos identificar a solução mais adequada para seus objetivos."
           actions={
             <Button href="/contato" size="lg">
               Conversar com a Fyrmma
