@@ -1,9 +1,24 @@
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import { PageWrapper } from "@/components/layout";
-import { Container, Section, Heading, Text, Divider, Grid } from "@/components/ui";
+import {
+  Container,
+  Section,
+  Heading,
+  Text,
+  Divider,
+  Grid,
+} from "@/components/ui";
 import { Button } from "@/components/ui/Button";
-import { Hero, ServiceCard, NicheCard, CaseCard, ProcessStep, CTASection, StatsBlock } from "@/components/sections";
+import {
+  Hero,
+  ServiceCard,
+  NicheCard,
+  CaseCard,
+  ProcessStep,
+  CTASection,
+  StatsBlock,
+} from "@/components/sections";
 import { FadeIn } from "@/components/motion";
 import { services } from "@/content/servicos";
 import { niches } from "@/content/nichos";
@@ -13,22 +28,50 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Fyrmma — Estúdio digital de engenharia e tecnologia",
   description:
-    "Desenvolvimento web, sistemas personalizados e automações sob medida para pequenas e médias empresas. Presença digital que gera resultado real.",
+    "Desenvolvimento web, sistemas personalizados e automações sob medida para empresas que precisam transformar processos em soluções digitais.",
   path: "/",
 });
 
 const processSteps = [
-  { title: "Diagnóstico", description: "Entendemos seu processo real, seu público e o problema específico que a solução precisa resolver." },
-  { title: "Arquitetura", description: "Planejamos a solução — páginas, sistema ou automação — antes de escrever qualquer código." },
-  { title: "Desenvolvimento", description: "Construímos sob medida, com engenharia de verdade, não com adaptação de templates prontos." },
-  { title: "Evolução contínua", description: "Acompanhamos e evoluímos a solução junto com o crescimento do seu negócio." },
+  {
+    title: "Diagnóstico",
+    description:
+      "Entendemos seu negócio, seus processos e os objetivos antes de definir qualquer solução.",
+  },
+  {
+    title: "Arquitetura",
+    description:
+      "Planejamos a estrutura da solução digital pensando em experiência, tecnologia e crescimento.",
+  },
+  {
+    title: "Desenvolvimento",
+    description:
+      "Construímos páginas, sistemas e integrações sob medida, sem depender de templates genéricos.",
+  },
+  {
+    title: "Evolução contínua",
+    description:
+      "A solução pode evoluir junto com sua operação conforme novas necessidades aparecem.",
+  },
 ];
 
 const stats = [
-  { value: "4", label: "linhas de solução digital" },
-  { value: "6", label: "segmentos especializados" },
-  { value: "100%", label: "sob medida, sem templates" },
-  { value: "1", label: "estúdio, um único ponto de contato" },
+  {
+    value: "4",
+    label: "linhas de solução digital",
+  },
+  {
+    value: "6",
+    label: "segmentos atendidos",
+  },
+  {
+    value: "100%",
+    label: "desenvolvimento sob medida",
+  },
+  {
+    value: "1",
+    label: "estúdio, um único processo",
+  },
 ];
 
 export default function HomePage() {
@@ -36,15 +79,16 @@ export default function HomePage() {
     <PageWrapper>
       <Hero
         eyebrow="Estúdio digital de engenharia"
-        title="Presença digital que funciona como ferramenta de negócio"
-        description="Desenvolvimento web, sistemas personalizados e automações construídos sob medida — sem templates, sem genérico, sem enrolação de agência."
+        title="Soluções digitais sob medida para empresas que querem evoluir"
+        description="Criamos sites, sistemas e automações personalizados para transformar necessidades reais de negócio em experiências digitais eficientes."
         actions={
           <>
             <Button href="/contato" size="lg">
-              Falar com especialista <ArrowRight size={18} />
+              Iniciar um projeto <ArrowRight size={18} />
             </Button>
+
             <Button href="/servicos" variant="secondary" size="lg">
-              Ver serviços
+              Conhecer soluções
             </Button>
           </>
         }
@@ -62,10 +106,17 @@ export default function HomePage() {
         <Container>
           <FadeIn>
             <Text variant="caption">Serviços</Text>
+
             <Heading as="h2" className="mt-3 max-w-lg">
-              Quatro formas de resolver problemas reais de presença digital
+              Tecnologia aplicada aos desafios reais do seu negócio
             </Heading>
+
+            <Text variant="lead" className="mt-4 max-w-xl">
+              Quatro linhas de solução para construir presença digital, melhorar
+              processos e criar ferramentas personalizadas.
+            </Text>
           </FadeIn>
+
           <Grid cols={4} className="mt-12">
             {services.map((service) => (
               <ServiceCard key={service.slug} service={service} />
@@ -78,13 +129,25 @@ export default function HomePage() {
         <Container>
           <FadeIn>
             <Text variant="caption">Método</Text>
+
             <Heading as="h2" className="mt-3 max-w-lg">
-              Como funciona o processo de trabalho
+              Um processo pensado antes do código
             </Heading>
+
+            <Text variant="lead" className="mt-4 max-w-xl">
+              Cada projeto começa entendendo o problema. A tecnologia entra como
+              ferramenta para criar uma solução eficiente.
+            </Text>
           </FadeIn>
+
           <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2">
             {processSteps.map((step, i) => (
-              <ProcessStep key={step.title} index={i + 1} title={step.title} description={step.description} />
+              <ProcessStep
+                key={step.title}
+                index={i + 1}
+                title={step.title}
+                description={step.description}
+              />
             ))}
           </div>
         </Container>
@@ -93,11 +156,18 @@ export default function HomePage() {
       <Section>
         <Container>
           <FadeIn>
-            <Text variant="caption">Segmentos</Text>
+            <Text variant="caption">Soluções por segmento</Text>
+
             <Heading as="h2" className="mt-3 max-w-lg">
-              Soluções pensadas para o seu segmento
+              Estratégias digitais adaptadas ao seu mercado
             </Heading>
+
+            <Text variant="lead" className="mt-4 max-w-xl">
+              Cada negócio possui processos e necessidades diferentes.
+              Desenvolvemos soluções considerando o contexto de cada segmento.
+            </Text>
           </FadeIn>
+
           <Grid cols={3} className="mt-12">
             {niches.map((niche) => (
               <NicheCard key={niche.slug} niche={niche} />
@@ -110,10 +180,17 @@ export default function HomePage() {
         <Container>
           <FadeIn>
             <Text variant="caption">Projetos</Text>
+
             <Heading as="h2" className="mt-3 max-w-lg">
-              Resultado real em projetos reais
+              Estudos de soluções digitais
             </Heading>
+
+            <Text variant="lead" className="mt-4 max-w-xl">
+              Explorações de interfaces, sistemas e experiências digitais
+              criadas para demonstrar possibilidades de aplicação.
+            </Text>
           </FadeIn>
+
           <Grid cols={3} className="mt-12">
             {caseStudies.map((c) => (
               <CaseCard key={c.slug} caseStudy={c} />
@@ -124,11 +201,11 @@ export default function HomePage() {
 
       <Section>
         <CTASection
-          title="Pronto para transformar seu site em ferramenta de negócio?"
-          description="Conte o contexto da sua empresa e receba uma proposta de solução sob medida."
+          title="Tem um problema digital para resolver?"
+          description="Conte o contexto da sua empresa e vamos encontrar a solução mais adequada para sua necessidade."
           actions={
             <Button href="/contato" size="lg">
-              Solicitar proposta
+              Conversar com a Fyrmma
             </Button>
           }
         />
