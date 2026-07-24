@@ -1,22 +1,38 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+
 import { PageWrapper } from "@/components/layout";
 import { Container, Section, Heading, Text, Grid } from "@/components/ui";
+
 import { Button } from "@/components/ui/Button";
+
 import { Hero, CTASection, ServiceCard } from "@/components/sections";
+
 import { AlertCircle } from "lucide-react";
+
 import { niches, getNicheBySlug } from "@/content/nichos";
+
 import { services } from "@/content/servicos";
+
 import { buildMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
-  return niches.map((niche) => ({ nicho: niche.slug }));
+  return niches.map((niche) => ({
+    nicho: niche.slug,
+  }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ nicho: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ nicho: string }>;
+}): Promise<Metadata> {
   const { nicho } = await params;
+
   const niche = getNicheBySlug(nicho);
+
   if (!niche) return {};
+
   return buildMetadata({
     title: `Soluções para ${niche.name}`,
     description: niche.heroDescription,
@@ -24,12 +40,20 @@ export async function generateMetadata({ params }: { params: Promise<{ nicho: st
   });
 }
 
-export default async function NichoPage({ params }: { params: Promise<{ nicho: string }> }) {
+export default async function NichoPage({
+  params,
+}: {
+  params: Promise<{ nicho: string }>;
+}) {
   const { nicho } = await params;
+
   const niche = getNicheBySlug(nicho);
+
   if (!niche) notFound();
 
-  const relatedServices = services.filter((s) => niche.relatedServiceSlugs.includes(s.slug));
+  const relatedServices = services.filter((service) =>
+    niche.relatedServiceSlugs.includes(service.slug),
+  );
 
   return (
     <PageWrapper>
@@ -39,21 +63,27 @@ export default async function NichoPage({ params }: { params: Promise<{ nicho: s
         description={niche.heroDescription}
         actions={
           <Button href="/contato" size="lg">
-            Falar com especialista
+            Avaliar minha necessidade
           </Button>
         }
       />
 
       <Section surface>
         <Container>
-          <Text variant="caption">Dores comuns</Text>
+          <Text variant="caption">Desafios comuns</Text>
+
           <Heading as="h2" className="mt-3 max-w-lg">
-            O que costuma travar a presença digital nesse segmento
+            Pontos que podem limitar a evolução digital do negócio
           </Heading>
+
           <div className="mt-10 flex flex-col gap-6">
             {niche.painPoints.map((pain) => (
               <div key={pain} className="flex items-start gap-3">
-                <AlertCircle size={18} className="mt-0.5 shrink-0 text-signal-strong" />
+                <AlertCircle
+                  size={18}
+                  className="mt-0.5 shrink-0 text-signal-strong"
+                />
+
                 <Text variant="body">{pain}</Text>
               </div>
             ))}
@@ -65,9 +95,11 @@ export default async function NichoPage({ params }: { params: Promise<{ nicho: s
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <Text variant="caption">Nossa abordagem</Text>
+
             <Heading as="h2" className="mt-3">
-              Como a Fyrmma resolve isso
+              Como estruturamos essa solução
             </Heading>
+
             <Text variant="lead" className="mt-4">
               {niche.solution}
             </Text>
@@ -78,10 +110,12 @@ export default async function NichoPage({ params }: { params: Promise<{ nicho: s
       {relatedServices.length > 0 && (
         <Section surface>
           <Container>
-            <Text variant="caption">Serviços relacionados</Text>
+            <Text variant="caption">Soluções aplicáveis nesse segmento</Text>
+
             <Heading as="h2" className="mt-3 max-w-lg">
-              Como entregamos essa solução
+              Serviços que podem apoiar esse cenário
             </Heading>
+
             <Grid cols={2} className="mt-10">
               {relatedServices.map((service) => (
                 <ServiceCard key={service.slug} service={service} />
@@ -93,11 +127,11 @@ export default async function NichoPage({ params }: { params: Promise<{ nicho: s
 
       <Section>
         <CTASection
-          title={`Pronto para modernizar a presença digital do seu ${niche.name.toLowerCase()}?`}
-          description="Conte sua situação atual e receba uma proposta objetiva de solução."
+          title="Vamos avaliar o melhor caminho para sua empresa?"
+          description="Conte o contexto do seu negócio e vamos identificar quais soluções digitais fazem sentido para sua realidade."
           actions={
             <Button href="/contato" size="lg">
-              Solicitar proposta
+              Conversar com a Fyrmma
             </Button>
           }
         />

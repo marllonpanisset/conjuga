@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+
 import { PageWrapper } from "@/components/layout";
 import {
   Container,
@@ -9,15 +10,21 @@ import {
   Grid,
   Divider,
 } from "@/components/ui";
+
 import { Button } from "@/components/ui/Button";
 import { Hero, FeatureGrid, CaseCard, CTASection } from "@/components/sections";
+
 import { Icon } from "@/components/ui/Icon";
+
 import { services, getServiceBySlug } from "@/content/servicos";
 import { caseStudies } from "@/content/projetos";
+
 import { breadcrumbJsonLd, buildMetadata, serviceJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
-  return services.map((service) => ({ slug: service.slug }));
+  return services.map((service) => ({
+    slug: service.slug,
+  }));
 }
 
 export async function generateMetadata({
@@ -26,8 +33,11 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+
   const service = getServiceBySlug(slug);
+
   if (!service) return {};
+
   return buildMetadata({
     title: service.name,
     description: service.heroDescription,
@@ -41,7 +51,9 @@ export default async function ServicoPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+
   const service = getServiceBySlug(slug);
+
   if (!service) notFound();
 
   const relatedCases = caseStudies.filter(
@@ -91,7 +103,7 @@ export default async function ServicoPage({
         description={service.heroDescription}
         actions={
           <Button href="/contato" size="lg">
-            Solicitar proposta
+            Solicitar diagnóstico
           </Button>
         }
       />
@@ -100,9 +112,11 @@ export default async function ServicoPage({
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <Icon icon={service.icon} size={28} className="mx-auto" />
+
             <Heading as="h2" className="mt-5">
-              O problema que resolvemos
+              Problemas que esse serviço ajuda a resolver
             </Heading>
+
             <Text variant="lead" className="mt-4">
               {service.problem}
             </Text>
@@ -113,9 +127,11 @@ export default async function ServicoPage({
       <Section>
         <Container>
           <Text variant="caption">O que está incluso</Text>
+
           <Heading as="h2" className="mt-3 max-w-lg">
-            Como entregamos esse serviço
+            Como estruturamos essa solução
           </Heading>
+
           <div className="mt-10">
             <FeatureGrid items={service.includes} />
           </div>
@@ -124,10 +140,12 @@ export default async function ServicoPage({
 
       <Section surface>
         <Container>
-          <Text variant="caption">Stack técnica</Text>
+          <Text variant="caption">Tecnologia</Text>
+
           <Heading as="h2" className="mt-3 max-w-lg">
-            Tecnologia usada nesse serviço
+            Ferramentas e tecnologias aplicadas
           </Heading>
+
           <div className="mt-6 flex flex-wrap gap-3">
             {service.stack.map((tech) => (
               <span
@@ -144,12 +162,15 @@ export default async function ServicoPage({
       {relatedCases.length > 0 && (
         <>
           <Divider />
+
           <Section>
             <Container>
-              <Text variant="caption">Cases relacionados</Text>
+              <Text variant="caption">Projetos relacionados</Text>
+
               <Heading as="h2" className="mt-3 max-w-lg">
-                Esse serviço em ação
+                Possibilidades de aplicação
               </Heading>
+
               <Grid cols={3} className="mt-10">
                 {relatedCases.map((c) => (
                   <CaseCard key={c.slug} caseStudy={c} />
@@ -162,11 +183,11 @@ export default async function ServicoPage({
 
       <Section>
         <CTASection
-          title={`Pronto para começar com ${service.name.toLowerCase()}?`}
-          description="Conte o contexto da sua empresa e receba uma proposta objetiva."
+          title="Vamos avaliar o melhor caminho para sua empresa?"
+          description="Conte o contexto do seu negócio e vamos identificar a solução digital mais adequada para sua necessidade."
           actions={
             <Button href="/contato" size="lg">
-              Solicitar proposta
+              Conversar com a Fyrmma
             </Button>
           }
         />
