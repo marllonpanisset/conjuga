@@ -1,77 +1,238 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { servicesNav, nichesNav, mainNav } from "@/config/navigation";
 import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
+
+type NavItem = { href: string; label: string; description?: string };
+
+const overlayVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
+const drawerVariants = {
+  hidden: { x: "100%" },
+  visible: {
+    x: 0,
+    transition: { type: "spring", damping: 30, stiffness: 300 },
+  },
+  exit: {
+    x: "100%",
+    transition: { type: "spring", damping: 30, stiffness: 300 },
+  },
+};
+
+const groupVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.05, delayChildren: 0.15 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: 16 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.3, ease: "easeOut" },
+  },
+};
+
+function AccordionSection({
+  id,
+  title,
+  items,
+  isOpen,
+  onToggle,
+  onNavigate,
+}: {
+  id: string;
+  title: string;
+  items: NavItem[];
+  isOpen: boolean;
+  onToggle: () => void;
+  onNavigate: () => void;
+}) {
+  return (
+    <div className="border-b border-border/60">
+      <button
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={id}
+        className="flex w-full items-center justify-between py-4 text-left transition-colors hover:text-text-primary"
+      >
+        <span className="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.1em] text-text-muted">
+          {title}
+        </span>
+        <ChevronDown
+          size={16}
+          className={cn(
+            "text-text-muted transition-transform duration-300 ease-out",
+            isOpen && "rotate-180 text-text-primary",
+          )}
+        />
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            id={id}
+            key="content"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
+            className="overflow-hidden"
+          >
+            <motion.ul
+              variants={groupVariants}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-col gap-0.5 pb-3"
+            >
+              {items.map((item) => (
+                <motion.li key={item.href} variants={itemVariants}>
+                  <Link
+                    href={item.href as never}
+                    onClick={onNavigate}
+                    className="block rounded-[10px] px-3 py-2.5 text-[0.9375rem] leading-snug text-text-secondary transition-colors active:scale-[0.98] hover:bg-surface hover:text-text-primary"
+                  >
+                    {item.label}
+                    {item.description && (
+                      <span className="mt-0.5 block text-[0.75rem] font-normal text-text-muted">
+                        {item.description}
+                      </span>
+                    )}
+                  </Link>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [openSection, setOpenSection] = useState<string | null>("servicos");
 
-  return (
-    <div className="md:hidden">
-      <button
-        onClick={() => setOpen(true)}
-        aria-label="Abrir menu"
-        className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-border text-text-primary"
-      >
-        <Menu size={20} />
-      </button>
+  const closeMenu = useCallback(() => setOpen(false), []);
 
-      <AnimatePresence>
-        {open && (
+  const toggleSection = useCallback((key: string) => {
+    setOpenSection((current) => (current === key ? null : key));
+  }, []);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Bloquear/restaurar scroll do body
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  // Fechar com tecla ESC
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && open) {
+        closeMenu();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open, closeMenu]);
+
+  const overlay = (
+    <AnimatePresence>
+      {open && (
+        <>
+          {/* Backdrop */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            variants={overlayVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 flex flex-col bg-background p-6"
+            onClick={closeMenu}
+            aria-hidden="true"
+            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
+          />
+
+          {/* Drawer */}
+          <motion.div
+            id="mobile-nav-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu de navegação"
+            variants={drawerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="fixed inset-y-0 right-0 z-50 flex h-screen w-full max-w-sm flex-col bg-background shadow-2xl"
           >
-            <div className="flex items-center justify-between">
-              <span className="font-display text-[1.125rem] font-semibold text-text-primary">Fyrmma</span>
+            {/* Header do drawer */}
+            <div className="flex shrink-0 items-center justify-between border-b border-border px-6 py-4">
+              <span className="font-display text-[1.125rem] font-semibold text-text-primary">
+                Fyrmma
+              </span>
               <button
-                onClick={() => setOpen(false)}
+                onClick={closeMenu}
                 aria-label="Fechar menu"
-                className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-border text-text-primary"
+                className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-border text-text-primary transition-colors hover:bg-surface active:scale-95"
               >
                 <X size={20} />
               </button>
             </div>
 
-            <nav className="mt-10 flex flex-1 flex-col gap-8 overflow-y-auto">
-              <div>
-                <p className="mb-3 font-mono text-[0.75rem] uppercase tracking-[0.08em] text-text-muted">Serviços</p>
-                <ul className="flex flex-col gap-4">
-                  {servicesNav.map((item) => (
-                    <li key={item.href}>
-                      <Link href={item.href as never} onClick={() => setOpen(false)} className="text-[1.0625rem] text-text-primary">
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            {/* Conteúdo com scroll */}
+            <nav
+              className="flex-1 overflow-y-auto px-6"
+              aria-label="Navegação principal"
+            >
+              <div className="flex flex-col">
+                <AccordionSection
+                  id="mobile-nav-servicos"
+                  title="Serviços"
+                  items={servicesNav}
+                  isOpen={openSection === "servicos"}
+                  onToggle={() => toggleSection("servicos")}
+                  onNavigate={closeMenu}
+                />
+                <AccordionSection
+                  id="mobile-nav-nichos"
+                  title="Soluções por segmento"
+                  items={nichesNav}
+                  isOpen={openSection === "nichos"}
+                  onToggle={() => toggleSection("nichos")}
+                  onNavigate={closeMenu}
+                />
 
-              <div>
-                <p className="mb-3 font-mono text-[0.75rem] uppercase tracking-[0.08em] text-text-muted">Soluções por segmento</p>
-                <ul className="flex flex-col gap-4">
-                  {nichesNav.map((item) => (
-                    <li key={item.href}>
-                      <Link href={item.href as never} onClick={() => setOpen(false)} className="text-[1.0625rem] text-text-primary">
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <ul className="flex flex-col gap-4">
+                {/* Links principais — sempre visíveis, hierarquia mais forte */}
+                <ul className="flex flex-col gap-1 py-4">
                   {mainNav.map((item) => (
                     <li key={item.href}>
-                      <Link href={item.href as never} onClick={() => setOpen(false)} className="text-[1.0625rem] text-text-primary">
+                      <Link
+                        href={item.href as never}
+                        onClick={closeMenu}
+                        className="block rounded-[10px] px-3 py-3 text-[1.0625rem] font-medium text-text-primary transition-colors active:scale-[0.98] hover:bg-surface"
+                      >
                         {item.label}
                       </Link>
                     </li>
@@ -80,12 +241,36 @@ export function MobileNav() {
               </div>
             </nav>
 
-            <Button href="/contato" size="lg" className="w-full">
-              Falar com especialista
-            </Button>
+            {/* Footer com CTA */}
+            <div className="shrink-0 border-t border-border bg-background px-6 py-4">
+              <Button
+                href="/contato"
+                size="lg"
+                className="w-full"
+                onClick={closeMenu}
+              >
+                Falar com especialista
+              </Button>
+            </div>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </>
+      )}
+    </AnimatePresence>
+  );
+
+  return (
+    <div className="md:hidden">
+      <button
+        onClick={() => setOpen(true)}
+        aria-label="Abrir menu"
+        aria-expanded={open}
+        aria-controls="mobile-nav-drawer"
+        className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-border text-text-primary transition-colors hover:bg-surface active:scale-95"
+      >
+        <Menu size={20} />
+      </button>
+
+      {mounted && createPortal(overlay, document.body)}
     </div>
   );
 }
