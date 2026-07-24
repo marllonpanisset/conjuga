@@ -3,93 +3,123 @@ import type { Niche } from "@/types/niche";
 export const niches: Niche[] = [
   {
     slug: "saude",
-    name: "Clínicas e Profissionais da Saúde",
-    heroTitle: "Presença digital que transmite confiança antes da primeira consulta",
+    name: "Clínicas e Saúde",
+    heroTitle:
+      "Presença digital que transmite confiança antes do primeiro atendimento",
     heroDescription:
-      "Pacientes decidem por credibilidade. Sua clínica precisa de um site e um processo de agendamento que reflitam isso.",
+      "Clínicas e profissionais da saúde precisam de uma experiência digital clara, profissional e preparada para facilitar o relacionamento com pacientes.",
     painPoints: [
-      "Pacientes pesquisam antes de agendar e não encontram credibilidade suficiente",
-      "Agendamento manual por telefone ou WhatsApp consome tempo da recepção",
-      "Poucas informações claras sobre especialidades e convênios",
+      "Pacientes pesquisam antes de agendar e nem sempre encontram informações que transmitam confiança",
+      "Processos de contato, confirmação e agendamento ainda dependem de tarefas manuais",
+      "Serviços, especialidades e diferenciais nem sempre são apresentados de forma estratégica",
     ],
     solution:
-      "Site institucional com foco em autoridade médica, formulário de agendamento integrado e automações de confirmação e lembrete de consulta.",
-    relatedServiceSlugs: ["sites-institucionais", "automacoes-integracoes"],
+      "Desenvolvemos sites institucionais, páginas estratégicas e automações para melhorar a apresentação da clínica e organizar processos de atendimento.",
+    relatedServiceSlugs: [
+      "sites-institucionais",
+      "landing-pages",
+      "automacoes-integracoes",
+    ],
   },
+
   {
     slug: "advocacia",
-    name: "Escritórios de Advocacia",
-    heroTitle: "Autoridade digital para escritórios que decidem causas, não cliques",
+    name: "Advocacia",
+    heroTitle: "Presença digital que fortalece autoridade e confiança jurídica",
     heroDescription:
-      "Um cliente que busca advogado avalia seriedade antes de qualquer contato. Seu site precisa comunicar isso com precisão.",
+      "Escritórios de advocacia precisam comunicar experiência, especialização e credibilidade antes mesmo do primeiro contato com um potencial cliente.",
     painPoints: [
-      "Presença digital genérica não transmite a seriedade do escritório",
-      "Captação de novos casos depende quase só de indicação",
-      "Falta de organização das áreas de atuação para o visitante",
+      "O site não transmite o posicionamento e a especialização do escritório",
+      "Áreas de atuação e diferenciais ficam pouco claras para quem pesquisa online",
+      "O processo de captação depende principalmente de indicação e contatos diretos",
     ],
     solution:
-      "Site institucional estruturado por área de atuação, com página de autoridade dos sócios e captação de contato qualificado.",
+      "Criamos experiências digitais organizadas por áreas de atuação, com foco em autoridade profissional, clareza das informações e geração de novos contatos.",
     relatedServiceSlugs: ["sites-institucionais", "landing-pages"],
   },
+
   {
     slug: "contabilidade",
-    name: "Escritórios de Contabilidade",
-    heroTitle: "Um escritório de contabilidade que parece — e é — tecnológico",
+    name: "Contabilidade",
+    heroTitle:
+      "Uma presença digital alinhada à confiança que empresas procuram",
     heroDescription:
-      "Empresas escolhem contabilidade por confiança e organização. A presença digital do escritório precisa refletir isso.",
+      "Escritórios contábeis precisam demonstrar organização, conhecimento técnico e capacidade de acompanhar seus clientes.",
     painPoints: [
-      "Concorrência com escritórios que já têm presença digital mais moderna",
-      "Processos de troca de documentos ainda manuais com clientes",
-      "Dificuldade em comunicar diferenciais frente a escritórios genéricos",
+      "A presença digital não comunica os diferenciais do escritório",
+      "Serviços e especialidades podem ficar pouco claros para novos clientes",
+      "Processos internos e relacionamento com clientes possuem oportunidades de melhoria",
     ],
     solution:
-      "Site institucional com posicionamento técnico e sistema de portal do cliente para envio e acompanhamento de documentos.",
-    relatedServiceSlugs: ["sites-institucionais", "sistemas-web"],
+      "Desenvolvemos sites institucionais, áreas digitais e ferramentas personalizadas para fortalecer posicionamento e organizar processos.",
+    relatedServiceSlugs: [
+      "sites-institucionais",
+      "sistemas-web",
+      "automacoes-integracoes",
+    ],
   },
+
   {
     slug: "consultoria",
-    name: "Consultores Independentes",
-    heroTitle: "Uma presença digital que já vende sua autoridade antes da reunião",
+    name: "Consultoria",
+    heroTitle:
+      "Uma presença digital construída para comunicar conhecimento e autoridade",
     heroDescription:
-      "Como consultor independente, sua credibilidade é o produto. O site precisa comunicar isso com clareza e rapidez.",
+      "Consultores e empresas especializadas precisam apresentar sua experiência, metodologia e forma de trabalho com clareza.",
     painPoints: [
-      "Depende quase inteiramente de indicação e rede de contatos",
-      "Não tem uma página que apresente método e resultados de forma clara",
-      "Agenda de reuniões gerida manualmente, sem qualificação prévia",
+      "A experiência profissional não está bem representada no ambiente digital",
+      "Métodos e serviços são difíceis de comunicar para novos clientes",
+      "Processos comerciais dependem de contatos manuais e reuniões iniciais",
     ],
     solution:
-      "Landing page de autoridade com apresentação de método, cases e agendamento qualificado automatizado.",
-    relatedServiceSlugs: ["landing-pages", "automacoes-integracoes"],
+      "Criamos páginas estratégicas e experiências digitais para apresentar serviços, organizar informações e facilitar novas oportunidades comerciais.",
+    relatedServiceSlugs: [
+      "landing-pages",
+      "sites-institucionais",
+      "automacoes-integracoes",
+    ],
   },
+
   {
     slug: "servicos-locais",
-    name: "Prestadores de Serviços Locais",
-    heroTitle: "Mais orçamentos fechados, menos ligação perdida",
+    name: "Serviços Locais",
+    heroTitle:
+      "Uma presença digital profissional para empresas que precisam gerar oportunidades",
     heroDescription:
-      "Reformas, elétrica, hidráulica, climatização e manutenção: quem decide rápido quer ver profissionalismo imediato.",
+      "Empresas de manutenção, reformas e serviços especializados precisam transmitir confiança rapidamente e facilitar novos contatos.",
     painPoints: [
-      "Concorrência decidida no WhatsApp por quem responde mais rápido e parece mais profissional",
-      "Sem página própria, dependendo só de marketplaces e indicação",
-      "Orçamentos e follow-up feitos manualmente, com perda de oportunidades",
+      "A empresa depende apenas de indicação ou canais limitados de divulgação",
+      "Clientes encontram poucas informações antes de solicitar orçamento",
+      "Atendimento e acompanhamento de oportunidades ainda podem ser manuais",
     ],
     solution:
-      "Landing page local com prova social e solicitação de orçamento, integrada a automações de resposta e follow-up.",
-    relatedServiceSlugs: ["landing-pages", "automacoes-integracoes"],
+      "Desenvolvemos landing pages, sites institucionais e automações para apresentar serviços, captar contatos e organizar processos comerciais.",
+    relatedServiceSlugs: [
+      "landing-pages",
+      "sites-institucionais",
+      "automacoes-integracoes",
+    ],
   },
+
   {
     slug: "negocios-b2b",
-    name: "Pequenos Negócios B2B Locais",
-    heroTitle: "Uma presença B2B que parece o parceiro certo, não mais um fornecedor",
+    name: "Negócios B2B",
+    heroTitle:
+      "Soluções digitais para empresas que precisam evoluir sua operação",
     heroDescription:
-      "Decisões B2B locais também são decisões de confiança. Sua empresa precisa parecer o parceiro certo desde o primeiro acesso.",
+      "Empresas B2B precisam de uma presença digital profissional e processos mais organizados para acompanhar novas oportunidades.",
     painPoints: [
-      "Site desatualizado ou inexistente prejudica negociações com empresas maiores",
-      "Processos comerciais e operacionais pouco digitalizados",
-      "Dificuldade em demonstrar capacidade técnica para novos contratos",
+      "O site atual não representa a capacidade técnica da empresa",
+      "Processos internos dependem de planilhas ou tarefas repetitivas",
+      "Ferramentas desconectadas dificultam a operação e o crescimento",
     ],
     solution:
-      "Site institucional robusto com sistema web de apoio à operação e automações comerciais internas.",
-    relatedServiceSlugs: ["sites-institucionais", "sistemas-web"],
+      "Criamos sites institucionais, sistemas personalizados e integrações para melhorar processos comerciais e operacionais.",
+    relatedServiceSlugs: [
+      "sites-institucionais",
+      "sistemas-web",
+      "automacoes-integracoes",
+    ],
   },
 ];
 
