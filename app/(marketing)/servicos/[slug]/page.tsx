@@ -1,19 +1,30 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageWrapper } from "@/components/layout";
-import { Container, Section, Heading, Text, Grid, Divider } from "@/components/ui";
+import {
+  Container,
+  Section,
+  Heading,
+  Text,
+  Grid,
+  Divider,
+} from "@/components/ui";
 import { Button } from "@/components/ui/Button";
 import { Hero, FeatureGrid, CaseCard, CTASection } from "@/components/sections";
 import { Icon } from "@/components/ui/Icon";
 import { services, getServiceBySlug } from "@/content/servicos";
 import { caseStudies } from "@/content/projetos";
-import { buildMetadata, serviceJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, buildMetadata, serviceJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
   if (!service) return {};
@@ -24,19 +35,53 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   });
 }
 
-export default async function ServicoPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ServicoPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
-  const relatedCases = caseStudies.filter((c) => c.serviceSlug === service.slug);
+  const relatedCases = caseStudies.filter(
+    (c) => c.serviceSlug === service.slug,
+  );
 
   return (
     <PageWrapper>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(serviceJsonLd(service.name, service.heroDescription, `/servicos/${service.slug}`)),
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              {
+                name: "Home",
+                path: "/",
+              },
+              {
+                name: "Serviços",
+                path: "/servicos",
+              },
+              {
+                name: service.name,
+                path: `/servicos/${service.slug}`,
+              },
+            ]),
+          ),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            serviceJsonLd(
+              service.name,
+              service.heroDescription,
+              `/servicos/${service.slug}`,
+            ),
+          ),
         }}
       />
 
@@ -85,7 +130,10 @@ export default async function ServicoPage({ params }: { params: Promise<{ slug: 
           </Heading>
           <div className="mt-6 flex flex-wrap gap-3">
             {service.stack.map((tech) => (
-              <span key={tech} className="rounded-[6px] border border-border px-3 py-1.5 font-mono text-[0.8125rem] text-text-secondary">
+              <span
+                key={tech}
+                className="rounded-[6px] border border-border px-3 py-1.5 font-mono text-[0.8125rem] text-text-secondary"
+              >
                 {tech}
               </span>
             ))}
