@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -10,6 +10,15 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 type NavItem = { href: string; label: string; description?: string };
+
+const focusableSelector = [
+  "a[href]",
+  "button:not([disabled])",
+  "input:not([disabled])",
+  "select:not([disabled])",
+  "textarea:not([disabled])",
+  '[tabindex]:not([tabindex="-1"])',
+].join(",");
 
 const overlayVariants = {
   hidden: { opacity: 0 },
@@ -45,6 +54,17 @@ const itemVariants = {
   },
 };
 
+/**
+ * Returns only keyboard-reachable controls inside the active dialog. Keeping
+ * this query in one utility ensures focus-trap behavior stays consistent as
+ * navigation links or controls are added to the drawer.
+ */
+function getFocusableElements(container: HTMLElement | null): HTMLElement[] {
+  if (!container) return [];
+
+  return Array.from(container.querySelectorAll<HTMLElement>(focusableSelector));
+}
+
 function AccordionSection({
   id,
   title,
@@ -63,6 +83,7 @@ function AccordionSection({
   return (
     <div className="border-b border-border/60">
       <button
+        type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
         aria-controls={id}
@@ -121,12 +142,31 @@ function AccordionSection({
   );
 }
 
+/**
+ * Renders the mobile navigation as a modal dialog so keyboard users cannot
+ * reach background content while it is open. Focus returns to the trigger on
+ * close, matching the expected disclosure interaction pattern.
+ */
 export function MobileNav() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [openSection, setOpenSection] = useState<string | null>("servicos");
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
 
-  const closeMenu = useCallback(() => setOpen(false), []);
+  /** Opens the dialog while preserving the trigger as the focus-return target. */
+  const openMenu = useCallback(() => {
+    setOpen(true);
+  }, []);
+
+  /**
+   * Closes the dialog and restores focus after React has committed the state.
+   * This keeps keyboard context stable for Escape, overlay, and link actions.
+   */
+  const closeMenu = useCallback(() => {
+    setOpen(false);
+    window.requestAnimationFrame(() => menuButtonRef.current?.focus());
+  }, []);
 
   const toggleSection = useCallback((key: string) => {
     setOpenSection((current) => (current === key ? null : key));
@@ -136,34 +176,64 @@ export function MobileNav() {
     setMounted(true);
   }, []);
 
-  // Bloquear/restaurar scroll do body
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    // Move focus into the dialog only after the portal has rendered its controls.
+    const focusFrame = window.requestAnimationFrame(() => {
+      getFocusableElements(drawerRef.current)[0]?.focus();
+    });
+
     return () => {
-      document.body.style.overflow = "";
+      window.cancelAnimationFrame(focusFrame);
+      document.body.style.overflow = previousOverflow;
     };
   }, [open]);
 
-  // Fechar com tecla ESC
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && open) {
+  /**
+   * Implements a local focus trap instead of a dependency so the existing
+   * portal remains lightweight. Tab and Shift+Tab cycle through dialog controls.
+   */
+  const handleDrawerKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
         closeMenu();
+        return;
       }
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [open, closeMenu]);
+
+      if (event.key !== "Tab") return;
+
+      const focusableElements = getFocusableElements(drawerRef.current);
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements.at(-1);
+
+      if (!firstElement || !lastElement) {
+        event.preventDefault();
+        return;
+      }
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+        return;
+      }
+
+      if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    },
+    [closeMenu],
+  );
 
   const overlay = (
     <AnimatePresence>
       {open && (
         <>
-          {/* Backdrop */}
           <motion.div
             variants={overlayVariants}
             initial="hidden"
@@ -175,24 +245,25 @@ export function MobileNav() {
             className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
           />
 
-          {/* Drawer */}
           <motion.div
+            ref={drawerRef}
             id="mobile-nav-drawer"
             role="dialog"
             aria-modal="true"
-            aria-label="Menu de navegação"
+            aria-labelledby="mobile-nav-title"
             variants={drawerVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
+            onKeyDown={handleDrawerKeyDown}
             className="fixed inset-y-0 right-0 z-50 flex h-screen w-full max-w-sm flex-col bg-background shadow-2xl"
           >
-            {/* Header do drawer */}
             <div className="flex shrink-0 items-center justify-between border-b border-border px-6 py-4">
-              <span className="font-display text-[1.125rem] font-semibold text-text-primary">
+              <span id="mobile-nav-title" className="font-display text-[1.125rem] font-semibold text-text-primary">
                 Fyrmma
               </span>
               <button
+                type="button"
                 onClick={closeMenu}
                 aria-label="Fechar menu"
                 className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-border text-text-primary transition-colors hover:bg-surface active:scale-95"
@@ -201,11 +272,7 @@ export function MobileNav() {
               </button>
             </div>
 
-            {/* Conteúdo com scroll */}
-            <nav
-              className="flex-1 overflow-y-auto px-6"
-              aria-label="Navegação principal"
-            >
+            <nav className="flex-1 overflow-y-auto px-6" aria-label="Navegação principal">
               <div className="flex flex-col">
                 <AccordionSection
                   id="mobile-nav-servicos"
@@ -224,7 +291,6 @@ export function MobileNav() {
                   onNavigate={closeMenu}
                 />
 
-                {/* Links principais — sempre visíveis, hierarquia mais forte */}
                 <ul className="flex flex-col gap-1 py-4">
                   {mainNav.map((item) => (
                     <li key={item.href}>
@@ -241,14 +307,8 @@ export function MobileNav() {
               </div>
             </nav>
 
-            {/* Footer com CTA */}
             <div className="shrink-0 border-t border-border bg-background px-6 py-4">
-              <Button
-                href="/contato"
-                size="lg"
-                className="w-full"
-                onClick={closeMenu}
-              >
+              <Button href="/contato" size="lg" className="w-full" onClick={closeMenu}>
                 Falar com especialista
               </Button>
             </div>
@@ -261,10 +321,13 @@ export function MobileNav() {
   return (
     <div className="md:hidden">
       <button
-        onClick={() => setOpen(true)}
+        ref={menuButtonRef}
+        type="button"
+        onClick={openMenu}
         aria-label="Abrir menu"
         aria-expanded={open}
         aria-controls="mobile-nav-drawer"
+        aria-haspopup="dialog"
         className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-border text-text-primary transition-colors hover:bg-surface active:scale-95"
       >
         <Menu size={20} />
