@@ -15,17 +15,11 @@ export const metadata: Metadata = buildMetadata({
   title: "Serviços",
 
   description:
-    "Landing Pages, Sites Institucionais, Sistemas Web Personalizados e Automações e Integrações — soluções digitais sob medida da Fyrmma.",
+    "Conheça as soluções digitais da Fyrmma: landing pages, sites institucionais, sistemas personalizados e automações para empresas.",
 
   path: "/servicos",
 });
 
-/**
- * Generates Service listing structured data.
- *
- * ItemList helps search engines understand that this page
- * contains a collection of available services.
- */
 function servicesListJsonLd() {
   return {
     "@context": "https://schema.org",
@@ -47,7 +41,6 @@ function servicesListJsonLd() {
 export default function ServicosPage() {
   return (
     <PageWrapper>
-      {/* Breadcrumb structured data improves navigation understanding. */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -66,7 +59,6 @@ export default function ServicosPage() {
         }}
       />
 
-      {/* Service collection structured data. */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -76,8 +68,8 @@ export default function ServicosPage() {
 
       <Hero
         eyebrow="Serviços"
-        title="Quatro linhas de solução, um único padrão de engenharia"
-        description="Cada serviço resolve um problema específico de presença digital — sempre desenvolvido sob medida, nunca adaptado de um template."
+        title="Soluções digitais construídas para diferentes desafios do negócio"
+        description="Estruturamos experiências digitais, sistemas e automações considerando o contexto de cada empresa, seus processos e seus objetivos."
       />
 
       <Section>
@@ -92,8 +84,8 @@ export default function ServicosPage() {
 
       <Section>
         <CTASection
-          title="Não sabe qual serviço resolve seu problema?"
-          description="Conte sua situação atual e indicamos a solução mais adequada."
+          title="Qual solução faz sentido para sua empresa?"
+          description="Conte o contexto do seu negócio e vamos identificar o caminho digital mais adequado para sua necessidade."
           actions={
             <Button href="/contato" size="lg">
               Conversar com a Fyrmma
