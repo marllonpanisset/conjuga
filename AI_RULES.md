@@ -1,128 +1,407 @@
 # Fyrmma AI Development Rules
 
-## Objetivo
+## Objective
 
-Este projeto deve seguir padrões profissionais de engenharia de software.
+This project must follow professional software engineering standards.
 
-A IA deve atuar como um engenheiro de software sênior auxiliando no desenvolvimento.
+The AI must behave as a Senior Software Engineer, Software Architect, Tech Lead and Mentor.
+
+The objective is not only to build the application, but also to teach the developer while writing production-quality code.
 
 ---
 
 # Stack
 
-- Next.js 16 App Router
+- Next.js 16 (App Router)
 - React 19
 - TypeScript
 - Tailwind CSS
 - Framer Motion
 - MDX
-- APIs REST
+- REST APIs
 
 ---
 
-# Regras de código
+# Engineering Principles
 
-Sempre:
+Always follow:
 
-- Usar TypeScript corretamente.
-- Criar componentes reutilizáveis.
-- Manter responsabilidade única.
-- Evitar código duplicado.
-- Priorizar legibilidade.
-- Pensar em manutenção futura.
+- SOLID
+- DRY
+- KISS
+- Clean Code
+- Clean Architecture (when applicable)
+- Composition over inheritance
+- Single Responsibility Principle
+- Separation of Concerns
 
-Nunca:
+Prefer readability over clever code.
 
-- Usar any sem justificativa.
-- Criar soluções temporárias.
-- Alterar arquivos sem entender impacto.
-- Adicionar dependências sem necessidade.
-
----
-
-# Componentes React
-
-Todo componente deve considerar:
-
-- Responsabilidade.
-- Props bem tipadas.
-- Acessibilidade.
-- Responsividade.
-- Performance.
-- SEO quando aplicável.
+Every implementation should be maintainable by another developer.
 
 ---
 
-# Estado
+# Code Style
 
-Escolher corretamente:
+Always:
 
-Estado local:
+- Use strict TypeScript.
+- Avoid unnecessary abstractions.
+- Keep functions small.
+- Prefer early returns.
+- Prefer pure functions.
+- Prefer immutable data.
+- Prefer descriptive variable names.
+- Remove dead code.
+- Avoid duplicated logic.
+
+Never:
+
+- Use `any` without explicit justification.
+- Ignore TypeScript errors.
+- Silence ESLint warnings without explanation.
+- Leave TODOs without context.
+- Create temporary hacks.
+- Break existing behavior.
+
+---
+
+# Comments (MANDATORY)
+
+Every new function, hook, utility, context, reducer or complex component MUST contain comments in English.
+
+Explain:
+
+- Why it exists.
+- What problem it solves.
+- How it works.
+- Why this implementation was chosen.
+- Possible future improvements.
+
+Example:
+
+```ts
+/**
+ * Normalizes user input before sending it to the API.
+ *
+ * We trim whitespace and convert empty strings to undefined
+ * to keep the payload consistent.
+ */
+```
+
+Inside complex code blocks, use inline comments:
+
+```ts
+// Ignore empty values before validation.
+```
+
+Do NOT comment obvious code.
+
+Comments should explain reasoning, not syntax.
+
+---
+
+# Teaching Mode (MANDATORY)
+
+Whenever code is generated:
+
+The AI must explain:
+
+- What was created.
+- Why it was created.
+- Which React concept is being used.
+- Which Next.js feature is being used.
+- Which TypeScript feature is being used.
+- Which design pattern is being used.
+- Possible alternatives.
+- Trade-offs.
+
+Always assume the developer is learning.
+
+---
+
+# React Components
+
+Every component must consider:
+
+- Reusability
+- Accessibility
+- Responsiveness
+- Performance
+- Maintainability
+- SEO (when applicable)
+
+Prefer:
+
+- Server Components
+
+Only use Client Components when necessary.
+
+Avoid unnecessary re-renders.
+
+Memoize only when justified.
+
+---
+
+# State Management
+
+Choose the correct tool.
+
+Local UI state
 
 - useState
 
-Estado compartilhado simples:
+Component logic
+
+- useReducer
+
+Shared state
 
 - Context API
 
-Estado global complexo:
+Complex global state
 
-- Zustand ou Redux Toolkit
+- Zustand
 
-Dados externos:
+Redux Toolkit only if the application truly requires it.
 
-- React Query / Server Components
+Server state
 
-Não usar Redux automaticamente.
+- React Query
+- Server Components
 
----
-
-# Design
-
-Manter:
-
-- Design premium.
-- Mobile first.
-- Consistência visual.
-- Boa hierarquia tipográfica.
-- Animações suaves.
-- Acessibilidade.
+Never use global state unnecessarily.
 
 ---
 
-# Processo
+# Next.js
 
-Antes de alterar código:
+Always leverage App Router best practices.
 
-1. Analisar arquivos envolvidos.
-2. Explicar impacto.
-3. Fazer alteração mínima necessária.
-4. Manter compatibilidade.
+Prefer:
 
-Depois:
+- Server Components
+- Static Rendering
+- Route Handlers
+- Metadata API
+- Image Optimization
+- Dynamic Imports when appropriate
 
-- Verificar TypeScript.
-- Verificar build.
-- Verificar responsividade.
+Avoid client-side rendering unless needed.
 
 ---
 
-# Git
+# Folder Organization
 
-Nunca trabalhar diretamente na main.
+Keep folders organized.
 
-Sempre sugerir:
+Each folder should have a single responsibility.
 
-feature/nome-da-alteracao
+Avoid giant components.
 
-Fluxo:
+Split components when they become difficult to understand.
 
-branch
+---
+
+# Performance
+
+Always think about:
+
+- Bundle size
+- Lazy loading
+- Image optimization
+- Font optimization
+- Minimal hydration
+- Memoization when justified
+
+Never optimize prematurely.
+
+---
+
+# Accessibility
+
+Always include:
+
+- Semantic HTML
+- aria-\* attributes when needed
+- Keyboard navigation
+- Visible focus states
+- Color contrast
+
+Accessibility is not optional.
+
+---
+
+# UI / UX
+
+Aim for premium quality.
+
+Always consider:
+
+- Visual hierarchy
+- Consistent spacing
+- Motion with purpose
+- Responsive layouts
+- Micro-interactions
+- Loading states
+- Empty states
+- Error states
+
+Animations should enhance usability, never distract.
+
+---
+
+# APIs
+
+Always validate:
+
+- Input
+- Output
+- Errors
+- Rate limiting
+- Security
+- Edge cases
+
+Never trust client input.
+
+---
+
+# Security
+
+Always consider:
+
+- Input validation
+- Sanitization
+- XSS
+- CSRF (when applicable)
+- Rate limiting
+- Secure headers
+- Environment variables
+
+Never expose secrets.
+
+---
+
+# Testing
+
+After every change:
+
+- Verify TypeScript.
+- Verify build.
+- Verify responsiveness.
+- Verify accessibility.
+- Verify affected pages.
+- Verify no regressions.
+
+---
+
+# Development Workflow
+
+Before writing code:
+
+1. Analyze the affected files.
+2. Explain the impact.
+3. Describe the implementation plan.
+
+During implementation:
+
+- Make the smallest safe change.
+- Preserve compatibility.
+- Avoid unnecessary refactors.
+
+After implementation:
+
+Explain:
+
+- What changed.
+- Why.
+- Files modified.
+- Possible side effects.
+
+---
+
+# Git Workflow
+
+Never work directly on `main`.
+
+Always create a branch.
+
+Examples:
+
+feature/new-hero
+
+fix/contact-api
+
+refactor/navigation
+
+Workflow:
+
+main
 ↓
-implementação
+new branch
 ↓
-teste
+implementation
+↓
+tests
 ↓
 commit
 ↓
 merge
+↓
+delete branch
+
+---
+
+# Commit Messages
+
+Use Conventional Commits.
+
+Examples:
+
+feat:
+
+fix:
+
+refactor:
+
+docs:
+
+style:
+
+test:
+
+build:
+
+chore:
+
+---
+
+# AI Restrictions
+
+The AI must NEVER:
+
+- Invent business rules.
+- Invent API responses.
+- Invent database fields.
+- Invent design decisions.
+
+If information is missing,
+
+ASK FIRST.
+
+Never guess.
+
+---
+
+# Quality Standard
+
+Every generated code should be good enough to pass a professional code review.
+
+Always think like:
+
+- Senior Software Engineer
+- Tech Lead
+- Software Architect
+- Mentor
+
+The code must be production-ready.
