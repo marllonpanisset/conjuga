@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+
 import { PageWrapper } from "@/components/layout";
 import { Container, Section, Heading, Text } from "@/components/ui";
 import { Hero, ContactForm } from "@/components/sections";
@@ -7,32 +8,84 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contato",
-  description: "Fale com a Fyrmma e solicite uma proposta de solução digital sob medida para sua empresa.",
+  description:
+    "Conte o desafio da sua empresa para a Fyrmma. Desenvolvemos sites, sistemas e automações sob medida para melhorar processos e oportunidades digitais.",
   path: "/contato",
 });
+
+const processSteps = [
+  {
+    title: "1. Entendemos o contexto",
+    description:
+      "Analisamos seu negócio, objetivos e processos atuais para compreender onde a tecnologia pode gerar impacto.",
+  },
+  {
+    title: "2. Identificamos oportunidades",
+    description:
+      "Avaliamos o cenário e definimos quais soluções fazem sentido para sua necessidade, sem desenvolver algo desnecessário.",
+  },
+  {
+    title: "3. Construímos a solução adequada",
+    description:
+      "Criamos sites, sistemas ou automações alinhados ao momento da sua empresa.",
+  },
+];
 
 export default function ContatoPage() {
   return (
     <PageWrapper>
       <Hero
         eyebrow="Contato"
-        title="Vamos entender o contexto da sua empresa"
-        description="Conte sobre seu negócio, seu processo atual e o que você precisa resolver. Retornamos com uma proposta objetiva."
+        title="Vamos entender o próximo desafio digital da sua empresa"
+        description="Conte sobre sua empresa, seus processos e o que você deseja melhorar. Vamos analisar o cenário e indicar o caminho mais adequado para sua necessidade."
       />
 
       <Section>
         <Container>
           <div className="grid grid-cols-1 gap-16 md:grid-cols-[1fr_1.3fr]">
             <div>
-              <Heading as="h3">Outro canal</Heading>
+              <Heading as="h3">Conte seu desafio</Heading>
+
               <Text variant="muted" className="mt-3">
-                Prefere falar diretamente? Envie um e-mail para{" "}
-                <a href={`mailto:${siteConfig.links.email}`} className="link-underline text-signal-strong">
-                  {siteConfig.links.email}
-                </a>
-                .
+                Seja para criar uma nova presença digital, organizar processos
+                internos ou desenvolver uma solução personalizada, queremos
+                entender primeiro o problema antes de indicar a tecnologia.
               </Text>
+
+              <div className="mt-8">
+                <Heading as="h3">Como funciona</Heading>
+
+                <div className="mt-5 space-y-6">
+                  {processSteps.map((step) => (
+                    <div key={step.title}>
+                      <Text className="font-medium text-text-primary">
+                        {step.title}
+                      </Text>
+
+                      <Text variant="muted" className="mt-2">
+                        {step.description}
+                      </Text>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-10">
+                <Heading as="h3">Prefere outro canal?</Heading>
+
+                <Text variant="muted" className="mt-3">
+                  Envie um e-mail diretamente para{" "}
+                  <a
+                    href={`mailto:${siteConfig.links.email}`}
+                    className="link-underline text-signal-strong"
+                  >
+                    {siteConfig.links.email}
+                  </a>
+                  .
+                </Text>
+              </div>
             </div>
+
             <ContactForm />
           </div>
         </Container>
