@@ -8,7 +8,8 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Projetos",
-  description: "Cases reais de landing pages, sites institucionais, sistemas web e automações desenvolvidos pela Fyrmma.",
+  description:
+    "Projetos de referência em landing pages, sites institucionais, sistemas web e automações desenvolvidos pela Fyrmma.",
   path: "/projetos",
 });
 
@@ -16,9 +17,9 @@ export default function ProjetosPage() {
   return (
     <PageWrapper>
       <Hero
-        eyebrow="Projetos"
-        title="Resultado real em projetos reais"
-        description="Cada projeto nasce de um problema específico. Veja como transformamos presença digital em ferramenta de negócio."
+        eyebrow="Projetos de referência"
+        title="Soluções digitais pensadas para diferentes cenários de negócio"
+        description="Exemplos de como estruturamos interfaces, sistemas e experiências digitais a partir de desafios comuns encontrados por empresas."
       />
 
       <Section>
@@ -33,11 +34,11 @@ export default function ProjetosPage() {
 
       <Section>
         <CTASection
-          title="Quer ser o próximo case de sucesso?"
-          description="Conte o contexto da sua empresa e vamos planejar a solução ideal."
+          title="Tem um desafio parecido?"
+          description="Conte o contexto da sua empresa e vamos analisar qual solução digital faz sentido para sua necessidade."
           actions={
             <Button href="/contato" size="lg">
-              Solicitar proposta
+              Solicitar diagnóstico
             </Button>
           }
         />
