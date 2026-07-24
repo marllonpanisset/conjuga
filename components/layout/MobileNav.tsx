@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type KeyboardEvent } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -53,6 +53,23 @@ const itemVariants = {
     transition: { duration: 0.3, ease: "easeOut" },
   },
 };
+
+/**
+ * Provides a hydration-safe client snapshot for portal rendering. The server
+ * snapshot stays false to match SSR markup, then React reads the stable client
+ * snapshot without scheduling state from an effect.
+ */
+function subscribeToClientEnvironment() {
+  return () => undefined;
+}
+
+function getClientEnvironmentSnapshot() {
+  return true;
+}
+
+function getServerEnvironmentSnapshot() {
+  return false;
+}
 
 /**
  * Returns only keyboard-reachable controls inside the active dialog. Keeping
@@ -149,7 +166,11 @@ function AccordionSection({
  */
 export function MobileNav() {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(
+    subscribeToClientEnvironment,
+    getClientEnvironmentSnapshot,
+    getServerEnvironmentSnapshot,
+  );
   const [openSection, setOpenSection] = useState<string | null>("servicos");
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
@@ -170,10 +191,6 @@ export function MobileNav() {
 
   const toggleSection = useCallback((key: string) => {
     setOpenSection((current) => (current === key ? null : key));
-  }, []);
-
-  useEffect(() => {
-    setMounted(true);
   }, []);
 
   useEffect(() => {

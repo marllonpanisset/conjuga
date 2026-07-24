@@ -21,7 +21,8 @@ export class ContactDeliveryNotConfiguredError extends Error {
 // Enquanto não houver um adaptador real, a API falha explicitamente em vez de
 // confirmar um envio que não seria entregue.
 export const contactDelivery: ContactDelivery = {
-  async deliver(_submission) {
+  // The interface stays provider-ready while this placeholder avoids unused data.
+  async deliver() {
     throw new ContactDeliveryNotConfiguredError();
   },
 };
