@@ -1,11 +1,12 @@
-// components/ui/Button.tsx
 import type {
   ButtonHTMLAttributes,
   ComponentProps,
   PropsWithChildren,
 } from "react";
+
 import Link from "next/link";
 import type { Route } from "next";
+
 import { cn } from "@/lib/utils";
 
 type ButtonVariant = "primary" | "secondary" | "ghost";
@@ -30,20 +31,104 @@ type ButtonAsLink = BaseProps &
 type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary:
-    "bg-gradient-to-b from-signal-strong to-signal text-white shadow-[var(--shadow-button)] hover:shadow-[var(--shadow-button-hover)] hover:brightness-110 active:scale-[0.98] active:brightness-95",
-  secondary:
-    "bg-surface-elevated text-text-primary border border-border hover:border-signal/50 hover:bg-surface active:scale-[0.98]",
-  ghost: "text-text-secondary hover:text-text-primary active:scale-[0.98]",
+  primary: `
+    bg-gradient-to-b
+    from-signal-strong
+    to-signal
+    text-white
+
+    shadow-[var(--shadow-button)]
+
+    hover:
+      brightness-110
+      -translate-y-[1px]
+      shadow-[var(--shadow-button-hover)]
+
+    active:
+      translate-y-0
+      scale-[0.98]
+
+    focus-visible:
+      outline-none
+      ring-2
+      ring-signal/40
+      ring-offset-2
+  `,
+
+  secondary: `
+    bg-surface-elevated
+    text-text-primary
+
+    border
+    border-border
+
+    hover:
+      border-signal/40
+      bg-surface
+      -translate-y-[1px]
+
+    active:
+      translate-y-0
+      scale-[0.98]
+
+    focus-visible:
+      outline-none
+      ring-2
+      ring-signal/30
+      ring-offset-2
+  `,
+
+  ghost: `
+    text-text-secondary
+
+    hover:
+      text-text-primary
+      bg-surface
+
+    active:
+      scale-[0.98]
+
+    focus-visible:
+      outline-none
+      ring-2
+      ring-signal/30
+  `,
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  md: "h-10 px-5 text-[0.9375rem]",
-  lg: "h-12 px-6 text-[1rem]",
+  md: `
+    h-10
+    px-5
+    text-[0.9375rem]
+  `,
+
+  lg: `
+    h-12
+    px-7
+    text-base
+  `,
 };
 
-const base =
-  "inline-flex items-center justify-center gap-2 rounded-[10px] font-medium transition-all duration-200 whitespace-nowrap";
+const base = `
+  inline-flex
+  items-center
+  justify-center
+  gap-2
+
+  rounded-xl
+
+  font-medium
+
+  whitespace-nowrap
+
+  cursor-pointer
+
+  transition-all
+  duration-200
+  ease-out
+
+  select-none
+`;
 
 export function Button({
   variant = "primary",
@@ -57,8 +142,6 @@ export function Button({
   if (props.href !== undefined) {
     const { href, ...linkProps } = props;
 
-    // O Link recebe suas props nativas (incluindo eventos como onClick) para
-    // preservar o comportamento de navegação do Next.js e a tipagem do elemento <a>.
     return (
       <Link href={href} className={classes} {...linkProps}>
         {children}

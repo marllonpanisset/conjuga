@@ -31,9 +31,9 @@ import { caseStudies } from "@/content/projetos";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Fyrmma — Estúdio digital de engenharia e tecnologia",
+  title: "Fyrmma — Sites, sistemas e automações para empresas",
   description:
-    "Desenvolvimento web, sistemas personalizados e automações sob medida para empresas que precisam transformar desafios de negócio em soluções digitais.",
+    "Desenvolvemos sites profissionais, sistemas personalizados e automações para empresas que querem atrair clientes, otimizar processos e crescer com tecnologia.",
   path: "/",
 });
 
@@ -62,20 +62,20 @@ const processSteps = [
 
 const stats = [
   {
-    value: "4",
-    label: "linhas de solução digital",
-  },
-  {
-    value: "6",
-    label: "segmentos atendidos",
+    value: "10+",
+    label: "anos de experiência em tecnologia",
   },
   {
     value: "100%",
-    label: "desenvolvimento sob medida",
+    label: "projetos desenvolvidos sob medida",
   },
   {
-    value: "1",
-    label: "estúdio, um único processo",
+    value: "Web",
+    label: "sites e sistemas modernos",
+  },
+  {
+    value: "IA",
+    label: "automação inteligente de processos",
   },
 ];
 
@@ -83,17 +83,17 @@ export default function HomePage() {
   return (
     <PageWrapper>
       <Hero
-        eyebrow="Estúdio digital de engenharia"
-        title="Transformamos desafios de negócio em soluções digitais sob medida"
-        description="Criamos sites, sistemas e automações para empresas que precisam melhorar sua presença digital, organizar processos e criar novas oportunidades."
+        eyebrow="Sites, sistemas e automações para empresas"
+        title="Criamos tecnologia que ajuda empresas a vender mais e trabalhar melhor"
+        description="Desenvolvemos sites profissionais, sistemas personalizados e automações para empresas que querem atrair clientes, otimizar processos e crescer com tecnologia."
         actions={
           <>
             <Button href="/contato" size="lg">
-              Solicitar diagnóstico <ArrowRight size={18} />
+              Solicitar orçamento <ArrowRight size={18} />
             </Button>
 
             <Button href="/servicos" variant="secondary" size="lg">
-              Conhecer soluções
+              Ver soluções
             </Button>
           </>
         }
@@ -113,12 +113,13 @@ export default function HomePage() {
             <Text variant="caption">Serviços</Text>
 
             <Heading as="h2" className="mt-3 max-w-lg">
-              Tecnologia aplicada aos desafios reais do seu negócio
+              Soluções digitais para cada fase do seu negócio
             </Heading>
 
             <Text variant="lead" className="mt-4 max-w-xl">
               Da presença digital aos sistemas personalizados, desenvolvemos
-              tecnologia alinhada aos objetivos e processos de cada empresa.
+              tecnologia alinhada aos objetivos, processos e necessidades de
+              cada empresa.
             </Text>
           </FadeIn>
 
@@ -165,7 +166,7 @@ export default function HomePage() {
             <Text variant="caption">Soluções por segmento</Text>
 
             <Heading as="h2" className="mt-3 max-w-lg">
-              Soluções pensadas para diferentes desafios de negócio
+              Tecnologia criada para diferentes segmentos
             </Heading>
 
             <Text variant="lead" className="mt-4 max-w-xl">
@@ -189,13 +190,13 @@ export default function HomePage() {
             <Text variant="caption">Projetos</Text>
 
             <Heading as="h2" className="mt-3 max-w-lg">
-              Exemplos de soluções aplicadas a diferentes cenários
+              Soluções criadas para diferentes negócios
             </Heading>
 
             <Text variant="lead" className="mt-4 max-w-xl">
-              Conceitos de interfaces, sistemas e experiências digitais criados
-              para demonstrar como diferentes desafios podem ser transformados
-              em soluções.
+              Projetos de interfaces, sistemas e experiências digitais
+              desenvolvidos para demonstrar como desafios podem ser
+              transformados em soluções eficientes.
             </Text>
           </FadeIn>
 
@@ -209,11 +210,11 @@ export default function HomePage() {
 
       <Section>
         <CTASection
-          title="Tem um desafio digital para resolver?"
-          description="Conte o contexto da sua empresa e vamos analisar o caminho mais adequado para transformar essa necessidade em uma solução."
+          title="Pronto para transformar sua ideia em uma solução digital?"
+          description="Conte seu objetivo e vamos encontrar a melhor tecnologia para sua empresa."
           actions={
             <Button href="/contato" size="lg">
-              Solicitar diagnóstico
+              Solicitar orçamento
             </Button>
           }
         />
