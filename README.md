@@ -1,39 +1,69 @@
-# Fyrmma — Site institucional
+# Fyrmma
 
-Site oficial da Fyrmma, construído seguindo a arquitetura técnica aprovada: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4, Framer Motion, Lucide React e MDX para o blog.
+Site institucional da **Fyrmma**, desenvolvido com foco em performance, SEO e experiência do usuário.
 
-## Rodando o projeto
+## 🚀 Tecnologias
+
+- Next.js 16
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+
+## 📁 Estrutura
+
+```text
+app/            Rotas da aplicação
+components/     Componentes reutilizáveis
+content/        Conteúdo do site
+lib/            Utilitários
+public/         Arquivos estáticos
+styles/         Estilos globais
+.fyrmma/        Documentação e conhecimento do projeto
+```
+
+## 💻 Desenvolvimento
+
+Instale as dependências:
 
 ```bash
 npm install
+```
+
+Execute o projeto:
+
+```bash
 npm run dev
 ```
 
-Acesse `http://localhost:3000`.
+Acesse:
 
-## Estrutura
+```
+http://localhost:3000
+```
 
-- `app/(marketing)` — páginas institucionais (Home, Serviços, Soluções por segmento, Sobre, Projetos, Contato, legais)
-- `app/blog` — índice e posts em MDX
-- `app/api/contato` — endpoint do formulário de contato (placeholder de envio — conectar a um provedor de e-mail transacional antes de produção)
-- `components/ui` — primitivos do design system (Button, Card, Heading, Text etc.)
-- `components/motion` — camada de animação sobre Framer Motion (FadeIn, StaggerGroup, RevealOnScroll)
-- `components/layout` — Header, Footer, MobileNav, PageWrapper
-- `components/sections` — blocos de composição usados nas páginas (Hero, ServiceCard, CTASection etc.)
-- `content/` — dados estruturados de serviços, nichos e cases + posts MDX do blog
-- `lib/` — utilitários (SEO/metadata, leitura de MDX, `cn`)
-- `config/` — configuração de navegação e dados do site
+## 📦 Build
 
-## Convenções
+```bash
+npm run build
+npm start
+```
 
-- Nenhuma página deve usar `motion.*` do Framer Motion diretamente — sempre pela camada `components/motion`.
-- Conteúdo de serviços, nichos e cases vive em `content/*.ts` como dado tipado, não hardcoded em componentes — adicionar um novo serviço ou nicho é editar o array correspondente.
-- Cores, tipografia e espaçamento são tokens definidos em `app/globals.css` (`@theme`) — evitar valores soltos fora dos primitivos de `components/ui`.
+## 📄 Documentação
 
-## Antes de ir para produção
+A documentação do projeto está disponível na pasta:
 
-1. Conectar `app/api/contato/route.ts` a um provedor real de e-mail (ex: Resend) ou CRM.
-2. Substituir as imagens placeholder em `content/projetos.ts` por assets reais em `/public/images/cases`.
-3. Revisar `config/site.ts` com domínio e links sociais definitivos.
-4. Gerar imagem de Open Graph real em `/public/og/default.png`.
-5. Rodar `npm run build` e validar Core Web Vitals antes do deploy.
+```text
+.fyrmma/
+```
+
+Ela contém:
+
+- Regras de desenvolvimento
+- Arquitetura
+- Padrões do projeto
+- Base de conhecimento utilizada pelo Fyrmma Agent
+
+## 📜 Licença
+
+Projeto proprietário. Todos os direitos reservados.

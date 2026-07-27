@@ -1,8 +1,31 @@
+# Node
 /node_modules
 /.next/
 /out/
-.env*.local
-.DS_Store
-*.tsbuildinfo
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Next
 next-env.d.ts
+*.tsbuildinfo
+
+# Cache
 .continue/
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+*:Zone.Identifier
+
+# Build
+dist/
+build/
+coverage/
+
+# Agent runtime
+.fyrmma/reports/*.md
+.fyrmma/memory/*
