@@ -13,7 +13,6 @@ import {
 import { Button } from "@/components/ui/Button";
 
 import {
-  Hero,
   ServiceCard,
   NicheCard,
   CaseCard,
@@ -21,6 +20,7 @@ import {
   CTASection,
   StatsBlock,
 } from "@/components/sections";
+import { HomeHero } from "@/components/sections/HomeHero";
 
 import { FadeIn } from "@/components/motion";
 
@@ -82,7 +82,7 @@ const stats = [
 export default function HomePage() {
   return (
     <PageWrapper>
-      <Hero
+      <HomeHero
         eyebrow="Sites, sistemas e automações para empresas"
         title="Criamos tecnologia que ajuda empresas a vender mais e trabalhar melhor"
         description="Desenvolvemos sites profissionais, sistemas personalizados e automações para empresas que querem atrair clientes, otimizar processos e crescer com tecnologia."
