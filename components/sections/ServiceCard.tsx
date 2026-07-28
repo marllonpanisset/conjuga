@@ -9,9 +9,32 @@ export function ServiceCard({ service }: { service: Service }) {
       href={`/servicos/${service.slug}` as never}
       className="group block h-full"
     >
-      <Card className="flex h-full flex-col justify-between transition-transform duration-300 group-hover:-translate-y-1">
+      <Card
+        className="
+          flex h-full flex-col justify-between
+          border-border/60
+          transition-[transform,border-color,background-color,box-shadow]
+          duration-300 ease-out
+          group-hover:-translate-y-1
+          group-hover:border-signal/25
+          group-hover:bg-surface-elevated/95
+          group-hover:shadow-[0_16px_40px_rgba(0,0,0,0.14)]
+        "
+      >
         <div>
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface">
+          <div
+            className="
+              flex h-11 w-11 items-center justify-center
+              rounded-2xl
+              border border-border/70
+              bg-surface-elevated/80
+              text-text-primary
+              transition-all duration-300 ease-out
+              group-hover:border-signal/30
+              group-hover:bg-signal/10
+              group-hover:text-signal
+            "
+          >
             <Icon icon={service.icon} size={20} />
           </div>
 
@@ -19,16 +42,27 @@ export function ServiceCard({ service }: { service: Service }) {
             {service.name}
           </Heading>
 
-          <Text variant="muted" className="mt-3">
+          <Text variant="muted" className="mt-3 leading-relaxed">
             {service.shortDescription}
           </Text>
         </div>
 
-        <div className="mt-8 flex items-center gap-2 text-sm font-medium text-text-secondary transition-colors group-hover:text-text-primary">
+        <div
+          className="
+            mt-8 flex items-center gap-2
+            text-sm font-medium text-text-secondary
+            transition-colors duration-300
+            group-hover:text-text-primary
+          "
+        >
           Conhecer solução
           <ArrowUpRight
             size={16}
-            className="transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            className="
+              transition-transform duration-300 ease-out
+              group-hover:translate-x-0.5
+              group-hover:-translate-y-0.5
+            "
           />
         </div>
       </Card>

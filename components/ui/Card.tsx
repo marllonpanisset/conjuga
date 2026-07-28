@@ -10,9 +10,19 @@ export function Card({ children, className }: CardProps) {
   return (
     <div
       className={cn(
-        "rounded-[16px] border border-border bg-surface p-6 shadow-[var(--shadow-card)] transition-all duration-300 ease-out",
-        "hover:-translate-y-0.5 hover:border-signal/30 hover:shadow-[var(--shadow-card-hover)]",
-        className
+        `
+        rounded-[20px]
+        border
+        border-border/60
+        bg-surface/90
+        backdrop-blur-sm
+        p-7
+        shadow-[0_8px_30px_rgba(0,0,0,0.08)]
+        transition-[border-color,background-color,box-shadow]
+        duration-300
+        ease-out
+        `,
+        className,
       )}
     >
       {children}
