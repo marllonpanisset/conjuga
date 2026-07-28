@@ -89,11 +89,6 @@ export const metadata: Metadata = {
 const spaceGrotesk = localFont({
   src: [
     {
-      path: "./fonts/SpaceGrotesk/SpaceGrotesk-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
       path: "./fonts/SpaceGrotesk/SpaceGrotesk-Medium.woff2",
       weight: "500",
       style: "normal",
@@ -112,6 +107,7 @@ const inter = localFont({
   src: "./fonts/Inter/Inter-VariableFont_opsz,wght.ttf",
   variable: "--font-body",
   display: "swap",
+  preload: false,
   weight: "100 900",
 });
 
