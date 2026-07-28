@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 
-import { PageWrapper } from "@/components/layout";
+import { PageWrapper } from "@/components/layout/PageWrapper";
 import {
   Container,
   Section,
@@ -11,15 +11,13 @@ import {
 } from "@/components/ui";
 import { Button } from "@/components/ui/Button";
 
-import {
-  ServiceCard,
-  NicheCard,
-  CaseCard,
-  ProcessStep,
-  CTASection,
-  StatsBlock,
-} from "@/components/sections";
+import { CaseCard } from "@/components/sections/CaseCard";
+import { CTASection } from "@/components/sections/CTASection";
 import { HomeHero } from "@/components/sections/HomeHero";
+import { NicheCard } from "@/components/sections/NicheCard";
+import { ProcessStep } from "@/components/sections/ProcessStep";
+import { ServiceCard } from "@/components/sections/ServiceCard";
+import { StatsBlock } from "@/components/sections/StatsBlock";
 
 import { services } from "@/content/servicos";
 import { niches } from "@/content/nichos";

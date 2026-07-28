@@ -12,7 +12,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { servicesNav, nichesNav, mainNav } from "@/config/navigation";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -102,7 +102,7 @@ function AccordionSection({
 
       <AnimatePresence initial={false}>
         {isOpen && (
-          <motion.div
+          <m.div
             id={id}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
@@ -141,7 +141,7 @@ function AccordionSection({
                 );
               })}
             </ul>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>
@@ -248,7 +248,7 @@ export function MobileNav() {
   const overlay = (
     <AnimatePresence initial={false}>
       {open && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -256,7 +256,7 @@ export function MobileNav() {
           onClick={closeMenu}
           className="fixed inset-0 z-40 bg-black/55"
         >
-          <motion.div
+          <m.div
             initial={{ x: reduceMotion ? 0 : 24 }}
             animate={{ x: 0 }}
             exit={{ x: reduceMotion ? 0 : 24 }}
@@ -353,8 +353,8 @@ export function MobileNav() {
                 Falar com especialista
               </Button>
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       )}
     </AnimatePresence>
   );
