@@ -7,7 +7,6 @@ import {
   Section,
   Heading,
   Text,
-  Divider,
   Grid,
 } from "@/components/ui";
 import { Button } from "@/components/ui/Button";
@@ -21,8 +20,6 @@ import {
   StatsBlock,
 } from "@/components/sections";
 import { HomeHero } from "@/components/sections/HomeHero";
-
-import { FadeIn } from "@/components/motion";
 
 import { services } from "@/content/servicos";
 import { niches } from "@/content/nichos";
@@ -99,31 +96,33 @@ export default function HomePage() {
         }
       />
 
-      <Section className="pt-4 md:pt-6">
+      <Section className="py-0">
         <Container>
           <StatsBlock stats={stats} />
         </Container>
       </Section>
 
-      <Divider />
-
-      <Section>
+      <Section className="py-24 md:py-32">
         <Container>
-          <FadeIn>
-            <Text variant="caption">Serviços</Text>
-
-            <Heading as="h2" className="mt-3 max-w-lg">
-              Soluções digitais para cada fase do seu negócio
-            </Heading>
-
-            <Text variant="lead" className="mt-4 max-w-xl">
-              Da presença digital aos sistemas personalizados, desenvolvemos
-              tecnologia alinhada aos objetivos, processos e necessidades de
-              cada empresa.
+          <div className="grid gap-5 md:grid-cols-12 md:gap-8">
+            <Text variant="caption" className="md:col-span-3 md:pt-2">
+              Serviços
             </Text>
-          </FadeIn>
 
-          <Grid cols={4} className="mt-14 md:mt-16">
+            <div className="md:col-span-8 md:col-start-5">
+              <Heading as="h2" className="max-w-2xl">
+                Soluções digitais para cada fase do seu negócio
+              </Heading>
+
+              <Text variant="lead" className="mt-5 max-w-2xl">
+                Da presença digital aos sistemas personalizados, desenvolvemos
+                tecnologia alinhada aos objetivos, processos e necessidades de
+                cada empresa.
+              </Text>
+            </div>
+          </div>
+
+          <Grid cols={4} className="mt-12 md:mt-16">
             {services.map((service) => (
               <ServiceCard key={service.slug} service={service} />
             ))}
@@ -131,23 +130,27 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section surface>
+      <Section surface className="py-24 md:py-32">
         <Container>
-          <FadeIn>
-            <Text variant="caption">Método</Text>
-
-            <Heading as="h2" className="mt-3 max-w-lg">
-              Antes do código, entendemos o negócio
-            </Heading>
-
-            <Text variant="lead" className="mt-4 max-w-xl">
-              Cada projeto começa com entendimento do problema. A tecnologia
-              entra como ferramenta para construir uma solução eficiente e
-              alinhada à realidade da empresa.
+          <div className="grid gap-5 md:grid-cols-12 md:gap-8">
+            <Text variant="caption" className="md:col-span-3 md:pt-2">
+              Método
             </Text>
-          </FadeIn>
 
-          <div className="mt-14 grid grid-cols-1 gap-5 md:mt-16 md:grid-cols-2 md:gap-6">
+            <div className="md:col-span-8 md:col-start-5">
+              <Heading as="h2" className="max-w-2xl">
+                Antes do código, entendemos o negócio
+              </Heading>
+
+              <Text variant="lead" className="mt-5 max-w-2xl">
+                Cada projeto começa com entendimento do problema. A tecnologia
+                entra como ferramenta para construir uma solução eficiente e
+                alinhada à realidade da empresa.
+              </Text>
+            </div>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2">
             {processSteps.map((step, i) => (
               <ProcessStep
                 key={step.title}
@@ -160,23 +163,27 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section>
+      <Section className="py-24 md:py-32">
         <Container>
-          <FadeIn>
-            <Text variant="caption">Soluções por segmento</Text>
-
-            <Heading as="h2" className="mt-3 max-w-lg">
-              Tecnologia criada para diferentes segmentos
-            </Heading>
-
-            <Text variant="lead" className="mt-4 max-w-xl">
-              Cada empresa possui processos, objetivos e necessidades
-              diferentes. Desenvolvemos soluções considerando o contexto de cada
-              negócio.
+          <div className="grid gap-5 md:grid-cols-12 md:gap-8">
+            <Text variant="caption" className="md:col-span-3 md:pt-2">
+              Soluções por segmento
             </Text>
-          </FadeIn>
 
-          <Grid cols={3} className="mt-14 md:mt-16">
+            <div className="md:col-span-8 md:col-start-5">
+              <Heading as="h2" className="max-w-2xl">
+                Tecnologia criada para diferentes segmentos
+              </Heading>
+
+              <Text variant="lead" className="mt-5 max-w-2xl">
+                Cada empresa possui processos, objetivos e necessidades
+                diferentes. Desenvolvemos soluções considerando o contexto de
+                cada negócio.
+              </Text>
+            </div>
+          </div>
+
+          <Grid cols={3} className="mt-12 md:mt-16">
             {niches.map((niche) => (
               <NicheCard key={niche.slug} niche={niche} />
             ))}
@@ -184,23 +191,27 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section surface>
+      <Section surface className="py-24 md:py-32">
         <Container>
-          <FadeIn>
-            <Text variant="caption">Projetos</Text>
-
-            <Heading as="h2" className="mt-3 max-w-lg">
-              Soluções criadas para diferentes negócios
-            </Heading>
-
-            <Text variant="lead" className="mt-4 max-w-xl">
-              Projetos de interfaces, sistemas e experiências digitais
-              desenvolvidos para demonstrar como desafios podem ser
-              transformados em soluções eficientes.
+          <div className="grid gap-5 md:grid-cols-12 md:gap-8">
+            <Text variant="caption" className="md:col-span-3 md:pt-2">
+              Projetos
             </Text>
-          </FadeIn>
 
-          <Grid cols={3} className="mt-14 md:mt-16">
+            <div className="md:col-span-8 md:col-start-5">
+              <Heading as="h2" className="max-w-2xl">
+                Soluções criadas para diferentes negócios
+              </Heading>
+
+              <Text variant="lead" className="mt-5 max-w-2xl">
+                Projetos de interfaces, sistemas e experiências digitais
+                desenvolvidos para demonstrar como desafios podem ser
+                transformados em soluções eficientes.
+              </Text>
+            </div>
+          </div>
+
+          <Grid cols={3} className="mt-12 md:mt-16">
             {caseStudies.map((c) => (
               <CaseCard key={c.slug} caseStudy={c} />
             ))}
@@ -208,7 +219,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section>
+      <Section className="py-24 md:py-32">
         <CTASection
           title="Pronto para transformar sua ideia em uma solução digital?"
           description="Conte seu objetivo e vamos encontrar a melhor tecnologia para sua empresa."

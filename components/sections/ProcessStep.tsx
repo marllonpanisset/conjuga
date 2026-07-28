@@ -48,7 +48,7 @@ export function ProcessStep({ index, title, description }: ProcessStepProps) {
         </div>
 
         <div className="max-w-lg flex-1">
-          <Heading as="h4">
+          <Heading as="h3">
             {title}
           </Heading>
 

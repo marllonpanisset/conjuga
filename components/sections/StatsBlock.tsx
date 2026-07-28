@@ -1,5 +1,4 @@
-import { Heading, Text } from "@/components/ui";
-import { StaggerGroup, StaggerItem } from "@/components/motion";
+import { Text } from "@/components/ui";
 
 interface Stat {
   value: string;
@@ -8,47 +7,46 @@ interface Stat {
 
 export function StatsBlock({ stats }: { stats: Stat[] }) {
   return (
-    <StaggerGroup
+    <div
       className="
-        grid grid-cols-2 gap-px overflow-hidden
-        rounded-[16px] border border-border
-        bg-border shadow-[0_1px_2px_rgba(0,0,0,0.2)]
+        grid grid-cols-2 gap-px
+        border-b border-border/70
+        bg-border/70
         md:grid-cols-4
       "
     >
       {stats.map((stat) => (
-        <StaggerItem key={stat.label}>
-          <div
+        <div
+          key={stat.label}
+          className="
+            h-full
+            bg-background/95 px-5 py-7
+            transition-colors duration-200
+            ease-[var(--ease-signature)]
+            hover:bg-surface/70
+            sm:px-6
+            md:px-8 md:py-9
+          "
+        >
+          <p
             className="
-              h-full
-              bg-surface px-5 py-6
-              transition-colors duration-200
-              ease-[var(--ease-signature)]
-              hover:bg-surface-elevated
-              md:px-7 md:py-8
+              font-mono
+              text-[clamp(1.75rem,3vw,2.375rem)]
+              leading-none tracking-[-0.055em]
+              text-signal-strong
             "
           >
-            <Heading
-              as="h2"
-              className="
-                font-mono
-                text-[clamp(1.75rem,3vw,2.375rem)]
-                leading-none tracking-[-0.055em]
-                text-signal-strong
-              "
-            >
-              {stat.value}
-            </Heading>
+            {stat.value}
+          </p>
 
-            <Text
-              variant="muted"
-              className="mt-4 max-w-[13rem] text-sm leading-snug text-text-secondary"
-            >
-              {stat.label}
-            </Text>
-          </div>
-        </StaggerItem>
+          <Text
+            variant="muted"
+            className="mt-4 max-w-[13rem] text-sm leading-snug text-text-secondary"
+          >
+            {stat.label}
+          </Text>
+        </div>
       ))}
-    </StaggerGroup>
+    </div>
   );
 }
