@@ -5,6 +5,7 @@ import { PageWrapper } from "@/components/layout";
 import { Container, Section, Heading, Text, Grid } from "@/components/ui";
 
 import { Button } from "@/components/ui/Button";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 import { Hero, CTASection, ServiceCard } from "@/components/sections";
 
@@ -15,6 +16,7 @@ import { niches, getNicheBySlug } from "@/content/nichos";
 import { services } from "@/content/servicos";
 
 import { buildMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export function generateStaticParams() {
   return niches.map((niche) => ({
@@ -57,6 +59,23 @@ export default async function NichoPage({
 
   return (
     <PageWrapper>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          {
+            name: "Home",
+            path: "/",
+          },
+          {
+            name: "Soluções",
+            path: "/solucoes",
+          },
+          {
+            name: niche.name,
+            path: `/solucoes/${niche.slug}`,
+          },
+        ])}
+      />
+
       <Hero
         eyebrow={niche.name}
         title={niche.heroTitle}

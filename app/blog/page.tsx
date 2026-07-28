@@ -5,10 +5,12 @@ import { PageWrapper } from "@/components/layout";
 import { Container, Section, Card, Heading, Text, Tag } from "@/components/ui";
 
 import { Hero } from "@/components/sections";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 import { getAllPostsMeta } from "@/lib/mdx";
 
-import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+import { buildMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = buildMetadata({
   title: "Blog",
@@ -30,23 +32,17 @@ export default function BlogPage() {
 
   return (
     <PageWrapper>
-      {/* Breadcrumb structured data improves search context. */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbJsonLd([
-              {
-                name: "Home",
-                path: "/",
-              },
-              {
-                name: "Blog",
-                path: "/blog",
-              },
-            ]),
-          ),
-        }}
+      <JsonLd
+        data={breadcrumbJsonLd([
+          {
+            name: "Home",
+            path: "/",
+          },
+          {
+            name: "Blog",
+            path: "/blog",
+          },
+        ])}
       />
 
       <Hero

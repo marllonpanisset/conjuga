@@ -5,11 +5,13 @@ import { PageWrapper } from "@/components/layout";
 import { Container, Section, Heading, Text, Tag } from "@/components/ui";
 import { Button } from "@/components/ui/Button";
 import { Hero, CTASection } from "@/components/sections";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 import { caseStudies, getCaseBySlug } from "@/content/projetos";
 import { getServiceBySlug } from "@/content/servicos";
 
-import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+import { buildMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export function generateStaticParams() {
   return caseStudies.map((c) => ({
@@ -37,35 +39,6 @@ export async function generateMetadata({
   });
 }
 
-/**
- * Structured data for project references.
- *
- * Represents a documented digital solution concept
- * created by Fyrmma.
- */
-function projectJsonLd(caseStudy: {
-  title: string;
-  summary: string;
-  slug: string;
-}) {
-  return {
-    "@context": "https://schema.org",
-
-    "@type": "CreativeWork",
-
-    name: caseStudy.title,
-
-    description: caseStudy.summary,
-
-    creator: {
-      "@type": "Organization",
-      name: "Fyrmma Estúdio Digital",
-    },
-
-    url: `https://fyrmma.com/projetos/${caseStudy.slug}`,
-  };
-}
-
 export default async function CasePage({
   params,
 }: {
@@ -83,35 +56,21 @@ export default async function CasePage({
 
   return (
     <PageWrapper>
-      {/* Breadcrumb structured data improves search navigation context. */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbJsonLd([
-              {
-                name: "Home",
-                path: "/",
-              },
-              {
-                name: "Projetos",
-                path: "/projetos",
-              },
-              {
-                name: caseStudy.title,
-                path: `/projetos/${caseStudy.slug}`,
-              },
-            ]),
-          ),
-        }}
-      />
-
-      {/* Project reference structured data. */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(projectJsonLd(caseStudy)),
-        }}
+      <JsonLd
+        data={breadcrumbJsonLd([
+          {
+            name: "Home",
+            path: "/",
+          },
+          {
+            name: "Projetos",
+            path: "/projetos",
+          },
+          {
+            name: caseStudy.title,
+            path: `/projetos/${caseStudy.slug}`,
+          },
+        ])}
       />
 
       <Hero

@@ -3,10 +3,15 @@ import { notFound } from "next/navigation";
 
 import { PageWrapper } from "@/components/layout";
 import { Container, Section, Heading, Text, Tag } from "@/components/ui";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 import { getAllPostSlugs, getPostMetaBySlug } from "@/lib/mdx";
 
-import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+import { buildMetadata } from "@/lib/seo";
+import {
+  articleJsonLd,
+  breadcrumbJsonLd,
+} from "@/lib/structured-data";
 
 export function generateStaticParams() {
   return getAllPostSlugs().map((slug) => ({
@@ -42,35 +47,6 @@ export async function generateMetadata({
   }
 }
 
-/**
- * Generates Article structured data.
- *
- * This helps search engines understand that this page
- * represents a blog article instead of a generic webpage.
- */
-function articleJsonLd(meta: {
-  title: string;
-  description: string;
-  slug: string;
-}) {
-  return {
-    "@context": "https://schema.org",
-
-    "@type": "Article",
-
-    headline: meta.title,
-
-    description: meta.description,
-
-    url: `https://fyrmma.com/blog/${meta.slug}`,
-
-    publisher: {
-      "@type": "Organization",
-      name: "Fyrmma Estúdio Digital",
-    },
-  };
-}
-
 export default async function BlogPostPage({
   params,
 }: {
@@ -96,35 +72,30 @@ export default async function BlogPostPage({
 
   return (
     <PageWrapper>
-      {/* Breadcrumb structured data for search navigation. */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbJsonLd([
-              {
-                name: "Home",
-                path: "/",
-              },
-              {
-                name: "Blog",
-                path: "/blog",
-              },
-              {
-                name: meta.title,
-                path: `/blog/${meta.slug}`,
-              },
-            ]),
-          ),
-        }}
+      <JsonLd
+        data={breadcrumbJsonLd([
+          {
+            name: "Home",
+            path: "/",
+          },
+          {
+            name: "Blog",
+            path: "/blog",
+          },
+          {
+            name: meta.title,
+            path: `/blog/${meta.slug}`,
+          },
+        ])}
       />
 
-      {/* Article structured data. */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(articleJsonLd(meta)),
-        }}
+      <JsonLd
+        data={articleJsonLd({
+          headline: meta.title,
+          description: meta.description,
+          path: `/blog/${meta.slug}`,
+          datePublished: meta.date,
+        })}
       />
 
       <Section className="pt-20 sm:pt-24 md:pt-32">

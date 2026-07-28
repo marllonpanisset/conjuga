@@ -5,10 +5,12 @@ import { Container, Section, Grid } from "@/components/ui";
 
 import { Hero, ServiceCard, CTASection } from "@/components/sections";
 import { Button } from "@/components/ui/Button";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 import { services } from "@/content/servicos";
 
-import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+import { buildMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = buildMetadata({
   title: "Serviços",
@@ -17,45 +19,20 @@ export const metadata: Metadata = buildMetadata({
   path: "/servicos",
 });
 
-function servicesListJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    itemListElement: services.map((service, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: service.name,
-      url: `https://fyrmma.com/servicos/${service.slug}`,
-    })),
-  };
-}
-
 export default function ServicosPage() {
   return (
     <PageWrapper>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbJsonLd([
-              {
-                name: "Home",
-                path: "/",
-              },
-              {
-                name: "Serviços",
-                path: "/servicos",
-              },
-            ]),
-          ),
-        }}
-      />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(servicesListJsonLd()),
-        }}
+      <JsonLd
+        data={breadcrumbJsonLd([
+          {
+            name: "Home",
+            path: "/",
+          },
+          {
+            name: "Serviços",
+            path: "/servicos",
+          },
+        ])}
       />
 
       <Hero

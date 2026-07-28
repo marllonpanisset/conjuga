@@ -3,8 +3,10 @@ import { PageWrapper } from "@/components/layout";
 import { Container, Section, Grid } from "@/components/ui";
 import { Hero, CaseCard, CTASection } from "@/components/sections";
 import { Button } from "@/components/ui/Button";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { caseStudies } from "@/content/projetos";
 import { buildMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = buildMetadata({
   title: "Projetos",
@@ -16,6 +18,19 @@ export const metadata: Metadata = buildMetadata({
 export default function ProjetosPage() {
   return (
     <PageWrapper>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          {
+            name: "Home",
+            path: "/",
+          },
+          {
+            name: "Projetos",
+            path: "/projetos",
+          },
+        ])}
+      />
+
       <Hero
         eyebrow="Projetos de referência"
         title="Soluções digitais pensadas para diferentes cenários de negócio"

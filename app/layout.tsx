@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Header, Footer } from "@/components/layout";
 import { MotionProvider } from "@/components/motion";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/config/site";
-import { organizationJsonLd } from "@/lib/seo";
+import {
+  organizationJsonLd,
+  websiteJsonLd,
+} from "@/lib/structured-data";
 import "./globals.css";
 
 /**
@@ -135,13 +139,8 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body>
-        {/* Organization schema is rendered globally because it represents the entire website. */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationJsonLd()),
-          }}
-        />
+        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={websiteJsonLd()} />
 
         <MotionProvider>
           <Header />

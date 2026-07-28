@@ -3,8 +3,10 @@ import type { Metadata } from "next";
 import { PageWrapper } from "@/components/layout";
 import { Container, Section, Heading, Text } from "@/components/ui";
 import { Hero, ContactForm } from "@/components/sections";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/config/site";
 import { buildMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contato",
@@ -34,6 +36,19 @@ const processSteps = [
 export default function ContatoPage() {
   return (
     <PageWrapper>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          {
+            name: "Home",
+            path: "/",
+          },
+          {
+            name: "Contato",
+            path: "/contato",
+          },
+        ])}
+      />
+
       <Hero
         eyebrow="Contato"
         title="Vamos entender o próximo desafio digital da sua empresa"

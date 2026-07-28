@@ -3,8 +3,10 @@ import { PageWrapper } from "@/components/layout";
 import { Container, Section, Heading, Text, Grid } from "@/components/ui";
 import { Button } from "@/components/ui/Button";
 import { Hero, CTASection } from "@/components/sections";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { FadeIn } from "@/components/motion";
 import { buildMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = buildMetadata({
   title: "Sobre",
@@ -57,6 +59,19 @@ const differentiators = [
 export default function SobrePage() {
   return (
     <PageWrapper>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          {
+            name: "Home",
+            path: "/",
+          },
+          {
+            name: "Sobre",
+            path: "/sobre",
+          },
+        ])}
+      />
+
       <Hero
         eyebrow="Sobre a Fyrmma"
         title="Um estúdio digital que transforma desafios de negócio em soluções digitais"

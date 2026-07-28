@@ -13,13 +13,18 @@ import {
 
 import { Button } from "@/components/ui/Button";
 import { Hero, FeatureGrid, CaseCard, CTASection } from "@/components/sections";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 import { Icon } from "@/components/ui/Icon";
 
 import { services, getServiceBySlug } from "@/content/servicos";
 import { caseStudies } from "@/content/projetos";
 
-import { breadcrumbJsonLd, buildMetadata, serviceJsonLd } from "@/lib/seo";
+import { buildMetadata } from "@/lib/seo";
+import {
+  breadcrumbJsonLd,
+  serviceJsonLd,
+} from "@/lib/structured-data";
 
 export function generateStaticParams() {
   return services.map((service) => ({
@@ -62,39 +67,29 @@ export default async function ServicoPage({
 
   return (
     <PageWrapper>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbJsonLd([
-              {
-                name: "Home",
-                path: "/",
-              },
-              {
-                name: "Serviços",
-                path: "/servicos",
-              },
-              {
-                name: service.name,
-                path: `/servicos/${service.slug}`,
-              },
-            ]),
-          ),
-        }}
+      <JsonLd
+        data={breadcrumbJsonLd([
+          {
+            name: "Home",
+            path: "/",
+          },
+          {
+            name: "Serviços",
+            path: "/servicos",
+          },
+          {
+            name: service.name,
+            path: `/servicos/${service.slug}`,
+          },
+        ])}
       />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            serviceJsonLd(
-              service.name,
-              service.heroDescription,
-              `/servicos/${service.slug}`,
-            ),
-          ),
-        }}
+      <JsonLd
+        data={serviceJsonLd({
+          name: service.name,
+          description: service.heroDescription,
+          path: `/servicos/${service.slug}`,
+        })}
       />
 
       <Hero
