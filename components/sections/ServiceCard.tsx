@@ -12,30 +12,25 @@ export function ServiceCard({ service }: { service: Service }) {
       <Card
         className="
           flex h-full flex-col justify-between
-          border-border/60
-          transition-[transform,border-color,background-color,box-shadow]
-          duration-300 ease-out
-          group-hover:-translate-y-1
-          group-hover:border-signal/25
-          group-hover:bg-surface-elevated/95
-          group-hover:shadow-[0_16px_40px_rgba(0,0,0,0.14)]
+          group-hover:border-signal/35
+          group-hover:bg-surface-elevated/70
+          group-hover:shadow-[0_1px_2px_rgba(0,0,0,0.28),0_18px_36px_-28px_rgba(76,111,255,0.38)]
         "
       >
         <div>
           <div
             className="
-              flex h-11 w-11 items-center justify-center
-              rounded-2xl
-              border border-border/70
-              bg-surface-elevated/80
-              text-text-primary
-              transition-all duration-300 ease-out
-              group-hover:border-signal/30
-              group-hover:bg-signal/10
-              group-hover:text-signal
+              flex h-12 w-12 items-center justify-center
+              rounded-[12px]
+              border border-border-strong/80
+              bg-background/60
+              transition-[border-color,background-color]
+              duration-200 ease-[var(--ease-signature)]
+              group-hover:border-signal/40
+              group-hover:bg-signal-soft
             "
           >
-            <Icon icon={service.icon} size={20} />
+            <Icon icon={service.icon} size={20} contained={false} />
           </div>
 
           <Heading as="h3" className="mt-6">
@@ -58,11 +53,7 @@ export function ServiceCard({ service }: { service: Service }) {
           Conhecer solução
           <ArrowUpRight
             size={16}
-            className="
-              transition-transform duration-300 ease-out
-              group-hover:translate-x-0.5
-              group-hover:-translate-y-0.5
-            "
+            className="text-text-muted transition-colors duration-200 group-hover:text-signal"
           />
         </div>
       </Card>

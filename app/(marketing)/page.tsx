@@ -99,7 +99,7 @@ export default function HomePage() {
         }
       />
 
-      <Section>
+      <Section className="pt-4 md:pt-6">
         <Container>
           <StatsBlock stats={stats} />
         </Container>
@@ -123,7 +123,7 @@ export default function HomePage() {
             </Text>
           </FadeIn>
 
-          <Grid cols={4} className="mt-12">
+          <Grid cols={4} className="mt-14 md:mt-16">
             {services.map((service) => (
               <ServiceCard key={service.slug} service={service} />
             ))}
@@ -147,7 +147,7 @@ export default function HomePage() {
             </Text>
           </FadeIn>
 
-          <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2">
+          <div className="mt-14 grid grid-cols-1 gap-5 md:mt-16 md:grid-cols-2 md:gap-6">
             {processSteps.map((step, i) => (
               <ProcessStep
                 key={step.title}
@@ -176,7 +176,7 @@ export default function HomePage() {
             </Text>
           </FadeIn>
 
-          <Grid cols={3} className="mt-12">
+          <Grid cols={3} className="mt-14 md:mt-16">
             {niches.map((niche) => (
               <NicheCard key={niche.slug} niche={niche} />
             ))}
@@ -200,7 +200,7 @@ export default function HomePage() {
             </Text>
           </FadeIn>
 
-          <Grid cols={3} className="mt-12">
+          <Grid cols={3} className="mt-14 md:mt-16">
             {caseStudies.map((c) => (
               <CaseCard key={c.slug} caseStudy={c} />
             ))}

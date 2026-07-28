@@ -11,16 +11,16 @@ export function Card({ children, className }: CardProps) {
     <div
       className={cn(
         `
-        rounded-[20px]
+        rounded-[16px]
         border
-        border-border/60
-        bg-surface/90
-        backdrop-blur-sm
-        p-7
-        shadow-[0_8px_30px_rgba(0,0,0,0.08)]
+        border-border
+        bg-surface
+        p-6
+        shadow-[0_1px_2px_rgba(0,0,0,0.24),0_12px_28px_-24px_rgba(0,0,0,0.8)]
         transition-[border-color,background-color,box-shadow]
-        duration-300
-        ease-out
+        duration-200
+        ease-[var(--ease-signature)]
+        md:p-7
         `,
         className,
       )}
