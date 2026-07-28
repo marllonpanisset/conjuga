@@ -27,47 +27,57 @@ export function Hero({
         relative 
         overflow-hidden
         pt-28 
-        pb-24
+        pb-32
         md:pt-40
-        md:pb-32
+        md:pb-40
       "
     >
       {/* Background premium glow */}
       <div
         className="
-          pointer-events-none
-          absolute
-          inset-0
-          -z-10
-          overflow-hidden
-        "
+    pointer-events-none
+    absolute
+    inset-0
+    -z-10
+    overflow-hidden
+  "
         aria-hidden="true"
       >
+        {/* Main glow */}
+        <div
+          className="
+      absolute
+      left-1/2
+      top-0
+      h-[500px]
+      w-[700px]
+      -translate-x-1/2
+      rounded-full
+      bg-primary/15
+      blur-[140px]
+    "
+        />
+
+        {/* Secondary glow */}
         <div
           className="
             absolute
-            left-1/2
-            top-0
-            h-[500px]
-            w-[700px]
-            -translate-x-1/2
+            left-1/4
+            top-32
+            h-[280px]
+            w-[480px]
             rounded-full
-            bg-primary/10
+            bg-accent/12
             blur-[120px]
           "
         />
 
+        {/* Subtle radial overlay */}
         <div
           className="
             absolute
-            left-1/2
-            top-32
-            h-[300px]
-            w-[500px]
-            -translate-x-1/2
-            rounded-full
-            bg-accent/10
-            blur-[100px]
+            inset-0
+            bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_55%)]
           "
         />
       </div>
@@ -103,9 +113,13 @@ export function Hero({
             <Heading
               as="h1"
               className="
-                tracking-[-0.055em]
-                leading-[1.05]
+                text-balance
+                tracking-[-0.06em]
+                leading-[1.07]
                 md:max-w-4xl
+                text-primary-foreground
+                font-extrabold
+                drop-shadow-md
               "
             >
               {title}
@@ -118,10 +132,13 @@ export function Hero({
               className={cn(
                 `
                 mt-8
-                text-text-secondary
+                max-w-prose
+                text-lg
                 leading-relaxed
+                text-text-secondary
+                md:text-xl
                 `,
-                isCenter && "mx-auto max-w-3xl",
+                isCenter && "mx-auto max-w-3xl text-pretty",
               )}
             >
               {description}
@@ -133,11 +150,13 @@ export function Hero({
               <div
                 className={cn(
                   `
-                  mt-12
+                  mt-14
                   flex
                   flex-col
+                  items-center
                   gap-4
                   sm:flex-row
+                  sm:items-stretch
                   `,
                   isCenter && "justify-center",
                 )}
