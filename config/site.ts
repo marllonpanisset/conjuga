@@ -16,6 +16,13 @@ export const siteConfig = {
 
   locale: "pt-BR",
 
+  openGraphImage: {
+    path: "/opengraph-image",
+    width: 1200,
+    height: 630,
+    alt: "Fyrmma — Criamos tecnologia que ajuda empresas a vender mais e trabalhar melhor",
+  },
+
   /**
    * Default keywords reused by the Metadata API.
    *

@@ -10,6 +10,13 @@ import {
 } from "@/lib/structured-data";
 import "./globals.css";
 
+const defaultSocialImage = {
+  url: new URL(siteConfig.openGraphImage.path, siteConfig.url).toString(),
+  width: siteConfig.openGraphImage.width,
+  height: siteConfig.openGraphImage.height,
+  alt: siteConfig.openGraphImage.alt,
+};
+
 /**
  * Global metadata provides default SEO information for all routes.
  *
@@ -68,12 +75,14 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     locale: siteConfig.locale.replace("-", "_"),
     siteName: siteConfig.name,
+    images: [defaultSocialImage],
   },
 
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `${siteConfig.name} — Estúdio digital de engenharia e tecnologia`,
     description: siteConfig.description,
+    images: [defaultSocialImage.url],
   },
 };
 

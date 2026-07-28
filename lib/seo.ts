@@ -29,16 +29,17 @@ export function buildMetadata({
     path === "/"
       ? `${siteConfig.name} — ${title}`
       : `${title} — ${siteConfig.name}`;
-  const images = image
-    ? [
-        {
-          url: new URL(image, siteConfig.url).toString(),
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ]
-    : undefined;
+  const images = [
+    {
+      url: new URL(
+        image ?? siteConfig.openGraphImage.path,
+        siteConfig.url,
+      ).toString(),
+      width: siteConfig.openGraphImage.width,
+      height: siteConfig.openGraphImage.height,
+      alt: image ? title : siteConfig.openGraphImage.alt,
+    },
+  ];
 
   return {
     title: path === "/" ? { absolute: resolvedTitle } : title,
@@ -57,14 +58,14 @@ export function buildMetadata({
       locale: siteConfig.locale.replace("-", "_"),
       type,
       ...(type === "article" && publishedTime ? { publishedTime } : {}),
-      ...(images ? { images } : {}),
+      images,
     },
 
     twitter: {
-      card: images ? "summary_large_image" : "summary",
+      card: "summary_large_image",
       title: resolvedTitle,
       description,
-      ...(images ? { images: images.map(({ url: imageUrl }) => imageUrl) } : {}),
+      images: images.map(({ url: imageUrl }) => imageUrl),
     },
   };
 }
