@@ -9,7 +9,14 @@ export function CaseCard({ caseStudy }: { caseStudy: CaseStudy }) {
       href={`/projetos/${caseStudy.slug}` as never}
       className="group block h-full"
     >
-      <Card className="flex h-full flex-col transition-transform duration-300 group-hover:-translate-y-1">
+      <Card
+        className="
+          flex h-full flex-col
+          group-hover:border-signal/35
+          group-hover:bg-surface-elevated/70
+          group-hover:shadow-[0_1px_2px_rgba(0,0,0,0.28),0_18px_36px_-28px_rgba(76,111,255,0.38)]
+        "
+      >
         <div className="flex flex-wrap gap-2">
           <Tag className="w-fit">{caseStudy.segment}</Tag>
 
@@ -20,15 +27,24 @@ export function CaseCard({ caseStudy }: { caseStudy: CaseStudy }) {
           {caseStudy.title}
         </Heading>
 
-        <Text variant="muted" className="mt-3">
+        <Text variant="muted" className="mt-3 leading-relaxed">
           {caseStudy.summary}
         </Text>
 
-        <div className="mt-auto flex items-center gap-1.5 pt-8 text-[0.875rem] font-medium text-signal-strong transition-colors group-hover:text-signal">
+        <div
+          className="
+            mt-auto flex items-center gap-2 pt-8
+            border-t border-transparent
+            text-sm font-medium text-text-secondary
+            transition-[border-color,color] duration-200
+            group-hover:border-border
+            group-hover:text-text-primary
+          "
+        >
           Ver projeto
           <ArrowUpRight
             size={16}
-            className="transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            className="text-text-muted transition-colors duration-200 group-hover:text-signal"
           />
         </div>
       </Card>
