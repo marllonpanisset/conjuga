@@ -32,101 +32,64 @@ type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary: `
-    bg-gradient-to-b
-    from-signal-strong
-    to-signal
+    bg-gradient-to-b from-signal-strong to-signal
     text-white
+    border border-white/10
+    shadow-md shadow-signal/15
 
-    shadow-[var(--shadow-button)]
+    hover:from-signal hover:to-signal-strong
+    hover:shadow-lg hover:shadow-signal/25
+    hover:brightness-[1.03]
 
-    hover:
-      brightness-110
-      -translate-y-[1px]
-      shadow-[var(--shadow-button-hover)]
+    active:brightness-95
 
-    active:
-      translate-y-0
-      scale-[0.98]
-
-    focus-visible:
-      outline-none
-      ring-2
-      ring-signal/40
-      ring-offset-2
+    focus-visible:outline-none
+    focus-visible:ring-2 focus-visible:ring-signal/30
   `,
 
   secondary: `
-    bg-surface-elevated
+    border border-border/70
+    bg-surface-elevated/75
     text-text-primary
+    backdrop-blur-sm
+    shadow-sm
 
-    border
-    border-border
+    hover:border-border
+    hover:bg-surface-elevated
+    hover:shadow-md
 
-    hover:
-      border-signal/40
-      bg-surface
-      -translate-y-[1px]
+    active:bg-surface
 
-    active:
-      translate-y-0
-      scale-[0.98]
-
-    focus-visible:
-      outline-none
-      ring-2
-      ring-signal/30
-      ring-offset-2
+    focus-visible:outline-none
+    focus-visible:ring-2 focus-visible:ring-signal/20
   `,
 
   ghost: `
     text-text-secondary
 
-    hover:
-      text-text-primary
-      bg-surface
+    hover:bg-surface
+    hover:text-text-primary
 
-    active:
-      scale-[0.98]
+    active:bg-surface-elevated
 
-    focus-visible:
-      outline-none
-      ring-2
-      ring-signal/30
+    focus-visible:outline-none
+    focus-visible:ring-2 focus-visible:ring-signal/20
   `,
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  md: `
-    h-10
-    px-5
-    text-[0.9375rem]
-  `,
-
-  lg: `
-    h-12
-    px-7
-    text-base
-  `,
+  md: `h-10 px-5 text-[0.9375rem]`,
+  lg: `h-12 px-7 text-base`,
 };
 
 const base = `
-  inline-flex
-  items-center
-  justify-center
-  gap-2
-
+  inline-flex items-center justify-center gap-2
   rounded-xl
-
   font-medium
-
   whitespace-nowrap
-
   cursor-pointer
-
-  transition-all
-  duration-200
-  ease-out
-
+  transition-[background-color,border-color,color,box-shadow,filter]
+  duration-150 ease-out
   select-none
 `;
 
