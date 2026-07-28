@@ -39,8 +39,10 @@ export const metadata: Metadata = {
 
   category: "technology",
 
-  alternates: {
-    canonical: "/",
+  formatDetection: {
+    address: false,
+    email: false,
+    telephone: false,
   },
 
   robots: {
@@ -60,23 +62,14 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     title: `${siteConfig.name} — Estúdio digital de engenharia e tecnologia`,
     description: siteConfig.description,
-    locale: siteConfig.locale,
+    locale: siteConfig.locale.replace("-", "_"),
     siteName: siteConfig.name,
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
-    ],
   },
 
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: `${siteConfig.name} — Estúdio digital de engenharia e tecnologia`,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
   },
 };
 

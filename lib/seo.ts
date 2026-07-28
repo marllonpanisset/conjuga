@@ -6,6 +6,8 @@ interface BuildMetadataInput {
   description: string;
   path: string;
   image?: string;
+  type?: "website" | "article";
+  publishedTime?: string;
 }
 
 /**
@@ -19,57 +21,50 @@ export function buildMetadata({
   description,
   path,
   image,
+  type = "website",
+  publishedTime,
 }: BuildMetadataInput): Metadata {
   const url = new URL(path, siteConfig.url).toString();
-
-  const ogImage = new URL(
-    image ?? siteConfig.ogImage,
-    siteConfig.url,
-  ).toString();
+  const resolvedTitle =
+    path === "/"
+      ? `${siteConfig.name} — ${title}`
+      : `${title} — ${siteConfig.name}`;
+  const images = image
+    ? [
+        {
+          url: new URL(image, siteConfig.url).toString(),
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ]
+    : undefined;
 
   return {
-    title,
+    title: path === "/" ? { absolute: resolvedTitle } : title,
 
     description,
-
-    authors: [
-      {
-        name: siteConfig.author.name,
-        url: siteConfig.author.url,
-      },
-    ],
-
-    creator: siteConfig.author.name,
-
-    publisher: siteConfig.legalName,
 
     alternates: {
       canonical: url,
     },
 
     openGraph: {
-      title,
+      title: resolvedTitle,
       description,
       url,
       siteName: siteConfig.name,
-      locale: siteConfig.locale,
-      type: "website",
-
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
+      locale: siteConfig.locale.replace("-", "_"),
+      type,
+      ...(type === "article" && publishedTime ? { publishedTime } : {}),
+      ...(images ? { images } : {}),
     },
 
     twitter: {
-      card: "summary_large_image",
-      title,
+      card: images ? "summary_large_image" : "summary",
+      title: resolvedTitle,
       description,
-      images: [ogImage],
+      ...(images ? { images: images.map(({ url: imageUrl }) => imageUrl) } : {}),
     },
   };
 }

@@ -28,7 +28,7 @@ import { caseStudies } from "@/content/projetos";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Fyrmma — Sites, sistemas e automações para empresas",
+  title: "Sites, sistemas e automações para empresas",
   description:
     "Desenvolvemos sites profissionais, sistemas personalizados e automações para empresas que querem atrair clientes, otimizar processos e crescer com tecnologia.",
   path: "/",

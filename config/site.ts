@@ -17,12 +17,6 @@ export const siteConfig = {
   locale: "pt-BR",
 
   /**
-   * Default Open Graph image used whenever a page does not provide
-   * a more specific social preview.
-   */
-  ogImage: "/og/default.png",
-
-  /**
    * Default keywords reused by the Metadata API.
    *
    * Individual pages may extend these keywords when appropriate.

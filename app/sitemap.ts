@@ -3,7 +3,7 @@ import { siteConfig } from "@/config/site";
 import { services } from "@/content/servicos";
 import { niches } from "@/content/nichos";
 import { caseStudies } from "@/content/projetos";
-import { getAllPostSlugs } from "@/lib/mdx";
+import { getAllPostsMeta } from "@/lib/mdx";
 
 const createUrl = (path: string) => new URL(path, siteConfig.url).toString();
 
@@ -14,77 +14,75 @@ const createUrl = (path: string) => new URL(path, siteConfig.url).toString();
  * discoverable by search engines while avoiding duplicated URL logic.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: createUrl("/"),
-      lastModified,
       changeFrequency: "monthly",
       priority: 1,
     },
     {
       url: createUrl("/servicos"),
-      lastModified,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: createUrl("/solucoes"),
-      lastModified,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: createUrl("/sobre"),
-      lastModified,
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
       url: createUrl("/projetos"),
-      lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: createUrl("/blog"),
-      lastModified,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: createUrl("/contato"),
-      lastModified,
       changeFrequency: "yearly",
       priority: 0.6,
+    },
+    {
+      url: createUrl("/politica-de-privacidade"),
+      changeFrequency: "yearly",
+      priority: 0.2,
+    },
+    {
+      url: createUrl("/termos-de-uso"),
+      changeFrequency: "yearly",
+      priority: 0.2,
     },
   ];
 
   const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
     url: createUrl(`/servicos/${service.slug}`),
-    lastModified,
     changeFrequency: "monthly",
     priority: 0.8,
   }));
 
   const nicheRoutes: MetadataRoute.Sitemap = niches.map((niche) => ({
     url: createUrl(`/solucoes/${niche.slug}`),
-    lastModified,
     changeFrequency: "monthly",
     priority: 0.8,
   }));
 
   const caseRoutes: MetadataRoute.Sitemap = caseStudies.map((project) => ({
     url: createUrl(`/projetos/${project.slug}`),
-    lastModified,
     changeFrequency: "monthly",
     priority: 0.7,
   }));
 
-  const blogRoutes: MetadataRoute.Sitemap = getAllPostSlugs().map((slug) => ({
-    url: createUrl(`/blog/${slug}`),
-    lastModified,
+  const blogRoutes: MetadataRoute.Sitemap = getAllPostsMeta().map((post) => ({
+    url: createUrl(`/blog/${post.slug}`),
+    lastModified: post.date,
     changeFrequency: "monthly",
     priority: 0.7,
   }));

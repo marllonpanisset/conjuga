@@ -34,6 +34,8 @@ export async function generateMetadata({
       title: meta.title,
       description: meta.description,
       path: `/blog/${meta.slug}`,
+      type: "article",
+      publishedTime: meta.date,
     });
   } catch {
     return {};
