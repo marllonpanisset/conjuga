@@ -1,10 +1,18 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type KeyboardEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type KeyboardEvent,
+} from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { servicesNav, nichesNav, mainNav } from "@/config/navigation";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -20,39 +28,9 @@ const focusableSelector = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(",");
 
-const overlayVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-};
-
-const drawerVariants = {
-  hidden: { x: "100%" },
-  visible: {
-    x: 0,
-    transition: { type: "spring", damping: 30, stiffness: 300 },
-  },
-  exit: {
-    x: "100%",
-    transition: { type: "spring", damping: 30, stiffness: 300 },
-  },
-};
-
-const groupVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.05, delayChildren: 0.15 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, x: 16 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.3, ease: "easeOut" },
-  },
-};
+function isPathActive(pathname: string, href: string) {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 /**
  * Provides a hydration-safe client snapshot for portal rendering. The server
@@ -89,6 +67,8 @@ function AccordionSection({
   isOpen,
   onToggle,
   onNavigate,
+  pathname,
+  reduceMotion,
 }: {
   id: string;
   title: string;
@@ -96,6 +76,8 @@ function AccordionSection({
   isOpen: boolean;
   onToggle: () => void;
   onNavigate: () => void;
+  pathname: string;
+  reduceMotion: boolean;
 }) {
   return (
     <div className="border-b border-border/60">
@@ -112,7 +94,7 @@ function AccordionSection({
         <ChevronDown
           size={16}
           className={cn(
-            "text-text-muted transition-transform duration-300 ease-out",
+            "text-text-muted transition-transform duration-200 ease-out motion-reduce:transition-none",
             isOpen && "rotate-180 text-text-primary",
           )}
         />
@@ -122,36 +104,43 @@ function AccordionSection({
         {isOpen && (
           <motion.div
             id={id}
-            key="content"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.2,
+              ease: [0.4, 0, 0.2, 1],
+            }}
             className="overflow-hidden"
           >
-            <motion.ul
-              variants={groupVariants}
-              initial="hidden"
-              animate="visible"
-              className="flex flex-col gap-0.5 pb-3"
-            >
-              {items.map((item) => (
-                <motion.li key={item.href} variants={itemVariants}>
-                  <Link
-                    href={item.href as never}
-                    onClick={onNavigate}
-                    className="block rounded-[10px] px-3 py-2.5 text-[0.9375rem] leading-snug text-text-secondary transition-colors active:scale-[0.98] hover:bg-surface hover:text-text-primary"
-                  >
-                    {item.label}
-                    {item.description && (
-                      <span className="mt-0.5 block text-[0.75rem] font-normal text-text-muted">
-                        {item.description}
-                      </span>
-                    )}
-                  </Link>
-                </motion.li>
-              ))}
-            </motion.ul>
+            <ul className="flex flex-col gap-0.5 pb-3">
+              {items.map((item) => {
+                const isActive = pathname === item.href;
+
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href as never}
+                      onClick={onNavigate}
+                      aria-current={isActive ? "page" : undefined}
+                      className={cn(
+                        "block rounded-[10px] border border-transparent px-3 py-2.5 text-[0.9375rem] leading-snug transition-[background-color,border-color,color] hover:bg-surface hover:text-text-primary",
+                        isActive
+                          ? "border-border/70 bg-surface text-text-primary"
+                          : "text-text-secondary",
+                      )}
+                    >
+                      {item.label}
+                      {item.description && (
+                        <span className="mt-0.5 block text-[0.75rem] font-normal text-text-muted">
+                          {item.description}
+                        </span>
+                      )}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
           </motion.div>
         )}
       </AnimatePresence>
@@ -165,6 +154,9 @@ function AccordionSection({
  * close, matching the expected disclosure interaction pattern.
  */
 export function MobileNav() {
+  const pathname = usePathname();
+  const shouldReduceMotion = useReducedMotion();
+  const reduceMotion = shouldReduceMotion === true;
   const [open, setOpen] = useState(false);
   const mounted = useSyncExternalStore(
     subscribeToClientEnvironment,
@@ -177,8 +169,14 @@ export function MobileNav() {
 
   /** Opens the dialog while preserving the trigger as the focus-return target. */
   const openMenu = useCallback(() => {
+    if (isPathActive(pathname, "/servicos")) {
+      setOpenSection("servicos");
+    } else if (isPathActive(pathname, "/solucoes")) {
+      setOpenSection("nichos");
+    }
+
     setOpen(true);
-  }, []);
+  }, [pathname]);
 
   /**
    * Closes the dialog and restores focus after React has committed the state.
@@ -248,48 +246,54 @@ export function MobileNav() {
   );
 
   const overlay = (
-    <AnimatePresence>
+    <AnimatePresence initial={false}>
       {open && (
-        <>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: reduceMotion ? 0 : 0.18, ease: "easeOut" }}
+          onClick={closeMenu}
+          className="fixed inset-0 z-40 bg-black/55"
+        >
           <motion.div
-            variants={overlayVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            transition={{ duration: 0.25 }}
-            onClick={closeMenu}
-            aria-hidden="true"
-            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
-          />
-
-          <motion.div
+            initial={{ x: reduceMotion ? 0 : 24 }}
+            animate={{ x: 0 }}
+            exit={{ x: reduceMotion ? 0 : 24 }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.22,
+              ease: [0.4, 0, 0.2, 1],
+            }}
             ref={drawerRef}
             id="mobile-nav-drawer"
             role="dialog"
             aria-modal="true"
             aria-labelledby="mobile-nav-title"
-            variants={drawerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
+            onClick={(event) => event.stopPropagation()}
             onKeyDown={handleDrawerKeyDown}
-            className="fixed inset-y-0 right-0 z-50 flex h-screen w-full max-w-sm flex-col bg-background shadow-2xl"
+            className="absolute inset-y-0 right-0 z-10 flex h-dvh w-full max-w-sm flex-col border-l border-border bg-background shadow-card"
           >
             <div className="flex shrink-0 items-center justify-between border-b border-border px-6 py-4">
-              <span id="mobile-nav-title" className="font-display text-[1.125rem] font-semibold text-text-primary">
+              <span
+                id="mobile-nav-title"
+                className="font-display text-[1.125rem] font-semibold text-text-primary"
+              >
                 Fyrmma
               </span>
               <button
                 type="button"
                 onClick={closeMenu}
                 aria-label="Fechar menu"
-                className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-border text-text-primary transition-colors hover:bg-surface active:scale-95"
+                className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-border text-text-primary transition-[background-color,border-color,color] hover:border-border-strong hover:bg-surface"
               >
                 <X size={20} />
               </button>
             </div>
 
-            <nav className="flex-1 overflow-y-auto px-6" aria-label="Navegação principal">
+            <nav
+              className="flex-1 overflow-y-auto px-6"
+              aria-label="Navegação principal"
+            >
               <div className="flex flex-col">
                 <AccordionSection
                   id="mobile-nav-servicos"
@@ -298,6 +302,8 @@ export function MobileNav() {
                   isOpen={openSection === "servicos"}
                   onToggle={() => toggleSection("servicos")}
                   onNavigate={closeMenu}
+                  pathname={pathname}
+                  reduceMotion={reduceMotion}
                 />
                 <AccordionSection
                   id="mobile-nav-nichos"
@@ -306,37 +312,55 @@ export function MobileNav() {
                   isOpen={openSection === "nichos"}
                   onToggle={() => toggleSection("nichos")}
                   onNavigate={closeMenu}
+                  pathname={pathname}
+                  reduceMotion={reduceMotion}
                 />
 
                 <ul className="flex flex-col gap-1 py-4">
-                  {mainNav.map((item) => (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href as never}
-                        onClick={closeMenu}
-                        className="block rounded-[10px] px-3 py-3 text-[1.0625rem] font-medium text-text-primary transition-colors active:scale-[0.98] hover:bg-surface"
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
+                  {mainNav.map((item) => {
+                    const isActive = isPathActive(pathname, item.href);
+
+                    return (
+                      <li key={item.href}>
+                        <Link
+                          href={item.href as never}
+                          onClick={closeMenu}
+                          aria-current={isActive ? "page" : undefined}
+                          className={cn(
+                            "block rounded-[10px] border border-transparent px-3 py-3 text-[1.0625rem] font-medium transition-[background-color,border-color,color] hover:bg-surface",
+                            isActive
+                              ? "border-border/70 bg-surface text-text-primary"
+                              : "text-text-secondary hover:text-text-primary",
+                          )}
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </nav>
 
             <div className="shrink-0 border-t border-border bg-background px-6 py-4">
-              <Button href="/contato" size="lg" className="w-full" onClick={closeMenu}>
+              <Button
+                href="/contato"
+                size="lg"
+                className="w-full"
+                onClick={closeMenu}
+                aria-current={pathname === "/contato" ? "page" : undefined}
+              >
                 Falar com especialista
               </Button>
             </div>
           </motion.div>
-        </>
+        </motion.div>
       )}
     </AnimatePresence>
   );
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         ref={menuButtonRef}
         type="button"
@@ -345,7 +369,7 @@ export function MobileNav() {
         aria-expanded={open}
         aria-controls="mobile-nav-drawer"
         aria-haspopup="dialog"
-        className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-border text-text-primary transition-colors hover:bg-surface active:scale-95"
+        className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-border text-text-primary transition-[background-color,border-color,color] hover:border-border-strong hover:bg-surface"
       >
         <Menu size={20} />
       </button>

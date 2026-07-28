@@ -9,6 +9,7 @@ import {
   type KeyboardEvent,
 } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { Container } from "@/components/ui";
 import { Button } from "@/components/ui/Button";
@@ -24,6 +25,11 @@ import { cn } from "@/lib/utils";
 interface NavDropdownProps {
   label: string;
   items: NavItem[];
+  pathname: string;
+}
+
+function isPathActive(pathname: string, href: string) {
+  return pathname === href || pathname.startsWith(`${href}/`);
 }
 
 /**
@@ -33,13 +39,14 @@ interface NavDropdownProps {
  * The menu stays local because each dropdown owns its own trigger, focus, and
  * outside-click lifecycle. A shared state would add coupling without benefit.
  */
-function NavDropdown({ label, items }: NavDropdownProps) {
+function NavDropdown({ label, items, pathname }: NavDropdownProps) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const itemRefs = useRef<Array<HTMLAnchorElement | null>>([]);
   const triggerId = useId();
   const menuId = useId();
+  const isActive = items.some((item) => isPathActive(pathname, item.href));
 
   /**
    * Moves focus after the menu has rendered so arrow-key navigation works when
@@ -159,7 +166,10 @@ function NavDropdown({ label, items }: NavDropdownProps) {
         ref={triggerRef}
         id={triggerId}
         type="button"
-        className="flex items-center gap-1 text-[0.9375rem] text-text-secondary transition-colors hover:text-text-primary"
+        className={cn(
+          "flex h-9 items-center gap-1.5 rounded-[10px] px-3 text-[0.9375rem] transition-[background-color,color] hover:bg-surface hover:text-text-primary",
+          isActive ? "bg-surface text-text-primary" : "text-text-secondary",
+        )}
         aria-expanded={open}
         aria-controls={menuId}
         aria-haspopup="menu"
@@ -174,36 +184,44 @@ function NavDropdown({ label, items }: NavDropdownProps) {
       </button>
 
       {open && (
-        <div className="absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 p-3 shadow-[0_20px_60px_rgba(0,0,0,0.18)] backdrop-blur-xl rounded-[16px] border border-border bg-background/75">
+        <div className="absolute left-0 top-full z-50 w-72 pt-2">
           <ul
             id={menuId}
             role="menu"
             aria-labelledby={triggerId}
-            className="rounded-[16px] border border-border/60 bg-surface-elevated/95 p-2 shadow-[0_20px_60px_rgba(0,0,0,0.18)]"
+            className="space-y-0.5 rounded-[16px] border border-border bg-background/95 p-2 shadow-card backdrop-blur-md"
             onKeyDown={handleMenuKeyDown}
           >
-            {items.map((item, index) => (
-              <li key={item.href} role="none">
-                <Link
-                  ref={(element) => {
-                    itemRefs.current[index] = element;
-                  }}
-                  href={item.href as never}
-                  role="menuitem"
-                  className="block rounded-[10px] px-4 py-3 transition-colors hover:bg-surface"
-                  onClick={() => setOpen(false)}
-                >
-                  <span className="block text-[0.9375rem] font-medium text-text-primary">
-                    {item.label}
-                  </span>
-                  {item.description && (
-                    <span className="mt-0.5 block text-[0.8125rem] text-text-muted">
-                      {item.description}
+            {items.map((item, index) => {
+              const itemIsActive = pathname === item.href;
+
+              return (
+                <li key={item.href} role="none">
+                  <Link
+                    ref={(element) => {
+                      itemRefs.current[index] = element;
+                    }}
+                    href={item.href as never}
+                    role="menuitem"
+                    aria-current={itemIsActive ? "page" : undefined}
+                    className={cn(
+                      "block rounded-[10px] border border-transparent px-4 py-3 transition-[background-color,border-color,color] hover:bg-surface",
+                      itemIsActive && "border-border/70 bg-surface",
+                    )}
+                    onClick={() => setOpen(false)}
+                  >
+                    <span className="block text-[0.9375rem] font-medium text-text-primary">
+                      {item.label}
                     </span>
-                  )}
-                </Link>
-              </li>
-            ))}
+                    {item.description && (
+                      <span className="mt-0.5 block text-[0.8125rem] text-text-muted">
+                        {item.description}
+                      </span>
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}
@@ -212,35 +230,60 @@ function NavDropdown({ label, items }: NavDropdownProps) {
 }
 
 export function Header() {
+  const pathname = usePathname();
+
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 backdrop-blur-xl bg-background/75">
+    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/90 backdrop-blur-md">
       <Container className="flex h-[72px] items-center justify-between">
         <Link
           href="/"
-          className="font-display text-[1.125rem] font-medium tracking-[-0.04em] text-text-primary"
+          aria-current={pathname === "/" ? "page" : undefined}
+          className="rounded-sm font-display text-[1.125rem] font-medium tracking-[-0.04em] text-text-primary"
         >
           FYRMMA
         </Link>
 
         <nav
-          className="hidden items-center gap-8 md:flex"
+          className="hidden items-center gap-1 lg:flex"
           aria-label="Navegação principal"
         >
-          <NavDropdown label="Serviços" items={servicesNav} />
-          <NavDropdown label="Soluções por segmento" items={nichesNav} />
-          {mainNav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href as never}
-              className="text-[0.9375rem] text-text-secondary transition-colors hover:text-text-primary"
-            >
-              {item.label}
-            </Link>
-          ))}
+          <NavDropdown
+            label="Serviços"
+            items={servicesNav}
+            pathname={pathname}
+          />
+          <NavDropdown
+            label="Soluções por segmento"
+            items={nichesNav}
+            pathname={pathname}
+          />
+          {mainNav.map((item) => {
+            const isActive = isPathActive(pathname, item.href);
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href as never}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "flex h-9 items-center rounded-[10px] px-3 text-[0.9375rem] transition-[background-color,color] hover:bg-surface hover:text-text-primary",
+                  isActive
+                    ? "bg-surface text-text-primary"
+                    : "text-text-secondary",
+                )}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
-        <div className="hidden md:block">
-          <Button href="/contato" size="md">
+        <div className="hidden lg:block">
+          <Button
+            href="/contato"
+            size="md"
+            aria-current={pathname === "/contato" ? "page" : undefined}
+          >
             Falar com especialista
           </Button>
         </div>
