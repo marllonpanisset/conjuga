@@ -1,11 +1,40 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type FormEvent,
+} from "react";
+
 import { Button } from "@/components/ui/Button";
-import { Text } from "@/components/ui";
-import { services } from "@/content/servicos";
+import { Text } from "@/components/ui/Text";
+import { contactFieldLimits, contactServices } from "@/lib/contact";
 
 type Status = "idle" | "loading" | "success" | "error";
+type FieldName =
+  | "name"
+  | "company"
+  | "email"
+  | "phone"
+  | "service"
+  | "message"
+  | "consent";
+type FieldErrors = Partial<Record<FieldName, string>>;
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const fieldClassName =
+  "h-11 min-w-0 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal";
+
+function FieldError({ id, message }: { id: string; message: string }) {
+  return (
+    <p id={id} className="mt-2 text-[0.9375rem] leading-[1.5] text-warning">
+      {message}
+    </p>
+  );
+}
 
 function getErrorMessage(value: unknown): string {
   if (
@@ -20,17 +49,88 @@ function getErrorMessage(value: unknown): string {
   return "Não foi possível enviar sua mensagem.";
 }
 
+function validateForm(formData: FormData): FieldErrors {
+  const errors: FieldErrors = {};
+  const name = String(formData.get("name") ?? "").trim();
+  const email = String(formData.get("email") ?? "").trim();
+  const service = String(formData.get("service") ?? "");
+  const message = String(formData.get("message") ?? "").trim();
+
+  if (!name) errors.name = "Informe seu nome.";
+  if (!email) {
+    errors.email = "Informe seu e-mail.";
+  } else if (!emailPattern.test(email)) {
+    errors.email = "Informe um e-mail válido.";
+  }
+  if (!service) errors.service = "Selecione um serviço de interesse.";
+  if (!message) {
+    errors.message = "Escreva uma mensagem.";
+  } else if (message.length < 10) {
+    errors.message = "A mensagem deve ter pelo menos 10 caracteres.";
+  }
+  if (formData.get("consent") !== "on") {
+    errors.consent = "Confirme que você leu a Política de Privacidade.";
+  }
+
+  return errors;
+}
+
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+  const statusRef = useRef<HTMLDivElement>(null);
+  const submittingRef = useRef(false);
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  useEffect(() => {
+    if (status === "error" || status === "success") {
+      statusRef.current?.focus();
+    }
+  }, [status]);
+
+  function clearFieldError(
+    event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
+  ) {
+    const field = event.currentTarget.name as FieldName;
+    setFieldErrors((current) => {
+      if (!current[field]) return current;
+
+      const next = { ...current };
+      delete next[field];
+      return next;
+    });
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (submittingRef.current) return;
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const validationErrors = validateForm(formData);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setFieldErrors(validationErrors);
+      setErrorMessage("Revise os campos indicados antes de enviar.");
+      setStatus("error");
+      return;
+    }
+
+    submittingRef.current = true;
+    setFieldErrors({});
     setStatus("loading");
     setErrorMessage("");
 
-    const formData = new FormData(event.currentTarget);
-    const payload = Object.fromEntries(formData.entries());
+    const payload = {
+      name: formData.get("name"),
+      company: formData.get("company"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      service: formData.get("service"),
+      message: formData.get("message"),
+      consent: formData.get("consent") === "on",
+      website: formData.get("website"),
+    };
 
     try {
       const response = await fetch("/api/contato", {
@@ -50,48 +150,104 @@ export function ContactForm() {
         throw new Error(getErrorMessage(data));
       }
 
+      form.reset();
       setStatus("success");
-      event.currentTarget.reset();
     } catch (error) {
       setStatus("error");
-      setErrorMessage(error instanceof Error ? error.message : "Erro inesperado ao enviar.");
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Erro inesperado ao enviar.",
+      );
+    } finally {
+      submittingRef.current = false;
     }
   }
 
   if (status === "success") {
     return (
-      <div className="rounded-[16px] border border-border bg-surface p-8 text-center">
-        <Text variant="body" className="text-text-primary">
-          Mensagem enviada. Vamos analisar seu contexto e retornar em breve.
+      <div
+        ref={statusRef}
+        role="status"
+        tabIndex={-1}
+        className="rounded-[16px] border border-border bg-surface p-8 text-center outline-none"
+      >
+        <Text className="text-text-primary">
+          Mensagem enviada com sucesso.
         </Text>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex min-w-0 flex-col gap-5">
-      {/* Campo invisível para pessoas e leitores de tela; robôs que o preenchem são descartados pela API. */}
-      <div className="absolute h-px w-px overflow-hidden whitespace-nowrap opacity-0" aria-hidden="true">
+    <form
+      onSubmit={handleSubmit}
+      noValidate
+      aria-busy={status === "loading"}
+      className="flex min-w-0 flex-col gap-5"
+    >
+      <div
+        className="absolute h-px w-px overflow-hidden whitespace-nowrap opacity-0"
+        aria-hidden="true"
+      >
         <label htmlFor="website">Não preencha este campo</label>
-        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-2 block text-[0.875rem] text-text-secondary">
+          <label
+            htmlFor="name"
+            className="mb-2 block text-[0.875rem] text-text-secondary"
+          >
             Nome
           </label>
           <input
             id="name"
             name="name"
             required
-            maxLength={120}
+            maxLength={contactFieldLimits.name}
             autoComplete="name"
-            className="h-11 min-w-0 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
+            aria-invalid={Boolean(fieldErrors.name)}
+            aria-describedby={fieldErrors.name ? "name-error" : undefined}
+            onChange={clearFieldError}
+            className={fieldClassName}
+          />
+          {fieldErrors.name && (
+            <FieldError id="name-error" message={fieldErrors.name} />
+          )}
+        </div>
+
+        <div>
+          <label
+            htmlFor="company"
+            className="mb-2 block text-[0.875rem] text-text-secondary"
+          >
+            Empresa <span className="text-text-muted">(opcional)</span>
+          </label>
+          <input
+            id="company"
+            name="company"
+            maxLength={contactFieldLimits.company}
+            autoComplete="organization"
+            onChange={clearFieldError}
+            className={fieldClassName}
           />
         </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="email" className="mb-2 block text-[0.875rem] text-text-secondary">
+          <label
+            htmlFor="email"
+            className="mb-2 block text-[0.875rem] text-text-secondary"
+          >
             E-mail
           </label>
           <input
@@ -99,47 +255,76 @@ export function ContactForm() {
             name="email"
             type="email"
             required
-            maxLength={254}
+            maxLength={contactFieldLimits.email}
             autoComplete="email"
-            className="h-11 min-w-0 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
+            inputMode="email"
+            aria-invalid={Boolean(fieldErrors.email)}
+            aria-describedby={fieldErrors.email ? "email-error" : undefined}
+            onChange={clearFieldError}
+            className={fieldClassName}
           />
+          {fieldErrors.email && (
+            <FieldError id="email-error" message={fieldErrors.email} />
+          )}
         </div>
-      </div>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="company" className="mb-2 block text-[0.875rem] text-text-secondary">
-            Empresa
+          <label
+            htmlFor="phone"
+            className="mb-2 block text-[0.875rem] text-text-secondary"
+          >
+            Telefone ou WhatsApp{" "}
+            <span className="text-text-muted">(opcional)</span>
           </label>
           <input
-            id="company"
-            name="company"
-            maxLength={160}
-            autoComplete="organization"
-            className="h-11 min-w-0 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
+            id="phone"
+            name="phone"
+            type="tel"
+            maxLength={contactFieldLimits.phone}
+            autoComplete="tel"
+            inputMode="tel"
+            onChange={clearFieldError}
+            className={fieldClassName}
           />
-        </div>
-        <div>
-          <label htmlFor="service" className="mb-2 block text-[0.875rem] text-text-secondary">
-            Serviço de interesse
-          </label>
-          <select
-            id="service"
-            name="service"
-            className="h-11 min-w-0 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
-          >
-            <option value="">Selecione</option>
-            {services.map((service) => (
-              <option key={service.slug} value={service.slug}>
-                {service.name}
-              </option>
-            ))}
-          </select>
         </div>
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-2 block text-[0.875rem] text-text-secondary">
+        <label
+          htmlFor="service"
+          className="mb-2 block text-[0.875rem] text-text-secondary"
+        >
+          Serviço de interesse
+        </label>
+        <select
+          id="service"
+          name="service"
+          required
+          aria-invalid={Boolean(fieldErrors.service)}
+          aria-describedby={fieldErrors.service ? "service-error" : undefined}
+          onChange={clearFieldError}
+          className={fieldClassName}
+          defaultValue=""
+        >
+          <option value="" disabled>
+            Selecione
+          </option>
+          {contactServices.map((service) => (
+            <option key={service.value} value={service.value}>
+              {service.label}
+            </option>
+          ))}
+        </select>
+        {fieldErrors.service && (
+          <FieldError id="service-error" message={fieldErrors.service} />
+        )}
+      </div>
+
+      <div>
+        <label
+          htmlFor="message"
+          className="mb-2 block text-[0.875rem] text-text-secondary"
+        >
           Mensagem
         </label>
         <textarea
@@ -148,20 +333,63 @@ export function ContactForm() {
           required
           rows={5}
           minLength={10}
-          maxLength={5000}
+          maxLength={contactFieldLimits.message}
+          aria-invalid={Boolean(fieldErrors.message)}
+          aria-describedby={fieldErrors.message ? "message-error" : undefined}
+          onChange={clearFieldError}
           className="min-w-0 w-full resize-y rounded-[10px] border border-border bg-surface px-4 py-3 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
         />
+        {fieldErrors.message && (
+          <FieldError id="message-error" message={fieldErrors.message} />
+        )}
+      </div>
+
+      <div>
+        <label className="flex cursor-pointer items-start gap-3 text-[0.875rem] leading-relaxed text-text-secondary">
+          <input
+            name="consent"
+            type="checkbox"
+            required
+            aria-invalid={Boolean(fieldErrors.consent)}
+            aria-describedby={
+              fieldErrors.consent ? "consent-error" : undefined
+            }
+            onChange={clearFieldError}
+            className="mt-1 h-4 w-4 shrink-0 accent-signal"
+          />
+          <span>
+            Li e concordo com o tratamento dos dados conforme a{" "}
+            <Link
+              href="/politica-de-privacidade"
+              className="link-underline text-signal-strong"
+            >
+              Política de Privacidade
+            </Link>
+            .
+          </span>
+        </label>
+        {fieldErrors.consent && (
+          <FieldError id="consent-error" message={fieldErrors.consent} />
+        )}
       </div>
 
       {status === "error" && (
-        <div role="alert">
-          <Text variant="body" className="break-words text-warning">
-            {errorMessage}
-          </Text>
+        <div
+          ref={statusRef}
+          role="alert"
+          tabIndex={-1}
+          className="rounded-[10px] border border-warning/30 bg-warning/5 px-4 py-3 outline-none"
+        >
+          <Text className="break-words text-warning">{errorMessage}</Text>
         </div>
       )}
 
-      <Button type="submit" size="lg" disabled={status === "loading"} className="w-full sm:w-fit">
+      <Button
+        type="submit"
+        size="lg"
+        disabled={status === "loading"}
+        className="w-full sm:w-fit"
+      >
         {status === "loading" ? "Enviando..." : "Enviar mensagem"}
       </Button>
     </form>

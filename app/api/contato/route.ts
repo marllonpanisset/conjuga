@@ -1,5 +1,10 @@
+import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
-import { services } from "@/content/servicos";
+import {
+  contactFieldLimits,
+  contactServices,
+  type ContactService,
+} from "@/lib/contact";
 import {
   contactDelivery,
   ContactDeliveryNotConfiguredError,
@@ -12,18 +17,15 @@ const MAX_REQUEST_BODY_SIZE = 16_000;
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const MAX_REQUESTS_PER_WINDOW = 5;
 const MAX_TRACKED_CLIENTS = 10_000;
-
-const fieldLimits = {
-  name: 120,
-  email: 254,
-  company: 160,
-  service: 80,
-  message: 5_000,
-} as const;
+const DUPLICATE_WINDOW_MS = 60_000;
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const serviceSlugs = new Set(services.map((service) => service.slug));
+const serviceValues = new Set<string>(
+  contactServices.map((service) => service.value),
+);
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
+const deliveredSubmissions = new Map<string, number>();
+const inFlightSubmissions = new Set<string>();
 
 class ValidationError extends Error {}
 
@@ -45,28 +47,34 @@ function sanitizeMessage(value: string): string {
     .trim();
 }
 
-function requiredString(value: unknown, field: keyof typeof fieldLimits): string {
+function requiredString(
+  value: unknown,
+  field: keyof typeof contactFieldLimits,
+): string {
   if (typeof value !== "string") {
     throw new ValidationError("Dados de contato inválidos.");
   }
 
   const sanitized = field === "message" ? sanitizeMessage(value) : sanitizeSingleLine(value);
 
-  if (!sanitized || sanitized.length > fieldLimits[field]) {
+  if (!sanitized || sanitized.length > contactFieldLimits[field]) {
     throw new ValidationError("Revise os campos obrigatórios e tente novamente.");
   }
 
   return sanitized;
 }
 
-function optionalString(value: unknown, field: "company" | "service"): string | undefined {
+function optionalString(
+  value: unknown,
+  field: "company" | "phone",
+): string | undefined {
   if (value === undefined || value === "") return undefined;
   if (typeof value !== "string") {
     throw new ValidationError("Dados de contato inválidos.");
   }
 
   const sanitized = sanitizeSingleLine(value);
-  if (sanitized.length > fieldLimits[field]) {
+  if (sanitized.length > contactFieldLimits[field]) {
     throw new ValidationError("Dados de contato inválidos.");
   }
 
@@ -80,19 +88,38 @@ function parseContactSubmission(value: unknown): ContactSubmission {
 
   const name = requiredString(value.name, "name");
   const email = requiredString(value.email, "email").toLowerCase();
+  const service = requiredString(value.service, "service");
   const message = requiredString(value.message, "message");
   const company = optionalString(value.company, "company");
-  const service = optionalString(value.service, "service");
+  const phone = optionalString(value.phone, "phone");
 
   if (!emailPattern.test(email)) {
     throw new ValidationError("Informe um e-mail válido.");
   }
 
-  if (service && !serviceSlugs.has(service)) {
+  if (!serviceValues.has(service)) {
     throw new ValidationError("O serviço selecionado é inválido.");
   }
 
-  return { name, email, company, service, message };
+  if (message.length < 10) {
+    throw new ValidationError("A mensagem deve ter pelo menos 10 caracteres.");
+  }
+
+  if (value.consent !== true) {
+    throw new ValidationError(
+      "Confirme que você leu a Política de Privacidade.",
+    );
+  }
+
+  return {
+    name,
+    email,
+    company,
+    phone,
+    service: service as ContactService,
+    message,
+    consent: true,
+  };
 }
 
 function getClientIdentifier(request: Request): string {
@@ -131,8 +158,34 @@ function takeRateLimitToken(clientIdentifier: string): number | null {
   return null;
 }
 
+function createSubmissionFingerprint(
+  clientIdentifier: string,
+  submission: ContactSubmission,
+) {
+  return createHash("sha256")
+    .update(clientIdentifier)
+    .update(JSON.stringify(submission))
+    .digest("hex");
+}
+
+function isDuplicateSubmission(fingerprint: string) {
+  const now = Date.now();
+
+  for (const [key, deliveredAt] of deliveredSubmissions) {
+    if (now - deliveredAt >= DUPLICATE_WINDOW_MS) {
+      deliveredSubmissions.delete(key);
+    }
+  }
+
+  return (
+    inFlightSubmissions.has(fingerprint) ||
+    deliveredSubmissions.has(fingerprint)
+  );
+}
+
 export async function POST(request: Request) {
-  const retryAfter = takeRateLimitToken(getClientIdentifier(request));
+  const clientIdentifier = getClientIdentifier(request);
+  const retryAfter = takeRateLimitToken(clientIdentifier);
   if (retryAfter !== null) {
     return NextResponse.json(
       { error: "Muitas tentativas. Aguarde alguns instantes e tente novamente." },
@@ -162,7 +215,23 @@ export async function POST(request: Request) {
 
   try {
     const contact = parseContactSubmission(body);
-    await contactDelivery.deliver(contact);
+    const fingerprint = createSubmissionFingerprint(clientIdentifier, contact);
+
+    if (isDuplicateSubmission(fingerprint)) {
+      return NextResponse.json(
+        { error: "Esta mensagem já foi recebida. Evite enviá-la novamente." },
+        { status: 409 },
+      );
+    }
+
+    inFlightSubmissions.add(fingerprint);
+
+    try {
+      await contactDelivery.deliver(contact);
+      deliveredSubmissions.set(fingerprint, Date.now());
+    } finally {
+      inFlightSubmissions.delete(fingerprint);
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
@@ -177,7 +246,10 @@ export async function POST(request: Request) {
       );
     }
 
-    console.error("Falha ao entregar contato", error);
+    console.error(
+      "Falha ao entregar contato",
+      error instanceof Error ? error.name : "UnknownError",
+    );
     return NextResponse.json(
       { error: "Não foi possível enviar sua mensagem. Tente novamente mais tarde." },
       { status: 500 }

@@ -2,8 +2,10 @@ export interface ContactSubmission {
   name: string;
   email: string;
   company?: string;
+  phone?: string;
   service?: string;
   message: string;
+  consent: true;
 }
 
 export interface ContactDelivery {
@@ -17,12 +19,59 @@ export class ContactDeliveryNotConfiguredError extends Error {
   }
 }
 
-// Esta porta isola a rota do provedor de e-mail ou CRM escolhido no futuro.
-// Enquanto não houver um adaptador real, a API falha explicitamente em vez de
-// confirmar um envio que não seria entregue.
-export const contactDelivery: ContactDelivery = {
-  // The interface stays provider-ready while this placeholder avoids unused data.
-  async deliver() {
+class ContactDeliveryError extends Error {
+  constructor() {
+    super("O destino de contatos rejeitou a solicitação.");
+    this.name = "ContactDeliveryError";
+  }
+}
+
+function getWebhookConfiguration() {
+  const webhookUrl = process.env.CONTACT_WEBHOOK_URL;
+  if (!webhookUrl) {
     throw new ContactDeliveryNotConfiguredError();
+  }
+
+  let url: URL;
+  try {
+    url = new URL(webhookUrl);
+  } catch {
+    throw new ContactDeliveryNotConfiguredError();
+  }
+
+  const isLocalUrl =
+    url.protocol === "http:" &&
+    (url.hostname === "localhost" || url.hostname === "127.0.0.1");
+
+  if (url.protocol !== "https:" && !isLocalUrl) {
+    throw new ContactDeliveryNotConfiguredError();
+  }
+
+  return {
+    url,
+    token: process.env.CONTACT_WEBHOOK_TOKEN,
+  };
+}
+
+// Esta porta mantém a rota independente do provedor de automação, e-mail ou
+// CRM. Sem um destino real configurado, a API falha explicitamente.
+export const contactDelivery: ContactDelivery = {
+  async deliver(submission) {
+    const { url, token } = getWebhookConfiguration();
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+      body: JSON.stringify(submission),
+      cache: "no-store",
+      redirect: "error",
+      signal: AbortSignal.timeout(10_000),
+    });
+
+    if (!response.ok) {
+      throw new ContactDeliveryError();
+    }
   },
 };
