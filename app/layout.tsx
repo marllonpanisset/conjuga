@@ -104,7 +104,7 @@ const spaceGrotesk = localFont({
 });
 
 const inter = localFont({
-  src: "./fonts/Inter/Inter-VariableFont_opsz,wght.ttf",
+  src: "./fonts/Inter/InterVariable.woff2",
   variable: "--font-body",
   display: "swap",
   preload: false,
