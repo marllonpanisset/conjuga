@@ -174,12 +174,12 @@ function NavDropdown({ label, items }: NavDropdownProps) {
       </button>
 
       {open && (
-        <div className="absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3">
+        <div className="absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 p-3 shadow-[0_20px_60px_rgba(0,0,0,0.18)] backdrop-blur-xl rounded-[16px] border border-border bg-background/75">
           <ul
             id={menuId}
             role="menu"
             aria-labelledby={triggerId}
-            className="rounded-[16px] border border-border bg-surface-elevated p-2 shadow-xl"
+            className="rounded-[16px] border border-border/60 bg-surface-elevated/95 p-2 shadow-[0_20px_60px_rgba(0,0,0,0.18)]"
             onKeyDown={handleMenuKeyDown}
           >
             {items.map((item, index) => (
@@ -213,8 +213,8 @@ function NavDropdown({ label, items }: NavDropdownProps) {
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <Container className="flex h-16 items-center justify-between">
+    <header className="sticky top-0 z-40 border-b border-border/60 backdrop-blur-xl bg-background/75">
+      <Container className="flex h-[72px] items-center justify-between">
         <Link
           href="/"
           className="font-display text-[1.125rem] font-medium tracking-[-0.04em] text-text-primary"
