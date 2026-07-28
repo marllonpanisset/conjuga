@@ -42,8 +42,8 @@ export default function ContatoPage() {
 
       <Section>
         <Container>
-          <div className="grid grid-cols-1 gap-16 md:grid-cols-[1fr_1.3fr]">
-            <div>
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-16">
+            <div className="min-w-0">
               <Heading as="h3">Conte seu desafio</Heading>
 
               <Text variant="muted" className="mt-3">
@@ -77,7 +77,7 @@ export default function ContatoPage() {
                   Envie um e-mail diretamente para{" "}
                   <a
                     href={`mailto:${siteConfig.links.email}`}
-                    className="link-underline text-signal-strong"
+                    className="link-underline break-all text-signal-strong"
                   >
                     {siteConfig.links.email}
                   </a>
@@ -86,7 +86,9 @@ export default function ContatoPage() {
               </div>
             </div>
 
-            <ContactForm />
+            <div className="min-w-0">
+              <ContactForm />
+            </div>
           </div>
         </Container>
       </Section>

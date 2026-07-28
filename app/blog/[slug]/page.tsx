@@ -125,12 +125,15 @@ export default async function BlogPostPage({
         }}
       />
 
-      <Section className="pt-32">
+      <Section className="pt-20 sm:pt-24 md:pt-32">
         <Container>
-          <div className="mx-auto max-w-2xl">
+          <div className="mx-auto min-w-0 max-w-2xl">
             {meta.segment && <Tag>{meta.segment}</Tag>}
 
-            <Heading as="h1" className="mt-4">
+            <Heading
+              as="h1"
+              className="mt-4 text-balance [overflow-wrap:anywhere]"
+            >
               {meta.title}
             </Heading>
 
@@ -138,7 +141,7 @@ export default async function BlogPostPage({
               {meta.readingTime}
             </Text>
 
-            <article className="mt-6">
+            <article className="mt-6 min-w-0">
               <Post />
             </article>
           </div>

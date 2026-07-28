@@ -69,7 +69,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+    <form onSubmit={handleSubmit} className="flex min-w-0 flex-col gap-5">
       {/* Campo invisível para pessoas e leitores de tela; robôs que o preenchem são descartados pela API. */}
       <div className="absolute h-px w-px overflow-hidden whitespace-nowrap opacity-0" aria-hidden="true">
         <label htmlFor="website">Não preencha este campo</label>
@@ -87,7 +87,7 @@ export function ContactForm() {
             required
             maxLength={120}
             autoComplete="name"
-            className="h-11 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
+            className="h-11 min-w-0 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
           />
         </div>
         <div>
@@ -101,7 +101,7 @@ export function ContactForm() {
             required
             maxLength={254}
             autoComplete="email"
-            className="h-11 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
+            className="h-11 min-w-0 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
           />
         </div>
       </div>
@@ -116,7 +116,7 @@ export function ContactForm() {
             name="company"
             maxLength={160}
             autoComplete="organization"
-            className="h-11 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
+            className="h-11 min-w-0 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
           />
         </div>
         <div>
@@ -126,7 +126,7 @@ export function ContactForm() {
           <select
             id="service"
             name="service"
-            className="h-11 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
+            className="h-11 min-w-0 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
           >
             <option value="">Selecione</option>
             {services.map((service) => (
@@ -149,13 +149,13 @@ export function ContactForm() {
           rows={5}
           minLength={10}
           maxLength={5000}
-          className="w-full rounded-[10px] border border-border bg-surface px-4 py-3 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
+          className="min-w-0 w-full resize-y rounded-[10px] border border-border bg-surface px-4 py-3 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
         />
       </div>
 
       {status === "error" && (
         <div role="alert">
-          <Text variant="body" className="text-warning">
+          <Text variant="body" className="break-words text-warning">
             {errorMessage}
           </Text>
         </div>

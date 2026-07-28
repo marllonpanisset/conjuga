@@ -13,10 +13,12 @@ export const metadata: Metadata = buildMetadata({
 export default function PoliticaPrivacidadePage() {
   return (
     <PageWrapper withGrid={false}>
-      <Section className="pt-32">
+      <Section className="pt-20 sm:pt-24 md:pt-32">
         <Container>
-          <div className="mx-auto max-w-2xl">
-            <Heading as="h1">Política de Privacidade</Heading>
+          <div className="mx-auto min-w-0 max-w-2xl">
+            <Heading as="h1" className="text-balance [overflow-wrap:anywhere]">
+              Política de Privacidade
+            </Heading>
             <Text variant="muted" className="mt-4">
               Última atualização: a definir na publicação.
             </Text>

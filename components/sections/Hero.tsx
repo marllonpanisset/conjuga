@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 
 import { Container, Heading, Text, Badge } from "@/components/ui";
-import { FadeIn } from "@/components/motion";
 import { cn } from "@/lib/utils";
 
 interface HeroProps {
@@ -26,10 +25,9 @@ export function Hero({
       className="
         relative 
         overflow-hidden
-        pt-28 
-        pb-32
-        md:pt-40
-        md:pb-40
+        py-24
+        sm:py-28
+        md:py-36
       "
     >
       {/* Background premium glow */}
@@ -46,26 +44,28 @@ export function Hero({
         {/* Main glow */}
         <div
           className="
-      absolute
-      left-1/2
-      top-0
-      h-[500px]
-      w-[700px]
-      -translate-x-1/2
-      rounded-full
-      bg-primary/15
-      blur-[140px]
-    "
+            absolute
+            inset-x-0
+            top-0
+            mx-auto
+            h-[500px]
+            w-full
+            max-w-[700px]
+            rounded-full
+            bg-primary/15
+            blur-[140px]
+          "
         />
 
         {/* Secondary glow */}
         <div
           className="
             absolute
-            left-1/4
+            left-[10%]
             top-32
             h-[280px]
-            w-[480px]
+            w-4/5
+            max-w-[480px]
             rounded-full
             bg-accent/12
             blur-[120px]
@@ -90,10 +90,9 @@ export function Hero({
           )}
         >
           {eyebrow && (
-            <FadeIn>
-              <Badge
-                className={cn(
-                  `
+            <Badge
+              className={cn(
+                `
                   mb-8
                   border-border/80
                   bg-surface/80
@@ -101,36 +100,34 @@ export function Hero({
                   text-text-secondary
                   shadow-sm
                   `,
-                  isCenter && "mx-auto",
-                )}
-              >
-                {eyebrow}
-              </Badge>
-            </FadeIn>
+                isCenter && "mx-auto",
+              )}
+            >
+              {eyebrow}
+            </Badge>
           )}
 
-          <FadeIn delay={0.05}>
-            <Heading
-              as="h1"
-              className="
+          <Heading
+            as="h1"
+            className="
                 text-balance
-                tracking-[-0.06em]
-                leading-[1.07]
+                text-[clamp(2.25rem,10vw,4.25rem)]
+                tracking-[-0.04em]
+                leading-[1.05]
                 md:max-w-4xl
                 text-primary-foreground
                 font-extrabold
                 drop-shadow-md
+                [overflow-wrap:anywhere]
               "
-            >
-              {title}
-            </Heading>
-          </FadeIn>
+          >
+            {title}
+          </Heading>
 
-          <FadeIn delay={0.1}>
-            <Text
-              variant="lead"
-              className={cn(
-                `
+          <Text
+            variant="lead"
+            className={cn(
+              `
                 mt-8
                 max-w-prose
                 text-lg
@@ -138,32 +135,29 @@ export function Hero({
                 text-text-secondary
                 md:text-xl
                 `,
-                isCenter && "mx-auto max-w-3xl text-pretty",
-              )}
-            >
-              {description}
-            </Text>
-          </FadeIn>
+              isCenter && "mx-auto max-w-3xl text-pretty",
+            )}
+          >
+            {description}
+          </Text>
 
           {actions && (
-            <FadeIn delay={0.15}>
-              <div
-                className={cn(
-                  `
+            <div
+              className={cn(
+                `
                   mt-14
                   flex
                   flex-col
-                  items-center
+                  items-stretch
                   gap-4
                   sm:flex-row
                   sm:items-stretch
                   `,
-                  isCenter && "justify-center",
-                )}
-              >
-                {actions}
-              </div>
-            </FadeIn>
+                isCenter && "justify-center",
+              )}
+            >
+              {actions}
+            </div>
           )}
         </div>
       </Container>
