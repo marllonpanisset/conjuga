@@ -24,35 +24,34 @@ A Fyrmma não se posiciona como agência.
 
 Também não se posiciona como uma software house genérica.
 
-Nos posicionamos como parceiros de engenharia digital para empresas de serviços.
+Somos uma empresa de engenharia de software especializada em resolver problemas operacionais através de sistemas web, automações, integrações e inteligência artificial aplicada.
 
-Desenvolvemos soluções sob medida que combinam:
+Nossa abordagem sempre começa pelo negócio.
 
-- presença digital;
+Antes de pensar em tecnologia, entendemos processos, gargalos, desperdícios e oportunidades de melhoria.
+
+Desenvolvemos soluções sob medida com foco em:
+
 - sistemas web;
 - automações;
 - integrações;
 - inteligência artificial aplicada.
 
-Sempre partindo do problema de negócio, nunca da tecnologia.
+A presença digital faz parte da estratégia quando necessária, funcionando como porta de entrada para empresas que ainda precisam estruturar sua base digital antes de evoluir para soluções mais completas.
+
+Nosso objetivo nunca é vender tecnologia.
+
+Nosso objetivo é tornar empresas mais eficientes através da tecnologia.
 
 ---
 
 # 3. O que fazemos
 
-As soluções da Fyrmma estão organizadas em quatro pilares.
+As soluções da Fyrmma estão organizadas em quatro áreas.
 
-## Presença Digital
+Os três primeiros pilares representam o foco principal da empresa.
 
-Landing Pages
-
-Sites Institucionais
-
-Microsites
-
-Blogs
-
-SEO técnico
+A presença digital complementa esse ecossistema, funcionando como porta de entrada para empresas que ainda estão iniciando sua transformação digital.
 
 ---
 
@@ -93,6 +92,22 @@ Classificação de informações
 Automação com IA
 
 Agentes especializados quando fizer sentido.
+
+---
+
+## Presença Digital
+
+Landing Pages
+
+Sites Institucionais
+
+Microsites
+
+Blogs
+
+SEO técnico
+
+A presença digital é utilizada como base para empresas que posteriormente evoluirão para sistemas, automações e inteligência artificial.
 
 ---
 
@@ -138,6 +153,8 @@ Necessidade de ganhar produtividade antes de aumentar equipe.
 
 Baixa ou média maturidade digital.
 
+Empresas em fase de crescimento que precisam ganhar escala operacional antes de aumentar a equipe.
+
 Não restringimos nossa atuação a um único segmento.
 
 Priorizamos empresas com problemas operacionais semelhantes.
@@ -151,6 +168,10 @@ A Fyrmma não se posiciona como especialista em um único segmento.
 Nossa especialidade é resolver problemas operacionais comuns a empresas de serviços.
 
 Os segmentos atendidos demonstram a aplicabilidade da nossa metodologia, mas não definem nossa identidade.
+
+Não vendemos tecnologia como fim.
+
+Vendemos eficiência operacional através da tecnologia.
 
 Isso nos permite atuar em diferentes mercados mantendo o mesmo padrão de qualidade, processos e engenharia.
 
@@ -230,6 +251,8 @@ Construímos ativos digitais que possam crescer junto com o cliente.
 Vendemos valor.
 
 Não horas.
+
+Preferimos construir relacionamentos de longo prazo do que projetos isolados.
 
 Não prometemos resultados impossíveis.
 
