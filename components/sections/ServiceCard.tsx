@@ -33,7 +33,10 @@ export function ServiceCard({ service }: { service: Service }) {
             <Icon icon={service.icon} size={20} contained={false} />
           </div>
 
-          <Heading as="h3" className="mt-6">
+          <Heading
+            as="h2"
+            className="mt-6 text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.01em]"
+          >
             {service.name}
           </Heading>
 

@@ -59,7 +59,10 @@ export default function BlogPage() {
                 <Card className="h-full">
                   {post.segment && <Tag className="w-fit">{post.segment}</Tag>}
 
-                  <Heading as="h3" className="mt-4">
+                  <Heading
+                    as="h2"
+                    className="mt-4 text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.01em]"
+                  >
                     {post.title}
                   </Heading>
 

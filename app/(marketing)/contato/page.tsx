@@ -59,7 +59,12 @@ export default function ContatoPage() {
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-16">
             <div className="min-w-0">
-              <Heading as="h3">Conte seu desafio</Heading>
+              <Heading
+                as="h2"
+                className="text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.01em]"
+              >
+                Conte seu desafio
+              </Heading>
 
               <Text variant="muted" className="mt-3">
                 Seja para desenvolver sistemas web, automações, integrações ou
@@ -68,7 +73,12 @@ export default function ContatoPage() {
               </Text>
 
               <div className="mt-8">
-                <Heading as="h3">Como funciona</Heading>
+                <Heading
+                  as="h2"
+                  className="text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.01em]"
+                >
+                  Como funciona
+                </Heading>
 
                 <div className="mt-5 space-y-6">
                   {processSteps.map((step) => (
@@ -86,7 +96,12 @@ export default function ContatoPage() {
               </div>
 
               <div className="mt-10">
-                <Heading as="h3">Prefere outro canal?</Heading>
+                <Heading
+                  as="h2"
+                  className="text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.01em]"
+                >
+                  Prefere outro canal?
+                </Heading>
 
                 <Text variant="muted" className="mt-3">
                   Envie um e-mail diretamente para{" "}

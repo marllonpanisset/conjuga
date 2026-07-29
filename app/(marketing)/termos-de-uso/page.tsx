@@ -24,14 +24,24 @@ export default function TermosDeUsoPage() {
 
             <div className="mt-10 flex flex-col gap-8">
               <div>
-                <Heading as="h3">1. Uso do site</Heading>
+                <Heading
+                  as="h2"
+                  className="text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.01em]"
+                >
+                  1. Uso do site
+                </Heading>
                 <Text variant="body" className="mt-3">
                   O conteúdo deste site é fornecido para fins informativos sobre os serviços da Fyrmma e não
                   constitui garantia contratual até a formalização de uma proposta comercial.
                 </Text>
               </div>
               <div>
-                <Heading as="h3">2. Propriedade intelectual</Heading>
+                <Heading
+                  as="h2"
+                  className="text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.01em]"
+                >
+                  2. Propriedade intelectual
+                </Heading>
                 <Text variant="body" className="mt-3">
                   Todo o conteúdo, identidade visual e código deste site pertencem à Fyrmma, salvo indicação
                   contrária.

@@ -25,21 +25,36 @@ export default function PoliticaPrivacidadePage() {
 
             <div className="mt-10 flex flex-col gap-8">
               <div>
-                <Heading as="h3">1. Dados coletados</Heading>
+                <Heading
+                  as="h2"
+                  className="text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.01em]"
+                >
+                  1. Dados coletados
+                </Heading>
                 <Text variant="body" className="mt-3">
                   Coletamos os dados fornecidos voluntariamente através do formulário de contato, como nome, e-mail,
                   empresa e mensagem, com a finalidade exclusiva de responder à solicitação.
                 </Text>
               </div>
               <div>
-                <Heading as="h3">2. Uso das informações</Heading>
+                <Heading
+                  as="h2"
+                  className="text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.01em]"
+                >
+                  2. Uso das informações
+                </Heading>
                 <Text variant="body" className="mt-3">
                   As informações são utilizadas apenas para contato comercial referente à solicitação enviada,
                   não sendo compartilhadas com terceiros para fins de marketing.
                 </Text>
               </div>
               <div>
-                <Heading as="h3">3. Contato</Heading>
+                <Heading
+                  as="h2"
+                  className="text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.01em]"
+                >
+                  3. Contato
+                </Heading>
                 <Text variant="body" className="mt-3">
                   Dúvidas sobre esta política podem ser enviadas para {siteConfig.links.email}.
                 </Text>

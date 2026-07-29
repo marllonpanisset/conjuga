@@ -147,9 +147,9 @@ export default function SobrePage() {
                 className="mt-3 max-w-xl leading-relaxed text-text-secondary"
               >
                 Partimos do problema de negócio para traduzir desafios
-                operacionais em soluções digitais. A tecnologia é o instrumento
-                para gerar eficiência, organização, produtividade e
-                previsibilidade.
+                operacionais em soluções de engenharia de software. A tecnologia
+                é o instrumento para gerar eficiência, organização, produtividade
+                e previsibilidade.
               </Text>
             </article>
 
