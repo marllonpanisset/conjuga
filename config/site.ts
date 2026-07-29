@@ -10,7 +10,7 @@ export const siteConfig = {
   legalName: "Fyrmma",
 
   description:
-    "Engenharia digital para empresas de serviços: software, automação, integrações e inteligência artificial aplicada.",
+    "Engenharia de software para empresas de serviços: sistemas web, automação, integrações e inteligência artificial aplicada.",
 
   url: "https://fyrmma.vercel.app",
 
@@ -20,7 +20,7 @@ export const siteConfig = {
     path: "/opengraph-image",
     width: 1200,
     height: 630,
-    alt: "Fyrmma — Engenharia digital para empresas de serviços",
+    alt: "Fyrmma — Engenharia de software para empresas de serviços",
   },
 
   /**

@@ -11,7 +11,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Projetos",
   description:
-    "Projetos de engenharia digital publicados pela Fyrmma com contexto, problema, solução, tecnologias e resultados verificáveis.",
+    "Projetos de engenharia de software publicados pela Fyrmma com contexto, problema, solução, tecnologias e resultados verificáveis.",
   path: "/projetos",
 });
 

@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   applicationName: siteConfig.name,
 
   title: {
-    default: `${siteConfig.name} — Engenharia digital para empresas de serviços`,
+    default: `${siteConfig.name} — Engenharia de software para empresas de serviços`,
     template: `%s — ${siteConfig.name}`,
   },
 
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteConfig.url,
-    title: `${siteConfig.name} — Engenharia digital para empresas de serviços`,
+    title: `${siteConfig.name} — Engenharia de software para empresas de serviços`,
     description: siteConfig.description,
     locale: siteConfig.locale.replace("-", "_"),
     siteName: siteConfig.name,
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — Engenharia digital para empresas de serviços`,
+    title: `${siteConfig.name} — Engenharia de software para empresas de serviços`,
     description: siteConfig.description,
     images: [defaultSocialImage.url],
   },

@@ -46,8 +46,8 @@ export function Footer() {
               Fyrmma
             </span>
             <p className="mt-5 text-[0.9375rem] leading-[1.7] text-text-secondary">
-              Engenharia digital para organizar processos, automatizar tarefas
-              e tornar operações mais eficientes.
+              Engenharia de software para organizar processos, automatizar
+              tarefas e tornar operações mais eficientes.
             </p>
           </div>
 

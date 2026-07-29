@@ -104,7 +104,7 @@ export default function OpenGraphImage() {
               letterSpacing: "-0.045em",
             }}
           >
-            Engenharia digital para empresas de serviços
+            Engenharia de software para empresas de serviços
           </div>
 
           <div
