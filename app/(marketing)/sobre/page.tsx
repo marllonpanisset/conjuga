@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
-import { CircleOff, Target } from "lucide-react";
+import {
+  CircleOff,
+  DraftingCompass,
+  ListChecks,
+  Minimize2,
+  Target,
+} from "lucide-react";
 import { PageWrapper } from "@/components/layout";
-import { Container, Section, Heading, Text, Grid } from "@/components/ui";
+import { Container, Section, Heading, Text } from "@/components/ui";
 import { Button } from "@/components/ui/Button";
 import { Hero, CTASection } from "@/components/sections";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -39,21 +45,25 @@ const differentiators = [
     title: "Engenharia digital",
     description:
       "Projetamos soluções considerando arquitetura, performance e evolução, não apenas páginas isoladas.",
+    icon: DraftingCompass,
   },
   {
     title: "Foco no problema",
     description:
       "O ponto inicial é sempre a necessidade do negócio. A tecnologia entra como ferramenta para resolver.",
+    icon: Target,
   },
   {
     title: "Processo transparente",
     description:
       "Cada etapa é construída com clareza, desde o entendimento inicial até a entrega da solução.",
+    icon: ListChecks,
   },
   {
     title: "Simplicidade e evolução",
     description:
       "Priorizamos soluções fáceis de entender, manter e expandir, sem complexidade desnecessária.",
+    icon: Minimize2,
   },
 ];
 
@@ -248,25 +258,76 @@ export default function SobrePage() {
 
       <Section surface>
         <Container>
-          <FadeIn>
-            <Text variant="caption">Diferenciais</Text>
+          <div className="grid gap-6 md:grid-cols-12 md:gap-8">
+            <Text variant="caption" className="md:col-span-2 md:pt-2">
+              Diferenciais
+            </Text>
 
-            <Heading as="h2" className="mt-3 max-w-lg">
-              O que orienta nossas entregas
-            </Heading>
-          </FadeIn>
+            <div className="md:col-span-8 md:col-start-4 lg:col-span-7">
+              <Heading as="h2" className="max-w-2xl">
+                O que orienta nossas entregas
+              </Heading>
+            </div>
+          </div>
 
-          <Grid cols={2} className="mt-10">
-            {differentiators.map((item) => (
-              <div key={item.title}>
-                <Heading as="h3">{item.title}</Heading>
+          <div className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 md:gap-5">
+            {differentiators.map(
+              ({ title, description, icon: Icon }, index) => {
+                const number = String(index + 1).padStart(2, "0");
 
-                <Text variant="muted" className="mt-3">
-                  {item.description}
-                </Text>
-              </div>
-            ))}
-          </Grid>
+                return (
+                  <article
+                    key={title}
+                    className="
+                      group h-full
+                      rounded-[16px] border border-border
+                      bg-surface p-6
+                      shadow-[var(--shadow-card)]
+                      transition-[border-color,background-color,box-shadow]
+                      duration-200 ease-[var(--ease-signature)]
+                      hover:border-border-strong
+                      hover:bg-surface-elevated/50
+                      hover:shadow-[var(--shadow-card-hover)]
+                      md:p-8
+                    "
+                  >
+                    <span className="font-mono text-[0.6875rem] font-semibold tracking-[0.08em] text-text-muted">
+                      {number}
+                    </span>
+
+                    <span
+                      className="
+                        mt-5 flex h-11 w-11 items-center justify-center
+                        rounded-[12px] border border-border-strong/80
+                        bg-background/60 text-signal-strong
+                        transition-[border-color,background-color]
+                        duration-200 ease-[var(--ease-signature)]
+                        group-hover:border-signal/35
+                        group-hover:bg-signal-soft
+                      "
+                    >
+                      <Icon
+                        size={20}
+                        strokeWidth={1.75}
+                        aria-hidden="true"
+                      />
+                    </span>
+
+                    <Heading as="h3" className="mt-6 max-w-md">
+                      {title}
+                    </Heading>
+
+                    <Text
+                      variant="muted"
+                      className="mt-3 max-w-xl leading-relaxed text-text-secondary"
+                    >
+                      {description}
+                    </Text>
+                  </article>
+                );
+              },
+            )}
+          </div>
         </Container>
       </Section>
 
