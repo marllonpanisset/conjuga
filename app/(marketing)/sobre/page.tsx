@@ -18,7 +18,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Sobre",
   description:
-    "Conheça a Fyrmma, empresa de engenharia digital que transforma problemas operacionais em soluções simples e evolutivas.",
+    "Conheça a Fyrmma, empresa de engenharia de software que transforma problemas operacionais em soluções simples e evolutivas.",
   path: "/sobre",
 });
 
@@ -31,20 +31,20 @@ const principles = [
   {
     title: "Soluções pensadas para cada negócio",
     description:
-      "Cada empresa possui uma realidade diferente. Criamos experiências digitais considerando contexto, público e necessidades específicas.",
+      "Cada empresa possui uma realidade diferente. Criamos soluções de software sob medida considerando os processos, o contexto e as necessidades específicas de cada negócio.",
   },
   {
     title: "Tecnologia aplicada a objetivos reais",
     description:
-      "Aplicamos tecnologia para resolver problemas específicos, melhorar processos e criar oportunidades reais para empresas.",
+      "Aplicamos tecnologia para reduzir tarefas repetitivas, eliminar gargalos e tornar operações mais eficientes.",
   },
 ];
 
 const differentiators = [
   {
-    title: "Engenharia digital",
+    title: "Engenharia de software",
     description:
-      "Projetamos soluções considerando arquitetura, performance e evolução, não apenas páginas isoladas.",
+      "Projetamos soluções considerando arquitetura, integrações, manutenção e evolução contínua.",
     icon: DraftingCompass,
   },
   {
@@ -85,7 +85,7 @@ export default function SobrePage() {
 
       <Hero
         eyebrow="Sobre a Fyrmma"
-        title="Engenharia digital para empresas de serviços"
+        title="Engenharia de software para empresas de serviços"
         description="A Fyrmma transforma operações manuais em processos digitais mais eficientes por meio de software, automação, integrações e inteligência artificial aplicada."
       />
 
@@ -95,12 +95,13 @@ export default function SobrePage() {
             <Text variant="caption">Posicionamento</Text>
 
             <Heading as="h2" className="mt-3">
-              Parceiros de engenharia digital para empresas de serviços
+              Parceiros de engenharia de software para empresas de serviços
             </Heading>
 
             <Text variant="lead" className="mt-4">
-              A Fyrmma atua entre consultoria, engenharia de software, automação
-              de processos e inteligência artificial aplicada.
+              A Fyrmma desenvolve sistemas web, automações, integrações e
+              soluções com inteligência artificial aplicada para resolver
+              problemas operacionais.
             </Text>
           </div>
 
