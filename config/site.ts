@@ -4,6 +4,8 @@
  * Keeping SEO, metadata and structured data values in a single place avoids
  * duplication and ensures every page shares the same source of truth.
  */
+const siteUrl = "https://fyrmma.vercel.app";
+
 export const siteConfig = {
   name: "Fyrmma",
 
@@ -12,7 +14,7 @@ export const siteConfig = {
   description:
     "Engenharia de software para empresas de serviços: sistemas web, automação, integrações e inteligência artificial aplicada.",
 
-  url: "https://fyrmma.vercel.app",
+  url: siteUrl,
 
   locale: "pt-BR",
 
@@ -46,7 +48,7 @@ export const siteConfig = {
    */
   author: {
     name: "Fyrmma",
-    url: "https://fyrmma.vercel.app",
+    url: siteUrl,
   },
 
   /**

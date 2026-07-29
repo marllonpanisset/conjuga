@@ -17,6 +17,7 @@ const defaultSocialImage = {
   height: siteConfig.openGraphImage.height,
   alt: siteConfig.openGraphImage.alt,
 };
+const defaultTitle = `${siteConfig.name} — Engenharia de software para empresas de serviços`;
 
 /**
  * Global metadata provides default SEO information for all routes.
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
   applicationName: siteConfig.name,
 
   title: {
-    default: `${siteConfig.name} — Engenharia de software para empresas de serviços`,
+    default: defaultTitle,
     template: `%s — ${siteConfig.name}`,
   },
 
@@ -72,7 +73,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteConfig.url,
-    title: `${siteConfig.name} — Engenharia de software para empresas de serviços`,
+    title: defaultTitle,
     description: siteConfig.description,
     locale: siteConfig.locale.replace("-", "_"),
     siteName: siteConfig.name,
@@ -81,7 +82,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — Engenharia de software para empresas de serviços`,
+    title: defaultTitle,
     description: siteConfig.description,
     images: [defaultSocialImage.url],
   },
