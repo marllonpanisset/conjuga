@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/Button";
 
 import { CTASection } from "@/components/sections/CTASection";
+import { DifferentialsSection } from "@/components/sections/DifferentialsSection";
 import { HomeHero } from "@/components/sections/HomeHero";
 import { ProcessStep } from "@/components/sections/ProcessStep";
 import { ServiceCard } from "@/components/sections/ServiceCard";
@@ -132,6 +133,8 @@ export default function HomePage() {
           </div>
         </Container>
       </Section>
+
+      <DifferentialsSection />
 
       <Section className="py-24 md:py-32">
         <CTASection

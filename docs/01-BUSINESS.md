@@ -177,16 +177,39 @@ Nunca fazemos o contrário.
 
 # 8. Diferenciais
 
-A Fyrmma diferencia-se por:
+A Fyrmma diferencia-se por oito princípios que orientam todas as decisões de arquitetura, desenvolvimento e evolução dos projetos.
 
-- abordagem orientada ao negócio;
-- engenharia antes da implementação;
-- foco em simplicidade;
-- integração entre sistemas;
-- automação de processos;
-- uso responsável de IA;
-- desenvolvimento sob medida;
-- preocupação com manutenção futura.
+## Abordagem orientada ao negócio
+
+Entendemos o contexto, os objetivos e os desafios do negócio antes de propor qualquer solução tecnológica.
+
+## Engenharia antes da implementação
+
+Planejamos arquitetura, fluxos e decisões técnicas antes de iniciar o desenvolvimento para reduzir riscos e retrabalho.
+
+## Foco em simplicidade
+
+Criamos soluções claras, objetivas e sustentáveis, priorizando facilidade de uso, manutenção e evolução.
+
+## Integração entre sistemas
+
+Conectamos ferramentas, plataformas e processos para eliminar silos, reduzir trabalho manual e centralizar informações.
+
+## Automação de processos
+
+Automatizamos tarefas repetitivas para aumentar produtividade, reduzir erros operacionais e liberar tempo para atividades estratégicas.
+
+## Uso responsável de IA
+
+Aplicamos inteligência artificial apenas quando ela gera valor real, sempre com foco em qualidade, controle e confiabilidade.
+
+## Desenvolvimento sob medida
+
+Desenvolvemos soluções adaptadas às necessidades específicas de cada negócio, respeitando seu contexto, processos e objetivos.
+
+## Preocupação com manutenção futura
+
+Construímos sistemas preparados para evoluir com segurança, documentação adequada e facilidade de manutenção.
 
 ---
 
