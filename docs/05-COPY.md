@@ -30,23 +30,24 @@ A Fyrmma ajuda empresas de serviços a organizar processos, automatizar tarefas 
 
 # Proposta de Valor
 
-Transformamos processos manuais em operações digitais mais eficientes.
+Desenvolvemos sistemas, automações e soluções com inteligência artificial que tornam operações mais eficientes.
 
-Criamos soluções que economizam tempo, reduzem erros e ajudam empresas a crescer de forma organizada.
+Nosso objetivo é reduzir tarefas repetitivas, eliminar gargalos e criar uma base tecnológica preparada para acompanhar o crescimento do negócio.
 
 ---
 
 # O que Fazemos
 
-Traduzimos problemas operacionais em soluções digitais.
+Traduzimos problemas operacionais em soluções de engenharia de software.
 
-Nossos serviços incluem:
+Nosso foco principal é:
 
-- desenvolvimento de sistemas web;
-- criação de sites profissionais;
+- desenvolvimento de sistemas web sob medida;
 - automação de processos;
-- integrações entre sistemas;
+- integrações entre plataformas;
 - aplicação prática de Inteligência Artificial.
+
+Também desenvolvemos sites institucionais e landing pages para empresas que estão estruturando sua presença digital antes de evoluírem para soluções mais completas.
 
 ---
 
@@ -87,6 +88,9 @@ Utilizar com frequência:
 - automação
 - integração
 - engenharia
+- engenharia de software
+- software
+- escalabilidade
 - evolução
 - simplicidade
 - produtividade
@@ -119,11 +123,12 @@ As headlines devem responder rapidamente:
 
 Boas headlines:
 
-- Engenharia digital para empresas de serviços.
+- Engenharia de software para empresas de serviços.
 - Sistemas que simplificam sua operação.
 - Automatize processos. Ganhe eficiência.
-- Software que acompanha o crescimento do seu negócio.
 - Menos tarefas repetitivas. Mais tempo para decisões.
+- Software desenvolvido para acompanhar o crescimento do seu negócio.
+- Tecnologia aplicada para resolver problemas operacionais.
 
 Evitar:
 
