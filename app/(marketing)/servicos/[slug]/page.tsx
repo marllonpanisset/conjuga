@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Network, ShieldCheck, Target } from "lucide-react";
 
 import { PageWrapper } from "@/components/layout";
 import {
@@ -22,6 +23,8 @@ import {
   breadcrumbJsonLd,
   serviceJsonLd,
 } from "@/lib/structured-data";
+
+const benefitIcons = [Target, ShieldCheck, Network];
 
 export function generateStaticParams() {
   return services.map((service) => ({
@@ -120,9 +123,55 @@ export default async function ServicoPage({
             Resultados que orientam a solução
           </Heading>
 
-          <div className="mt-10">
-            <FeatureGrid items={service.benefits} />
-          </div>
+          <ul className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
+            {service.benefits.map((benefit, index) => {
+              const BenefitIcon = benefitIcons[index] ?? Target;
+
+              return (
+                <li
+                  key={benefit}
+                  className="
+                    group h-full
+                    rounded-[16px] border border-border
+                    bg-surface p-6
+                    shadow-[var(--shadow-card)]
+                    transition-[border-color,background-color,box-shadow]
+                    duration-200 ease-[var(--ease-signature)]
+                    hover:border-border-strong
+                    hover:bg-surface-elevated/50
+                    hover:shadow-[var(--shadow-card-hover)]
+                    md:p-8
+                  "
+                >
+                  <span className="font-mono text-[0.6875rem] font-semibold tracking-[0.08em] text-text-muted">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  <span
+                    className="
+                      mt-5 flex h-11 w-11 items-center justify-center
+                      rounded-[12px] border border-border-strong/80
+                      bg-background/60 text-signal-strong
+                      transition-[border-color,background-color]
+                      duration-200 ease-[var(--ease-signature)]
+                      group-hover:border-signal/35
+                      group-hover:bg-signal-soft
+                    "
+                  >
+                    <BenefitIcon
+                      size={20}
+                      strokeWidth={1.75}
+                      aria-hidden="true"
+                    />
+                  </span>
+
+                  <Heading as="h3" className="mt-6 max-w-md">
+                    {benefit}
+                  </Heading>
+                </li>
+              );
+            })}
+          </ul>
         </Container>
       </Section>
 
