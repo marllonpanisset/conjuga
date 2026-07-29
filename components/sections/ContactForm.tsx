@@ -26,10 +26,31 @@ type FieldName =
 type FieldErrors = Partial<Record<FieldName, string>>;
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phoneErrorMessage = "Informe um telefone com DDD válido.";
 const submitErrorFallback =
   "Não foi possível enviar sua mensagem. Seus dados continuam preenchidos. Tente novamente.";
 const fieldClassName =
   "h-11 min-w-0 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal";
+
+function normalizePhone(value: string): string {
+  return value.replace(/\D/g, "").slice(0, 11);
+}
+
+function formatBrazilianPhone(value: string): string {
+  const digits = normalizePhone(value);
+
+  if (digits.length <= 2) {
+    return digits ? `(${digits}` : "";
+  }
+
+  const areaCode = digits.slice(0, 2);
+  const localNumber = digits.slice(2);
+  const prefixLength = digits.length <= 10 ? 4 : 5;
+  const prefix = localNumber.slice(0, prefixLength);
+  const suffix = localNumber.slice(prefixLength);
+
+  return `(${areaCode}) ${prefix}${suffix ? `-${suffix}` : ""}`;
+}
 
 function FieldError({ id, message }: { id: string; message: string }) {
   return (
@@ -57,6 +78,7 @@ function validateForm(formData: FormData): FieldErrors {
   const errors: FieldErrors = {};
   const name = String(formData.get("name") ?? "").trim();
   const email = String(formData.get("email") ?? "").trim();
+  const phone = normalizePhone(String(formData.get("phone") ?? ""));
   const service = String(formData.get("service") ?? "");
   const message = String(formData.get("message") ?? "").trim();
 
@@ -65,6 +87,9 @@ function validateForm(formData: FormData): FieldErrors {
     errors.email = "Informe seu e-mail.";
   } else if (!emailPattern.test(email)) {
     errors.email = "Informe um e-mail válido.";
+  }
+  if (phone && phone.length !== 10 && phone.length !== 11) {
+    errors.phone = phoneErrorMessage;
   }
   if (!service) errors.service = "Selecione um serviço de interesse.";
   if (!message) {
@@ -120,6 +145,11 @@ export function ContactForm() {
     });
   }
 
+  function handlePhoneChange(event: ChangeEvent<HTMLInputElement>) {
+    event.currentTarget.value = formatBrazilianPhone(event.currentTarget.value);
+    clearFieldError(event);
+  }
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (submittingRef.current) return;
@@ -144,7 +174,7 @@ export function ContactForm() {
       name: formData.get("name"),
       company: formData.get("company"),
       email: formData.get("email"),
-      phone: formData.get("phone"),
+      phone: normalizePhone(String(formData.get("phone") ?? "")),
       service: formData.get("service"),
       message: formData.get("message"),
       consent: formData.get("consent") === "on",
@@ -333,11 +363,17 @@ export function ContactForm() {
             name="phone"
             type="tel"
             maxLength={contactFieldLimits.phone}
-            autoComplete="tel"
-            inputMode="tel"
-            onChange={clearFieldError}
+            autoComplete="tel-national"
+            inputMode="numeric"
+            placeholder="(21) 98765-4321"
+            aria-invalid={Boolean(fieldErrors.phone)}
+            aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
+            onChange={handlePhoneChange}
             className={fieldClassName}
           />
+          {fieldErrors.phone && (
+            <FieldError id="phone-error" message={fieldErrors.phone} />
+          )}
         </div>
       </div>
 
