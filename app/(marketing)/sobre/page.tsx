@@ -26,7 +26,7 @@ const principles = [
   {
     title: "Entendimento antes da tecnologia",
     description:
-      "Antes de desenvolver qualquer solução, entendemos objetivos, processos e desafios para identificar o caminho mais adequado.",
+      "Antes de desenvolver qualquer solução, entendemos objetivos, processos e desafios para identificar a solução mais adequada ao problema e ao contexto do negócio.",
   },
   {
     title: "Soluções pensadas para cada negócio",

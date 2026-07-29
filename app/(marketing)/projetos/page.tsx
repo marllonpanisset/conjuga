@@ -11,7 +11,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Projetos",
   description:
-    "Projetos de engenharia de software publicados pela Fyrmma com contexto, problema, solução, tecnologias e resultados verificáveis.",
+    "Projetos de engenharia de software serão publicados pela Fyrmma conforme autorização dos clientes, com contexto, problema, solução e resultados verificáveis.",
   path: "/projetos",
 });
 
@@ -33,8 +33,8 @@ export default function ProjetosPage() {
 
       <Hero
         eyebrow="Projetos"
-        title="Experiência demonstrada com transparência"
-        description="Publicamos apenas projetos reais, com contexto, problema, solução, tecnologias utilizadas e resultados quando for possível verificá-los."
+        title="Projetos com autorização e transparência"
+        description="Os projetos serão publicados conforme autorização dos clientes, com contexto, problema, solução, tecnologias utilizadas e resultados quando for possível verificá-los."
       />
 
       <Section>
@@ -46,7 +46,7 @@ export default function ProjetosPage() {
           </Grid>
           {caseStudies.length === 0 && (
             <p className="text-text-secondary">
-              Nenhum projeto foi publicado até o momento.
+              Os projetos serão publicados conforme autorização dos clientes.
             </p>
           )}
         </Container>
@@ -55,7 +55,7 @@ export default function ProjetosPage() {
       <Section>
         <CTASection
           title="Tem um desafio parecido?"
-          description="Conte o contexto da sua empresa e vamos analisar qual solução digital faz sentido para sua necessidade."
+          description="Conte o problema e o contexto da sua empresa para avaliarmos a solução mais adequada à sua necessidade."
           actions={
             <Button href="/contato" size="lg">
               Solicitar diagnóstico

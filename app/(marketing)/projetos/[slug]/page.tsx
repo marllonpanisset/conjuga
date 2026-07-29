@@ -160,7 +160,7 @@ export default async function CasePage({
       <Section>
         <CTASection
           title="Tem um desafio parecido?"
-          description="Conte o contexto da sua empresa e vamos analisar a melhor solução digital para sua necessidade."
+          description="Conte o problema e o contexto da sua empresa para avaliarmos a solução mais adequada à sua necessidade."
           actions={
             <Button href="/contato" size="lg">
               Solicitar diagnóstico

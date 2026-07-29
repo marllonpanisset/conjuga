@@ -20,7 +20,7 @@ export default function PoliticaPrivacidadePage() {
               Política de Privacidade
             </Heading>
             <Text variant="muted" className="mt-4">
-              Última atualização: a definir na publicação.
+              Última atualização: 29 de julho de 2026.
             </Text>
 
             <div className="mt-10 flex flex-col gap-8">
