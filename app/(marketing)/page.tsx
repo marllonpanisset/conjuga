@@ -21,7 +21,7 @@ import { services } from "@/content/servicos";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Engenharia digital para empresas de serviços",
+  title: "Engenharia de software para empresas de serviços",
   description:
     "Organizamos processos, automatizamos tarefas e criamos soluções digitais sob medida para empresas de serviços.",
   path: "/",
@@ -54,9 +54,9 @@ export default function HomePage() {
   return (
     <PageWrapper>
       <HomeHero
-        eyebrow="Engenharia digital para empresas de serviços"
+        eyebrow="Engenharia de software para empresas de serviços"
         title="Transformamos processos manuais em operações digitais mais eficientes"
-        description="Criamos software, automações, integrações e aplicações de inteligência artificial que ajudam empresas a ganhar organização, produtividade e previsibilidade."
+        description="Criamos sistemas web, automações, integrações e aplicações de inteligência artificial que ajudam empresas a ganhar organização, produtividade e previsibilidade."
         actions={
           <>
             <Button href="/contato" size="lg">
@@ -83,9 +83,10 @@ export default function HomePage() {
               </Heading>
 
               <Text variant="lead" className="mt-5 max-w-2xl">
-                Desenvolvemos presença digital, sistemas, automações e
-                aplicações de inteligência artificial de acordo com os
-                processos e as necessidades de cada empresa.
+                Desenvolvemos sistemas web, automações e aplicações de
+                inteligência artificial. A presença digital é um serviço
+                complementar e uma porta de entrada para empresas que ainda
+                estão estruturando sua base digital.
               </Text>
             </div>
           </div>
