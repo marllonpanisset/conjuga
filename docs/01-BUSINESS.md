@@ -144,7 +144,19 @@ Priorizamos empresas com problemas operacionais semelhantes.
 
 ---
 
-# 6. Como pensamos
+# 6. Posicionamento por Mercado
+
+A Fyrmma não se posiciona como especialista em um único segmento.
+
+Nossa especialidade é resolver problemas operacionais comuns a empresas de serviços.
+
+Os segmentos atendidos demonstram a aplicabilidade da nossa metodologia, mas não definem nossa identidade.
+
+Isso nos permite atuar em diferentes mercados mantendo o mesmo padrão de qualidade, processos e engenharia.
+
+---
+
+# 7. Como pensamos
 
 A tecnologia nunca é o ponto de partida.
 
@@ -163,7 +175,7 @@ Nunca fazemos o contrário.
 
 ---
 
-# 7. Diferenciais
+# 8. Diferenciais
 
 A Fyrmma diferencia-se por:
 
@@ -178,7 +190,7 @@ A Fyrmma diferencia-se por:
 
 ---
 
-# 8. Modelo de relacionamento
+# 9. Modelo de relacionamento
 
 Cada projeto é tratado como uma parceria.
 
@@ -190,7 +202,7 @@ Construímos ativos digitais que possam crescer junto com o cliente.
 
 ---
 
-# 9. Princípios comerciais
+# 10. Princípios comerciais
 
 Vendemos valor.
 
@@ -206,7 +218,7 @@ Preferimos perder uma venda a vender uma solução inadequada.
 
 ---
 
-# 10. Escopo deste documento
+# 11. Escopo deste documento
 
 Este documento define apenas o modelo de negócio.
 
