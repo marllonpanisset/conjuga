@@ -1,10 +1,10 @@
 import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
 import {
-  contactFieldLimits,
-  contactServices,
-  type ContactService,
-} from "@/lib/contact";
+  LeadValidationError,
+  parseLeadInput,
+} from "@/lib/leads/schema";
+import { LeadService, LeadServiceError } from "@/lib/leads/service";
 import {
   contactDelivery,
   ContactDeliveryNotConfiguredError,
@@ -13,113 +13,20 @@ import {
 
 export const runtime = "nodejs";
 
+const leadService = new LeadService();
+
 const MAX_REQUEST_BODY_SIZE = 16_000;
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const MAX_REQUESTS_PER_WINDOW = 5;
 const MAX_TRACKED_CLIENTS = 10_000;
 const DUPLICATE_WINDOW_MS = 60_000;
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const serviceValues = new Set<string>(
-  contactServices.map((service) => service.value),
-);
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 const deliveredSubmissions = new Map<string, number>();
 const inFlightSubmissions = new Set<string>();
 
-class ValidationError extends Error {}
-
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
-}
-
-function sanitizeSingleLine(value: string): string {
-  return value
-    .replace(/[\u0000-\u001F\u007F]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function sanitizeMessage(value: string): string {
-  return value
-    .replace(/\r\n?/g, "\n")
-    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, "")
-    .trim();
-}
-
-function requiredString(
-  value: unknown,
-  field: keyof typeof contactFieldLimits,
-): string {
-  if (typeof value !== "string") {
-    throw new ValidationError("Dados de contato inválidos.");
-  }
-
-  const sanitized = field === "message" ? sanitizeMessage(value) : sanitizeSingleLine(value);
-
-  if (!sanitized || sanitized.length > contactFieldLimits[field]) {
-    throw new ValidationError("Revise os campos obrigatórios e tente novamente.");
-  }
-
-  return sanitized;
-}
-
-function optionalString(
-  value: unknown,
-  field: "company" | "phone",
-): string | undefined {
-  if (value === undefined || value === "") return undefined;
-  if (typeof value !== "string") {
-    throw new ValidationError("Dados de contato inválidos.");
-  }
-
-  const sanitized = sanitizeSingleLine(value);
-  if (sanitized.length > contactFieldLimits[field]) {
-    throw new ValidationError("Dados de contato inválidos.");
-  }
-
-  return sanitized || undefined;
-}
-
-function parseContactSubmission(value: unknown): ContactSubmission {
-  if (!isRecord(value)) {
-    throw new ValidationError("Dados de contato inválidos.");
-  }
-
-  const name = requiredString(value.name, "name");
-  const email = requiredString(value.email, "email").toLowerCase();
-  const service = requiredString(value.service, "service");
-  const message = requiredString(value.message, "message");
-  const company = optionalString(value.company, "company");
-  const phone = optionalString(value.phone, "phone");
-
-  if (!emailPattern.test(email)) {
-    throw new ValidationError("Informe um e-mail válido.");
-  }
-
-  if (!serviceValues.has(service)) {
-    throw new ValidationError("O serviço selecionado é inválido.");
-  }
-
-  if (message.length < 10) {
-    throw new ValidationError("A mensagem deve ter pelo menos 10 caracteres.");
-  }
-
-  if (value.consent !== true) {
-    throw new ValidationError(
-      "Confirme que você leu a Política de Privacidade.",
-    );
-  }
-
-  return {
-    name,
-    email,
-    company,
-    phone,
-    service: service as ContactService,
-    message,
-    consent: true,
-  };
 }
 
 function getClientIdentifier(request: Request): string {
@@ -214,8 +121,8 @@ export async function POST(request: Request) {
   }
 
   try {
-    const contact = parseContactSubmission(body);
-    const fingerprint = createSubmissionFingerprint(clientIdentifier, contact);
+    const leadInput = parseLeadInput(body);
+    const fingerprint = createSubmissionFingerprint(clientIdentifier, leadInput);
 
     if (isDuplicateSubmission(fingerprint)) {
       return NextResponse.json(
@@ -227,29 +134,36 @@ export async function POST(request: Request) {
     inFlightSubmissions.add(fingerprint);
 
     try {
-      await contactDelivery.deliver(contact);
+      const { id } = await leadService.create(leadInput);
       deliveredSubmissions.set(fingerprint, Date.now());
+
+      try {
+        await contactDelivery.deliver(leadInput);
+      } catch (error) {
+        if (!(error instanceof ContactDeliveryNotConfiguredError)) {
+          console.error(
+            "Falha ao enviar notificação de contato pelo webhook.",
+            error instanceof Error ? error.name : "UnknownError",
+          );
+        }
+      }
+
+      return NextResponse.json({ success: true, id });
     } finally {
       inFlightSubmissions.delete(fingerprint);
     }
-
-    return NextResponse.json({ success: true });
   } catch (error) {
-    if (error instanceof ValidationError) {
+    if (error instanceof LeadValidationError) {
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
-    if (error instanceof ContactDeliveryNotConfiguredError) {
+    if (error instanceof LeadServiceError) {
       return NextResponse.json(
-        { error: "O envio de contatos está temporariamente indisponível." },
-        { status: 503 }
+        { error: error.message },
+        { status: 500 },
       );
     }
 
-    console.error(
-      "Falha ao entregar contato",
-      error instanceof Error ? error.name : "UnknownError",
-    );
     return NextResponse.json(
       { error: "Não foi possível enviar sua mensagem. Tente novamente mais tarde." },
       { status: 500 }
