@@ -4,7 +4,11 @@ export interface CaseStudy {
   client: string;
   segment: string;
   summary: string;
-  result: string;
+  context: string;
+  problem: string;
+  solution: string;
+  technologies: string[];
+  results?: string;
   serviceSlug: string;
   coverImage: string;
 }

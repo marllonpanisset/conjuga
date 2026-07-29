@@ -11,7 +11,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Projetos",
   description:
-    "Projetos de referência em landing pages, sites institucionais, sistemas web e automações desenvolvidos pela Fyrmma.",
+    "Projetos de engenharia digital publicados pela Fyrmma com contexto, problema, solução, tecnologias e resultados verificáveis.",
   path: "/projetos",
 });
 
@@ -32,9 +32,9 @@ export default function ProjetosPage() {
       />
 
       <Hero
-        eyebrow="Projetos de referência"
-        title="Soluções digitais pensadas para diferentes cenários de negócio"
-        description="Exemplos de como estruturamos interfaces, sistemas e experiências digitais a partir de desafios comuns encontrados por empresas."
+        eyebrow="Projetos"
+        title="Experiência demonstrada com transparência"
+        description="Publicamos apenas projetos reais, com contexto, problema, solução, tecnologias utilizadas e resultados quando for possível verificá-los."
       />
 
       <Section>
@@ -44,6 +44,11 @@ export default function ProjetosPage() {
               <CaseCard key={c.slug} caseStudy={c} />
             ))}
           </Grid>
+          {caseStudies.length === 0 && (
+            <p className="text-text-secondary">
+              Nenhum projeto foi publicado até o momento.
+            </p>
+          )}
         </Container>
       </Section>
 

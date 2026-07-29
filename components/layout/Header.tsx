@@ -15,7 +15,6 @@ import { Container } from "@/components/ui";
 import { Button } from "@/components/ui/Button";
 import {
   servicesNav,
-  nichesNav,
   mainNav,
   type NavItem,
 } from "@/config/navigation";
@@ -247,14 +246,21 @@ export function Header() {
           className="hidden items-center gap-1 lg:flex"
           aria-label="Navegação principal"
         >
+          <Link
+            href="/"
+            aria-current={pathname === "/" ? "page" : undefined}
+            className={cn(
+              "flex h-9 items-center rounded-[10px] px-3 text-[0.9375rem] transition-[background-color,color] hover:bg-surface hover:text-text-primary",
+              pathname === "/"
+                ? "bg-surface text-text-primary"
+                : "text-text-secondary",
+            )}
+          >
+            Início
+          </Link>
           <NavDropdown
             label="Serviços"
             items={servicesNav}
-            pathname={pathname}
-          />
-          <NavDropdown
-            label="Soluções por segmento"
-            items={nichesNav}
             pathname={pathname}
           />
           {mainNav.map((item) => {

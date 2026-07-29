@@ -114,12 +114,45 @@ export default async function CasePage({
 
       <Section>
         <Container>
-          <div className="max-w-2xl">
-            <Heading as="h2">Objetivo da solução</Heading>
+          <div className="max-w-2xl space-y-10">
+            <div>
+              <Heading as="h2">Contexto</Heading>
+              <Text variant="lead" className="mt-4">
+                {caseStudy.context}
+              </Text>
+            </div>
 
-            <Text variant="lead" className="mt-4">
-              {caseStudy.result}
-            </Text>
+            <div>
+              <Heading as="h2">Problema</Heading>
+              <Text variant="lead" className="mt-4">
+                {caseStudy.problem}
+              </Text>
+            </div>
+
+            <div>
+              <Heading as="h2">Solução</Heading>
+              <Text variant="lead" className="mt-4">
+                {caseStudy.solution}
+              </Text>
+            </div>
+
+            <div>
+              <Heading as="h2">Tecnologias utilizadas</Heading>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {caseStudy.technologies.map((technology) => (
+                  <Tag key={technology}>{technology}</Tag>
+                ))}
+              </div>
+            </div>
+
+            {caseStudy.results && (
+              <div>
+                <Heading as="h2">Resultados</Heading>
+                <Text variant="lead" className="mt-4">
+                  {caseStudy.results}
+                </Text>
+              </div>
+            )}
           </div>
         </Container>
       </Section>

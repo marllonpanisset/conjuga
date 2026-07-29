@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 import { services } from "@/content/servicos";
-import { niches } from "@/content/nichos";
 import { caseStudies } from "@/content/projetos";
 import { getAllPostsMeta } from "@/lib/mdx";
 
@@ -22,11 +21,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: createUrl("/servicos"),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: createUrl("/solucoes"),
       changeFrequency: "monthly",
       priority: 0.9,
     },
@@ -68,12 +62,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const nicheRoutes: MetadataRoute.Sitemap = niches.map((niche) => ({
-    url: createUrl(`/solucoes/${niche.slug}`),
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
-
   const caseRoutes: MetadataRoute.Sitemap = caseStudies.map((project) => ({
     url: createUrl(`/projetos/${project.slug}`),
     changeFrequency: "monthly",
@@ -90,7 +78,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes,
     ...serviceRoutes,
-    ...nicheRoutes,
     ...caseRoutes,
     ...blogRoutes,
   ];

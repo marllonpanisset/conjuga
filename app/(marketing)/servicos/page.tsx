@@ -15,7 +15,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Serviços",
   description:
-    "Landing Pages, Sites Institucionais, Sistemas Web Personalizados e Automações e Integrações para empresas que precisam evoluir digitalmente.",
+    "Presença digital, sistemas web, automação e inteligência artificial aplicada para empresas de serviços.",
   path: "/servicos",
 });
 
@@ -37,8 +37,8 @@ export default function ServicosPage() {
 
       <Hero
         eyebrow="Serviços"
-        title="Soluções digitais construídas para desafios reais de negócio"
-        description="Criamos experiências digitais, sistemas personalizados e automações considerando os objetivos, processos e necessidades específicas de cada empresa."
+        title="Engenharia digital construída para desafios reais de negócio"
+        description="Partimos do problema para definir soluções de presença digital, sistemas web, automação e inteligência artificial aplicada."
       />
 
       <Section>

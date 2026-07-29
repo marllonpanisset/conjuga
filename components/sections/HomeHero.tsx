@@ -44,15 +44,15 @@ export function HomeHero({
             {title}
           </Heading>
 
-          <div className="mt-10 grid gap-8 border-t border-border/70 pt-8 md:mt-12 md:grid-cols-12 md:items-end md:gap-10 md:pt-10">
+          <div className="mt-10 border-t border-border/70 pt-8 md:mt-12 md:pt-10">
             <Text
               variant="lead"
-              className="max-w-2xl text-pretty leading-[1.6] md:col-span-7 lg:col-span-8"
+              className="max-w-3xl text-pretty leading-[1.6]"
             >
               {description}
             </Text>
 
-            <div className="flex flex-col gap-3 sm:flex-row md:col-span-5 md:justify-end lg:col-span-4 [&>*]:w-full sm:[&>*]:w-auto">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap [&>*]:w-full sm:[&>*]:w-auto">
               {actions}
             </div>
           </div>

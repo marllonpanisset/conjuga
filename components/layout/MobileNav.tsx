@@ -13,7 +13,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
-import { servicesNav, nichesNav, mainNav } from "@/config/navigation";
+import { servicesNav, mainNav } from "@/config/navigation";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
@@ -171,8 +171,6 @@ export function MobileNav() {
   const openMenu = useCallback(() => {
     if (isPathActive(pathname, "/servicos")) {
       setOpenSection("servicos");
-    } else if (isPathActive(pathname, "/solucoes")) {
-      setOpenSection("nichos");
     }
 
     setOpen(true);
@@ -295,6 +293,17 @@ export function MobileNav() {
               aria-label="Navegação principal"
             >
               <div className="flex flex-col">
+                <Link
+                  href="/"
+                  onClick={closeMenu}
+                  aria-current={pathname === "/" ? "page" : undefined}
+                  className={cn(
+                    "border-b border-border/60 py-4 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.1em] transition-colors hover:text-text-primary",
+                    pathname === "/" ? "text-text-primary" : "text-text-muted",
+                  )}
+                >
+                  Início
+                </Link>
                 <AccordionSection
                   id="mobile-nav-servicos"
                   title="Serviços"
@@ -305,17 +314,6 @@ export function MobileNav() {
                   pathname={pathname}
                   reduceMotion={reduceMotion}
                 />
-                <AccordionSection
-                  id="mobile-nav-nichos"
-                  title="Soluções por segmento"
-                  items={nichesNav}
-                  isOpen={openSection === "nichos"}
-                  onToggle={() => toggleSection("nichos")}
-                  onNavigate={closeMenu}
-                  pathname={pathname}
-                  reduceMotion={reduceMotion}
-                />
-
                 <ul className="flex flex-col gap-1 py-4">
                   {mainNav.map((item) => {
                     const isActive = isPathActive(pathname, item.href);

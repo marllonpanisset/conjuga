@@ -7,18 +7,15 @@ import {
   Section,
   Heading,
   Text,
-  Grid,
-  Divider,
 } from "@/components/ui";
 
 import { Button } from "@/components/ui/Button";
-import { Hero, FeatureGrid, CaseCard, CTASection } from "@/components/sections";
+import { Hero, FeatureGrid, CTASection } from "@/components/sections";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 import { Icon } from "@/components/ui/Icon";
 
 import { services, getServiceBySlug } from "@/content/servicos";
-import { caseStudies } from "@/content/projetos";
 
 import { buildMetadata } from "@/lib/seo";
 import {
@@ -60,10 +57,6 @@ export default async function ServicoPage({
   const service = getServiceBySlug(slug);
 
   if (!service) notFound();
-
-  const relatedCases = caseStudies.filter(
-    (c) => c.serviceSlug === service.slug,
-  );
 
   return (
     <PageWrapper>
@@ -121,60 +114,31 @@ export default async function ServicoPage({
 
       <Section>
         <Container>
-          <Text variant="caption">O que está incluso</Text>
+          <Text variant="caption">Benefícios</Text>
 
           <Heading as="h2" className="mt-3 max-w-lg">
-            Como estruturamos essa solução
+            Resultados que orientam a solução
           </Heading>
 
           <div className="mt-10">
-            <FeatureGrid items={service.includes} />
+            <FeatureGrid items={service.benefits} />
           </div>
         </Container>
       </Section>
 
       <Section surface>
         <Container>
-          <Text variant="caption">Tecnologia</Text>
+          <Text variant="caption">Processo</Text>
 
           <Heading as="h2" className="mt-3 max-w-lg">
-            Ferramentas e tecnologias aplicadas
+            Como conduzimos o trabalho
           </Heading>
 
-          <div className="mt-6 flex flex-wrap gap-3">
-            {service.stack.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-[6px] border border-border px-3 py-1.5 font-mono text-[0.8125rem] text-text-secondary"
-              >
-                {tech}
-              </span>
-            ))}
+          <div className="mt-10">
+            <FeatureGrid items={service.process} />
           </div>
         </Container>
       </Section>
-
-      {relatedCases.length > 0 && (
-        <>
-          <Divider />
-
-          <Section>
-            <Container>
-              <Text variant="caption">Projetos relacionados</Text>
-
-              <Heading as="h2" className="mt-3 max-w-lg">
-                Possibilidades de aplicação
-              </Heading>
-
-              <Grid cols={3} className="mt-10">
-                {relatedCases.map((c) => (
-                  <CaseCard key={c.slug} caseStudy={c} />
-                ))}
-              </Grid>
-            </Container>
-          </Section>
-        </>
-      )}
 
       <Section>
         <CTASection

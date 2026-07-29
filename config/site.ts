@@ -7,10 +7,10 @@
 export const siteConfig = {
   name: "Fyrmma",
 
-  legalName: "Fyrmma Estúdio Digital",
+  legalName: "Fyrmma",
 
   description:
-    "Estúdio digital especializado em desenvolvimento web, sistemas personalizados e automações para pequenas e médias empresas.",
+    "Engenharia digital para empresas de serviços: software, automação, integrações e inteligência artificial aplicada.",
 
   url: "https://fyrmma.vercel.app",
 
@@ -20,7 +20,7 @@ export const siteConfig = {
     path: "/opengraph-image",
     width: 1200,
     height: 630,
-    alt: "Fyrmma — Criamos tecnologia que ajuda empresas a vender mais e trabalhar melhor",
+    alt: "Fyrmma — Engenharia digital para empresas de serviços",
   },
 
   /**
@@ -44,7 +44,7 @@ export const siteConfig = {
    * across the entire application.
    */
   author: {
-    name: "Fyrmma Estúdio Digital",
+    name: "Fyrmma",
     url: "https://fyrmma.vercel.app",
   },
 

@@ -46,24 +46,19 @@ export function Footer() {
               Fyrmma
             </span>
             <p className="mt-5 text-[0.9375rem] leading-[1.7] text-text-secondary">
-              Estúdio digital: desenvolvimento web, sistemas personalizados e
-              automações sob medida.
+              Engenharia digital para organizar processos, automatizar tarefas
+              e tornar operações mais eficientes.
             </p>
           </div>
 
           <nav
             aria-label="Navegação do rodapé"
-            className="grid grid-cols-2 gap-x-8 gap-y-12 sm:gap-x-12 md:grid-cols-4 lg:col-span-8 lg:gap-x-8"
+            className="grid grid-cols-2 gap-x-8 gap-y-12 sm:gap-x-12 md:grid-cols-3 lg:col-span-8 lg:gap-x-8"
           >
             <FooterColumn
               id="footer-services"
               title="Serviços"
               items={footerNav.servicos}
-            />
-            <FooterColumn
-              id="footer-solutions"
-              title="Soluções"
-              items={footerNav.solucoes}
             />
             <FooterColumn
               id="footer-company"

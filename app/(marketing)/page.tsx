@@ -11,24 +11,18 @@ import {
 } from "@/components/ui";
 import { Button } from "@/components/ui/Button";
 
-import { CaseCard } from "@/components/sections/CaseCard";
 import { CTASection } from "@/components/sections/CTASection";
 import { HomeHero } from "@/components/sections/HomeHero";
-import { NicheCard } from "@/components/sections/NicheCard";
 import { ProcessStep } from "@/components/sections/ProcessStep";
 import { ServiceCard } from "@/components/sections/ServiceCard";
-import { StatsBlock } from "@/components/sections/StatsBlock";
 
 import { services } from "@/content/servicos";
-import { niches } from "@/content/nichos";
-import { caseStudies } from "@/content/projetos";
-
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Sites, sistemas e automações para empresas",
+  title: "Engenharia digital para empresas de serviços",
   description:
-    "Desenvolvemos sites profissionais, sistemas personalizados e automações para empresas que querem atrair clientes, otimizar processos e crescer com tecnologia.",
+    "Organizamos processos, automatizamos tarefas e criamos soluções digitais sob medida para empresas de serviços.",
   path: "/",
 });
 
@@ -36,41 +30,22 @@ const processSteps = [
   {
     title: "Diagnóstico",
     description:
-      "Entendemos seu negócio, processos e objetivos para identificar o problema correto antes de definir a solução.",
+      "Entendemos como o negócio funciona, onde estão os gargalos e quais tarefas geram atrito.",
   },
   {
     title: "Arquitetura",
     description:
-      "Planejamos estrutura, tecnologia e experiência para criar uma base sólida antes do desenvolvimento.",
+      "Definimos a solução mais simples capaz de resolver o problema antes de escolher a tecnologia.",
   },
   {
     title: "Desenvolvimento",
     description:
-      "Construímos soluções personalizadas com código limpo, performance e escalabilidade.",
+      "Construímos e validamos a solução com foco em qualidade, segurança, acessibilidade e manutenção.",
   },
   {
     title: "Evolução contínua",
     description:
-      "Acompanhamos melhorias e novas necessidades conforme sua empresa cresce e novos desafios surgem.",
-  },
-];
-
-const stats = [
-  {
-    value: "10+",
-    label: "anos de experiência em tecnologia",
-  },
-  {
-    value: "100%",
-    label: "projetos desenvolvidos sob medida",
-  },
-  {
-    value: "Web",
-    label: "sites e sistemas modernos",
-  },
-  {
-    value: "IA",
-    label: "automação inteligente de processos",
+      "Acompanhamos novas necessidades para que o ativo digital evolua junto com a operação.",
   },
 ];
 
@@ -78,27 +53,21 @@ export default function HomePage() {
   return (
     <PageWrapper>
       <HomeHero
-        eyebrow="Sites, sistemas e automações para empresas"
-        title="Criamos tecnologia que ajuda empresas a vender mais e trabalhar melhor"
-        description="Desenvolvemos sites profissionais, sistemas personalizados e automações para empresas que querem atrair clientes, otimizar processos e crescer com tecnologia."
+        eyebrow="Engenharia digital para empresas de serviços"
+        title="Transformamos processos manuais em operações digitais mais eficientes"
+        description="Criamos software, automações, integrações e aplicações de inteligência artificial que ajudam empresas a ganhar organização, produtividade e previsibilidade."
         actions={
           <>
             <Button href="/contato" size="lg">
-              Solicitar orçamento <ArrowRight size={18} />
+              Solicitar diagnóstico <ArrowRight size={18} />
             </Button>
 
             <Button href="/servicos" variant="secondary" size="lg">
-              Ver soluções
+              Conhecer nossos serviços
             </Button>
           </>
         }
       />
-
-      <Section className="py-0">
-        <Container>
-          <StatsBlock stats={stats} />
-        </Container>
-      </Section>
 
       <Section className="py-24 md:py-32">
         <Container>
@@ -109,13 +78,13 @@ export default function HomePage() {
 
             <div className="md:col-span-8 md:col-start-5">
               <Heading as="h2" className="max-w-2xl">
-                Soluções digitais para cada fase do seu negócio
+                Soluções definidas a partir do problema do negócio
               </Heading>
 
               <Text variant="lead" className="mt-5 max-w-2xl">
-                Da presença digital aos sistemas personalizados, desenvolvemos
-                tecnologia alinhada aos objetivos, processos e necessidades de
-                cada empresa.
+                Desenvolvemos presença digital, sistemas, automações e
+                aplicações de inteligência artificial de acordo com os
+                processos e as necessidades de cada empresa.
               </Text>
             </div>
           </div>
@@ -162,68 +131,12 @@ export default function HomePage() {
       </Section>
 
       <Section className="py-24 md:py-32">
-        <Container>
-          <div className="grid gap-5 md:grid-cols-12 md:gap-8">
-            <Text variant="caption" className="md:col-span-3 md:pt-2">
-              Soluções por segmento
-            </Text>
-
-            <div className="md:col-span-8 md:col-start-5">
-              <Heading as="h2" className="max-w-2xl">
-                Tecnologia criada para diferentes segmentos
-              </Heading>
-
-              <Text variant="lead" className="mt-5 max-w-2xl">
-                Cada empresa possui processos, objetivos e necessidades
-                diferentes. Desenvolvemos soluções considerando o contexto de
-                cada negócio.
-              </Text>
-            </div>
-          </div>
-
-          <Grid cols={3} className="mt-12 md:mt-16">
-            {niches.map((niche) => (
-              <NicheCard key={niche.slug} niche={niche} />
-            ))}
-          </Grid>
-        </Container>
-      </Section>
-
-      <Section surface className="py-24 md:py-32">
-        <Container>
-          <div className="grid gap-5 md:grid-cols-12 md:gap-8">
-            <Text variant="caption" className="md:col-span-3 md:pt-2">
-              Projetos
-            </Text>
-
-            <div className="md:col-span-8 md:col-start-5">
-              <Heading as="h2" className="max-w-2xl">
-                Soluções criadas para diferentes negócios
-              </Heading>
-
-              <Text variant="lead" className="mt-5 max-w-2xl">
-                Projetos de interfaces, sistemas e experiências digitais
-                desenvolvidos para demonstrar como desafios podem ser
-                transformados em soluções eficientes.
-              </Text>
-            </div>
-          </div>
-
-          <Grid cols={3} className="mt-12 md:mt-16">
-            {caseStudies.map((c) => (
-              <CaseCard key={c.slug} caseStudy={c} />
-            ))}
-          </Grid>
-        </Container>
-      </Section>
-
-      <Section className="py-24 md:py-32">
         <CTASection
-          title="Pronto para transformar sua ideia em uma solução digital?"
-          description="Conte seu objetivo e vamos encontrar a melhor tecnologia para sua empresa."
+          title="Vamos entender o problema antes de definir a solução?"
+          description="Conte como sua operação funciona e quais processos precisam ganhar eficiência."
           actions={
             <Button href="/contato" size="lg">
-              Solicitar orçamento
+              Falar com a Fyrmma
             </Button>
           }
         />

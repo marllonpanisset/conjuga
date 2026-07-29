@@ -104,8 +104,7 @@ export default function OpenGraphImage() {
               letterSpacing: "-0.045em",
             }}
           >
-            Criamos tecnologia que ajuda empresas a vender mais e trabalhar
-            melhor
+            Engenharia digital para empresas de serviços
           </div>
 
           <div

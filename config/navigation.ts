@@ -7,47 +7,38 @@ export interface NavItem {
 export const servicesNav: NavItem[] = [
   { label: "Todos os serviços", href: "/servicos" },
   {
-    label: "Landing Pages",
-    href: "/servicos/landing-pages",
-    description: "Páginas de conversão de alta performance",
-  },
-  {
-    label: "Sites Institucionais",
-    href: "/servicos/sites-institucionais",
-    description: "Presença digital completa e profissional",
+    label: "Presença Digital",
+    href: "/servicos/presenca-digital",
+    description: "Sites, páginas, blogs e SEO técnico",
   },
   {
     label: "Sistemas Web Personalizados",
     href: "/servicos/sistemas-web",
-    description: "Ferramentas sob medida para o seu processo",
+    description: "Ferramentas sob medida para processos específicos",
   },
   {
     label: "Automações e Integrações",
-    href: "/servicos/automacoes-integracoes",
-    description: "Processos conectados, sem trabalho manual",
+    href: "/servicos/automacao",
+    description: "Processos conectados e menos tarefas repetitivas",
   },
-];
-
-export const nichesNav: NavItem[] = [
-  { label: "Ver todas soluções", href: "/solucoes" },
-  { label: "Clínicas e Saúde", href: "/solucoes/saude" },
-  { label: "Advocacia", href: "/solucoes/advocacia" },
-  { label: "Contabilidade", href: "/solucoes/contabilidade" },
-  { label: "Consultoria", href: "/solucoes/consultoria" },
-  { label: "Serviços Locais", href: "/solucoes/servicos-locais" },
-  { label: "Negócios B2B", href: "/solucoes/negocios-b2b" },
+  {
+    label: "Inteligência Artificial Aplicada",
+    href: "/servicos/inteligencia-artificial-aplicada",
+    description: "IA responsável para problemas operacionais claros",
+  },
 ];
 
 export const mainNav: NavItem[] = [
   { label: "Projetos", href: "/projetos" },
-  { label: "Sobre", href: "/sobre" },
   { label: "Blog", href: "/blog" },
+  { label: "Sobre", href: "/sobre" },
+  { label: "Contato", href: "/contato" },
 ];
 
 export const footerNav = {
   servicos: servicesNav,
-  solucoes: nichesNav,
   empresa: [
+    { label: "Início", href: "/" },
     { label: "Sobre", href: "/sobre" },
     { label: "Projetos", href: "/projetos" },
     { label: "Blog", href: "/blog" },

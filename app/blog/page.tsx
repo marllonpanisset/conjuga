@@ -16,7 +16,7 @@ export const metadata: Metadata = buildMetadata({
   title: "Blog",
 
   description:
-    "Conteúdo técnico sobre presença digital, sistemas web e automação para pequenas e médias empresas.",
+    "Conteúdo sobre processos, presença digital, sistemas web, automação e inteligência artificial aplicada para empresas de serviços.",
 
   path: "/blog",
 });
@@ -47,8 +47,8 @@ export default function BlogPage() {
 
       <Hero
         eyebrow="Blog"
-        title="Conteúdo técnico sobre presença digital"
-        description="Artigos objetivos sobre sistemas, automação e estratégia digital para os segmentos que atendemos."
+        title="Conhecimento para operações mais organizadas"
+        description="Artigos objetivos para ensinar, esclarecer dúvidas e compartilhar aprendizados sobre software, automação e processos."
       />
 
       <Section>

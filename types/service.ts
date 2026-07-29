@@ -6,8 +6,9 @@ export interface Service {
   name: string;
   shortDescription: string;
   problem: string;
+  benefits: string[];
   includes: string[];
-  stack: string[];
+  process: string[];
   heroTitle: string;
   heroDescription: string;
 }

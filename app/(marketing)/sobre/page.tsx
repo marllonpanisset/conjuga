@@ -11,7 +11,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Sobre",
   description:
-    "Conheça a Fyrmma: um estúdio digital focado em criar sites, sistemas e automações sob medida para empresas que querem evoluir.",
+    "Conheça a Fyrmma, empresa de engenharia digital que transforma problemas operacionais em soluções simples e evolutivas.",
   path: "/sobre",
 });
 
@@ -50,9 +50,9 @@ const differentiators = [
       "Cada etapa é construída com clareza, desde o entendimento inicial até a entrega da solução.",
   },
   {
-    title: "Tecnologia moderna",
+    title: "Simplicidade e evolução",
     description:
-      "Aplicamos tecnologias atuais para criar soluções eficientes, sustentáveis e preparadas para evolução.",
+      "Priorizamos soluções fáceis de entender, manter e expandir, sem complexidade desnecessária.",
   },
 ];
 
@@ -74,8 +74,8 @@ export default function SobrePage() {
 
       <Hero
         eyebrow="Sobre a Fyrmma"
-        title="Um estúdio digital que transforma desafios de negócio em soluções digitais"
-        description="A Fyrmma desenvolve sites, sistemas e automações sob medida para empresas que precisam melhorar sua presença digital, organizar processos e criar novas oportunidades através da tecnologia."
+        title="Engenharia digital orientada aos problemas do negócio"
+        description="A Fyrmma transforma operações manuais em processos digitais mais eficientes por meio de software, automação, integrações e inteligência artificial aplicada."
       />
 
       <Section surface>

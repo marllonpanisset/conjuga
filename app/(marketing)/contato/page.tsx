@@ -51,7 +51,7 @@ export default function ContatoPage() {
 
       <Hero
         eyebrow="Contato"
-        title="Vamos entender o próximo desafio digital da sua empresa"
+        title="Vamos entender o próximo desafio da sua operação"
         description="Conte sobre sua empresa, seus processos e o que você deseja melhorar. Vamos analisar o cenário e indicar o caminho mais adequado para sua necessidade."
       />
 
