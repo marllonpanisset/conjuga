@@ -15,7 +15,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Serviços",
   description:
-    "Presença digital, sistemas web, automação e inteligência artificial aplicada para empresas de serviços.",
+    "Sistemas web, automações, integrações e inteligência artificial aplicada para empresas de serviços. Presença digital como serviço complementar e porta de entrada para empresas que estruturam sua base digital.",
   path: "/servicos",
 });
 
@@ -37,8 +37,8 @@ export default function ServicosPage() {
 
       <Hero
         eyebrow="Serviços"
-        title="Engenharia digital construída para desafios reais de negócio"
-        description="Partimos do problema para definir soluções de presença digital, sistemas web, automação e inteligência artificial aplicada."
+        title="Engenharia de software construída para desafios reais de negócio"
+        description="Partimos do problema para definir sistemas web, automações, integrações e soluções com inteligência artificial aplicada. A presença digital é um serviço complementar e uma porta de entrada para empresas que ainda estão estruturando sua base digital."
       />
 
       <Section>
@@ -54,7 +54,7 @@ export default function ServicosPage() {
       <Section>
         <CTASection
           title="Não sabe qual solução faz sentido?"
-          description="Conte o contexto da sua empresa e vamos identificar o caminho digital mais adequado para o seu momento."
+          description="Conte o problema e o contexto da sua empresa para identificarmos a solução mais adequada ao seu momento."
           actions={
             <Button href="/contato" size="lg">
               Conversar com a Fyrmma

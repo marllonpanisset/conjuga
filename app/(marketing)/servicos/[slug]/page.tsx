@@ -267,7 +267,7 @@ export default async function ServicoPage({
       <Section>
         <CTASection
           title="Vamos avaliar o melhor caminho para sua empresa?"
-          description="Conte o contexto do seu negócio e vamos identificar a solução digital mais adequada para sua necessidade."
+          description="Conte o problema e o contexto do seu negócio para identificarmos a solução mais adequada à sua necessidade."
           actions={
             <Button href="/contato" size="lg">
               Conversar com a Fyrmma

@@ -3,43 +3,11 @@ import type { Service } from "@/types/service";
 
 export const services: Service[] = [
   {
-    slug: "presenca-digital",
-    icon: Globe2,
-    name: "Presença Digital",
-    shortDescription:
-      "Sites e páginas profissionais para comunicar com clareza e transmitir confiança.",
-    problem:
-      "Uma presença digital desorganizada dificulta o entendimento dos serviços, reduz a credibilidade e cria atrito antes do primeiro contato.",
-    benefits: [
-      "Comunicação mais clara dos serviços",
-      "Presença digital organizada e confiável",
-      "Estrutura preparada para evolução de conteúdo",
-    ],
-    includes: [
-      "Landing pages",
-      "Sites institucionais",
-      "Microsites",
-      "Blogs",
-      "SEO técnico",
-    ],
-    process: [
-      "Entendimento do negócio e do público",
-      "Arquitetura da informação",
-      "Desenvolvimento e validação",
-      "Publicação e evolução",
-    ],
-    heroTitle:
-      "Presença digital construída para comunicar com clareza",
-    heroDescription:
-      "Criamos landing pages, sites institucionais, microsites e blogs com estrutura clara, performance, acessibilidade e SEO técnico.",
-  },
-
-  {
     slug: "sistemas-web",
     icon: Cpu,
     name: "Sistemas Web Personalizados",
     shortDescription:
-      "Ferramentas digitais desenvolvidas para processos específicos do seu negócio.",
+      "Sistemas web sob medida desenvolvidos para processos específicos do seu negócio.",
     problem:
       "Planilhas, processos manuais e ferramentas genéricas podem limitar a organização e a evolução da operação.",
     benefits: [
@@ -62,7 +30,7 @@ export const services: Service[] = [
     ],
     heroTitle: "Sistemas desenvolvidos a partir da realidade do seu negócio",
     heroDescription:
-      "Criamos ferramentas digitais sob medida para organizar processos, centralizar informações e apoiar decisões.",
+      "Criamos sistemas web sob medida para organizar processos, centralizar informações e apoiar decisões.",
   },
 
   {
@@ -124,6 +92,37 @@ export const services: Service[] = [
     heroTitle: "Inteligência artificial aplicada onde ela faz sentido",
     heroDescription:
       "Aplicamos IA a problemas operacionais específicos, com limites claros, validação humana e foco em eficiência.",
+  },
+  {
+    slug: "presenca-digital",
+    icon: Globe2,
+    name: "Presença Digital",
+    shortDescription:
+      "Serviço complementar para empresas que ainda estão estruturando sua base digital.",
+    problem:
+      "Uma presença digital desorganizada dificulta o entendimento dos serviços, reduz a credibilidade e cria atrito antes do primeiro contato.",
+    benefits: [
+      "Comunicação mais clara dos serviços",
+      "Presença digital organizada e confiável",
+      "Estrutura preparada para evolução de conteúdo",
+    ],
+    includes: [
+      "Landing pages",
+      "Sites institucionais",
+      "Microsites",
+      "Blogs",
+      "SEO técnico",
+    ],
+    process: [
+      "Entendimento do negócio e do público",
+      "Arquitetura da informação",
+      "Desenvolvimento e validação",
+      "Publicação e evolução",
+    ],
+    heroTitle:
+      "Presença digital construída para comunicar com clareza",
+    heroDescription:
+      "Criamos sites e páginas para estruturar a base digital antes da evolução para sistemas web, automações e soluções com inteligência artificial.",
   },
 ];
 
