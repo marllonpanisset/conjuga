@@ -1,28 +1,57 @@
 # Fyrmma
 
-Site institucional da **Fyrmma**, desenvolvido com foco em performance, SEO e experiência do usuário.
+Site institucional da **Fyrmma**, desenvolvido com foco em performance, acessibilidade, SEO e experiência do usuário.
 
 ## 🚀 Tecnologias
 
-- Next.js 16
+- Next.js
 - React
 - TypeScript
 - Tailwind CSS
 - Framer Motion
 
-## 📁 Estrutura
+---
+
+# 📁 Estrutura do Projeto
 
 ```text
-app/            Rotas da aplicação
-components/     Componentes reutilizáveis
-content/        Conteúdo do site
-lib/            Utilitários
-public/         Arquivos estáticos
-styles/         Estilos globais
-.fyrmma/        Documentação e conhecimento do projeto
+.
+├── app/              Rotas da aplicação (App Router)
+├── components/       Componentes reutilizáveis
+├── content/          Conteúdo estruturado do site
+├── docs/             Documentação estratégica do projeto
+├── lib/              Utilitários
+├── public/           Arquivos estáticos
+├── styles/           Estilos globais
+├── AGENTS.md         Guia para agentes de IA
+└── README.md
 ```
 
-## 💻 Desenvolvimento
+---
+
+# 📚 Documentação
+
+Antes de realizar mudanças significativas, consulte a documentação do projeto.
+
+A leitura recomendada é:
+
+```text
+docs/
+├── 01-BUSINESS.md      Modelo de negócio
+├── 02-PRINCIPLES.md    Princípios da empresa
+├── 03-BRAND.md         Identidade da marca
+├── 04-WEBSITE.md       Arquitetura do site
+├── 05-COPY.md          Comunicação institucional
+└── 06-ROADMAP.md       Evolução estratégica
+```
+
+O arquivo **AGENTS.md** serve como ponto de entrada para agentes de Inteligência Artificial e referencia toda a documentação oficial do projeto.
+
+Toda decisão de negócio, produto, design ou comunicação deve estar alinhada com esses documentos.
+
+---
+
+# 💻 Desenvolvimento
 
 Instale as dependências:
 
@@ -38,32 +67,43 @@ npm run dev
 
 Acesse:
 
-```
+```text
 http://localhost:3000
 ```
 
-## 📦 Build
+---
+
+# 📦 Build
+
+Gerar a versão de produção:
 
 ```bash
 npm run build
+```
+
+Executar em produção:
+
+```bash
 npm start
 ```
 
-## 📄 Documentação
+---
 
-A documentação do projeto está disponível na pasta:
+# 🧭 Princípios do Projeto
 
-```text
-.fyrmma/
-```
+Este projeto adota uma abordagem **Documentation First**.
 
-Ela contém:
+Antes de implementar funcionalidades:
 
-- Regras de desenvolvimento
-- Arquitetura
-- Padrões do projeto
-- Base de conhecimento utilizada pelo Fyrmma Agent
+- consulte a documentação correspondente;
+- evite duplicar regras ou decisões;
+- mantenha uma única fonte de verdade;
+- atualize a documentação quando houver mudanças relevantes.
 
-## 📜 Licença
+---
 
-Projeto proprietário. Todos os direitos reservados.
+# 📄 Licença
+
+Projeto proprietário.
+
+Todos os direitos reservados.
