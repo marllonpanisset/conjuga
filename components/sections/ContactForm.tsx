@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Check } from "lucide-react";
 import {
   useEffect,
   useRef,
@@ -13,7 +14,7 @@ import { Button } from "@/components/ui/Button";
 import { Text } from "@/components/ui/Text";
 import { contactFieldLimits, contactServices } from "@/lib/contact";
 
-type Status = "idle" | "loading" | "success" | "error";
+type FormStatus = "idle" | "submitting" | "success" | "error";
 type FieldName =
   | "name"
   | "company"
@@ -25,6 +26,8 @@ type FieldName =
 type FieldErrors = Partial<Record<FieldName, string>>;
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const submitErrorFallback =
+  "Não foi possível enviar sua mensagem. Seus dados continuam preenchidos. Tente novamente.";
 const fieldClassName =
   "h-11 min-w-0 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal";
 
@@ -36,17 +39,18 @@ function FieldError({ id, message }: { id: string; message: string }) {
   );
 }
 
-function getErrorMessage(value: unknown): string {
+function getApiErrorMessage(value: unknown): string {
   if (
     typeof value === "object" &&
     value !== null &&
     "error" in value &&
-    typeof value.error === "string"
+    typeof value.error === "string" &&
+    value.error.trim()
   ) {
     return value.error;
   }
 
-  return "Não foi possível enviar sua mensagem.";
+  return submitErrorFallback;
 }
 
 function validateForm(formData: FormData): FieldErrors {
@@ -76,15 +80,30 @@ function validateForm(formData: FormData): FieldErrors {
 }
 
 export function ContactForm() {
-  const [status, setStatus] = useState<Status>("idle");
+  const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
-  const statusRef = useRef<HTMLDivElement>(null);
+  const [isSuccessVisible, setIsSuccessVisible] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const firstFieldRef = useRef<HTMLInputElement>(null);
+  const errorRef = useRef<HTMLDivElement>(null);
+  const successTitleRef = useRef<HTMLHeadingElement>(null);
   const submittingRef = useRef(false);
+  const shouldRestoreFormFocusRef = useRef(false);
 
   useEffect(() => {
-    if (status === "error" || status === "success") {
-      statusRef.current?.focus();
+    if (status === "success") {
+      successTitleRef.current?.focus();
+      const animationFrame = requestAnimationFrame(() => {
+        setIsSuccessVisible(true);
+      });
+
+      return () => cancelAnimationFrame(animationFrame);
+    } else if (status === "error") {
+      errorRef.current?.focus();
+    } else if (status === "idle" && shouldRestoreFormFocusRef.current) {
+      shouldRestoreFormFocusRef.current = false;
+      firstFieldRef.current?.focus();
     }
   }, [status]);
 
@@ -118,7 +137,7 @@ export function ContactForm() {
 
     submittingRef.current = true;
     setFieldErrors({});
-    setStatus("loading");
+    setStatus("submitting");
     setErrorMessage("");
 
     const payload = {
@@ -140,52 +159,84 @@ export function ContactForm() {
       });
 
       if (!response.ok) {
-        let data: unknown;
+        let message = submitErrorFallback;
+
         try {
-          data = await response.json();
+          message = getApiErrorMessage(await response.json());
         } catch {
-          throw new Error("Não foi possível enviar sua mensagem.");
+          // The safe fallback already covers an invalid or empty response body.
         }
 
-        throw new Error(getErrorMessage(data));
+        setErrorMessage(message);
+        setStatus("error");
+        return;
       }
 
-      form.reset();
+      setIsSuccessVisible(false);
       setStatus("success");
-    } catch (error) {
+    } catch {
       setStatus("error");
-      setErrorMessage(
-        error instanceof Error
-          ? error.message
-          : "Erro inesperado ao enviar.",
-      );
+      setErrorMessage(submitErrorFallback);
     } finally {
       submittingRef.current = false;
     }
   }
 
-  if (status === "success") {
-    return (
-      <div
-        ref={statusRef}
-        role="status"
-        tabIndex={-1}
-        className="rounded-[16px] border border-border bg-surface p-8 text-center outline-none"
-      >
-        <Text className="text-text-primary">
-          Mensagem enviada com sucesso.
-        </Text>
-      </div>
-    );
+  function handleSendAnotherMessage() {
+    formRef.current?.reset();
+    setFieldErrors({});
+    setErrorMessage("");
+    setIsSuccessVisible(false);
+    shouldRestoreFormFocusRef.current = true;
+    setStatus("idle");
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      noValidate
-      aria-busy={status === "loading"}
-      className="flex min-w-0 flex-col gap-5"
-    >
+    <>
+      {status === "success" && (
+        <div
+          role="status"
+          aria-live="polite"
+          className={`flex flex-col items-center rounded-[16px] border border-border bg-surface p-6 text-center shadow-sm transition-opacity duration-200 ease-out motion-reduce:transition-none sm:p-8 ${
+            isSuccessVisible ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <div
+            aria-hidden="true"
+            className="mb-5 flex h-12 w-12 items-center justify-center rounded-full border border-signal/25 bg-signal/10 text-signal-strong"
+          >
+            <Check size={24} strokeWidth={2.25} />
+          </div>
+          <h2
+            ref={successTitleRef}
+            tabIndex={-1}
+            className="text-xl font-semibold text-text-primary outline-none focus-visible:ring-2 focus-visible:ring-signal/30"
+          >
+            Mensagem enviada!
+          </h2>
+          <Text className="mt-3 max-w-md">
+            Recebemos seu desafio. Vamos analisar as informações e entraremos em
+            contato em até 1 dia útil.
+          </Text>
+          <Button
+            type="button"
+            variant="secondary"
+            size="lg"
+            onClick={handleSendAnotherMessage}
+            className="mt-6 w-full sm:w-auto"
+          >
+            Enviar outra mensagem
+          </Button>
+        </div>
+      )}
+      <form
+        ref={formRef}
+        onSubmit={handleSubmit}
+        noValidate
+        hidden={status === "success"}
+        aria-busy={status === "submitting"}
+        className="flex min-w-0 flex-col gap-5"
+      >
       <div
         className="absolute h-px w-px overflow-hidden whitespace-nowrap opacity-0"
         aria-hidden="true"
@@ -209,6 +260,7 @@ export function ContactForm() {
             Nome
           </label>
           <input
+            ref={firstFieldRef}
             id="name"
             name="name"
             required
@@ -375,7 +427,7 @@ export function ContactForm() {
 
       {status === "error" && (
         <div
-          ref={statusRef}
+          ref={errorRef}
           role="alert"
           tabIndex={-1}
           className="rounded-[10px] border border-warning/30 bg-warning/5 px-4 py-3 outline-none"
@@ -387,11 +439,12 @@ export function ContactForm() {
       <Button
         type="submit"
         size="lg"
-        disabled={status === "loading"}
+        disabled={status === "submitting"}
         className="w-full sm:w-fit"
       >
-        {status === "loading" ? "Enviando..." : "Enviar mensagem"}
+        {status === "submitting" ? "Enviando..." : "Enviar mensagem"}
       </Button>
-    </form>
+      </form>
+    </>
   );
 }
