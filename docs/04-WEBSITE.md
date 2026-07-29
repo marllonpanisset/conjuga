@@ -12,15 +12,16 @@
 
 O site da Fyrmma deve:
 
-- apresentar a empresa;
-- explicar os serviços;
+- comunicar claramente o posicionamento da empresa;
+- explicar como resolvemos problemas operacionais;
+- apresentar nossos serviços;
 - demonstrar credibilidade;
 - educar potenciais clientes;
 - gerar contatos qualificados.
 
-O site não existe apenas para exibir informações.
+O site não existe apenas para apresentar a empresa.
 
-Ele deve conduzir o visitante até uma ação.
+Ele deve ajudar o visitante a entender seu problema, enxergar uma solução e iniciar uma conversa.
 
 ---
 
@@ -44,7 +45,14 @@ Toda página deve contribuir para responder uma ou mais dessas perguntas.
 
 Objetivo:
 
-Apresentar a empresa e conduzir o visitante para os principais serviços e páginas.
+Comunicar imediatamente que a Fyrmma desenvolve sistemas web, automações e soluções com inteligência artificial para empresas de serviços, conduzindo o visitante até os serviços, metodologia e contato.
+
+A Home deve responder rapidamente:
+
+- o que fazemos;
+- para quem fazemos;
+- como trabalhamos;
+- por que confiar na Fyrmma.
 
 Seções:
 
