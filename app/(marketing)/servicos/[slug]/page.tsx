@@ -11,7 +11,7 @@ import {
 } from "@/components/ui";
 
 import { Button } from "@/components/ui/Button";
-import { Hero, FeatureGrid, CTASection } from "@/components/sections";
+import { Hero, CTASection } from "@/components/sections";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 import { Icon } from "@/components/ui/Icon";
@@ -183,9 +183,41 @@ export default async function ServicoPage({
             Como conduzimos o trabalho
           </Heading>
 
-          <div className="mt-10">
-            <FeatureGrid items={service.process} />
-          </div>
+          <ol className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-[16px] border border-border bg-border md:grid-cols-2">
+            {service.process.map((step, index) => (
+              <li
+                key={step}
+                className="
+                  relative
+                  h-full
+                  min-h-[220px]
+                  bg-surface
+                  p-6
+                  md:p-8
+                  lg:min-h-[240px] lg:p-10
+                "
+              >
+                <div className="flex h-full flex-col justify-between gap-10">
+                  <span
+                    className="
+                      flex h-9 w-9 shrink-0 items-center justify-center
+                      border border-border-strong
+                      bg-background
+                      font-mono text-[0.6875rem] font-semibold
+                      tracking-[0.04em]
+                      text-signal-strong
+                    "
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  <Heading as="h3" className="max-w-md">
+                    {step}
+                  </Heading>
+                </div>
+              </li>
+            ))}
+          </ol>
         </Container>
       </Section>
 
