@@ -45,7 +45,7 @@ Toda página deve contribuir para responder uma ou mais dessas perguntas.
 
 Objetivo:
 
-Comunicar imediatamente que a Fyrmma desenvolve sistemas web, automações e soluções com inteligência artificial para empresas de serviços, conduzindo o visitante até os serviços, metodologia e contato.
+Comunicar imediatamente que a Fyrmma desenvolve sistemas web, automações e soluções com inteligência artificial para empresas de serviços, conduzindo o visitante até os serviços, a metodologia de trabalho e o contato.
 
 A Home deve responder rapidamente:
 
@@ -60,9 +60,9 @@ Seções:
 - Serviços
 - Como Trabalhamos
 - Diferenciais
-- Tecnologias
-- Perguntas Frequentes
 - CTA Final
+
+A organização e a quantidade de seções podem evoluir conforme a estratégia da empresa, desde que a Home continue cumprindo seus objetivos principais: comunicar o posicionamento da Fyrmma, apresentar os serviços, explicar a metodologia de trabalho e conduzir o visitante para uma conversa.
 
 ---
 
