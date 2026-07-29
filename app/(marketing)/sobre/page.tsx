@@ -202,17 +202,47 @@ export default function SobrePage() {
             </Heading>
           </FadeIn>
 
-          <Grid cols={3} className="mt-10">
-            {principles.map((item) => (
-              <div key={item.title}>
-                <Heading as="h3">{item.title}</Heading>
+          <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-[16px] border border-border bg-border md:mt-16 lg:grid-cols-3">
+            {principles.map((item, index) => (
+              <article
+                key={item.title}
+                className="
+                  h-full min-h-[220px]
+                  bg-surface p-6
+                  md:p-8
+                  lg:min-h-[240px] lg:p-10
+                "
+              >
+                <div className="flex h-full flex-col justify-between gap-10">
+                  <div className="shrink-0">
+                    <span
+                      className="
+                        flex h-9 w-9 items-center justify-center
+                        border border-border-strong
+                        bg-background
+                        font-mono text-[0.6875rem] font-semibold
+                        tracking-[0.04em]
+                        text-signal-strong
+                      "
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
 
-                <Text variant="muted" className="mt-3">
-                  {item.description}
-                </Text>
-              </div>
+                  <div className="max-w-md">
+                    <Heading as="h3">{item.title}</Heading>
+
+                    <Text
+                      variant="muted"
+                      className="mt-3 leading-relaxed text-text-secondary"
+                    >
+                      {item.description}
+                    </Text>
+                  </div>
+                </div>
+              </article>
             ))}
-          </Grid>
+          </div>
         </Container>
       </Section>
 
