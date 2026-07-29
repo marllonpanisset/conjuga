@@ -1,7 +1,11 @@
 export const contactServices = [
-  { value: "presenca-digital", label: "Presença Digital" },
   { value: "sistemas-web", label: "Sistemas Web" },
-  { value: "automacoes", label: "Automações" },
+  { value: "automacoes", label: "Automações e Integrações" },
+  {
+    value: "inteligencia-artificial-aplicada",
+    label: "Inteligência Artificial Aplicada",
+  },
+  { value: "presenca-digital", label: "Presença Digital" },
 ] as const;
 
 export const contactFieldLimits = {

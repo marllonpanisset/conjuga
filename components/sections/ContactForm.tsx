@@ -245,8 +245,7 @@ export function ContactForm() {
             Mensagem enviada!
           </h2>
           <Text className="mt-3 max-w-md">
-            Recebemos seu desafio. Vamos analisar as informações e entraremos em
-            contato em até 1 dia útil.
+            Recebemos sua mensagem. Entraremos em contato o mais breve possível.
           </Text>
           <Button
             type="button"

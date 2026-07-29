@@ -11,7 +11,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Contato",
   description:
-    "Conte o desafio da sua empresa para a Fyrmma. Desenvolvemos sites, sistemas e automações sob medida para melhorar processos e oportunidades digitais.",
+    "Fale com a Fyrmma, empresa de engenharia de software que desenvolve sistemas web, automações, integrações e soluções com inteligência artificial aplicada.",
   path: "/contato",
 });
 
@@ -19,7 +19,7 @@ const processSteps = [
   {
     title: "1. Entendemos o contexto",
     description:
-      "Analisamos seu negócio, objetivos e processos atuais para compreender onde a tecnologia pode gerar impacto.",
+      "Analisamos seu negócio, objetivos e processos atuais para identificar gargalos e oportunidades de melhoria.",
   },
   {
     title: "2. Identificamos oportunidades",
@@ -29,7 +29,7 @@ const processSteps = [
   {
     title: "3. Construímos a solução adequada",
     description:
-      "Criamos sites, sistemas ou automações alinhados ao momento da sua empresa.",
+      "Desenvolvemos sistemas web, automações, integrações ou soluções com inteligência artificial aplicada a partir do diagnóstico.",
   },
 ];
 
@@ -52,7 +52,7 @@ export default function ContatoPage() {
       <Hero
         eyebrow="Contato"
         title="Vamos entender o próximo desafio da sua operação"
-        description="Conte sobre sua empresa, seus processos e o que você deseja melhorar. Vamos analisar o cenário e indicar o caminho mais adequado para sua necessidade."
+        description="Conte sobre sua empresa, seus processos e o que você deseja melhorar. Vamos analisar o problema e o contexto do negócio antes de definir a solução mais adequada."
       />
 
       <Section>
@@ -62,9 +62,9 @@ export default function ContatoPage() {
               <Heading as="h3">Conte seu desafio</Heading>
 
               <Text variant="muted" className="mt-3">
-                Seja para criar uma nova presença digital, organizar processos
-                internos ou desenvolver uma solução personalizada, queremos
-                entender primeiro o problema antes de indicar a tecnologia.
+                Seja para desenvolver sistemas web, automações, integrações ou
+                soluções com inteligência artificial aplicada, queremos entender
+                primeiro o problema antes de indicar a tecnologia.
               </Text>
 
               <div className="mt-8">
