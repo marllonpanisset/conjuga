@@ -10,44 +10,32 @@ export function ProcessStep({ index, title, description }: ProcessStepProps) {
   return (
     <div
       className="
-        group
         relative
         h-full
-        rounded-[16px]
-        border border-border
+        min-h-[220px]
         bg-surface
         p-6
-        shadow-[0_1px_2px_rgba(0,0,0,0.2)]
-        transition-[border-color,background-color,box-shadow]
-        duration-200 ease-[var(--ease-signature)]
-        hover:border-signal/30
-        hover:bg-surface-elevated/60
-        hover:shadow-[0_1px_2px_rgba(0,0,0,0.24),0_16px_32px_-28px_rgba(76,111,255,0.32)]
         md:p-8
+        lg:min-h-[240px] lg:p-10
       "
     >
-      <div className="flex h-full items-start gap-5 md:gap-6">
+      <div className="flex h-full flex-col justify-between gap-10">
         <div className="shrink-0">
           <span
             className="
-              flex h-11 w-11 items-center justify-center
-              rounded-[12px]
-              border border-border-strong/80
-              bg-background/60
-              font-mono text-xs font-semibold
-              tracking-[-0.02em]
+              flex h-9 w-9 items-center justify-center
+              border border-border-strong
+              bg-background
+              font-mono text-[0.6875rem] font-semibold
+              tracking-[0.04em]
               text-signal-strong
-              transition-[border-color,background-color,color] duration-200 ease-[var(--ease-signature)]
-              group-hover:border-signal/40
-              group-hover:bg-signal-soft
-              group-hover:text-signal
             "
           >
             {String(index).padStart(2, "0")}
           </span>
         </div>
 
-        <div className="max-w-lg flex-1">
+        <div className="max-w-md">
           <Heading as="h3">
             {title}
           </Heading>

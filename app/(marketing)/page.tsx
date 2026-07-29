@@ -71,12 +71,12 @@ export default function HomePage() {
 
       <Section className="py-24 md:py-32">
         <Container>
-          <div className="grid gap-5 md:grid-cols-12 md:gap-8">
-            <Text variant="caption" className="md:col-span-3 md:pt-2">
+          <div className="grid gap-6 md:grid-cols-12 md:gap-8">
+            <Text variant="caption" className="md:col-span-2 md:pt-2">
               Serviços
             </Text>
 
-            <div className="md:col-span-8 md:col-start-5">
+            <div className="md:col-span-8 md:col-start-4 lg:col-span-7">
               <Heading as="h2" className="max-w-2xl">
                 Soluções definidas a partir do problema do negócio
               </Heading>
@@ -89,7 +89,10 @@ export default function HomePage() {
             </div>
           </div>
 
-          <Grid cols={4} className="mt-12 md:mt-16">
+          <Grid
+            cols={4}
+            className="mt-12 gap-5 border-t border-border pt-8 md:mt-16 md:pt-10"
+          >
             {services.map((service) => (
               <ServiceCard key={service.slug} service={service} />
             ))}
@@ -99,12 +102,12 @@ export default function HomePage() {
 
       <Section surface className="py-24 md:py-32">
         <Container>
-          <div className="grid gap-5 md:grid-cols-12 md:gap-8">
-            <Text variant="caption" className="md:col-span-3 md:pt-2">
+          <div className="grid gap-6 md:grid-cols-12 md:gap-8">
+            <Text variant="caption" className="md:col-span-2 md:pt-2">
               Método
             </Text>
 
-            <div className="md:col-span-8 md:col-start-5">
+            <div className="md:col-span-8 md:col-start-4 lg:col-span-7">
               <Heading as="h2" className="max-w-2xl">
                 Antes do código, entendemos o negócio
               </Heading>
@@ -117,7 +120,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2">
+          <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-[16px] border border-border bg-border md:mt-16 md:grid-cols-2">
             {processSteps.map((step, i) => (
               <ProcessStep
                 key={step.title}
