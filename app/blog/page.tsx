@@ -16,7 +16,7 @@ export const metadata: Metadata = buildMetadata({
   title: "Blog",
 
   description:
-    "Conteúdo sobre processos, presença digital, sistemas web, automação e inteligência artificial aplicada para empresas de serviços.",
+    "Conteúdo sobre sistemas web, automações, integrações e inteligência artificial aplicada para empresas de serviços, além de presença digital.",
 
   path: "/blog",
 });

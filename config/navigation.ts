@@ -7,14 +7,9 @@ export interface NavItem {
 export const servicesNav: NavItem[] = [
   { label: "Todos os serviços", href: "/servicos" },
   {
-    label: "Presença Digital",
-    href: "/servicos/presenca-digital",
-    description: "Sites, páginas, blogs e SEO técnico",
-  },
-  {
     label: "Sistemas Web Personalizados",
     href: "/servicos/sistemas-web",
-    description: "Ferramentas sob medida para processos específicos",
+    description: "Sistemas web sob medida para processos específicos",
   },
   {
     label: "Automações e Integrações",
@@ -25,6 +20,11 @@ export const servicesNav: NavItem[] = [
     label: "Inteligência Artificial Aplicada",
     href: "/servicos/inteligencia-artificial-aplicada",
     description: "IA responsável para problemas operacionais claros",
+  },
+  {
+    label: "Presença Digital",
+    href: "/servicos/presenca-digital",
+    description: "Sites, páginas, blogs e SEO técnico",
   },
 ];
 

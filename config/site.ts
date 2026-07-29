@@ -29,12 +29,13 @@ export const siteConfig = {
    * Individual pages may extend these keywords when appropriate.
    */
   keywords: [
+    "sistemas web",
+    "automações",
+    "integrações",
+    "inteligência artificial aplicada",
     "desenvolvimento web",
     "sites institucionais",
     "landing pages",
-    "automações",
-    "integrações",
-    "sistemas web",
     "desenvolvimento sob medida",
     "Fyrmma",
   ],

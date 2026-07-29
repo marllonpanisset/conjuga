@@ -23,7 +23,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Engenharia de software para empresas de serviços",
   description:
-    "Organizamos processos, automatizamos tarefas e criamos soluções digitais sob medida para empresas de serviços.",
+    "Desenvolvemos sistemas web, automações, integrações e soluções com inteligência artificial aplicada para empresas de serviços.",
   path: "/",
 });
 
