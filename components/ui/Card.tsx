@@ -11,15 +11,18 @@ export function Card({ children, className }: CardProps) {
     <div
       className={cn(
         `
-        rounded-[16px]
+        rounded-[var(--radius-lg)]
         border
         border-border
         bg-surface
         p-6
-        shadow-[0_1px_2px_rgba(0,0,0,0.24),0_12px_28px_-24px_rgba(0,0,0,0.8)]
+        shadow-[var(--shadow-card)]
         transition-[border-color,background-color,box-shadow]
         duration-200
         ease-[var(--ease-signature)]
+        hover:border-border-strong
+        hover:bg-surface-elevated/50
+        hover:shadow-[var(--shadow-card-hover)]
         md:p-7
         `,
         className,
