@@ -57,7 +57,10 @@ export const siteConfig = {
    * Search engines can associate these profiles with the organization
    * represented by this website.
    */
-  sameAs: ["https://instagram.com/fyrmma.estudio"],
+  sameAs: [
+    "https://instagram.com/fyrmma.estudio",
+    "https://linkedin.com/company/fyrmma",
+  ],
 
   contact: {
     email: "fyrmma@outlook.com",

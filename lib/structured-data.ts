@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import { getPostMetaBySlug } from "@/lib/mdx";
 
 interface BreadcrumbItem {
   name: string;
@@ -30,11 +31,16 @@ export function organizationJsonLd() {
     "@type": "Organization",
     "@id": organizationId,
     name: siteConfig.name,
-    legalName: siteConfig.legalName,
     url: absoluteUrl("/"),
     description: siteConfig.description,
     email: siteConfig.contact.email,
     sameAs: [...siteConfig.sameAs],
+    knowsAbout: [
+      "Sistemas Web",
+      "Automações e Integrações",
+      "Inteligência Artificial Aplicada",
+      "Presença Digital",
+    ],
   };
 }
 
@@ -46,6 +52,7 @@ export function websiteJsonLd() {
     name: siteConfig.name,
     url: absoluteUrl("/"),
     description: siteConfig.description,
+    inLanguage: siteConfig.locale,
     publisher: {
       "@id": organizationId,
     },
@@ -57,12 +64,18 @@ export function serviceJsonLd({
   description,
   path,
 }: ServiceSchemaInput) {
+  const url = absoluteUrl(path);
+
   return {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${url}#service`,
     name,
     description,
-    url: absoluteUrl(path),
+    url,
+    mainEntityOfPage: {
+      "@id": url,
+    },
     provider: {
       "@id": organizationId,
     },
@@ -76,14 +89,19 @@ export function articleJsonLd({
   datePublished,
 }: ArticleSchemaInput) {
   const url = absoluteUrl(path);
+  const slug = path.replace(/^\/blog\//, "");
+  const articleSection = getPostMetaBySlug(slug).segment;
 
   return {
     "@context": "https://schema.org",
     "@type": "Article",
+    "@id": `${url}#article`,
     headline,
     description,
     datePublished,
     url,
+    inLanguage: siteConfig.locale,
+    articleSection,
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": url,
