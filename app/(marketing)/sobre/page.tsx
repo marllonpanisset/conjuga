@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CircleOff, Target } from "lucide-react";
 import { PageWrapper } from "@/components/layout";
 import { Container, Section, Heading, Text, Grid } from "@/components/ui";
 import { Button } from "@/components/ui/Button";
@@ -74,27 +75,119 @@ export default function SobrePage() {
 
       <Hero
         eyebrow="Sobre a Fyrmma"
-        title="Engenharia digital orientada aos problemas do negócio"
+        title="Engenharia digital para empresas de serviços"
         description="A Fyrmma transforma operações manuais em processos digitais mais eficientes por meio de software, automação, integrações e inteligência artificial aplicada."
       />
 
       <Section surface>
         <Container>
-          <div className="mx-auto max-w-3xl">
-            <FadeIn>
-              <Text variant="caption">Nossa abordagem</Text>
+          <div className="max-w-3xl">
+            <Text variant="caption">Posicionamento</Text>
 
-              <Heading as="h2" className="mt-3">
-                Tecnologia começa entendendo o negócio
+            <Heading as="h2" className="mt-3">
+              Parceiros de engenharia digital para empresas de serviços
+            </Heading>
+
+            <Text variant="lead" className="mt-4">
+              A Fyrmma atua entre consultoria, engenharia de software, automação
+              de processos e inteligência artificial aplicada.
+            </Text>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 md:gap-5">
+            <article
+              className="
+                group h-full
+                rounded-[16px] border border-border
+                bg-surface p-6
+                shadow-[var(--shadow-card)]
+                transition-[border-color,background-color,box-shadow]
+                duration-200 ease-[var(--ease-signature)]
+                hover:border-border-strong
+                hover:bg-surface-elevated/50
+                hover:shadow-[var(--shadow-card-hover)]
+                md:p-8
+              "
+            >
+              <span className="font-mono text-[0.6875rem] font-semibold tracking-[0.08em] text-text-muted">
+                01
+              </span>
+
+              <span
+                className="
+                  mt-5 flex h-11 w-11 items-center justify-center
+                  rounded-[12px] border border-border-strong/80
+                  bg-background/60 text-signal-strong
+                  transition-[border-color,background-color]
+                  duration-200 ease-[var(--ease-signature)]
+                  group-hover:border-signal/35
+                  group-hover:bg-signal-soft
+                "
+              >
+                <Target size={20} strokeWidth={1.75} aria-hidden="true" />
+              </span>
+
+              <Heading as="h3" className="mt-6 max-w-md">
+                Como a Fyrmma se posiciona
               </Heading>
 
-              <Text variant="lead" className="mt-4">
-                Antes do código existe um problema para resolver. Nosso trabalho
-                começa entendendo objetivos, processos e oportunidades para
-                construir soluções digitais alinhadas à realidade de cada
-                empresa.
+              <Text
+                variant="muted"
+                className="mt-3 max-w-xl leading-relaxed text-text-secondary"
+              >
+                Partimos do problema de negócio para traduzir desafios
+                operacionais em soluções digitais. A tecnologia é o instrumento
+                para gerar eficiência, organização, produtividade e
+                previsibilidade.
               </Text>
-            </FadeIn>
+            </article>
+
+            <article
+              className="
+                group h-full
+                rounded-[16px] border border-border
+                bg-surface p-6
+                shadow-[var(--shadow-card)]
+                transition-[border-color,background-color,box-shadow]
+                duration-200 ease-[var(--ease-signature)]
+                hover:border-border-strong
+                hover:bg-surface-elevated/50
+                hover:shadow-[var(--shadow-card-hover)]
+                md:p-8
+              "
+            >
+              <span className="font-mono text-[0.6875rem] font-semibold tracking-[0.08em] text-text-muted">
+                02
+              </span>
+
+              <span
+                className="
+                  mt-5 flex h-11 w-11 items-center justify-center
+                  rounded-[12px] border border-border-strong/80
+                  bg-background/60 text-signal-strong
+                  transition-[border-color,background-color]
+                  duration-200 ease-[var(--ease-signature)]
+                  group-hover:border-signal/35
+                  group-hover:bg-signal-soft
+                "
+              >
+                <CircleOff size={20} strokeWidth={1.75} aria-hidden="true" />
+              </span>
+
+              <Heading as="h3" className="mt-6 max-w-md">
+                Como a Fyrmma não se posiciona
+              </Heading>
+
+              <Text
+                variant="muted"
+                className="mt-3 max-w-xl leading-relaxed text-text-secondary"
+              >
+                Não somos uma agência, uma software house genérica ou uma
+                consultoria tradicional. Nossa especialidade é resolver
+                problemas operacionais comuns a empresas de serviços, sem
+                limitar nossa atuação a um único segmento.
+              </Text>
+            </article>
           </div>
         </Container>
       </Section>
