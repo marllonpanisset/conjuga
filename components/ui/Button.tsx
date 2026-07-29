@@ -34,17 +34,19 @@ const variantStyles: Record<ButtonVariant, string> = {
   primary: `
     bg-gradient-to-b from-signal-strong to-signal
     text-white
-    border border-white/10
-    shadow-md shadow-signal/15
+    border border-white/15
+    shadow-[var(--shadow-button)]
 
     hover:from-signal hover:to-signal-strong
-    hover:shadow-lg hover:shadow-signal/25
+    hover:border-white/20
+    hover:shadow-[var(--shadow-button-hover)]
     hover:brightness-[1.03]
 
     active:brightness-95
 
     focus-visible:outline-none
-    focus-visible:ring-2 focus-visible:ring-signal/30
+    focus-visible:ring-2 focus-visible:ring-signal
+    focus-visible:ring-offset-2 focus-visible:ring-offset-background
   `,
 
   secondary: `
@@ -61,7 +63,8 @@ const variantStyles: Record<ButtonVariant, string> = {
     active:bg-surface
 
     focus-visible:outline-none
-    focus-visible:ring-2 focus-visible:ring-signal/20
+    focus-visible:ring-2 focus-visible:ring-signal
+    focus-visible:ring-offset-2 focus-visible:ring-offset-background
   `,
 
   ghost: `
@@ -73,7 +76,8 @@ const variantStyles: Record<ButtonVariant, string> = {
     active:bg-surface-elevated
 
     focus-visible:outline-none
-    focus-visible:ring-2 focus-visible:ring-signal/20
+    focus-visible:ring-2 focus-visible:ring-signal
+    focus-visible:ring-offset-2 focus-visible:ring-offset-background
   `,
 };
 
@@ -84,13 +88,17 @@ const sizeStyles: Record<ButtonSize, string> = {
 
 const base = `
   inline-flex items-center justify-center gap-2
-  rounded-xl
+  rounded-[var(--radius-md)]
   font-medium
+  leading-none
   whitespace-nowrap
   cursor-pointer
   transition-[background-color,border-color,color,box-shadow,filter]
   duration-150 ease-out
   select-none
+  disabled:cursor-not-allowed
+  disabled:opacity-50
+  disabled:shadow-none
 `;
 
 export function Button({
