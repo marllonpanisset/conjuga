@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
-import {
-  CircleOff,
-  DraftingCompass,
-  ListChecks,
-  Minimize2,
-  Target,
-} from "lucide-react";
+import Link from "next/link";
+import { CircleOff, Target } from "lucide-react";
 import { PageWrapper } from "@/components/layout";
 import { Container, Section, Heading, Text } from "@/components/ui";
 import { Button } from "@/components/ui/Button";
@@ -24,46 +19,29 @@ export const metadata: Metadata = buildMetadata({
 
 const principles = [
   {
-    title: "Entendimento antes da tecnologia",
+    title: "Entender antes de construir",
     description:
-      "Antes de desenvolver qualquer solução, entendemos objetivos, processos e desafios para identificar a solução mais adequada ao problema e ao contexto do negócio.",
+      "Primeiro entendemos a operação, os processos e o problema que precisa ser resolvido.",
   },
   {
-    title: "Soluções pensadas para cada negócio",
+    title: "Simplicidade intencional",
     description:
-      "Cada empresa possui uma realidade diferente. Criamos soluções de software sob medida considerando os processos, o contexto e as necessidades específicas de cada negócio.",
+      "Evitamos complexidade, dependências e funcionalidades que não tenham uma justificativa clara.",
   },
   {
-    title: "Tecnologia aplicada a objetivos reais",
+    title: "Software como ferramenta",
     description:
-      "Aplicamos tecnologia para reduzir tarefas repetitivas, eliminar gargalos e tornar operações mais eficientes.",
-  },
-];
-
-const differentiators = [
-  {
-    title: "Engenharia de software",
-    description:
-      "Projetamos soluções considerando arquitetura, integrações, manutenção e evolução contínua.",
-    icon: DraftingCompass,
+      "A tecnologia é um meio para organizar a operação e resolver problemas do negócio, não um fim.",
   },
   {
-    title: "Foco no problema",
+    title: "Manutenção no longo prazo",
     description:
-      "O ponto inicial é sempre a necessidade do negócio. A tecnologia entra como ferramenta para resolver.",
-    icon: Target,
+      "Priorizamos soluções fáceis de entender, manter e expandir conforme novas necessidades aparecem.",
   },
   {
-    title: "Processo transparente",
+    title: "Decisões com contexto",
     description:
-      "Cada etapa é construída com clareza, desde o entendimento inicial até a entrega da solução.",
-    icon: ListChecks,
-  },
-  {
-    title: "Simplicidade e evolução",
-    description:
-      "Priorizamos soluções fáceis de entender, manter e expandir, sem complexidade desnecessária.",
-    icon: Minimize2,
+      "Arquitetura, integrações e escolhas técnicas são definidas a partir da realidade de cada negócio.",
   },
 ];
 
@@ -85,8 +63,8 @@ export default function SobrePage() {
 
       <Hero
         eyebrow="Sobre a Fyrmma"
-        title="Engenharia de software para empresas de serviços"
-        description="A Fyrmma transforma operações manuais em processos digitais mais eficientes por meio de software, automação, integrações e inteligência artificial aplicada."
+        title="Engenharia de software para empresas"
+        description="A Fyrmma é uma empresa brasileira de engenharia de software focada em entender operações, organizar processos e entregar sistemas digitais confiáveis."
       />
 
       <Section surface>
@@ -95,13 +73,13 @@ export default function SobrePage() {
             <Text variant="caption">Posicionamento</Text>
 
             <Heading as="h2" className="mt-3">
-              Parceiros de engenharia de software para empresas de serviços
+              Como pensamos
             </Heading>
 
             <Text variant="lead" className="mt-4">
-              A Fyrmma desenvolve sistemas web, automações, integrações e
-              soluções com inteligência artificial aplicada para resolver
-              problemas operacionais.
+              Antes de definir uma solução, buscamos compreender como a empresa
+              trabalha, onde estão os gargalos e o que precisa ser organizado.
+              Essa análise orienta as decisões de engenharia.
             </Text>
           </div>
 
@@ -146,10 +124,9 @@ export default function SobrePage() {
                 variant="muted"
                 className="mt-3 max-w-xl leading-relaxed text-text-secondary"
               >
-                Partimos do problema de negócio para traduzir desafios
-                operacionais em soluções de engenharia de software. A tecnologia
-                é o instrumento para gerar eficiência, organização, produtividade
-                e previsibilidade.
+                Projetamos sistemas considerando o contexto da operação, as
+                integrações necessárias e a manutenção futura. O objetivo é
+                entregar software claro, confiável e adequado ao problema.
               </Text>
             </article>
 
@@ -200,6 +177,17 @@ export default function SobrePage() {
               </Text>
             </article>
           </div>
+
+          <Text variant="muted" className="mt-8">
+            Conheça as áreas em que essa abordagem é aplicada em nossos{" "}
+            <Link
+              href="/servicos"
+              className="link-underline text-signal-strong"
+            >
+              serviços
+            </Link>
+            .
+          </Text>
         </Container>
       </Section>
 
@@ -213,16 +201,17 @@ export default function SobrePage() {
             </Heading>
           </FadeIn>
 
-          <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-[16px] border border-border bg-border md:mt-16 lg:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-[16px] border border-border bg-border md:mt-16 lg:grid-cols-6">
             {principles.map((item, index) => (
               <article
                 key={item.title}
-                className="
+                className={`
                   h-full min-h-[220px]
                   bg-surface p-6
                   md:p-8
                   lg:min-h-[240px] lg:p-10
-                "
+                  ${index < 3 ? "lg:col-span-2" : "lg:col-span-3"}
+                `}
               >
                 <div className="flex h-full flex-col justify-between gap-10">
                   <div className="shrink-0">
@@ -253,81 +242,6 @@ export default function SobrePage() {
                 </div>
               </article>
             ))}
-          </div>
-        </Container>
-      </Section>
-
-      <Section surface>
-        <Container>
-          <div className="grid gap-6 md:grid-cols-12 md:gap-8">
-            <Text variant="caption" className="md:col-span-2 md:pt-2">
-              Diferenciais
-            </Text>
-
-            <div className="md:col-span-8 md:col-start-4 lg:col-span-7">
-              <Heading as="h2" className="max-w-2xl">
-                O que orienta nossas entregas
-              </Heading>
-            </div>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 md:gap-5">
-            {differentiators.map(
-              ({ title, description, icon: Icon }, index) => {
-                const number = String(index + 1).padStart(2, "0");
-
-                return (
-                  <article
-                    key={title}
-                    className="
-                      group h-full
-                      rounded-[16px] border border-border
-                      bg-surface p-6
-                      shadow-[var(--shadow-card)]
-                      transition-[border-color,background-color,box-shadow]
-                      duration-200 ease-[var(--ease-signature)]
-                      hover:border-border-strong
-                      hover:bg-surface-elevated/50
-                      hover:shadow-[var(--shadow-card-hover)]
-                      md:p-8
-                    "
-                  >
-                    <span className="font-mono text-[0.6875rem] font-semibold tracking-[0.08em] text-text-muted">
-                      {number}
-                    </span>
-
-                    <span
-                      className="
-                        mt-5 flex h-11 w-11 items-center justify-center
-                        rounded-[12px] border border-border-strong/80
-                        bg-background/60 text-signal-strong
-                        transition-[border-color,background-color]
-                        duration-200 ease-[var(--ease-signature)]
-                        group-hover:border-signal/35
-                        group-hover:bg-signal-soft
-                      "
-                    >
-                      <Icon
-                        size={20}
-                        strokeWidth={1.75}
-                        aria-hidden="true"
-                      />
-                    </span>
-
-                    <Heading as="h3" className="mt-6 max-w-md">
-                      {title}
-                    </Heading>
-
-                    <Text
-                      variant="muted"
-                      className="mt-3 max-w-xl leading-relaxed text-text-secondary"
-                    >
-                      {description}
-                    </Text>
-                  </article>
-                );
-              },
-            )}
           </div>
         </Container>
       </Section>
