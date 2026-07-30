@@ -233,7 +233,7 @@ export function Header() {
         <Link
           href="/"
           aria-current={pathname === "/" ? "page" : undefined}
-          className="rounded-sm font-display text-[1.125rem] font-medium tracking-[-0.04em] text-text-primary"
+          className="rounded-sm font-display text-[1.125rem] font-medium tracking-[0.25em] text-text-primary"
         >
           FYRMMA
         </Link>
