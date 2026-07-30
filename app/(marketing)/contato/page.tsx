@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { PageWrapper } from "@/components/layout";
 import { Container, Section, Heading, Text } from "@/components/ui";
@@ -17,19 +18,24 @@ export const metadata: Metadata = buildMetadata({
 
 const processSteps = [
   {
-    title: "1. Entendemos o contexto",
+    title: "1. Diagnóstico",
     description:
-      "Analisamos seu negócio, objetivos e processos atuais para identificar gargalos e oportunidades de melhoria.",
+      "Entendemos como o negócio funciona, onde estão os gargalos e quais tarefas geram atrito.",
   },
   {
-    title: "2. Identificamos oportunidades",
+    title: "2. Arquitetura",
     description:
-      "Avaliamos o cenário e definimos quais soluções fazem sentido para sua necessidade, sem desenvolver algo desnecessário.",
+      "Definimos a solução mais simples capaz de resolver o problema antes de escolher a tecnologia.",
   },
   {
-    title: "3. Construímos a solução adequada",
+    title: "3. Desenvolvimento",
     description:
-      "Desenvolvemos sistemas web, automações, integrações ou soluções com inteligência artificial aplicada a partir do diagnóstico.",
+      "Construímos e validamos a solução com foco em qualidade, segurança, acessibilidade e manutenção.",
+  },
+  {
+    title: "4. Evolução contínua",
+    description:
+      "Acompanhamos novas necessidades para que o ativo digital evolua junto com a operação.",
   },
 ];
 
@@ -67,9 +73,15 @@ export default function ContatoPage() {
               </Heading>
 
               <Text variant="muted" className="mt-3">
-                Seja para desenvolver sistemas web, automações, integrações ou
-                soluções com inteligência artificial aplicada, queremos entender
-                primeiro o problema antes de indicar a tecnologia.
+                Você não precisa saber qual tecnologia ou serviço escolher antes
+                de conversar. Se quiser conhecer as possibilidades, veja nossos{" "}
+                <Link
+                  href="/servicos"
+                  className="link-underline text-signal-strong"
+                >
+                  serviços
+                </Link>
+                .
               </Text>
 
               <div className="mt-8">
@@ -77,7 +89,7 @@ export default function ContatoPage() {
                   as="h2"
                   className="text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.01em]"
                 >
-                  Como funciona
+                  Como conduzimos um projeto
                 </Heading>
 
                 <div className="mt-5 space-y-6">
