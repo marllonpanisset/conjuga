@@ -13,7 +13,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Sobre",
   description:
-    "Conheça a Fyrmma, empresa de engenharia de software que transforma problemas operacionais em soluções simples e evolutivas.",
+    "Conheça a Conjuga, empresa de engenharia de software que transforma problemas operacionais em soluções simples e evolutivas.",
   path: "/sobre",
 });
 
@@ -62,9 +62,9 @@ export default function SobrePage() {
       />
 
       <Hero
-        eyebrow="Sobre a Fyrmma"
+        eyebrow="Sobre a Conjuga"
         title="Engenharia de software para empresas"
-        description="A Fyrmma é uma empresa brasileira de engenharia de software focada em entender operações, organizar processos e entregar sistemas digitais confiáveis."
+        description="A Conjuga é uma empresa brasileira de engenharia de software focada em entender operações, organizar processos e entregar sistemas digitais confiáveis."
       />
 
       <Section surface>
@@ -117,7 +117,7 @@ export default function SobrePage() {
               </span>
 
               <Heading as="h3" className="mt-6 max-w-md">
-                Como a Fyrmma se posiciona
+                Como a Conjuga se posiciona
               </Heading>
 
               <Text
@@ -163,7 +163,7 @@ export default function SobrePage() {
               </span>
 
               <Heading as="h3" className="mt-6 max-w-md">
-                Como a Fyrmma não se posiciona
+                Como a Conjuga não se posiciona
               </Heading>
 
               <Text
@@ -252,7 +252,7 @@ export default function SobrePage() {
           description="Conte o contexto da sua empresa e vamos avaliar a solução mais adequada para o seu momento."
           actions={
             <Button href="/contato" size="lg">
-              Conversar com a Fyrmma
+              Conversar com a Conjuga
             </Button>
           }
         />

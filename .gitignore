@@ -27,5 +27,5 @@ build/
 coverage/
 
 # Agent runtime
-.fyrmma/reports/*.md
-.fyrmma/memory/*
+.agents/reports/*.md
+.agents/memory/*

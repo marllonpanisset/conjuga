@@ -80,7 +80,7 @@ export function DifferentialsSection() {
 
           <div className="md:col-span-8 md:col-start-4 lg:col-span-7">
             <Heading as="h2" className="max-w-2xl">
-              A Fyrmma diferencia-se por:
+              A Conjuga diferencia-se por:
             </Heading>
 
             <Text variant="lead" className="mt-5 max-w-2xl">

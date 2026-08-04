@@ -12,7 +12,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Contato",
   description:
-    "Fale com a Fyrmma, empresa de engenharia de software que desenvolve sistemas web, automações, integrações e soluções com inteligência artificial aplicada.",
+    "Fale com a Conjuga, empresa de engenharia de software que desenvolve sistemas web, automações, integrações e soluções com inteligência artificial aplicada.",
   path: "/contato",
 });
 

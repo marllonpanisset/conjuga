@@ -5,7 +5,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Termos de Uso",
-  description: "Termos de uso do site institucional da Fyrmma.",
+  description: "Termos de uso do site institucional da Conjuga.",
   path: "/termos-de-uso",
 });
 
@@ -31,8 +31,9 @@ export default function TermosDeUsoPage() {
                   1. Uso do site
                 </Heading>
                 <Text variant="body" className="mt-3">
-                  O conteúdo deste site é fornecido para fins informativos sobre os serviços da Fyrmma e não
-                  constitui garantia contratual até a formalização de uma proposta comercial.
+                  O conteúdo deste site é fornecido para fins informativos sobre
+                  os serviços da Conjuga e não constitui garantia contratual até
+                  a formalização de uma proposta comercial.
                 </Text>
               </div>
               <div>
@@ -43,8 +44,8 @@ export default function TermosDeUsoPage() {
                   2. Propriedade intelectual
                 </Heading>
                 <Text variant="body" className="mt-3">
-                  Todo o conteúdo, identidade visual e código deste site pertencem à Fyrmma, salvo indicação
-                  contrária.
+                  Todo o conteúdo, identidade visual e código deste site
+                  pertencem à Conjuga, salvo indicação contrária.
                 </Text>
               </div>
             </div>

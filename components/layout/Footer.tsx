@@ -42,8 +42,8 @@ export function Footer() {
       <Container className="py-16 md:py-20">
         <div className="grid gap-12 border-b border-border/70 pb-14 md:gap-16 md:pb-16 lg:grid-cols-12">
           <div className="max-w-md lg:col-span-4">
-            <span className="font-display text-[1.25rem] font-medium tracking-[-0.04em] text-text-primary">
-              Fyrmma
+            <span className="font-display text-[1.25rem] font-medium tracking-[0.10em] text-text-primary">
+              CONJUGA
             </span>
             <p className="mt-5 text-[0.9375rem] leading-[1.7] text-text-secondary">
               Engenharia de software para organizar processos, automatizar

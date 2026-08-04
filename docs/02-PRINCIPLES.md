@@ -1,6 +1,6 @@
 # PRINCIPLES.md
 
-> Documento canônico dos princípios da Fyrmma.
+> Documento canônico dos princípios da Conjuga.
 >
 > Estes princípios orientam decisões de negócio, produto, design, engenharia, comunicação e experiência do cliente.
 >
@@ -18,7 +18,7 @@ Frameworks mudam.
 
 Ferramentas deixam de existir.
 
-Os princípios da Fyrmma devem permanecer estáveis.
+Os princípios da Conjuga devem permanecer estáveis.
 
 Toda decisão tomada dentro da empresa deve estar alinhada com estes princípios.
 
@@ -234,7 +234,7 @@ Toda implementação deve considerar:
 
 A Inteligência Artificial é utilizada para acelerar desenvolvimento, pesquisa e automação.
 
-Ela não é o centro da proposta de valor da Fyrmma.
+Ela não é o centro da proposta de valor da Conjuga.
 
 ---
 
@@ -300,7 +300,7 @@ Antes de implementar qualquer mudança, pergunte:
 
 4. Isso será fácil de manter no futuro?
 
-5. Isso fortalece a identidade da Fyrmma?
+5. Isso fortalece a identidade da Conjuga?
 
 Se a maioria das respostas for negativa, a decisão deve ser reavaliada.
 

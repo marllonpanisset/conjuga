@@ -3,12 +3,7 @@ import { notFound } from "next/navigation";
 import { Network, ShieldCheck, Target } from "lucide-react";
 
 import { PageWrapper } from "@/components/layout";
-import {
-  Container,
-  Section,
-  Heading,
-  Text,
-} from "@/components/ui";
+import { Container, Section, Heading, Text } from "@/components/ui";
 
 import { Button } from "@/components/ui/Button";
 import { Hero, CTASection } from "@/components/sections";
@@ -19,10 +14,7 @@ import { Icon } from "@/components/ui/Icon";
 import { services, getServiceBySlug } from "@/content/servicos";
 
 import { buildMetadata } from "@/lib/seo";
-import {
-  breadcrumbJsonLd,
-  serviceJsonLd,
-} from "@/lib/structured-data";
+import { breadcrumbJsonLd, serviceJsonLd } from "@/lib/structured-data";
 
 const benefitIcons = [Target, ShieldCheck, Network];
 
@@ -270,7 +262,7 @@ export default async function ServicoPage({
           description="Conte o problema e o contexto do seu negócio para identificarmos a solução mais adequada à sua necessidade."
           actions={
             <Button href="/contato" size="lg">
-              Conversar com a Fyrmma
+              Conversar com a Conjuga
             </Button>
           }
         />

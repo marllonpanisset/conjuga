@@ -4,12 +4,12 @@
  * Keeping SEO, metadata and structured data values in a single place avoids
  * duplication and ensures every page shares the same source of truth.
  */
-const siteUrl = "https://fyrmma.vercel.app";
+const siteUrl = "https://conjuga.vercel.app";
 
 export const siteConfig = {
-  name: "Fyrmma",
+  name: "Conjuga",
 
-  legalName: "Fyrmma",
+  legalName: "Conjuga",
 
   description:
     "Engenharia de software para empresas de serviços: sistemas web, automação, integrações e inteligência artificial aplicada.",
@@ -22,7 +22,7 @@ export const siteConfig = {
     path: "/opengraph-image",
     width: 1200,
     height: 630,
-    alt: "Fyrmma — Engenharia de software para empresas de serviços",
+    alt: "Conjuga — Engenharia de software para empresas de serviços",
   },
 
   /**
@@ -39,7 +39,7 @@ export const siteConfig = {
     "sites institucionais",
     "landing pages",
     "desenvolvimento sob medida",
-    "Fyrmma",
+    "Conjuga",
   ],
 
   /**
@@ -47,7 +47,7 @@ export const siteConfig = {
    * across the entire application.
    */
   author: {
-    name: "Fyrmma",
+    name: "Conjuga",
     url: siteUrl,
   },
 
@@ -58,18 +58,18 @@ export const siteConfig = {
    * represented by this website.
    */
   sameAs: [
-    "https://instagram.com/fyrmma.estudio",
-    "https://linkedin.com/company/fyrmma",
+    "https://instagram.com/conjuga.estudio",
+    "https://linkedin.com/company/conjuga",
   ],
 
   contact: {
-    email: "fyrmma@outlook.com",
+    email: "conjuga@outlook.com",
   },
 
   social: {
-    linkedin: "https://linkedin.com/company/fyrmma",
+    linkedin: "https://linkedin.com/company/conjuga",
 
-    instagram: "https://instagram.com/fyrmma.estudio",
+    instagram: "https://instagram.com/conjuga.estudio",
   },
 
   /**
@@ -77,10 +77,10 @@ export const siteConfig = {
    * components while the application migrates to semantic fields.
    */
   links: {
-    email: "fyrmma@outlook.com",
+    email: "conjuga@outlook.com",
 
-    linkedin: "https://linkedin.com/company/fyrmma",
+    linkedin: "https://linkedin.com/company/conjuga",
 
-    instagram: "https://instagram.com/fyrmma",
+    instagram: "https://instagram.com/conjuga",
   },
 } as const;

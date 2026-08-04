@@ -11,7 +11,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Projetos",
   description:
-    "Projetos de engenharia de software serão publicados pela Fyrmma conforme autorização dos clientes, com contexto, problema, solução e resultados verificáveis.",
+    "Projetos de engenharia de software serão publicados pela Conjuga conforme autorização dos clientes, com contexto, problema, solução e resultados verificáveis.",
   path: "/projetos",
 });
 
@@ -78,14 +78,14 @@ export default function ProjetosPage() {
       <Section>
         <CTASection
           title="Vamos conversar sobre o seu projeto"
-          description="Conheça nossos serviços, entenda como trabalhamos ou converse com a Fyrmma sobre o desafio da sua empresa. Os projetos serão publicados conforme autorização dos clientes."
+          description="Conheça nossos serviços, entenda como trabalhamos ou converse com a Conjuga sobre o desafio da sua empresa. Os projetos serão publicados conforme autorização dos clientes."
           actions={
             <>
               <Button href="/servicos" size="lg">
                 Conhecer nossos serviços
               </Button>
               <Button href="/sobre" variant="secondary" size="lg">
-                Sobre a Fyrmma
+                Sobre a Conjuga
               </Button>
               <Button href="/contato" variant="ghost" size="lg">
                 Solicitar um diagnóstico

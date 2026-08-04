@@ -1,6 +1,6 @@
 # BUSINESS.md
 
-> Documento canônico do modelo de negócio da Fyrmma.
+> Documento canônico do modelo de negócio da Conjuga.
 >
 > Todas as decisões de produto, marca, comunicação, desenvolvimento e arquitetura devem ser compatíveis com este documento.
 >
@@ -10,7 +10,7 @@
 
 # 1. Propósito
 
-A Fyrmma é uma empresa de engenharia digital especializada em transformar operações manuais em processos digitais mais eficientes através de software, automação e inteligência artificial aplicada.
+A Conjuga é uma empresa de engenharia digital especializada em transformar operações manuais em processos digitais mais eficientes através de software, automação e inteligência artificial aplicada.
 
 Nosso objetivo não é apenas desenvolver software.
 
@@ -20,7 +20,7 @@ Nosso objetivo é reduzir atritos operacionais, eliminar tarefas repetitivas e c
 
 # 2. Posicionamento
 
-A Fyrmma não se posiciona como agência.
+A Conjuga não se posiciona como agência.
 
 Também não se posiciona como uma software house genérica.
 
@@ -47,7 +47,7 @@ Nosso objetivo é tornar empresas mais eficientes através da tecnologia.
 
 # 3. O que fazemos
 
-As soluções da Fyrmma estão organizadas em quatro áreas.
+As soluções da Conjuga estão organizadas em quatro áreas.
 
 Os três primeiros pilares representam o foco principal da empresa.
 
@@ -113,7 +113,7 @@ A presença digital é utilizada como base para empresas que posteriormente evol
 
 # 4. O que NÃO fazemos
 
-A Fyrmma não tem como objetivo ser:
+A Conjuga não tem como objetivo ser:
 
 - agência de marketing;
 - agência de tráfego pago;
@@ -163,7 +163,7 @@ Priorizamos empresas com problemas operacionais semelhantes.
 
 # 6. Posicionamento por Mercado
 
-A Fyrmma não se posiciona como especialista em um único segmento.
+A Conjuga não se posiciona como especialista em um único segmento.
 
 Nossa especialidade é resolver problemas operacionais comuns a empresas de serviços.
 
@@ -198,7 +198,7 @@ Nunca fazemos o contrário.
 
 # 8. Diferenciais
 
-A Fyrmma diferencia-se por oito princípios que orientam todas as decisões de arquitetura, desenvolvimento e evolução dos projetos.
+A Conjuga diferencia-se por oito princípios que orientam todas as decisões de arquitetura, desenvolvimento e evolução dos projetos.
 
 ## Abordagem orientada ao negócio
 

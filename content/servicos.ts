@@ -1,131 +1,99 @@
-import { Bot, Cpu, Globe2, Workflow } from "lucide-react";
+import { Cpu, Globe2, Workflow } from "lucide-react";
 import type { Service } from "@/types/service";
 
 export const services: Service[] = [
   {
     slug: "sistemas-web",
     icon: Cpu,
-    name: "Sistemas Web Personalizados",
+    name: "Sistemas Web",
     shortDescription:
-      "Sistemas web sob medida desenvolvidos para processos específicos do seu negócio.",
+      "Painéis, portais, MVPs e ferramentas internas desenvolvidos para necessidades específicas.",
     problem:
-      "Planilhas, processos manuais e ferramentas genéricas podem limitar a organização e a evolução da operação.",
+      "Planilhas, informações espalhadas e ferramentas genéricas podem dificultar processos importantes do negócio.",
     benefits: [
-      "Informações centralizadas",
-      "Processos mais organizados",
-      "Base preparada para evolução contínua",
+      "Informações mais organizadas",
+      "Processos centralizados",
+      "Solução preparada para evoluir",
     ],
     includes: [
-      "Análise dos processos atuais",
-      "Arquitetura de sistema personalizada",
-      "Painéis, usuários e fluxos específicos",
-      "Integrações com ferramentas existentes",
-      "Estrutura preparada para evolução",
+      "Análise da necessidade e definição do escopo",
+      "Painéis e áreas administrativas",
+      "Portais e ferramentas internas",
+      "MVPs para validação de produtos",
+      "Desenvolvimento e publicação da solução",
     ],
     process: [
-      "Diagnóstico dos processos atuais",
-      "Definição da arquitetura",
+      "Entendimento do problema",
+      "Definição do escopo e das prioridades",
       "Desenvolvimento por etapas",
-      "Validação e evolução contínua",
+      "Validação e entrega",
     ],
-    heroTitle: "Sistemas desenvolvidos a partir da realidade do seu negócio",
+    heroTitle: "Sistemas web para necessidades reais do negócio",
     heroDescription:
-      "Criamos sistemas web sob medida para organizar processos, centralizar informações e apoiar decisões.",
+      "Desenvolvemos painéis, portais, MVPs e ferramentas internas com escopo claro e foco no que precisa ser resolvido.",
   },
-
   {
     slug: "automacao",
     icon: Workflow,
-    name: "Automações e Integrações",
+    name: "Automações de Processos",
     shortDescription:
-      "Processos conectados para reduzir tarefas manuais e melhorar eficiência.",
+      "Automação de tarefas repetitivas e conexão de ferramentas quando houver viabilidade técnica.",
     problem:
-      "Processos repetitivos, sistemas desconectados e atividades manuais podem consumir tempo e dificultar a operação.",
+      "Atividades manuais e informações transferidas entre diferentes ferramentas consomem tempo e aumentam o risco de erros.",
     benefits: [
-      "Menos tarefas repetitivas",
+      "Menos trabalho repetitivo",
       "Redução de erros operacionais",
-      "Ferramentas e informações conectadas",
+      "Fluxos mais consistentes",
     ],
     includes: [
-      "Mapeamento de processos operacionais",
-      "Integração entre sistemas e ferramentas",
-      "Automação de notificações e fluxos",
-      "Redução de tarefas repetitivas",
-      "Monitoramento e evolução das automações",
-    ],
-    process: [
       "Mapeamento do processo atual",
-      "Identificação de regras e integrações",
-      "Implementação do fluxo",
-      "Monitoramento e evolução",
-    ],
-    heroTitle: "Automações para conectar ferramentas e simplificar processos",
-    heroDescription:
-      "Integramos sistemas e criamos fluxos automatizados para tornar operações mais organizadas e eficientes.",
-  },
-  {
-    slug: "inteligencia-artificial-aplicada",
-    icon: Bot,
-    name: "Inteligência Artificial Aplicada",
-    shortDescription:
-      "IA aplicada com responsabilidade a problemas operacionais claros.",
-    problem:
-      "Grandes volumes de informação e tarefas de classificação, busca ou apoio interno podem consumir tempo quando não existem ferramentas adequadas.",
-    benefits: [
-      "Acesso mais eficiente a informações",
-      "Apoio a tarefas operacionais bem definidas",
-      "Automação responsável com julgamento humano",
-    ],
-    includes: [
-      "Assistentes internos",
-      "Busca inteligente",
-      "Classificação de informações",
-      "Automação com IA",
-      "Agentes especializados quando fizer sentido",
+      "Identificação de tarefas automatizáveis",
+      "Automação de notificações e rotinas",
+      "Conexão com APIs e ferramentas compatíveis",
+      "Testes e documentação do fluxo",
     ],
     process: [
-      "Definição do problema e dos limites",
-      "Avaliação da adequação da IA",
-      "Implementação com validação humana",
-      "Monitoramento e evolução responsável",
+      "Análise do processo",
+      "Avaliação de viabilidade técnica",
+      "Implementação do fluxo definido",
+      "Testes e entrega",
     ],
-    heroTitle: "Inteligência artificial aplicada onde ela faz sentido",
+    heroTitle: "Menos tarefas manuais, mais consistência na operação",
     heroDescription:
-      "Aplicamos IA a problemas operacionais específicos, com limites claros, validação humana e foco em eficiência.",
+      "Criamos automações com escopo definido e conectamos ferramentas que oferecem acessos e condições técnicas adequadas.",
   },
   {
     slug: "presenca-digital",
     icon: Globe2,
     name: "Presença Digital",
     shortDescription:
-      "Serviço complementar para empresas que ainda estão estruturando sua base digital.",
+      "Sites e páginas profissionais para apresentar negócios, serviços e produtos com clareza.",
     problem:
-      "Uma presença digital desorganizada dificulta o entendimento dos serviços, reduz a credibilidade e cria atrito antes do primeiro contato.",
+      "Uma presença digital desorganizada reduz a credibilidade e dificulta que potenciais clientes entendam o valor da empresa.",
     benefits: [
+      "Apresentação profissional do negócio",
       "Comunicação mais clara dos serviços",
-      "Presença digital organizada e confiável",
-      "Estrutura preparada para evolução de conteúdo",
+      "Base preparada para busca e divulgação",
     ],
     includes: [
       "Landing pages",
       "Sites institucionais",
-      "Microsites",
-      "Blogs",
-      "SEO técnico",
+      "Páginas para produtos e serviços",
+      "Blogs e estrutura de conteúdo",
+      "SEO técnico essencial",
     ],
     process: [
       "Entendimento do negócio e do público",
-      "Arquitetura da informação",
+      "Organização do conteúdo",
       "Desenvolvimento e validação",
-      "Publicação e evolução",
+      "Publicação",
     ],
-    heroTitle:
-      "Presença digital construída para comunicar com clareza",
+    heroTitle: "Presença digital profissional, clara e confiável",
     heroDescription:
-      "Criamos sites e páginas para estruturar a base digital antes da evolução para sistemas web, automações e soluções com inteligência artificial.",
+      "Desenvolvemos sites e páginas que ajudam empresas a apresentar seus serviços, fortalecer sua credibilidade e gerar oportunidades.",
   },
 ];
 
 export function getServiceBySlug(slug: string): Service | undefined {
-  return services.find((s) => s.slug === slug);
+  return services.find((service) => service.slug === slug);
 }

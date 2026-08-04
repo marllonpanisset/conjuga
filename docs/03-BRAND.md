@@ -1,6 +1,6 @@
 # BRAND.md
 
-> Documento canônico da identidade da marca Fyrmma.
+> Documento canônico da identidade da marca Conjuga.
 >
 > Define como queremos ser percebidos, como nos comunicamos e quais sensações nossa marca deve transmitir.
 >
@@ -10,7 +10,7 @@
 
 # Essência da Marca
 
-A Fyrmma existe para transformar operações manuais em processos digitais inteligentes.
+A Conjuga existe para transformar operações manuais em processos digitais inteligentes.
 
 Não desenvolvemos tecnologia pela tecnologia.
 
@@ -22,7 +22,7 @@ Nosso papel é traduzir problemas complexos em soluções simples.
 
 # Posicionamento
 
-A Fyrmma ocupa um espaço entre:
+A Conjuga ocupa um espaço entre:
 
 - consultoria;
 - engenharia de software;
@@ -41,7 +41,7 @@ Somos uma empresa de engenharia digital.
 
 # Personalidade da Marca
 
-Se a Fyrmma fosse uma pessoa, seria:
+Se a Conjuga fosse uma pessoa, seria:
 
 - técnica sem ser arrogante;
 - experiente sem parecer distante;
@@ -230,7 +230,7 @@ Queremos ser percebidos como uma empresa que utiliza IA com responsabilidade par
 
 # Conteúdo
 
-Todo conteúdo publicado pela Fyrmma deve cumprir pelo menos um destes objetivos:
+Todo conteúdo publicado pela Conjuga deve cumprir pelo menos um destes objetivos:
 
 - ensinar;
 - esclarecer;
@@ -258,7 +258,7 @@ Do primeiro acesso ao site até a entrega do projeto.
 
 # Resumo
 
-A Fyrmma deve ser percebida como uma empresa de engenharia digital que ajuda empresas de serviços a organizar, automatizar e evoluir suas operações através de software, automação e inteligência artificial aplicada.
+A Conjuga deve ser percebida como uma empresa de engenharia digital que ajuda empresas de serviços a organizar, automatizar e evoluir suas operações através de software, automação e inteligência artificial aplicada.
 
 Nossa credibilidade vem da clareza, da simplicidade e da consistência.
 

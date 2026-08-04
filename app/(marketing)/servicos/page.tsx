@@ -89,7 +89,7 @@ export default function ServicosPage() {
             </Text>
 
             <Button href="/sobre" variant="secondary" className="mt-5">
-              Entenda como a Fyrmma trabalha
+              Entenda como a Conjuga trabalha
             </Button>
           </div>
         </Container>
@@ -101,7 +101,7 @@ export default function ServicosPage() {
           description="Conte o problema e o contexto da sua empresa para identificarmos a solução mais adequada ao seu momento."
           actions={
             <Button href="/contato" size="lg">
-              Conversar com a Fyrmma
+              Conversar com a Conjuga
             </Button>
           }
         />

@@ -274,9 +274,9 @@ export function MobileNav() {
             <div className="flex shrink-0 items-center justify-between border-b border-border px-6 py-4">
               <span
                 id="mobile-nav-title"
-                className="font-display text-[1.125rem] font-semibold text-text-primary"
+                className="font-display text-[1.125rem] font-medium tracking-[0.10em] text-text-primary"
               >
-                Fyrmma
+                CONJUGA
               </span>
               <button
                 type="button"

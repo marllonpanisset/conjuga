@@ -1,6 +1,6 @@
 # WEBSITE.md
 
-> Documento canônico da arquitetura do site da Fyrmma.
+> Documento canônico da arquitetura do site da Conjuga.
 >
 > Define a estrutura da aplicação, o propósito de cada página, o fluxo de navegação, componentes reutilizáveis e diretrizes técnicas relacionadas à experiência do usuário.
 >
@@ -10,7 +10,7 @@
 
 # Objetivo do Site
 
-O site da Fyrmma deve:
+O site da Conjuga deve:
 
 - comunicar claramente o posicionamento da empresa;
 - explicar como resolvemos problemas operacionais;
@@ -29,7 +29,7 @@ Ele deve ajudar o visitante a entender seu problema, enxergar uma solução e in
 
 Todo visitante deve conseguir responder rapidamente:
 
-1. O que a Fyrmma faz?
+1. O que a Conjuga faz?
 2. Para quem?
 3. Como trabalha?
 4. Por que confiar?
@@ -45,14 +45,14 @@ Toda página deve contribuir para responder uma ou mais dessas perguntas.
 
 Objetivo:
 
-Comunicar imediatamente que a Fyrmma desenvolve sistemas web, automações e soluções com inteligência artificial para empresas de serviços, conduzindo o visitante até os serviços, a metodologia de trabalho e o contato.
+Comunicar imediatamente que a Conjuga desenvolve sistemas web, automações e soluções com inteligência artificial para empresas de serviços, conduzindo o visitante até os serviços, a metodologia de trabalho e o contato.
 
 A Home deve responder rapidamente:
 
 - o que fazemos;
 - para quem fazemos;
 - como trabalhamos;
-- por que confiar na Fyrmma.
+- por que confiar na Conjuga.
 
 Seções:
 
@@ -62,7 +62,7 @@ Seções:
 - Diferenciais
 - CTA Final
 
-A organização e a quantidade de seções podem evoluir conforme a estratégia da empresa, desde que a Home continue cumprindo seus objetivos principais: comunicar o posicionamento da Fyrmma, apresentar os serviços, explicar a metodologia de trabalho e conduzir o visitante para uma conversa.
+A organização e a quantidade de seções podem evoluir conforme a estratégia da empresa, desde que a Home continue cumprindo seus objetivos principais: comunicar o posicionamento da Conjuga, apresentar os serviços, explicar a metodologia de trabalho e conduzir o visitante para uma conversa.
 
 ---
 

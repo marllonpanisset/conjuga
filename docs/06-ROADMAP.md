@@ -1,6 +1,6 @@
 # ROADMAP.md
 
-> Documento canônico da evolução estratégica da Fyrmma.
+> Documento canônico da evolução estratégica da Conjuga.
 >
 > Define as principais fases de crescimento da empresa e suas prioridades.
 >
@@ -10,7 +10,7 @@
 
 # Visão
 
-A Fyrmma será construída de forma incremental.
+A Conjuga será construída de forma incremental.
 
 Cada etapa deve gerar valor antes da próxima começar.
 
@@ -78,7 +78,7 @@ Construir uma base sólida para a empresa.
 
 # Critério de conclusão
 
-A Fyrmma possui presença digital profissional e está pronta para receber clientes.
+A Conjuga possui presença digital profissional e está pronta para receber clientes.
 
 ---
 

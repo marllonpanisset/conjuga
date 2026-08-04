@@ -2,13 +2,7 @@ import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 
 import { PageWrapper } from "@/components/layout/PageWrapper";
-import {
-  Container,
-  Section,
-  Heading,
-  Text,
-  Grid,
-} from "@/components/ui";
+import { Container, Section, Heading, Text, Grid } from "@/components/ui";
 import { Button } from "@/components/ui/Button";
 
 import { CTASection } from "@/components/sections/CTASection";
@@ -143,7 +137,7 @@ export default function HomePage() {
           description="Conte como sua operação funciona e quais processos precisam ganhar eficiência."
           actions={
             <Button href="/contato" size="lg">
-              Falar com a Fyrmma
+              Falar com a Conjuga
             </Button>
           }
         />

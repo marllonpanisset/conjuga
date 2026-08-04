@@ -9,7 +9,7 @@ import { Text } from "@/components/ui/Text";
 export const metadata: Metadata = {
   title: "Página não encontrada",
   description:
-    "A página acessada não foi encontrada no site institucional da Fyrmma.",
+    "A página acessada não foi encontrada no site institucional da Conjuga.",
   robots: {
     index: false,
     follow: false,
@@ -28,10 +28,7 @@ export default function NotFound() {
             <div className="px-6 py-12 sm:px-10 sm:py-16 lg:px-16 lg:py-20">
               <Text variant="caption">Erro 404</Text>
 
-              <Heading
-                as="h1"
-                className="mt-4 max-w-2xl"
-              >
+              <Heading as="h1" className="mt-4 max-w-2xl">
                 Essa página não existe
               </Heading>
 

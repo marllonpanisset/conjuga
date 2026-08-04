@@ -1,10 +1,10 @@
 # COPY.md
 
-> Documento canônico da comunicação institucional da Fyrmma.
+> Documento canônico da comunicação institucional da Conjuga.
 >
 > Define o posicionamento aplicado, mensagens-chave, tom de voz, headlines, CTAs e diretrizes de escrita.
 >
-> Todo conteúdo publicado pela Fyrmma deve seguir estas orientações.
+> Todo conteúdo publicado pela Conjuga deve seguir estas orientações.
 
 ---
 
@@ -24,7 +24,7 @@ Não utilizamos linguagem exageradamente comercial.
 
 # Mensagem Principal
 
-A Fyrmma ajuda empresas de serviços a organizar processos, automatizar tarefas e evoluir suas operações utilizando software, automação e inteligência artificial aplicada.
+A Conjuga ajuda empresas de serviços a organizar processos, automatizar tarefas e evoluir suas operações utilizando software, automação e inteligência artificial aplicada.
 
 ---
 
@@ -167,7 +167,7 @@ Exemplos:
 
 - Solicitar diagnóstico
 - Conversar sobre o projeto
-- Falar com a Fyrmma
+- Falar com a Conjuga
 - Conhecer nossos serviços
 - Ver projetos
 - Agendar uma conversa
@@ -255,7 +255,7 @@ Durante reuniões, propostas e apresentações:
 
 # Resumo
 
-Toda comunicação da Fyrmma deve transmitir:
+Toda comunicação da Conjuga deve transmitir:
 
 - clareza;
 - competência;

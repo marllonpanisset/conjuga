@@ -1,6 +1,6 @@
-# Fyrmma
+# Conjuga
 
-Site institucional da **Fyrmma**, desenvolvido com foco em performance, acessibilidade, SEO e experiência do usuário.
+Site institucional da **Conjuga**, desenvolvido com foco em performance, acessibilidade, SEO e experiência do usuário.
 
 ## 🚀 Tecnologias
 
