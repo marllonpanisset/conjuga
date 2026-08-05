@@ -4,7 +4,7 @@
  * Keeping SEO, metadata and structured data values in a single place avoids
  * duplication and ensures every page shares the same source of truth.
  */
-const siteUrl = "https://conjuga.vercel.app";
+const siteUrl = "https://conjuga.com.br";
 
 export const siteConfig = {
   name: "Conjuga",
@@ -58,7 +58,7 @@ export const siteConfig = {
    * represented by this website.
    */
   sameAs: [
-    "https://instagram.com/conjuga.estudio",
+    "https://instagram.com/conjuga.br",
     "https://linkedin.com/company/conjuga",
   ],
 
@@ -69,7 +69,7 @@ export const siteConfig = {
   social: {
     linkedin: "https://linkedin.com/company/conjuga",
 
-    instagram: "https://instagram.com/conjuga.estudio",
+    instagram: "https://instagram.com/conjuga.br",
   },
 
   /**
@@ -81,6 +81,6 @@ export const siteConfig = {
 
     linkedin: "https://linkedin.com/company/conjuga",
 
-    instagram: "https://instagram.com/conjuga",
+    instagram: "https://instagram.com/conjuga.br",
   },
 } as const;
