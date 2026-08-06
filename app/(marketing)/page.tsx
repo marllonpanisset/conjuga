@@ -17,7 +17,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Engenharia de software para empresas de serviços",
   description:
-    "Desenvolvemos sistemas web, automações, integrações e soluções com inteligência artificial aplicada para empresas de serviços.",
+    "Criamos soluções para organizar, automatizar e evoluir operações de empresas de serviços. Comece pela Presença Digital e evolua com novas soluções conforme o crescimento do seu negócio.",
   path: "/",
 });
 
@@ -28,14 +28,14 @@ const processSteps = [
       "Entendemos como o negócio funciona, onde estão os gargalos e quais tarefas geram atrito.",
   },
   {
-    title: "Arquitetura",
+    title: "Planejamento",
     description:
       "Definimos a solução mais simples capaz de resolver o problema antes de escolher a tecnologia.",
   },
   {
-    title: "Desenvolvimento",
+    title: "Implantação",
     description:
-      "Construímos e validamos a solução com foco em qualidade, segurança, acessibilidade e manutenção.",
+      "Implantamos, configuramos e validamos a solução com foco em qualidade, segurança e facilidade de evolução.",
   },
   {
     title: "Evolução contínua",
@@ -49,8 +49,8 @@ export default function HomePage() {
     <PageWrapper>
       <HomeHero
         eyebrow="Engenharia de software para empresas de serviços"
-        title="Transformamos processos manuais em operações digitais mais eficientes"
-        description="Criamos sistemas web, automações, integrações e aplicações de inteligência artificial que ajudam empresas a ganhar organização, produtividade e previsibilidade."
+        title="Soluções para empresas que querem operar com mais eficiência"
+        description="Começamos pela Presença Digital e evoluímos para automações, sistemas web, integrações e outras soluções conforme o crescimento da empresa."
         actions={
           <>
             <Button href="/contato" size="lg">
@@ -73,14 +73,14 @@ export default function HomePage() {
 
             <div className="md:col-span-8 md:col-start-4 lg:col-span-7">
               <Heading as="h2" className="max-w-2xl">
-                Soluções definidas a partir do problema do negócio
+                Soluções que evoluem junto com o seu negócio
               </Heading>
 
               <Text variant="lead" className="mt-5 max-w-2xl">
-                Desenvolvemos sistemas web, automações e aplicações de
-                inteligência artificial. A presença digital é um serviço
-                complementar e uma porta de entrada para empresas que ainda
-                estão estruturando sua base digital.
+                Cada solução resolve um conjunto específico de problemas. A
+                Presença Digital é o ponto de partida para empresas que desejam
+                fortalecer sua presença online e criar uma base preparada para
+                evoluir com novas soluções conforme o crescimento do negócio.
               </Text>
             </div>
           </div>
@@ -109,9 +109,9 @@ export default function HomePage() {
               </Heading>
 
               <Text variant="lead" className="mt-5 max-w-2xl">
-                Cada projeto começa com entendimento do problema. A tecnologia
-                entra como ferramenta para construir uma solução eficiente e
-                alinhada à realidade da empresa.
+                Antes de escolher qualquer tecnologia, entendemos como a empresa
+                funciona, identificamos os principais gargalos e definimos a
+                solução mais adequada para a realidade do negócio.
               </Text>
             </div>
           </div>
@@ -133,8 +133,8 @@ export default function HomePage() {
 
       <Section className="py-24 md:py-32">
         <CTASection
-          title="Vamos entender o problema antes de definir a solução?"
-          description="Conte como sua operação funciona e quais processos precisam ganhar eficiência."
+          title="Vamos encontrar a melhor solução para o seu negócio?"
+          description="Conte como sua empresa funciona hoje e quais desafios deseja resolver. A partir desse diagnóstico, definimos a solução mais adequada para a sua realidade."
           actions={
             <Button href="/contato" size="lg">
               Falar com a Conjuga
