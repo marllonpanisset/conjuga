@@ -15,7 +15,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Serviços",
   description:
-    "Sistemas web, automações, integrações e inteligência artificial aplicada para empresas de serviços. Presença digital como serviço complementar e porta de entrada para empresas que estruturam sua base digital.",
+    "Conheça as soluções da Conjuga para organizar processos, fortalecer a presença digital e preparar empresas para evoluir com novas tecnologias conforme o crescimento do negócio.",
   path: "/servicos",
 });
 
@@ -37,8 +37,8 @@ export default function ServicosPage() {
 
       <Hero
         eyebrow="Serviços"
-        title="Engenharia de software construída para desafios reais de negócio"
-        description="Partimos do problema para definir sistemas web, automações, integrações e soluções com inteligência artificial aplicada. A presença digital é um serviço complementar e uma porta de entrada para empresas que ainda estão estruturando sua base digital."
+        title="Soluções desenvolvidas para resolver desafios reais do negócio"
+        description="Cada solução nasce do entendimento do problema. A Presença Digital é o ponto de partida para empresas que desejam organizar sua operação e criar uma base preparada para evoluir com novas soluções."
       />
 
       <Section surface>
@@ -57,8 +57,8 @@ export default function ServicosPage() {
             </Text>
 
             <Text className="mt-4 max-w-2xl">
-              Um mesmo problema pode exigir mais de um serviço trabalhando em
-              conjunto.
+              Uma mesma solução pode combinar diferentes serviços para atender
+              às necessidades da empresa de forma integrada.
             </Text>
           </div>
         </Container>
@@ -66,6 +66,18 @@ export default function ServicosPage() {
 
       <Section>
         <Container>
+          <div className="mb-12 max-w-3xl">
+            <Heading as="h2">
+              Escolha a solução mais adequada para o momento da sua empresa
+            </Heading>
+
+            <Text variant="lead" className="mt-4">
+              Não acreditamos em uma solução única para todos os negócios. Cada
+              empresa possui desafios diferentes e pode evoluir gradualmente com
+              novas soluções conforme sua operação cresce.
+            </Text>
+          </div>
+
           <Grid cols={2}>
             {services.map((service) => (
               <ServiceCard key={service.slug} service={service} />
@@ -82,10 +94,10 @@ export default function ServicosPage() {
             </Heading>
 
             <Text className="mt-4">
-              Dependendo do desafio do negócio, sistemas web, automações,
-              integrações e inteligência artificial aplicada podem fazer parte
-              da mesma solução. A combinação é definida pelo diagnóstico do
-              problema e do contexto da empresa.
+              Dependendo do desafio da empresa, uma solução pode combinar
+              Presença Digital, Sistemas Web e Automações de Processos. Novas
+              soluções poderão ser incorporadas conforme a operação evolui e
+              novas necessidades surgem.
             </Text>
 
             <Button href="/sobre" variant="secondary" className="mt-5">
@@ -98,7 +110,7 @@ export default function ServicosPage() {
       <Section>
         <CTASection
           title="Não sabe qual solução faz sentido?"
-          description="Conte o problema e o contexto da sua empresa para identificarmos a solução mais adequada ao seu momento."
+          description="Conte como sua empresa funciona hoje e quais desafios deseja resolver. A partir desse diagnóstico, definimos a solução mais adequada para o seu momento."
           actions={
             <Button href="/contato" size="lg">
               Conversar com a Conjuga
