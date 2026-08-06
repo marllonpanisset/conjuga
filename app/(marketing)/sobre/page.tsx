@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CircleOff, Target } from "lucide-react";
+import { ShieldCheck, Target } from "lucide-react";
 import { PageWrapper } from "@/components/layout";
 import { Container, Section, Heading, Text } from "@/components/ui";
 import { Button } from "@/components/ui/Button";
@@ -13,7 +13,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Sobre",
   description:
-    "Conheça a Conjuga, empresa de engenharia de software que transforma problemas operacionais em soluções simples e evolutivas.",
+    "Conheça a Conjuga, empresa brasileira de engenharia de software que ajuda empresas de serviços a organizar processos, fortalecer sua presença digital e evoluir sua operação.",
   path: "/sobre",
 });
 
@@ -29,9 +29,9 @@ const principles = [
       "Evitamos complexidade, dependências e funcionalidades que não tenham uma justificativa clara.",
   },
   {
-    title: "Software como ferramenta",
+    title: "Tecnologia com propósito",
     description:
-      "A tecnologia é um meio para organizar a operação e resolver problemas do negócio, não um fim.",
+      "Utilizamos tecnologia para resolver problemas reais da operação, nunca apenas por tendência ou complexidade.",
   },
   {
     title: "Manutenção no longo prazo",
@@ -63,9 +63,48 @@ export default function SobrePage() {
 
       <Hero
         eyebrow="Sobre a Conjuga"
-        title="Engenharia de software para empresas"
-        description="A Conjuga é uma empresa brasileira de engenharia de software focada em entender operações, organizar processos e entregar sistemas digitais confiáveis."
+        title="Engenharia de software para empresas de serviços"
+        description="A Conjuga ajuda empresas de serviços a organizar processos, fortalecer sua presença digital e evoluir sua operação por meio de soluções de engenharia de software."
       />
+
+      <Section>
+        <Container>
+          <div className="grid gap-6 md:grid-cols-12 md:gap-8">
+            <Text variant="caption" className="md:col-span-2 md:pt-2">
+              A empresa
+            </Text>
+
+            <div className="md:col-span-8 md:col-start-4 lg:col-span-7">
+              <Heading as="h2" className="max-w-2xl">
+                Engenharia de software aplicada ao dia a dia das empresas
+              </Heading>
+
+              <Text variant="lead" className="mt-5 max-w-2xl">
+                A Conjuga é uma empresa brasileira de engenharia de software
+                focada em ajudar empresas de serviços a organizar processos,
+                fortalecer sua presença digital e evoluir sua operação de forma
+                estruturada.
+              </Text>
+
+              <Text className="mt-5 max-w-2xl">
+                Em vez de começar pela tecnologia, buscamos compreender como o
+                negócio funciona, quais desafios impedem seu crescimento e quais
+                soluções realmente fazem sentido para aquele momento. A partir
+                desse diagnóstico desenvolvemos sistemas, sites, automações e
+                outras soluções digitais preparados para evoluir junto com a
+                empresa.
+              </Text>
+
+              <Text className="mt-5 max-w-2xl">
+                Nosso compromisso é construir soluções claras, confiáveis e
+                fáceis de manter, priorizando decisões que gerem valor para o
+                negócio hoje e continuem fazendo sentido conforme a operação
+                cresce.
+              </Text>
+            </div>
+          </div>
+        </Container>
+      </Section>
 
       <Section surface>
         <Container>
@@ -73,13 +112,14 @@ export default function SobrePage() {
             <Text variant="caption">Posicionamento</Text>
 
             <Heading as="h2" className="mt-3">
-              Como pensamos
+              Nossa abordagem
             </Heading>
 
             <Text variant="lead" className="mt-4">
-              Antes de definir uma solução, buscamos compreender como a empresa
-              trabalha, onde estão os gargalos e o que precisa ser organizado.
-              Essa análise orienta as decisões de engenharia.
+              Antes de desenvolver qualquer solução, entendemos como a empresa
+              funciona, onde estão os principais desafios e quais processos
+              precisam ser organizados. A tecnologia é consequência desse
+              diagnóstico.
             </Text>
           </div>
 
@@ -117,16 +157,17 @@ export default function SobrePage() {
               </span>
 
               <Heading as="h3" className="mt-6 max-w-md">
-                Como a Conjuga se posiciona
+                Como atuamos
               </Heading>
 
               <Text
                 variant="muted"
                 className="mt-3 max-w-xl leading-relaxed text-text-secondary"
               >
-                Projetamos sistemas considerando o contexto da operação, as
-                integrações necessárias e a manutenção futura. O objetivo é
-                entregar software claro, confiável e adequado ao problema.
+                Entendemos primeiro o negócio para depois definir a solução.
+                Cada projeto nasce do contexto da empresa e é desenvolvido para
+                resolver problemas reais de forma simples, organizada e
+                preparada para evoluir.
               </Text>
             </article>
 
@@ -159,27 +200,27 @@ export default function SobrePage() {
                   group-hover:bg-signal-soft
                 "
               >
-                <CircleOff size={20} strokeWidth={1.75} aria-hidden="true" />
+                <ShieldCheck size={20} strokeWidth={1.75} aria-hidden="true" />
               </span>
 
               <Heading as="h3" className="mt-6 max-w-md">
-                Como a Conjuga não se posiciona
+                O que valorizamos
               </Heading>
 
               <Text
                 variant="muted"
                 className="mt-3 max-w-xl leading-relaxed text-text-secondary"
               >
-                Não somos uma agência, uma software house genérica ou uma
-                consultoria tradicional. Nossa especialidade é resolver
-                problemas operacionais comuns a empresas de serviços, sem
-                limitar nossa atuação a um único segmento.
+                Priorizamos clareza, simplicidade e decisões bem fundamentadas.
+                A tecnologia deve facilitar a operação da empresa, ser fácil de
+                manter e acompanhar seu crescimento ao longo do tempo.
               </Text>
             </article>
           </div>
 
           <Text variant="muted" className="mt-8">
-            Conheça as áreas em que essa abordagem é aplicada em nossos{" "}
+            Conheça as soluções que desenvolvemos para empresas de serviços em
+            nossos{" "}
             <Link
               href="/servicos"
               className="link-underline text-signal-strong"
@@ -197,7 +238,7 @@ export default function SobrePage() {
             <Text variant="caption">Princípios</Text>
 
             <Heading as="h2" className="mt-3 max-w-lg">
-              Como pensamos cada projeto
+              Princípios que orientam nossas decisões
             </Heading>
           </FadeIn>
 
@@ -246,10 +287,41 @@ export default function SobrePage() {
         </Container>
       </Section>
 
+      <Section surface>
+        <Container>
+          <div className="grid gap-6 md:grid-cols-12 md:gap-8">
+            <Text variant="caption" className="md:col-span-2 md:pt-2">
+              Evolução
+            </Text>
+
+            <div className="md:col-span-8 md:col-start-4 lg:col-span-7">
+              <Heading as="h2" className="max-w-2xl">
+                Soluções que evoluem junto com o seu negócio
+              </Heading>
+
+              <Text variant="lead" className="mt-5 max-w-2xl">
+                Cada empresa está em um momento diferente. Algumas precisam
+                fortalecer sua presença digital, enquanto outras já buscam
+                organizar processos ou desenvolver sistemas internos para ganhar
+                eficiência.
+              </Text>
+
+              <Text className="mt-5 max-w-2xl">
+                Independentemente do ponto de partida, nosso objetivo é
+                construir uma base sólida que permita evoluir sem recomeçar do
+                zero. Conforme a operação cresce, novas soluções podem ser
+                incorporadas de forma gradual, preservando o que já foi
+                construído e acompanhando as novas necessidades do negócio.
+              </Text>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
       <Section>
         <CTASection
-          title="Tem um processo ou oportunidade para melhorar?"
-          description="Conte o contexto da sua empresa e vamos avaliar a solução mais adequada para o seu momento."
+          title="Vamos entender o próximo desafio da sua empresa?"
+          description="Conte como sua empresa funciona hoje e vamos avaliar a solução mais adequada para o seu momento."
           actions={
             <Button href="/contato" size="lg">
               Conversar com a Conjuga
