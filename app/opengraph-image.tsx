@@ -2,106 +2,80 @@ import { ImageResponse } from "next/og";
 import { siteConfig } from "@/config/site";
 
 export const alt = siteConfig.openGraphImage.alt;
+
 export const size = {
   width: 1200,
   height: 630,
 };
+
 export const contentType = "image/png";
 
 export default function OpenGraphImage() {
   return new ImageResponse(
-    (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        position: "relative",
+        overflow: "hidden",
+        background: "#08090A",
+        color: "#F4F4F5",
+        fontFamily: "sans-serif",
+      }}
+    >
+      {/* Grid */}
       <div
         style={{
-          width: "100%",
-          height: "100%",
+          position: "absolute",
+          inset: 0,
           display: "flex",
-          position: "relative",
-          overflow: "hidden",
-          background: "#0a0a0c",
-          color: "#f2f2f4",
-          fontFamily: "sans-serif",
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px)",
+          backgroundSize: "72px 72px",
+        }}
+      />
+
+      {/* Frame */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 48,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          padding: "52px",
+          border: "1px solid rgba(255,255,255,.08)",
         }}
       >
+        {/* Header */}
         <div
           style={{
-            position: "absolute",
-            inset: 0,
             display: "flex",
-            backgroundImage:
-              "linear-gradient(rgba(148, 163, 184, 0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(148, 163, 184, 0.09) 1px, transparent 1px)",
-            backgroundSize: "72px 72px",
-          }}
-        />
-
-        <div
-          style={{
-            position: "absolute",
-            top: 72,
-            right: 72,
-            width: 300,
-            height: 300,
-            display: "flex",
-            borderTop: "1px solid rgba(148, 163, 184, 0.24)",
-            borderRight: "1px solid rgba(148, 163, 184, 0.24)",
+            fontSize: 24,
+            fontWeight: 600,
+            letterSpacing: "0.18em",
+            color: "rgba(244,244,245,.72)",
           }}
         >
-          <div
-            style={{
-              position: "absolute",
-              top: -5,
-              right: -5,
-              width: 9,
-              height: 9,
-              display: "flex",
-              borderRadius: 9,
-              background: "#4c6fff",
-            }}
-          />
+          {siteConfig.name.toUpperCase()}
         </div>
 
+        {/* Content */}
         <div
           style={{
-            position: "absolute",
-            top: 48,
-            right: 48,
-            bottom: 48,
-            left: 48,
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
-            padding: "44px 52px 48px",
-            border: "1px solid rgba(148, 163, 184, 0.22)",
+            maxWidth: 820,
           }}
         >
           <div
             style={{
               display: "flex",
-              alignItems: "center",
-              gap: 18,
-              fontSize: 29,
-              letterSpacing: "-0.04em",
-            }}
-          >
-            <span
-              style={{
-                width: 10,
-                height: 10,
-                display: "flex",
-                borderRadius: 10,
-                background: "#4c6fff",
-              }}
-            />
-            {siteConfig.name}
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              maxWidth: 920,
-              fontSize: 62,
-              lineHeight: 1.06,
-              letterSpacing: "-0.045em",
+              fontSize: 74,
+              fontWeight: 700,
+              lineHeight: 1.05,
+              letterSpacing: "-0.055em",
             }}
           >
             Engenharia de software para empresas de serviços
@@ -110,17 +84,37 @@ export default function OpenGraphImage() {
           <div
             style={{
               display: "flex",
-              alignItems: "center",
-              width: 180,
-              height: 1,
-              background: "#4c6fff",
+              flexDirection: "column",
+              marginTop: 34,
+              fontSize: 30,
+              lineHeight: 1.45,
+              color: "rgba(244,244,245,.66)",
             }}
-          />
+          >
+            <span>Organizamos processos.</span>
+            <span>Fortalecemos a presença digital.</span>
+            <span>Preparamos empresas para evoluir.</span>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+            fontSize: 22,
+            color: "rgba(244,244,245,.42)",
+            letterSpacing: "0.06em",
+          }}
+        >
+          <span>conjuga.com.br</span>
+
+          <span>Brasil · 2026</span>
         </div>
       </div>
-    ),
-    {
-      ...size,
-    },
+    </div>,
+    size,
   );
 }
