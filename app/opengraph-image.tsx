@@ -52,10 +52,10 @@ export default function OpenGraphImage() {
         <div
           style={{
             display: "flex",
-            fontSize: 24,
-            fontWeight: 600,
-            letterSpacing: "0.18em",
-            color: "rgba(244,244,245,.72)",
+            fontSize: 70,
+            fontWeight: 700,
+            letterSpacing: "-0.05em",
+            lineHeight: 1,
           }}
         >
           {siteConfig.name.toUpperCase()}
@@ -66,16 +66,17 @@ export default function OpenGraphImage() {
           style={{
             display: "flex",
             flexDirection: "column",
-            maxWidth: 820,
+            maxWidth: 860,
           }}
         >
           <div
             style={{
               display: "flex",
-              fontSize: 74,
-              fontWeight: 700,
-              lineHeight: 1.05,
-              letterSpacing: "-0.055em",
+              fontSize: 58,
+              fontWeight: 600,
+              lineHeight: 1.08,
+              letterSpacing: "-0.04em",
+              color: "rgba(244,244,245,.90)",
             }}
           >
             Engenharia de software para empresas de serviços
@@ -85,10 +86,10 @@ export default function OpenGraphImage() {
             style={{
               display: "flex",
               flexDirection: "column",
-              marginTop: 34,
-              fontSize: 30,
+              marginTop: 38,
+              fontSize: 36,
               lineHeight: 1.45,
-              color: "rgba(244,244,245,.66)",
+              color: "rgba(244,244,245,.72)",
             }}
           >
             <span>Organizamos processos.</span>
