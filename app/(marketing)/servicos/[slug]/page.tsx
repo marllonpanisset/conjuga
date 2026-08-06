@@ -97,7 +97,7 @@ export default async function ServicoPage({
             <Icon icon={service.icon} size={28} className="mx-auto" />
 
             <Heading as="h2" className="mt-5">
-              Problemas que esse serviço ajuda a resolver
+              Problemas que essa solução ajuda a resolver
             </Heading>
 
             <Text variant="lead" className="mt-4">
@@ -112,7 +112,7 @@ export default async function ServicoPage({
           <Text variant="caption">Benefícios</Text>
 
           <Heading as="h2" className="mt-3 max-w-lg">
-            Resultados que orientam a solução
+            O que muda na operação
           </Heading>
 
           <ul className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
@@ -169,22 +169,16 @@ export default async function ServicoPage({
 
       <Section>
         <Container>
-          <Heading as="h2">O que está incluído</Heading>
+          <Text variant="caption">O que entregamos</Text>
+          <Heading as="h2" className="mt-3 max-w-lg">
+            O que está incluído nesta solução
+          </Heading>
 
-          <ul className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-[16px] border border-border bg-border md:grid-cols-2 lg:grid-cols-6">
+          <ul className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-[16px] border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
             {service.includes.map((item, index) => (
               <li
                 key={item}
-                className={`
-                  relative
-                  h-full
-                  min-h-[220px]
-                  bg-surface
-                  p-6
-                  md:p-8
-                  lg:min-h-[240px] lg:p-10
-                  ${index >= 3 ? "lg:col-span-3" : "lg:col-span-2"}
-                `}
+                className=" relative h-full min-h-[220px] bg-surface p-6 md:p-8 lg:min-h-[240px] lg:p-10"
               >
                 <div className="flex h-full flex-col justify-between gap-10">
                   <span
@@ -212,7 +206,7 @@ export default async function ServicoPage({
 
       <Section surface>
         <Container>
-          <Text variant="caption">Processo</Text>
+          <Text variant="caption">Como trabalhamos</Text>
 
           <Heading as="h2" className="mt-3 max-w-lg">
             Como conduzimos o trabalho
@@ -257,9 +251,38 @@ export default async function ServicoPage({
       </Section>
 
       <Section>
+        <Container>
+          <div className="grid gap-6 md:grid-cols-12 md:gap-8">
+            <Text variant="caption" className="md:col-span-2 md:pt-2">
+              Evolução
+            </Text>
+
+            <div className="md:col-span-8 md:col-start-4 lg:col-span-7">
+              <Heading as="h2" className="max-w-2xl">
+                Uma solução preparada para acompanhar o crescimento da empresa
+              </Heading>
+
+              <Text variant="lead" className="mt-5 max-w-2xl">
+                Cada projeto resolve uma necessidade atual, mas também pode
+                servir de base para futuras evoluções. Conforme a operação
+                cresce, novos processos podem ser automatizados, integrados ou
+                transformados em soluções mais completas.
+              </Text>
+
+              <Text className="mt-5 max-w-2xl">
+                Nosso objetivo não é criar dependência tecnológica, mas
+                desenvolver soluções organizadas, sustentáveis e preparadas para
+                evoluir quando fizer sentido para o negócio.
+              </Text>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section>
         <CTASection
           title="Vamos avaliar o melhor caminho para sua empresa?"
-          description="Conte o problema e o contexto do seu negócio para identificarmos a solução mais adequada à sua necessidade."
+          description="Conte como sua empresa funciona hoje e quais desafios deseja resolver. A partir desse diagnóstico, definimos a solução mais adequada para a sua realidade."
           actions={
             <Button href="/contato" size="lg">
               Conversar com a Conjuga
