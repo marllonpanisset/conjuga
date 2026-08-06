@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { CookieBanner } from "@/components/analytics/CookieBanner";
+import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { MotionProvider } from "@/components/motion/MotionProvider";
@@ -176,6 +178,9 @@ export default function RootLayout({
           {children}
           <Footer />
         </MotionProvider>
+
+        <CookieBanner />
+        <AnalyticsProvider />
       </body>
     </html>
   );
