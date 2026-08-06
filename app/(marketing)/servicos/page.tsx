@@ -15,7 +15,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Serviços",
   description:
-    "Conheça as soluções da Conjuga para organizar processos, fortalecer a presença digital e preparar empresas para evoluir com novas tecnologias conforme o crescimento do negócio.",
+    "Conheça os serviços da Conjuga para empresas de serviços, incluindo sistemas web, automação de processos, presença digital e soluções desenvolvidas para acompanhar o crescimento do negócio.",
   path: "/servicos",
 });
 

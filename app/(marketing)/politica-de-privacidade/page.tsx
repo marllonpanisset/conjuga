@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Política de Privacidade",
   description:
-    "Política de privacidade da Conjuga sobre coleta, uso e proteção de dados pessoais.",
+    "Entenda como a Conjuga coleta, utiliza, armazena e protege os dados pessoais fornecidos por visitantes e clientes em seu site.",
   path: "/politica-de-privacidade",
 });
 

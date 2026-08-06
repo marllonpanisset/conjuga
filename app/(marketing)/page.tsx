@@ -17,7 +17,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Engenharia de software para empresas de serviços",
   description:
-    "Criamos soluções para organizar, automatizar e evoluir operações de empresas de serviços. Comece pela Presença Digital e evolua com novas soluções conforme o crescimento do seu negócio.",
+    "Desenvolvemos soluções para organizar processos, fortalecer a presença digital e evoluir operações de empresas de serviços conforme o crescimento do negócio.",
   path: "/",
 });
 

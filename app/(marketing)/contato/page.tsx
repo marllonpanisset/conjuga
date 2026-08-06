@@ -12,7 +12,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Contato",
   description:
-    "Conte o desafio da sua empresa. A Conjuga analisa sua operação e propõe a solução mais adequada para organizar processos, fortalecer a presença digital e preparar o negócio para evoluir.",
+    "Conte o desafio da sua empresa. Vamos entender sua operação, analisar o contexto do negócio e definir a solução mais adequada para o seu momento.",
   path: "/contato",
 });
 

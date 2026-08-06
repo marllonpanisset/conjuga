@@ -11,7 +11,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Projetos",
   description:
-    "Projetos de engenharia de software serão publicados pela Conjuga conforme autorização dos clientes, com contexto, problema, solução e resultados verificáveis.",
+    "Conheça os projetos desenvolvidos pela Conjuga e veja como aplicamos engenharia de software para resolver desafios reais de empresas de serviços.",
   path: "/projetos",
 });
 

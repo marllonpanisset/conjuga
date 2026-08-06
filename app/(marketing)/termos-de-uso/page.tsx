@@ -5,7 +5,8 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Termos de Uso",
-  description: "Termos de uso do site institucional da Conjuga.",
+  description:
+    "Conheça os termos de uso do site da Conjuga e as condições para utilização de nossos conteúdos, formulários e serviços digitais.",
   path: "/termos-de-uso",
 });
 
