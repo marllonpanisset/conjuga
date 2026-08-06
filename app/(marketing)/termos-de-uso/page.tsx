@@ -40,6 +40,12 @@ const sections = [
           O envio de um formulário de contato ou a navegação pelo site não cria
           qualquer vínculo contratual entre a Conjuga e o visitante.
         </Text>
+
+        <Text className="mt-3">
+          O tratamento de dados pessoais decorrente da utilização do site é
+          disciplinado pela Política de Privacidade da Conjuga, que complementa
+          estes Termos de Uso.
+        </Text>
       </>
     ),
   },
