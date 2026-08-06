@@ -3,6 +3,8 @@
 /.next/
 /out/
 
+.vscode/
+
 # Environment
 .env
 .env.*
