@@ -85,10 +85,11 @@ const sections = [
         </Text>
 
         <Text className="mt-3">
-          Quando necessário para o funcionamento do site ou do formulário, os
-          dados poderão ser processados por fornecedores responsáveis pela
-          infraestrutura tecnológica utilizada, sempre observando padrões
-          adequados de segurança e confidencialidade.
+          Quando necessário para o funcionamento do site, do formulário de
+          contato ou da análise estatística de acesso mediante consentimento do
+          visitante, os dados poderão ser processados por fornecedores
+          responsáveis pela infraestrutura tecnológica utilizada, sempre
+          observando padrões adequados de segurança e confidencialidade.
         </Text>
       </>
     ),
@@ -135,13 +136,27 @@ const sections = [
     content: (
       <>
         <Text className="mt-3">
-          Este site poderá utilizar cookies e tecnologias semelhantes apenas
-          quando necessários para seu funcionamento, desempenho ou segurança.
+          A Conjuga utiliza cookies e tecnologias semelhantes para garantir o
+          funcionamento do site e, mediante o consentimento do visitante,
+          coletar informações estatísticas sobre sua utilização.
         </Text>
 
         <Text className="mt-3">
-          Caso novos recursos passem a utilizar cookies adicionais, esta
-          Política de Privacidade será atualizada para refletir essas mudanças.
+          Quando você aceita os cookies de análise, utilizamos o Google
+          Analytics para compreender, de forma agregada, como os visitantes
+          navegam pelo site, quais páginas são mais acessadas e como podemos
+          melhorar a experiência de navegação.
+        </Text>
+
+        <Text className="mt-3">
+          Essas informações não são utilizadas para identificar pessoalmente os
+          visitantes nem para envio de publicidade personalizada pela Conjuga.
+        </Text>
+
+        <Text className="mt-3">
+          Caso você recuse os cookies de análise, o Google Analytics não será
+          carregado e nenhuma informação estatística será coletada durante sua
+          navegação.
         </Text>
       </>
     ),
