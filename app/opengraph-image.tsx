@@ -21,17 +21,17 @@ export default function OpenGraphImage() {
         overflow: "hidden",
         background: "#08090A",
         color: "#F4F4F5",
-        fontFamily: "sans-serif",
+        fontFamily: "Arial",
       }}
     >
-      {/* Grid */}
+      {/* Background */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           display: "flex",
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px)",
+            "linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px)",
           backgroundSize: "72px 72px",
         }}
       />
@@ -42,8 +42,18 @@ export default function OpenGraphImage() {
           position: "absolute",
           inset: 48,
           display: "flex",
-          border: "1px solid rgba(255,255,255,.08)",
-          padding: "64px 56px",
+          border: "1px solid rgba(255,255,255,.05)",
+        }}
+      />
+
+      {/* Content */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 48,
+          display: "flex",
+          alignItems: "center",
+          padding: "72px",
         }}
       >
         <div
@@ -51,28 +61,34 @@ export default function OpenGraphImage() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            maxWidth: 760,
+            alignItems: "flex-start",
           }}
         >
           {/* Brand */}
           <div
             style={{
               display: "flex",
-              fontSize: 82,
+              fontSize: 76,
               fontWeight: 700,
-              letterSpacing: "-0.06em",
               lineHeight: 1,
+              letterSpacing: "-0.055em",
+              color: "#F4F4F5",
             }}
           >
             {siteConfig.name.toUpperCase()}
           </div>
 
-          {/* Title */}
           <div
             style={{
               display: "flex",
-              marginTop: 28,
-              fontSize: 56,
+              height: 34,
+            }}
+          />
+
+          <div
+            style={{
+              display: "flex",
+              fontSize: 50,
               fontWeight: 500,
               lineHeight: 1.08,
               letterSpacing: "-0.04em",
@@ -80,7 +96,19 @@ export default function OpenGraphImage() {
             }}
           >
             Engenharia de software
-            <br />
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              marginTop: 6,
+              fontSize: 50,
+              fontWeight: 500,
+              lineHeight: 1.08,
+              letterSpacing: "-0.04em",
+              color: "rgba(244,244,245,.92)",
+            }}
+          >
             para empresas de serviços
           </div>
         </div>
