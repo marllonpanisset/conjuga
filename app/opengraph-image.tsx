@@ -42,77 +42,47 @@ export default function OpenGraphImage() {
           position: "absolute",
           inset: 48,
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          padding: "52px",
           border: "1px solid rgba(255,255,255,.08)",
+          padding: "64px 56px",
         }}
       >
-        {/* Header */}
-        <div
-          style={{
-            display: "flex",
-            fontSize: 70,
-            fontWeight: 700,
-            letterSpacing: "-0.05em",
-            lineHeight: 1,
-          }}
-        >
-          {siteConfig.name.toUpperCase()}
-        </div>
-
-        {/* Content */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            maxWidth: 860,
+            justifyContent: "center",
+            maxWidth: 760,
           }}
         >
+          {/* Brand */}
           <div
             style={{
               display: "flex",
-              fontSize: 58,
-              fontWeight: 600,
+              fontSize: 82,
+              fontWeight: 700,
+              letterSpacing: "-0.06em",
+              lineHeight: 1,
+            }}
+          >
+            {siteConfig.name.toUpperCase()}
+          </div>
+
+          {/* Title */}
+          <div
+            style={{
+              display: "flex",
+              marginTop: 28,
+              fontSize: 56,
+              fontWeight: 500,
               lineHeight: 1.08,
               letterSpacing: "-0.04em",
-              color: "rgba(244,244,245,.90)",
+              color: "rgba(244,244,245,.92)",
             }}
           >
-            Engenharia de software para empresas de serviços
+            Engenharia de software
+            <br />
+            para empresas de serviços
           </div>
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              marginTop: 38,
-              fontSize: 36,
-              lineHeight: 1.45,
-              color: "rgba(244,244,245,.72)",
-            }}
-          >
-            <span>Organizamos processos.</span>
-            <span>Fortalecemos a presença digital.</span>
-            <span>Preparamos empresas para evoluir.</span>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            width: "100%",
-            fontSize: 22,
-            color: "rgba(244,244,245,.42)",
-            letterSpacing: "0.06em",
-          }}
-        >
-          <span>conjuga.com.br</span>
-
-          <span>Brasil · 2026</span>
         </div>
       </div>
     </div>,
