@@ -19,10 +19,10 @@ export const siteConfig = {
   locale: "pt-BR",
 
   openGraphImage: {
-    path: "/opengraph-image",
+    path: "/og-image.png",
     width: 1200,
     height: 630,
-    alt: "Conjuga — Engenharia de software para empresas de serviços",
+    alt: "Conjuga — Engenharia de Software para empresas de serviços",
   },
 
   /**
