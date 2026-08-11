@@ -133,7 +133,9 @@ export function ContactForm() {
   }, [status]);
 
   function clearFieldError(
-    event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
+    event: ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
   ) {
     const field = event.currentTarget.name as FieldName;
     setFieldErrors((current) => {
@@ -242,10 +244,11 @@ export function ContactForm() {
             tabIndex={-1}
             className="text-xl font-semibold text-text-primary outline-none focus-visible:ring-2 focus-visible:ring-signal/30"
           >
-            Mensagem enviada!
+            Recebemos sua mensagem.
           </h2>
           <Text className="mt-3 max-w-md">
-            Recebemos sua mensagem. Entraremos em contato o mais breve possível.
+            Recebemos sua mensagem. Em breve entraremos em contato para entender
+            melhor o contexto da sua empresa.
           </Text>
           <Button
             type="button"
@@ -266,219 +269,220 @@ export function ContactForm() {
         aria-busy={status === "submitting"}
         className="flex min-w-0 flex-col gap-5"
       >
-      <div
-        className="absolute h-px w-px overflow-hidden whitespace-nowrap opacity-0"
-        aria-hidden="true"
-      >
-        <label htmlFor="website">Não preencha este campo</label>
-        <input
-          id="website"
-          name="website"
-          type="text"
-          tabIndex={-1}
-          autoComplete="off"
-        />
-      </div>
-
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <div>
-          <label
-            htmlFor="name"
-            className="mb-2 block text-[0.875rem] text-text-secondary"
-          >
-            Nome
-          </label>
-          <input
-            ref={firstFieldRef}
-            id="name"
-            name="name"
-            required
-            maxLength={contactFieldLimits.name}
-            autoComplete="name"
-            aria-invalid={Boolean(fieldErrors.name)}
-            aria-describedby={fieldErrors.name ? "name-error" : undefined}
-            onChange={clearFieldError}
-            className={fieldClassName}
-          />
-          {fieldErrors.name && (
-            <FieldError id="name-error" message={fieldErrors.name} />
-          )}
-        </div>
-
-        <div>
-          <label
-            htmlFor="company"
-            className="mb-2 block text-[0.875rem] text-text-secondary"
-          >
-            Empresa <span className="text-text-muted">(opcional)</span>
-          </label>
-          <input
-            id="company"
-            name="company"
-            maxLength={contactFieldLimits.company}
-            autoComplete="organization"
-            onChange={clearFieldError}
-            className={fieldClassName}
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <div>
-          <label
-            htmlFor="email"
-            className="mb-2 block text-[0.875rem] text-text-secondary"
-          >
-            E-mail
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            maxLength={contactFieldLimits.email}
-            autoComplete="email"
-            inputMode="email"
-            aria-invalid={Boolean(fieldErrors.email)}
-            aria-describedby={fieldErrors.email ? "email-error" : undefined}
-            onChange={clearFieldError}
-            className={fieldClassName}
-          />
-          {fieldErrors.email && (
-            <FieldError id="email-error" message={fieldErrors.email} />
-          )}
-        </div>
-
-        <div>
-          <label
-            htmlFor="phone"
-            className="mb-2 block text-[0.875rem] text-text-secondary"
-          >
-            Telefone ou WhatsApp{" "}
-            <span className="text-text-muted">(opcional)</span>
-          </label>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            maxLength={contactFieldLimits.phone}
-            autoComplete="tel-national"
-            inputMode="numeric"
-            placeholder="(21) 98765-4321"
-            aria-invalid={Boolean(fieldErrors.phone)}
-            aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
-            onChange={handlePhoneChange}
-            className={fieldClassName}
-          />
-          {fieldErrors.phone && (
-            <FieldError id="phone-error" message={fieldErrors.phone} />
-          )}
-        </div>
-      </div>
-
-      <div>
-        <label
-          htmlFor="service"
-          className="mb-2 block text-[0.875rem] text-text-secondary"
-        >
-          Serviço de interesse
-        </label>
-        <select
-          id="service"
-          name="service"
-          required
-          aria-invalid={Boolean(fieldErrors.service)}
-          aria-describedby={fieldErrors.service ? "service-error" : undefined}
-          onChange={clearFieldError}
-          className={fieldClassName}
-          defaultValue=""
-        >
-          <option value="" disabled>
-            Selecione
-          </option>
-          {contactServices.map((service) => (
-            <option key={service.value} value={service.value}>
-              {service.label}
-            </option>
-          ))}
-        </select>
-        {fieldErrors.service && (
-          <FieldError id="service-error" message={fieldErrors.service} />
-        )}
-      </div>
-
-      <div>
-        <label
-          htmlFor="message"
-          className="mb-2 block text-[0.875rem] text-text-secondary"
-        >
-          Mensagem
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          required
-          rows={5}
-          minLength={10}
-          maxLength={contactFieldLimits.message}
-          aria-invalid={Boolean(fieldErrors.message)}
-          aria-describedby={fieldErrors.message ? "message-error" : undefined}
-          onChange={clearFieldError}
-          className="min-w-0 w-full resize-y rounded-[10px] border border-border bg-surface px-4 py-3 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
-        />
-        {fieldErrors.message && (
-          <FieldError id="message-error" message={fieldErrors.message} />
-        )}
-      </div>
-
-      <div>
-        <label className="flex cursor-pointer items-start gap-3 text-[0.875rem] leading-relaxed text-text-secondary">
-          <input
-            name="consent"
-            type="checkbox"
-            required
-            aria-invalid={Boolean(fieldErrors.consent)}
-            aria-describedby={
-              fieldErrors.consent ? "consent-error" : undefined
-            }
-            onChange={clearFieldError}
-            className="mt-1 h-4 w-4 shrink-0 accent-signal"
-          />
-          <span>
-            Li e concordo com o tratamento dos dados conforme a{" "}
-            <Link
-              href="/politica-de-privacidade"
-              className="link-underline text-signal-strong"
-            >
-              Política de Privacidade
-            </Link>
-            .
-          </span>
-        </label>
-        {fieldErrors.consent && (
-          <FieldError id="consent-error" message={fieldErrors.consent} />
-        )}
-      </div>
-
-      {status === "error" && (
         <div
-          ref={errorRef}
-          role="alert"
-          tabIndex={-1}
-          className="rounded-[10px] border border-warning/30 bg-warning/5 px-4 py-3 outline-none"
+          className="absolute h-px w-px overflow-hidden whitespace-nowrap opacity-0"
+          aria-hidden="true"
         >
-          <Text className="break-words text-warning">{errorMessage}</Text>
+          <label htmlFor="website">Não preencha este campo</label>
+          <input
+            id="website"
+            name="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+          />
         </div>
-      )}
 
-      <Button
-        type="submit"
-        size="lg"
-        disabled={status === "submitting"}
-        className="w-full sm:w-fit"
-      >
-        {status === "submitting" ? "Enviando..." : "Enviar mensagem"}
-      </Button>
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div>
+            <label
+              htmlFor="name"
+              className="mb-2 block text-[0.875rem] text-text-secondary"
+            >
+              Nome
+            </label>
+            <input
+              ref={firstFieldRef}
+              id="name"
+              name="name"
+              required
+              maxLength={contactFieldLimits.name}
+              autoComplete="name"
+              aria-invalid={Boolean(fieldErrors.name)}
+              aria-describedby={fieldErrors.name ? "name-error" : undefined}
+              onChange={clearFieldError}
+              className={fieldClassName}
+            />
+            {fieldErrors.name && (
+              <FieldError id="name-error" message={fieldErrors.name} />
+            )}
+          </div>
+
+          <div>
+            <label
+              htmlFor="company"
+              className="mb-2 block text-[0.875rem] text-text-secondary"
+            >
+              Empresa <span className="text-text-muted">(opcional)</span>
+            </label>
+            <input
+              id="company"
+              name="company"
+              maxLength={contactFieldLimits.company}
+              autoComplete="organization"
+              onChange={clearFieldError}
+              className={fieldClassName}
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div>
+            <label
+              htmlFor="email"
+              className="mb-2 block text-[0.875rem] text-text-secondary"
+            >
+              E-mail
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              maxLength={contactFieldLimits.email}
+              autoComplete="email"
+              inputMode="email"
+              aria-invalid={Boolean(fieldErrors.email)}
+              aria-describedby={fieldErrors.email ? "email-error" : undefined}
+              onChange={clearFieldError}
+              className={fieldClassName}
+            />
+            {fieldErrors.email && (
+              <FieldError id="email-error" message={fieldErrors.email} />
+            )}
+          </div>
+
+          <div>
+            <label
+              htmlFor="phone"
+              className="mb-2 block text-[0.875rem] text-text-secondary"
+            >
+              Telefone ou WhatsApp{" "}
+              <span className="text-text-muted">(opcional)</span>
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              maxLength={contactFieldLimits.phone}
+              autoComplete="tel-national"
+              inputMode="numeric"
+              placeholder="(21) 98765-4321"
+              aria-invalid={Boolean(fieldErrors.phone)}
+              aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
+              onChange={handlePhoneChange}
+              className={fieldClassName}
+            />
+            {fieldErrors.phone && (
+              <FieldError id="phone-error" message={fieldErrors.phone} />
+            )}
+          </div>
+        </div>
+
+        <div>
+          <label
+            htmlFor="service"
+            className="mb-2 block text-[0.875rem] text-text-secondary"
+          >
+            O que você procura?
+          </label>
+          <select
+            id="service"
+            name="service"
+            required
+            aria-invalid={Boolean(fieldErrors.service)}
+            aria-describedby={fieldErrors.service ? "service-error" : undefined}
+            onChange={clearFieldError}
+            className={fieldClassName}
+            defaultValue=""
+          >
+            <option value="" disabled>
+              Selecione uma opção
+            </option>
+            {contactServices.map((service) => (
+              <option key={service.value} value={service.value}>
+                {service.label}
+              </option>
+            ))}
+          </select>
+          {fieldErrors.service && (
+            <FieldError id="service-error" message={fieldErrors.service} />
+          )}
+        </div>
+
+        <div>
+          <label
+            htmlFor="message"
+            className="mb-2 block text-[0.875rem] text-text-secondary"
+          >
+            Descreva seu desafio
+          </label>
+          <textarea
+            placeholder="Conte brevemente como sua empresa funciona hoje, qual problema deseja resolver ou qual objetivo pretende alcançar."
+            id="message"
+            name="message"
+            required
+            rows={5}
+            minLength={10}
+            maxLength={contactFieldLimits.message}
+            aria-invalid={Boolean(fieldErrors.message)}
+            aria-describedby={fieldErrors.message ? "message-error" : undefined}
+            onChange={clearFieldError}
+            className="min-w-0 w-full resize-y rounded-[10px] border border-border bg-surface px-4 py-3 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
+          />
+          {fieldErrors.message && (
+            <FieldError id="message-error" message={fieldErrors.message} />
+          )}
+        </div>
+
+        <div>
+          <label className="flex cursor-pointer items-start gap-3 text-[0.875rem] leading-relaxed text-text-secondary">
+            <input
+              name="consent"
+              type="checkbox"
+              required
+              aria-invalid={Boolean(fieldErrors.consent)}
+              aria-describedby={
+                fieldErrors.consent ? "consent-error" : undefined
+              }
+              onChange={clearFieldError}
+              className="mt-1 h-4 w-4 shrink-0 accent-signal"
+            />
+            <span>
+              Li e concordo com o tratamento dos dados conforme a{" "}
+              <Link
+                href="/politica-de-privacidade"
+                className="link-underline text-signal-strong"
+              >
+                Política de Privacidade
+              </Link>
+              .
+            </span>
+          </label>
+          {fieldErrors.consent && (
+            <FieldError id="consent-error" message={fieldErrors.consent} />
+          )}
+        </div>
+
+        {status === "error" && (
+          <div
+            ref={errorRef}
+            role="alert"
+            tabIndex={-1}
+            className="rounded-[10px] border border-warning/30 bg-warning/5 px-4 py-3 outline-none"
+          >
+            <Text className="break-words text-warning">{errorMessage}</Text>
+          </div>
+        )}
+
+        <Button
+          type="submit"
+          size="lg"
+          disabled={status === "submitting"}
+          className="w-full sm:w-fit"
+        >
+          {status === "submitting" ? "Enviando..." : "Enviar mensagem"}
+        </Button>
       </form>
     </>
   );

@@ -12,7 +12,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Contato",
   description:
-    "Conte o desafio da sua empresa. Vamos entender sua operação, analisar o contexto do negócio e definir a solução mais adequada para o seu momento.",
+    "Conte o desafio da sua empresa. Vamos entender sua operação, analisar o contexto do negócio e definir a abordagem mais adequada para o seu momento.",
   path: "/contato",
 });
 
@@ -58,14 +58,14 @@ const contactChannels = [
   },
   {
     title: "Instagram",
-    description: "Acompanhe conteúdos, novidades e bastidores da Conjuga.",
+    description: "Acompanhe novidades e conteúdos da Conjuga.",
     value: "@conjuga.br",
     href: "https://instagram.com/conjuga.br",
     external: true,
   },
   {
     title: "LinkedIn",
-    description: "Acompanhe novidades, artigos e atualizações da Conjuga.",
+    description: "Acompanhe novidades e atualizações da Conjuga.",
     value: "/company/conjuga-br",
     href: "https://www.linkedin.com/company/conjuga-br",
     external: true,
@@ -76,12 +76,12 @@ const faqItems = [
   {
     question: "Ainda não sei qual solução minha empresa precisa.",
     answer:
-      "Não. Começamos entendendo o problema da empresa para definir a solução mais adequada.",
+      "Não tem problema. Começamos entendendo sua operação para definir a solução mais adequada.",
   },
   {
     question: "Quanto custa um projeto?",
     answer:
-      "Cada projeto recebe um orçamento personalizado conforme escopo, complexidade e objetivos.",
+      "Cada projeto possui um escopo diferente. O investimento é definido após entendermos o contexto, a complexidade e os objetivos da empresa.",
   },
   {
     question: "Quanto tempo leva para receber um retorno?",
@@ -117,8 +117,8 @@ export default function ContatoPage() {
 
       <Hero
         eyebrow="Contato"
-        title="Vamos entender o próximo desafio da sua operação"
-        description="Conte como sua empresa funciona hoje, quais desafios deseja resolver e onde estão os principais gargalos. A partir desse diagnóstico, definimos a solução mais adequada para o seu momento."
+        title="Conte o desafio. Nós ajudamos a encontrar a solução."
+        description="Explique o contexto da sua empresa, os principais desafios e o objetivo que deseja alcançar. A partir desse diagnóstico, definimos a abordagem mais adequada para tornar sua operação mais eficiente."
       />
 
       <Section>
@@ -203,8 +203,8 @@ export default function ContatoPage() {
               </Heading>
 
               <Text variant="muted" className="mt-3 max-w-xl">
-                Descreva sua empresa, seus desafios e o objetivo que deseja
-                alcançar.
+                Descreva sua empresa, os desafios atuais e o resultado que
+                deseja alcançar.
               </Text>
 
               <div className="mt-8">
@@ -242,7 +242,7 @@ export default function ContatoPage() {
                   "Se necessário, entramos em contato para esclarecer detalhes e compreender melhor os processos envolvidos.",
               },
               {
-                title: "Definimos a melhor abordagem",
+                title: "Definimos a abordagem",
                 description:
                   "Avaliamos quais soluções fazem sentido para o momento da empresa, respeitando prioridades e orçamento.",
               },
@@ -343,7 +343,8 @@ export default function ContatoPage() {
 
           <Text variant="lead" className="mt-5 max-w-2xl">
             Você pode iniciar uma conversa pelo formulário ou utilizar um dos
-            canais abaixo. Todos os contatos chegam diretamente à Conjuga.
+            canais abaixo. Todos os contatos são respondidos diretamente pela
+            Conjuga.
           </Text>
 
           <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -388,12 +389,17 @@ export default function ContatoPage() {
             {faqItems.map((item, index) => (
               <div
                 key={item.question}
-                className="
+                className={`
             bg-surface
             p-6
             md:p-8
             lg:p-10
-          "
+            ${
+              index === faqItems.length - 1 && faqItems.length % 2 !== 0
+                ? "md:col-span-2"
+                : ""
+            }
+          `}
               >
                 <span
                   className="

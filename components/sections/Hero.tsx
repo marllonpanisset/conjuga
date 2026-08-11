@@ -25,9 +25,9 @@ export function Hero({
       className="
         relative 
         overflow-hidden
-        py-24
-        sm:py-28
-        md:py-36
+        py-20
+        sm:py-24
+        md:py-28
       "
     >
       {/* Background premium glow */}
@@ -48,12 +48,12 @@ export function Hero({
             inset-x-0
             top-0
             mx-auto
-            h-[500px]
+            h-[420px]
+            blur-[120px]
             w-full
             max-w-[700px]
             rounded-full
             bg-primary/15
-            blur-[140px]
           "
         />
 
@@ -128,7 +128,7 @@ export function Hero({
             variant="lead"
             className={cn(
               `
-                mt-8
+                mt-6
                 max-w-prose
                 text-lg
                 leading-relaxed
