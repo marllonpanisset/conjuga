@@ -4,7 +4,7 @@
  * Keeping SEO, metadata and structured data values in a single place avoids
  * duplication and ensures every page shares the same source of truth.
  */
-const siteUrl = "https://conjuga.com.br";
+const siteUrl = "https://www.conjuga.com.br";
 
 export const siteConfig = {
   name: "Conjuga",
