@@ -63,7 +63,7 @@ export const siteConfig = {
   ],
 
   contact: {
-    email: "conjuga@outlook.com",
+    email: "contato@conjuga.com.br",
   },
 
   social: {
@@ -77,7 +77,7 @@ export const siteConfig = {
    * components while the application migrates to semantic fields.
    */
   links: {
-    email: "conjuga@outlook.com",
+    email: "contato@conjuga.com.br",
 
     linkedin: "https://linkedin.com/company/conjuga",
 
