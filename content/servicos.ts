@@ -27,7 +27,7 @@ export const services: Service[] = [
       "Entendimento do contexto",
       "Planejamento da solução",
       "Implantação",
-      "Evolução contínua",
+      "Evolução conforme a necessidade",
     ],
     heroTitle: "Soluções web criadas para apoiar a operação da empresa",
     heroDescription:

@@ -30,7 +30,7 @@ const processSteps = [
   {
     title: "Planejamento",
     description:
-      "Definimos a solução mais simples capaz de resolver o problema antes de escolher a tecnologia.",
+      "Buscamos definir uma solução simples e adequada ao problema antes de escolher a tecnologia.",
   },
   {
     title: "Implantação",
@@ -38,9 +38,9 @@ const processSteps = [
       "Implantamos, configuramos e validamos a solução com foco em qualidade, segurança e facilidade de evolução.",
   },
   {
-    title: "Evolução contínua",
+    title: "Evolução conforme a necessidade",
     description:
-      "Acompanhamos novas necessidades para que o ativo digital evolua junto com a operação.",
+      "Novas necessidades podem orientar a evolução do ativo digital junto com a operação.",
   },
 ];
 
@@ -132,7 +132,7 @@ export default function HomePage() {
 
       <Section className="py-24 md:py-32">
         <CTASection
-          title="Vamos encontrar a melhor solução para o seu negócio?"
+          title="Vamos avaliar o caminho adequado para o seu negócio?"
           description="Conte como sua empresa funciona hoje e quais desafios deseja resolver. Com esse contexto, podemos avaliar o caminho mais adequado para a sua realidade."
           actions={
             <Button href="/contato" size="lg">

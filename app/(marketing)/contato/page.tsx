@@ -25,7 +25,7 @@ const processSteps = [
   {
     title: "Planejamento",
     description:
-      "Definimos a solução mais simples capaz de resolver o problema antes de escolher a tecnologia.",
+      "Buscamos definir uma solução simples e adequada ao problema antes de escolher a tecnologia.",
   },
   {
     title: "Implantação",
@@ -33,9 +33,9 @@ const processSteps = [
       "Implantamos, configuramos e validamos a solução com foco em qualidade, segurança e facilidade de evolução.",
   },
   {
-    title: "Evolução contínua",
+    title: "Evolução conforme a necessidade",
     description:
-      "Acompanhamos novas necessidades para que o ativo digital evolua junto com a operação.",
+      "Novas necessidades podem orientar a evolução do ativo digital junto com a operação.",
   },
 ];
 
@@ -138,8 +138,8 @@ export default function ContatoPage() {
               <Text variant="muted" className="mt-3">
                 Você não precisa decidir qual tecnologia utilizar antes da
                 conversa. Explique o contexto da empresa e o que deseja
-                melhorar. Com esse contexto, podemos avaliar o caminho adequado. Se
-                preferir, conheça nossos{" "}
+                melhorar. Com esse contexto, podemos avaliar o caminho adequado.
+                Se preferir, conheça nossos{" "}
                 <Link
                   href="/servicos"
                   className="link-underline text-signal-strong"
@@ -288,9 +288,8 @@ export default function ContatoPage() {
           </Heading>
 
           <Text variant="lead" className="mt-5 max-w-2xl">
-            Todas as soluções seguem um processo estruturado para reduzir
-            riscos, organizar prioridades e garantir que a tecnologia acompanhe
-            o crescimento da empresa.
+            O processo considera riscos, prioridades e a possibilidade de a
+            solução evoluir conforme as necessidades da operação.
           </Text>
 
           <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-[16px] border border-border bg-border md:grid-cols-2">

@@ -40,7 +40,7 @@ const differentials: Differential[] = [
   {
     title: "Integração entre sistemas",
     description:
-      "Conectamos ferramentas, plataformas e processos para eliminar silos, reduzir trabalho manual e centralizar informações.",
+      "Conectamos ferramentas, plataformas e processos para reduzir silos e trabalho manual, além de centralizar informações.",
     icon: Workflow,
   },
   {
