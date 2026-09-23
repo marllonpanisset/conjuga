@@ -116,10 +116,7 @@ export default function SobrePage() {
             </Heading>
 
             <Text variant="lead" className="mt-4">
-              Antes de desenvolver qualquer solução, entendemos como a empresa
-              funciona, onde estão os principais desafios e quais processos
-              precisam ser organizados. A tecnologia é consequência desse
-              entendimento do contexto.
+              A tecnologia é consequência desse entendimento do contexto.
             </Text>
           </div>
 
