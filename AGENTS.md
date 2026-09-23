@@ -4,33 +4,41 @@
 
 This repository follows a documentation-first approach.
 
-Before making any significant decision, consult the appropriate document.
+Before making any significant decision, consult the appropriate project documentation.
+
+Documentation defines the approved business model, principles, brand, website structure, communication and roadmap.
+
+When documentation conflicts with the current implementation, stop and report the conflict before making changes.
+
+---
 
 ## Documentation
 
-Business model
+### Business model
 
 - docs/01-BUSINESS.md
 
-Engineering and company principles
+### Engineering and company principles
 
 - docs/02-PRINCIPLES.md
 
-Brand identity
+### Brand identity
 
 - docs/03-BRAND.md
 
-Website architecture
+### Website architecture
 
 - docs/04-WEBSITE.md
 
-Communication and copywriting
+### Communication and copywriting
 
 - docs/05-COPY.md
 
-Strategic roadmap
+### Strategic roadmap
 
 - docs/06-ROADMAP.md
+
+---
 
 ## Core Principles
 
@@ -39,16 +47,44 @@ Strategic roadmap
 - Do not invent copy.
 - Do not invent services.
 - Do not invent projects, testimonials or clients.
+- Do not invent claims, capabilities, metrics or results.
 - Prefer modifying existing code over creating new abstractions.
 - Reuse existing components and visual patterns whenever possible.
 - Keep solutions simple, readable and maintainable.
 - Implement only what was explicitly requested.
 - Do not anticipate future roadmap items.
 - Do not perform unrelated improvements.
+- Preserve existing behavior unless the current sprint explicitly authorizes a change.
+- When documentation is insufficient to support a decision, ask for clarification instead of guessing.
+
+---
+
+## Documentation Review Policy
+
+Project documentation is reviewed and updated before major changes to public positioning, communication or business strategy.
+
+When reviewing documentation:
+
+- inspect the complete document;
+- preserve its purpose and organization unless a structural change is explicitly justified;
+- identify outdated rules, contradictions, ambiguities and missing definitions;
+- do not silently resolve conflicts using assumptions;
+- do not introduce unsupported business decisions;
+- preserve terminology that is already established unless a terminology change is explicitly approved;
+- ensure the revised document remains consistent with the other canonical documents;
+- return the complete revised document when the task requests a replacement file.
+
+When multiple documents are being reviewed sequentially, previously approved documents become references for subsequent documents.
+
+Documentation review and implementation are separate activities.
+
+A documentation revision does not authorize code changes unless the implementation is explicitly requested.
+
+---
 
 ## Home Page Policy
 
-The Home page is considered approved and frozen.
+The Home page is considered approved and protected from casual changes.
 
 Do not modify the Home unless the request is explicitly about:
 
@@ -58,7 +94,17 @@ Do not modify the Home unless the request is explicitly about:
 - performance;
 - SEO;
 - technical regressions;
-- an explicitly authorized Home change.
+- an explicitly authorized strategic, editorial or visual Home change.
+
+A strategic or editorial review of the Home may be explicitly authorized without authorizing implementation.
+
+When the Home is being reviewed but not implemented:
+
+- inspect its current content;
+- evaluate it against the current approved documentation;
+- identify communication, positioning, clarity or conversion issues;
+- recommend changes when justified;
+- do not modify the Home files unless implementation is separately authorized.
 
 Never redesign, refactor or reorganize the Home during unrelated tasks.
 
@@ -67,6 +113,8 @@ Do not modify shared components when the change could alter the approved Home in
 Before editing a shared component, inspect every place where it is used.
 
 If a shared-component change could affect the Home, stop and report the impact instead of implementing it without explicit authorization.
+
+---
 
 ## Visual Pattern Reuse Policy
 
@@ -120,7 +168,9 @@ The goal is for every page to look like it belongs to the same design system, ev
 
 Always justify the decision when introducing a new component or visual pattern.
 
-### Home Visual Patterns
+---
+
+## Home Visual Patterns
 
 The Home page defines the canonical visual language of the project.
 
@@ -142,9 +192,11 @@ Do not modify the Home components solely to accommodate an internal page.
 
 If the existing implementation cannot be reused safely without affecting the Home, reproduce the approved visual structure locally with existing design-system primitives.
 
+---
+
 ## Copywriting Policy
 
-Copy must come from the documentation.
+Copy must come from the project documentation.
 
 Priority order:
 
@@ -154,17 +206,38 @@ Priority order:
 4. docs/03-BRAND.md
 5. docs/04-WEBSITE.md
 
+The priority order determines the primary source for communication decisions.
+
+It does not authorize one document to contradict a higher-level business or strategic decision.
+
 If the documentation does not contain the required content, ask for clarification instead of inventing text.
 
-Do not create new claims, promises, capabilities, processes, metrics, client results or positioning statements.
+Do not create:
+
+- new claims;
+- new promises;
+- new capabilities;
+- new processes;
+- new metrics;
+- new client results;
+- new testimonials;
+- new clients;
+- new positioning statements;
+- unsupported commercial guarantees.
 
 Do not rewrite approved copy merely to make it sound more creative.
 
+Do not introduce marketing language that changes the documented meaning.
+
 When consolidating documented content, preserve its original meaning and avoid introducing new business claims.
+
+When copy is revised strategically, the revised copy must remain consistent with the approved business model, principles, brand and website architecture.
+
+---
 
 ## Sprint Policy
 
-Every task belongs to a single sprint.
+Every implementation task belongs to a single sprint.
 
 Implement only the requested sprint.
 
@@ -188,6 +261,10 @@ Do not implement future sections while working on the current section.
 
 Do not remove an existing section before its approved replacement is implemented, unless the current sprint explicitly authorizes its removal.
 
+Documentation review tasks may modify only the documentation files explicitly included in the task.
+
+---
+
 ## Scope Control
 
 Only modify files directly related to the requested task.
@@ -203,6 +280,8 @@ If the implementation requires changing a file outside the allowed scope, stop a
 Preserve unrelated code, formatting and behavior.
 
 Do not rename, move or reorganize files unless explicitly requested.
+
+---
 
 ## Visual Consistency
 
@@ -250,6 +329,8 @@ Do not add:
 
 unless explicitly requested or already established by the canonical pattern being reused.
 
+---
+
 ## Design Review Checklist
 
 Before considering any UI implementation complete, verify:
@@ -262,19 +343,23 @@ Before considering any UI implementation complete, verify:
 - Does the section maintain the premium B2B visual language of the project?
 - If all text were removed, would the layout still look like it belongs to the same website?
 - Does the implementation remain consistent on desktop, tablet and mobile?
-- Was any shared component changed in a way that could affect the frozen Home?
+- Was any shared component changed in a way that could affect the protected Home?
 
 If any answer reveals an inconsistency, revise the implementation before considering the task complete.
 
+---
+
 ## Documentation Policy
 
-Update documentation only when the requested feature changes:
+Update documentation when the requested work changes:
 
 - business behavior;
 - architecture;
 - public communication;
 - project rules;
-- roadmap decisions.
+- roadmap decisions;
+- approved positioning;
+- documented processes.
 
 Do not rewrite documentation unnecessarily.
 
@@ -282,11 +367,19 @@ Prefer modifying the appropriate existing document instead of creating a new one
 
 Do not duplicate the same rule or business definition across multiple documents.
 
+Keep each document responsible for its own subject.
+
+If a rule belongs to one canonical document, do not duplicate the full rule in another document merely for convenience.
+
 If implementation and documentation conflict, stop and report the conflict before proceeding.
+
+If two documentation files conflict, do not choose one silently. Identify the conflict and determine which document or business decision needs to be updated before implementation.
+
+---
 
 ## Validation
 
-Before considering a task complete, always run:
+Before considering an implementation task complete, always run:
 
 ```bash
 npm run lint
@@ -294,7 +387,7 @@ npm run build
 git diff --check
 ```
 
-## Also inspect:
+Also inspect:
 
 ```bash
 git status --short
@@ -313,7 +406,11 @@ The final working tree must contain only files related to the current sprint.
 
 Do not create a commit unless the task explicitly requests it.
 
+---
+
 ## Workflow
+
+For implementation tasks:
 
 1. Read AGENTS.md.
 2. Read only the documentation relevant to the current task.
@@ -326,3 +423,28 @@ Do not create a commit unless the task explicitly requests it.
 9. Run all required validation commands.
 10. Report the files changed, the validation results and any remaining limitations.
 11. Stop.
+
+For documentation review or revision tasks:
+
+1. Read AGENTS.md.
+2. Read the complete document being reviewed.
+3. Identify its purpose and relationship to the other canonical documents.
+4. Compare it against the current approved project direction.
+5. Identify contradictions, outdated rules, ambiguities and missing definitions.
+6. Do not silently invent or resolve unsupported business decisions.
+7. Revise only the requested documentation file.
+8. Preserve its purpose, terminology and organization unless a structural change is justified.
+9. Return or inspect the complete revised document.
+10. Stop.
+
+For strategic or editorial review tasks:
+
+1. Read AGENTS.md.
+2. Read all documentation relevant to the communication being reviewed.
+3. Inspect the current implementation or copy.
+4. Compare the communication against the approved documentation.
+5. Separate review from implementation.
+6. Identify problems and recommend changes.
+7. Do not modify implementation unless explicitly authorized.
+8. Do not invent replacement copy when the documentation does not support it.
+9. Stop after delivering the review.
