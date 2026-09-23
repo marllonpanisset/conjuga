@@ -43,26 +43,28 @@ A solução técnica deve ser consequência da necessidade do negócio.
 
 ---
 
-## Vendemos resultados, não tecnologia
+## Vendemos valor, não tecnologia
 
 Nossos clientes não compram:
 
 - React;
 - Next.js;
 - APIs;
-- Banco de dados;
-- Inteligência Artificial.
+- banco de dados;
+- inteligência artificial.
 
-Eles compram:
+Eles procuram resolver problemas relacionados a:
 
 - eficiência;
 - organização;
 - produtividade;
 - automação;
-- redução de erros;
-- escalabilidade.
+- redução de trabalho manual e erros;
+- capacidade de evolução.
 
-A tecnologia existe apenas para entregar esses resultados.
+A tecnologia existe para resolver esses problemas.
+
+Não devemos apresentar uma tecnologia como benefício por si só quando ela não estiver relacionada a uma necessidade concreta do negócio.
 
 ---
 
@@ -72,13 +74,13 @@ Não nos posicionamos como especialistas em um único mercado.
 
 Nos especializamos em resolver problemas operacionais comuns a empresas de serviços.
 
-Os segmentos atendidos servem como prova da aplicação da nossa metodologia, não como identidade da empresa.
+Os segmentos atendidos servem como contexto para aplicação das nossas soluções, não como identidade da empresa.
 
 ---
 
 ## Simplicidade é uma vantagem competitiva
 
-A melhor solução normalmente é a mais simples.
+A melhor solução é aquela que resolve o problema sem adicionar complexidade desnecessária.
 
 Evitamos:
 
@@ -104,9 +106,21 @@ Priorizamos soluções que sejam:
 
 Evitamos decisões que dificultem futuras melhorias.
 
+---
+
 ## Protegemos a capacidade de entrega
 
-Avaliamos novos projetos considerando a capacidade atual, a aderência técnica, a viabilidade econômica, o controle de escopo, os riscos e responsabilidades e o impacto sobre compromissos existentes.
+A capacidade de entrega é parte da qualidade do negócio.
+
+Avaliamos novos projetos considerando:
+
+- capacidade atual;
+- aderência técnica;
+- viabilidade econômica;
+- controle de escopo;
+- riscos e responsabilidades;
+- impacto sobre compromissos existentes;
+- possibilidades de manutenção e evolução.
 
 Não aceitamos demandas que comprometam entregas assumidas ou gerem dependência operacional excessiva.
 
@@ -133,9 +147,9 @@ Preferimos:
 - menos páginas;
 - menos componentes;
 - menos funcionalidades;
-- menos animações.
+- menos animações;
 
-Desde que cada elemento entregue mais qualidade e mais valor.
+desde que cada elemento entregue mais qualidade e mais valor.
 
 ---
 
@@ -166,7 +180,7 @@ Todo elemento deve contribuir para:
 
 ## Sofisticação vem da consistência
 
-Um produto premium não depende de excesso de efeitos visuais.
+Um produto ou serviço premium não depende de excesso de efeitos visuais.
 
 Ele transmite qualidade através de:
 
@@ -238,15 +252,31 @@ Toda implementação deve considerar:
 
 ## IA faz parte do processo, não do produto
 
-A Inteligência Artificial é utilizada para acelerar desenvolvimento, pesquisa e automação.
+A Inteligência Artificial pode ser utilizada para acelerar desenvolvimento, pesquisa, análise, automação e outras atividades quando houver benefício concreto.
 
-Ela não é o centro da proposta de valor da Conjuga.
+Ela também pode fazer parte de soluções entregues ao cliente quando resolver um problema real de negócio.
+
+A IA não é o centro da proposta de valor da Conjuga.
+
+---
+
+## A tecnologia deve ser aplicada com propósito
+
+Não utilizamos IA apenas porque ela está em evidência.
+
+Antes de aplicar IA, avaliamos:
+
+- qual problema ela resolve;
+- se existe valor real em sua utilização;
+- se a solução é adequada ao contexto;
+- quais riscos e limitações existem;
+- como manter controle e confiabilidade.
 
 ---
 
 ## O julgamento humano permanece essencial
 
-A IA auxilia decisões.
+A IA auxilia decisões e execução.
 
 Ela não substitui responsabilidade, ética ou pensamento crítico.
 
@@ -276,6 +306,22 @@ Depois ele decide.
 
 Evitamos textos excessivamente publicitários.
 
+A comunicação deve explicar o problema, a abordagem e a solução de forma objetiva.
+
+---
+
+## Falamos sobre problemas antes de falar sobre tecnologia
+
+Sempre que possível, a comunicação deve partir da realidade do cliente:
+
+- processos manuais;
+- tarefas repetitivas;
+- informações espalhadas;
+- ferramentas desconectadas;
+- dificuldade de organizar ou escalar operações.
+
+A tecnologia deve aparecer como meio para resolver esses problemas.
+
 ---
 
 ## Honestidade gera confiança
@@ -302,11 +348,13 @@ Antes de implementar qualquer mudança, pergunte:
 
 2. Isso simplifica ou aumenta a complexidade?
 
-3. Isso melhora a experiência do usuário?
+3. Isso melhora a experiência do usuário ou do cliente?
 
 4. Isso será fácil de manter no futuro?
 
 5. Isso fortalece a identidade da Conjuga?
+
+6. Isso está alinhado com o modelo de negócio e os princípios documentados?
 
 Se a maioria das respostas for negativa, a decisão deve ser reavaliada.
 
