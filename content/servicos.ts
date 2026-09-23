@@ -65,7 +65,7 @@ export const services: Service[] = [
     icon: Globe2,
     name: "Presença Digital",
     shortDescription:
-      "A solução ideal para empresas que desejam organizar sua presença digital e criar uma base para futuras evoluções.",
+      "Uma base para empresas que precisam estruturar sua presença na internet.",
     problem:
       "Uma presença digital desorganizada reduz a credibilidade da empresa e dificulta a geração de oportunidades.",
     benefits: [
@@ -81,7 +81,7 @@ export const services: Service[] = [
       "Publicação da aplicação",
     ],
     process: ["Diagnóstico", "Planejamento", "Implantação", "Evolução"],
-    heroTitle: "O primeiro passo para fortalecer a presença digital da empresa",
+    heroTitle: "Uma presença digital estruturada para a empresa",
     heroDescription:
       "A Presença Digital organiza a comunicação da empresa, fortalece sua credibilidade e prepara uma base para novas soluções conforme o negócio cresce.",
   },

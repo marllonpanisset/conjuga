@@ -50,7 +50,7 @@ export default function HomePage() {
       <HomeHero
         eyebrow="Engenharia de software para empresas de serviços"
         title="Soluções para empresas que querem operar com mais eficiência"
-        description="Começamos pela Presença Digital e evoluímos para automações, sistemas web, integrações e outras soluções conforme o crescimento da empresa."
+        description="Começamos entendendo o problema da empresa e definimos a solução adequada: sistemas web, automações, integrações ou presença digital, conforme a necessidade."
         actions={
           <>
             <Button href="/contato" size="lg">
@@ -77,10 +77,9 @@ export default function HomePage() {
               </Heading>
 
               <Text variant="lead" className="mt-5 max-w-2xl">
-                Cada solução resolve um conjunto específico de problemas. A
-                Presença Digital é o ponto de partida para empresas que desejam
-                fortalecer sua presença online e criar uma base preparada para
-                evoluir com novas soluções conforme o crescimento do negócio.
+                Cada solução atende necessidades diferentes. Sistemas Web,
+                Automações de Processos e Presença Digital podem ser combinados
+                conforme o problema e o contexto da empresa.
               </Text>
             </div>
           </div>

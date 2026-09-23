@@ -38,7 +38,7 @@ export default function ServicosPage() {
       <Hero
         eyebrow="Serviços"
         title="Soluções desenvolvidas para resolver desafios reais do negócio"
-        description="Cada solução nasce do entendimento do problema. A Presença Digital é o ponto de partida para empresas que desejam organizar sua operação e criar uma base preparada para evoluir com novas soluções."
+        description="Cada solução nasce do entendimento do problema. Sistemas Web, Automações de Processos e Presença Digital atendem necessidades diferentes e podem ser combinados conforme o contexto da empresa."
       />
 
       <Section surface>
