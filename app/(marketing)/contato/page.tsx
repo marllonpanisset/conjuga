@@ -89,10 +89,6 @@ const faqItems = [
       "O primeiro retorno acontece em até um dia útil. Esse prazo não inclui orçamento, diagnóstico ou solução; em casos mais complexos, usamos esse primeiro contato para alinhar informações antes da proposta.",
   },
   {
-    question: "Vocês atendem empresas de todo o Brasil?",
-    answer: "Sim. Todo o processo pode ser realizado de forma remota.",
-  },
-  {
     question: "Existe suporte após a entrega?",
     answer:
       "Sim. Podemos oferecer manutenção e evolução contínua através de contrato específico.",
