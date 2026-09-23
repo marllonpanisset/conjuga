@@ -99,6 +99,7 @@ Começar a adquirir clientes.
 
 ### Prospecção
 
+- prospecção direta, com foco inicial;
 - empresas locais;
 - Google Maps;
 - networking;
@@ -106,6 +107,8 @@ Começar a adquirir clientes.
 
 ### Conteúdo
 
+- construir conteúdo continuamente para gerar autoridade e demanda no médio e longo prazo;
+- manter presença recorrente e sustentável no Instagram, sem obrigação diária ou meta rígida de frequência;
 - artigos técnicos;
 - estudos de caso;
 - materiais educativos.

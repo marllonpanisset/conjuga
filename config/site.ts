@@ -59,7 +59,7 @@ export const siteConfig = {
    */
   sameAs: [
     "https://instagram.com/conjuga.br",
-    "https://linkedin.com/company/conjuga",
+    "https://www.linkedin.com/company/conjuga-br",
   ],
 
   contact: {
@@ -67,7 +67,7 @@ export const siteConfig = {
   },
 
   social: {
-    linkedin: "https://linkedin.com/company/conjuga",
+    linkedin: "https://www.linkedin.com/company/conjuga-br",
 
     instagram: "https://instagram.com/conjuga.br",
   },
@@ -79,7 +79,7 @@ export const siteConfig = {
   links: {
     email: "contato@conjuga.com.br",
 
-    linkedin: "https://linkedin.com/company/conjuga",
+    linkedin: "https://www.linkedin.com/company/conjuga-br",
 
     instagram: "https://instagram.com/conjuga.br",
   },

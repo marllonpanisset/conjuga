@@ -104,6 +104,12 @@ Priorizamos soluções que sejam:
 
 Evitamos decisões que dificultem futuras melhorias.
 
+## Protegemos a capacidade de entrega
+
+Avaliamos novos projetos considerando a capacidade atual, a aderência técnica, a viabilidade econômica, o controle de escopo, os riscos e responsabilidades e o impacto sobre compromissos existentes.
+
+Não aceitamos demandas que comprometam entregas assumidas ou gerem dependência operacional excessiva.
+
 ---
 
 # Princípios de Produto

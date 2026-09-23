@@ -254,6 +254,10 @@ Não horas.
 
 Preferimos construir relacionamentos de longo prazo do que projetos isolados.
 
+Projetos personalizados são apresentados sob consulta e orçados após o entendimento do escopo.
+
+Pacotes poderão ser criados futuramente apenas quando houver escopo suficientemente padronizado e uma decisão específica para isso.
+
 Não prometemos resultados impossíveis.
 
 Não utilizamos cases fictícios para gerar credibilidade.
@@ -261,6 +265,12 @@ Não utilizamos cases fictícios para gerar credibilidade.
 Não fazemos promessas técnicas que não possam ser comprovadas.
 
 Preferimos perder uma venda a vender uma solução inadequada.
+
+## Avaliação de novos projetos
+
+A aceitação de novos projetos considera a capacidade atual de entrega, a aderência técnica, a viabilidade econômica, o controle de escopo, os riscos e responsabilidades, o impacto sobre clientes e projetos existentes e as possibilidades de manutenção, evolução ou novos projetos.
+
+Não aceitamos demandas que comprometam compromissos existentes ou gerem dependência operacional excessiva. A capacidade deve ser avaliada conforme o contexto, sem estabelecer um limite fixo de clientes ou projetos.
 
 ---
 

@@ -86,7 +86,7 @@ const faqItems = [
   {
     question: "Quanto tempo leva para receber um retorno?",
     answer:
-      "Normalmente respondemos em até um dia útil. Em casos mais complexos, o primeiro retorno serve para alinhar informações antes da proposta.",
+      "O primeiro retorno acontece em até um dia útil. Esse prazo não inclui orçamento, diagnóstico ou solução; em casos mais complexos, usamos esse primeiro contato para alinhar informações antes da proposta.",
   },
   {
     question: "Vocês atendem empresas de todo o Brasil?",
