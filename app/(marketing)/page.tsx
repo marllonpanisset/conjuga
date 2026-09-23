@@ -23,7 +23,7 @@ export const metadata: Metadata = buildMetadata({
 
 const processSteps = [
   {
-    title: "Diagnóstico",
+    title: "Entendimento do contexto",
     description:
       "Entendemos como o negócio funciona, onde estão os gargalos e quais tarefas geram atrito.",
   },
@@ -54,7 +54,7 @@ export default function HomePage() {
         actions={
           <>
             <Button href="/contato" size="lg">
-              Solicitar diagnóstico <ArrowRight size={18} />
+              Conte seu desafio <ArrowRight size={18} />
             </Button>
 
             <Button href="/servicos" variant="secondary" size="lg">
@@ -133,7 +133,7 @@ export default function HomePage() {
       <Section className="py-24 md:py-32">
         <CTASection
           title="Vamos encontrar a melhor solução para o seu negócio?"
-          description="Conte como sua empresa funciona hoje e quais desafios deseja resolver. A partir desse diagnóstico, definimos a solução mais adequada para a sua realidade."
+          description="Conte como sua empresa funciona hoje e quais desafios deseja resolver. Com esse contexto, podemos avaliar o caminho mais adequado para a sua realidade."
           actions={
             <Button href="/contato" size="lg">
               Falar com a Conjuga

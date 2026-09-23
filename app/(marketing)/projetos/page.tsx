@@ -88,7 +88,7 @@ export default function ProjetosPage() {
                 Sobre a Conjuga
               </Button>
               <Button href="/contato" variant="ghost" size="lg">
-                Solicitar um diagnóstico
+                Conte seu desafio
               </Button>
             </>
           }

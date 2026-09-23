@@ -163,7 +163,7 @@ export default async function CasePage({
           description="Conte o problema e o contexto da sua empresa para avaliarmos a solução mais adequada à sua necessidade."
           actions={
             <Button href="/contato" size="lg">
-              Solicitar diagnóstico
+              Conte seu desafio
             </Button>
           }
         />

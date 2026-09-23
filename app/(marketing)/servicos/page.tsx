@@ -51,9 +51,9 @@ export default function ServicosPage() {
             </Heading>
 
             <Text variant="lead" className="mt-4">
-              Você não precisa saber qual tecnologia ou serviço contratar. O
-              diagnóstico parte do contexto, dos processos e dos desafios do
-              negócio para definir a solução adequada.
+              Você não precisa saber qual tecnologia ou serviço contratar. A
+              conversa começa pelo contexto, pelos processos e pelos desafios
+              do negócio para compreender qual solução pode ser adequada.
             </Text>
 
             <Text className="mt-4 max-w-2xl">
@@ -110,7 +110,7 @@ export default function ServicosPage() {
       <Section>
         <CTASection
           title="Não sabe qual solução faz sentido?"
-          description="Conte como sua empresa funciona hoje e quais desafios deseja resolver. A partir desse diagnóstico, definimos a solução mais adequada para o seu momento."
+          description="Conte como sua empresa funciona hoje e quais desafios deseja resolver. Com esse contexto, podemos avaliar o caminho mais adequado para o seu momento."
           actions={
             <Button href="/contato" size="lg">
               Conversar com a Conjuga

@@ -18,7 +18,7 @@ export const metadata: Metadata = buildMetadata({
 
 const processSteps = [
   {
-    title: "Diagnóstico",
+    title: "Entendimento do contexto",
     description:
       "Entendemos como o negócio funciona, onde estão os gargalos e quais tarefas geram atrito.",
   },
@@ -118,15 +118,15 @@ export default function ContatoPage() {
       <Hero
         eyebrow="Contato"
         title="Conte o desafio. Nós ajudamos a encontrar a solução."
-        description="Explique o contexto da sua empresa, os principais desafios e o objetivo que deseja alcançar. A partir desse diagnóstico, definimos a abordagem mais adequada para tornar sua operação mais eficiente."
+        description="Explique o contexto da sua empresa, os principais desafios e o objetivo que deseja alcançar. Essa conversa ajuda a compreender a situação antes de avaliar a abordagem mais adequada."
       />
 
       <Section>
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-16">
-            {/* Diagnóstico */}
+            {/* Contexto inicial */}
             <div className="min-w-0">
-              <Text variant="caption">Diagnóstico</Text>
+              <Text variant="caption">Primeira conversa</Text>
 
               <Heading
                 as="h2"
@@ -138,7 +138,7 @@ export default function ContatoPage() {
               <Text variant="muted" className="mt-3">
                 Você não precisa decidir qual tecnologia utilizar antes da
                 conversa. Explique o contexto da empresa e o que deseja
-                melhorar. A solução será definida a partir desse diagnóstico. Se
+                melhorar. Com esse contexto, podemos avaliar o caminho adequado. Se
                 preferir, conheça nossos{" "}
                 <Link
                   href="/servicos"
@@ -224,9 +224,10 @@ export default function ContatoPage() {
           </Heading>
 
           <Text variant="lead" className="mt-5 max-w-2xl">
-            Nosso primeiro objetivo é entender o contexto da sua empresa. Antes
-            de falar sobre tecnologias, analisamos os desafios, os processos
-            atuais e o resultado que você deseja alcançar.
+            Primeiro buscamos entender o contexto da sua empresa, os desafios,
+            os processos atuais e o resultado que você deseja alcançar. A partir
+            dessa conversa, avaliamos a necessidade e os próximos passos que
+            fizerem sentido.
           </Text>
 
           <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-[16px] border border-border bg-border md:grid-cols-2">
@@ -242,14 +243,14 @@ export default function ContatoPage() {
                   "Se necessário, entramos em contato para esclarecer detalhes e compreender melhor os processos envolvidos.",
               },
               {
-                title: "Definimos a abordagem",
+                title: "Avaliamos a necessidade",
                 description:
-                  "Avaliamos quais soluções fazem sentido para o momento da empresa, respeitando prioridades e orçamento.",
+                  "Consideramos quais soluções podem fazer sentido para o momento da empresa, respeitando prioridades e orçamento.",
               },
               {
-                title: "Enviamos uma proposta comercial",
+                title: "Proposta comercial",
                 description:
-                  "Enviamos uma proposta com escopo, investimento, prazo e próximos passos para iniciar o projeto.",
+                  "Quando fizer sentido seguir, apresentamos uma proposta com escopo, investimento, prazo e próximos passos.",
               },
             ].map((step, index) => (
               <div key={step.title} className="bg-surface p-6 md:p-8 lg:p-10">

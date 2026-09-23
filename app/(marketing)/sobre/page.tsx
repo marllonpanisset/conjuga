@@ -90,7 +90,7 @@ export default function SobrePage() {
                 Em vez de começar pela tecnologia, buscamos compreender como o
                 negócio funciona, quais desafios impedem seu crescimento e quais
                 soluções realmente fazem sentido para aquele momento. A partir
-                desse diagnóstico desenvolvemos sistemas, sites, automações e
+                desse entendimento desenvolvemos sistemas, sites, automações e
                 outras soluções digitais preparados para evoluir junto com a
                 empresa.
               </Text>
@@ -119,7 +119,7 @@ export default function SobrePage() {
               Antes de desenvolver qualquer solução, entendemos como a empresa
               funciona, onde estão os principais desafios e quais processos
               precisam ser organizados. A tecnologia é consequência desse
-              diagnóstico.
+              entendimento do contexto.
             </Text>
           </div>
 

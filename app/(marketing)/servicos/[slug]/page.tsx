@@ -86,7 +86,7 @@ export default async function ServicoPage({
         description={service.heroDescription}
         actions={
           <Button href="/contato" size="lg">
-            Solicitar diagnóstico
+            Conte seu desafio
           </Button>
         }
       />
@@ -282,7 +282,7 @@ export default async function ServicoPage({
       <Section>
         <CTASection
           title="Vamos avaliar o melhor caminho para sua empresa?"
-          description="Conte como sua empresa funciona hoje e quais desafios deseja resolver. A partir desse diagnóstico, definimos a solução mais adequada para a sua realidade."
+          description="Conte como sua empresa funciona hoje e quais desafios deseja resolver. Com esse contexto, podemos avaliar o caminho mais adequado para a sua realidade."
           actions={
             <Button href="/contato" size="lg">
               Conversar com a Conjuga

@@ -16,7 +16,7 @@ export const services: Service[] = [
       "Base preparada para futuras evoluções",
     ],
     includes: [
-      "Diagnóstico da operação",
+      "Entendimento da operação",
       "Definição do escopo da solução",
       "Painéis e áreas administrativas",
       "Portais e ferramentas internas",
@@ -24,7 +24,7 @@ export const services: Service[] = [
       "Implantação e publicação",
     ],
     process: [
-      "Diagnóstico",
+      "Entendimento do contexto",
       "Planejamento da solução",
       "Implantação",
       "Evolução contínua",
@@ -54,7 +54,12 @@ export const services: Service[] = [
       "Integração entre ferramentas",
       "Testes e implantação",
     ],
-    process: ["Diagnóstico", "Planejamento", "Implantação", "Acompanhamento"],
+    process: [
+      "Entendimento do contexto",
+      "Planejamento",
+      "Implantação",
+      "Acompanhamento",
+    ],
     heroTitle: "Automações que reduzem retrabalho e aumentam a produtividade",
     heroDescription:
       "Mapeamos processos, automatizamos tarefas repetitivas e integramos ferramentas para tornar a operação mais eficiente.",
@@ -80,7 +85,12 @@ export const services: Service[] = [
       "SEO técnico inicial",
       "Publicação da aplicação",
     ],
-    process: ["Diagnóstico", "Planejamento", "Implantação", "Evolução"],
+    process: [
+      "Entendimento do contexto",
+      "Planejamento",
+      "Implantação",
+      "Evolução",
+    ],
     heroTitle: "Uma presença digital estruturada para a empresa",
     heroDescription:
       "A Presença Digital organiza a comunicação da empresa, fortalece sua credibilidade e prepara uma base para novas soluções conforme o negócio cresce.",
