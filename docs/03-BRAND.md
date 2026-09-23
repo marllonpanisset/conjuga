@@ -10,11 +10,11 @@
 
 # Essência da Marca
 
-A Conjuga existe para transformar operações manuais em processos digitais inteligentes.
+A Conjuga existe para ajudar empresas a transformar problemas operacionais em soluções digitais mais simples, organizadas e eficientes.
 
 Não desenvolvemos tecnologia pela tecnologia.
 
-Projetamos soluções que ajudam empresas de serviços a crescer com mais organização, eficiência e previsibilidade.
+Projetamos soluções que ajudam empresas de serviços a organizar processos, reduzir trabalho manual, automatizar tarefas e evoluir sua operação com mais eficiência e capacidade de crescimento.
 
 Nosso papel é traduzir problemas complexos em soluções simples.
 
@@ -22,20 +22,21 @@ Nosso papel é traduzir problemas complexos em soluções simples.
 
 # Posicionamento
 
-A Conjuga ocupa um espaço entre:
+A Conjuga combina:
 
-- consultoria;
+- consultoria orientada ao problema;
 - engenharia de software;
 - automação de processos;
-- inteligência artificial aplicada.
+- integrações;
+- inteligência artificial aplicada quando fizer sentido.
 
 Não somos uma agência.
 
-Não somos apenas uma software house.
+Não somos uma software house genérica.
 
 Também não somos uma consultoria tradicional.
 
-Somos uma empresa de engenharia digital.
+Somos uma empresa de engenharia de software orientada à resolução de problemas operacionais.
 
 ---
 
@@ -55,7 +56,7 @@ Se a Conjuga fosse uma pessoa, seria:
 
 Nunca buscamos parecer extravagantes.
 
-Preferimos transmitir competência.
+Preferimos transmitir competência, clareza e segurança.
 
 ---
 
@@ -63,15 +64,15 @@ Preferimos transmitir competência.
 
 Queremos que nossos clientes pensem:
 
-"Essa empresa realmente entende como meu negócio funciona."
+> "Essa empresa realmente entende como meu negócio funciona."
 
-"Não estão tentando me vender tecnologia."
+> "Não estão tentando me vender tecnologia."
 
-"Eles parecem organizados."
+> "Eles parecem organizados."
 
-"Transmitem confiança."
+> "Transmitem confiança."
 
-"Sabem exatamente o que estão fazendo."
+> "Sabem transformar meu problema em uma solução."
 
 ---
 
@@ -86,7 +87,8 @@ Nunca queremos parecer:
 - uma software house genérica;
 - excessivamente corporativos;
 - burocráticos;
-- exageradamente futuristas.
+- exageradamente futuristas;
+- uma empresa que utiliza tecnologia apenas por tendência.
 
 ---
 
@@ -98,7 +100,8 @@ Nossa comunicação deve ser:
 - humana;
 - objetiva;
 - técnica quando necessário;
-- acessível para pessoas não técnicas.
+- acessível para pessoas não técnicas;
+- orientada ao problema do cliente.
 
 Evitamos linguagem excessivamente comercial.
 
@@ -106,35 +109,40 @@ Evitamos linguagem excessivamente comercial.
 
 # Linguagem
 
-Preferimos palavras como:
+Preferimos palavras e conceitos como:
 
-- eficiência
-- processos
-- operação
-- organização
-- integração
-- automação
-- engenharia
-- evolução
-- crescimento
-- simplicidade
+- eficiência;
+- processos;
+- operação;
+- organização;
+- integração;
+- automação;
+- engenharia;
+- evolução;
+- crescimento;
+- simplicidade;
+- produtividade;
+- solução;
+- clareza.
 
 Evitamos:
 
-- revolução
-- disruptivo
-- potencialize
-- inovação sem contexto
-- solução completa
-- líder de mercado
-- transformação digital (como clichê)
-- empresa 4.0
+- revolução;
+- disruptivo;
+- potencialize;
+- inovação sem contexto;
+- solução completa;
+- líder de mercado;
+- transformação digital como clichê;
+- empresa 4.0;
+- resultados garantidos;
+- linguagem exageradamente futurista.
 
 ---
 
 # Tom de Voz
 
-## Conversamos como especialistas.
+## Conversamos como especialistas
 
 Não como vendedores.
 
@@ -152,15 +160,12 @@ Depois vendemos.
 
 Não utilizamos frases como:
 
-"O melhor."
+- "O melhor."
+- "O mais moderno."
+- "A solução definitiva."
+- "Resultados garantidos."
 
-"O mais moderno."
-
-"A solução definitiva."
-
-"Resultados garantidos."
-
-A credibilidade vem da consistência.
+A credibilidade vem da consistência, da clareza e da qualidade do trabalho.
 
 ---
 
@@ -169,6 +174,8 @@ A credibilidade vem da consistência.
 Mesmo quando tratamos de assuntos técnicos.
 
 Sempre priorizamos clareza.
+
+O cliente não precisa dominar tecnologia para compreender o problema, a abordagem e o valor da solução.
 
 ---
 
@@ -184,7 +191,7 @@ Nossa identidade deve transmitir:
 
 Não buscamos uma estética chamativa.
 
-Buscamos uma estética sólida.
+Buscamos uma estética sólida, sofisticada e discreta.
 
 ---
 
@@ -203,28 +210,31 @@ O design deve valorizar:
 - espaçamento;
 - tipografia;
 - contraste;
-- hierarquia visual.
+- hierarquia visual;
+- consistência;
+- legibilidade.
 
 Evitamos excesso de:
 
 - gradientes;
 - brilhos;
 - animações;
-- efeitos visuais.
+- efeitos visuais;
+- elementos decorativos sem função.
 
 ---
 
 # Inteligência Artificial
 
-A IA faz parte do nosso processo.
+A IA faz parte das capacidades da Conjuga e pode fazer parte do processo interno ou das soluções entregues ao cliente quando houver um problema real que justifique sua utilização.
 
 Ela não deve dominar nossa comunicação.
 
 Não queremos ser percebidos como:
 
-"mais uma empresa de IA."
+> "mais uma empresa de IA."
 
-Queremos ser percebidos como uma empresa que utiliza IA com responsabilidade para entregar soluções melhores.
+Queremos ser percebidos como uma empresa de engenharia de software que utiliza tecnologia, automação e IA com responsabilidade para resolver problemas reais de negócio.
 
 ---
 
@@ -240,6 +250,8 @@ Todo conteúdo publicado pela Conjuga deve cumprir pelo menos um destes objetivo
 
 Nunca publicamos conteúdo apenas para gerar volume.
 
+O conteúdo deve reforçar a autoridade da Conjuga sem transformar a comunicação em autopromoção constante.
+
 ---
 
 # Experiência do Cliente
@@ -254,13 +266,15 @@ Cada interação com a marca deve transmitir:
 
 Do primeiro acesso ao site até a entrega do projeto.
 
+A experiência deve ser coerente com a forma como a Conjuga se posiciona: objetiva, organizada, confiável e orientada à solução.
+
 ---
 
 # Resumo
 
-A Conjuga deve ser percebida como uma empresa de engenharia digital que ajuda empresas de serviços a organizar, automatizar e evoluir suas operações através de software, automação e inteligência artificial aplicada.
+A Conjuga deve ser percebida como uma empresa de engenharia de software que ajuda empresas de serviços a organizar, automatizar e evoluir suas operações através de sistemas, automação, integrações e inteligência artificial aplicada quando fizer sentido.
 
-Nossa credibilidade vem da clareza, da simplicidade e da consistência.
+Nossa credibilidade vem da clareza, da simplicidade, da consistência e da capacidade de compreender o problema antes de propor a tecnologia.
 
 Nunca do exagero.
 
