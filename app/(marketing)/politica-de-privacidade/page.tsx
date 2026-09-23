@@ -38,8 +38,8 @@ const sections = [
     content: (
       <>
         <Text className="mt-3">
-          Coletamos apenas as informações fornecidas voluntariamente pelo
-          usuário por meio do formulário de contato, incluindo:
+          Por meio do formulário de contato, recebemos as informações fornecidas
+          voluntariamente pelo usuário, incluindo:
         </Text>
 
         <ul className="mt-4 list-disc space-y-2 pl-5 text-text-secondary">
@@ -50,6 +50,13 @@ const sections = [
           <li>Serviço de interesse;</li>
           <li>Mensagem enviada.</li>
         </ul>
+
+        <Text className="mt-4">
+          Além desses dados, a aplicação pode processar o endereço IP recebido
+          na solicitação para proteger o formulário, limitar solicitações e
+          identificar envios duplicados. Esses controles utilizam estruturas
+          temporárias em memória na aplicação.
+        </Text>
       </>
     ),
   },
@@ -66,6 +73,10 @@ const sections = [
           <li>Entender o contexto da empresa e suas necessidades;</li>
           <li>Elaborar propostas comerciais quando solicitado;</li>
           <li>Manter comunicação relacionada ao atendimento.</li>
+          <li>
+            Proteger o formulário, limitar solicitações e identificar envios
+            duplicados.
+          </li>
         </ul>
 
         <Text className="mt-4">
