@@ -10,11 +10,11 @@
 
 # 1. Propósito
 
-A Conjuga é uma empresa de engenharia digital especializada em transformar operações manuais em processos digitais mais eficientes através de software, automação e inteligência artificial aplicada.
+A Conjuga é uma empresa de engenharia de software para empresas, especializada em transformar problemas operacionais em soluções digitais mais eficientes através de sistemas, automações, integrações e inteligência artificial aplicada quando fizer sentido.
 
 Nosso objetivo não é apenas desenvolver software.
 
-Nosso objetivo é reduzir atritos operacionais, eliminar tarefas repetitivas e criar soluções que permitam empresas crescerem com organização, previsibilidade e eficiência.
+Nosso objetivo é reduzir atritos operacionais, eliminar tarefas repetitivas, organizar informações e criar soluções que permitam às empresas operar com mais eficiência e capacidade de evolução.
 
 ---
 
@@ -24,90 +24,72 @@ A Conjuga não se posiciona como agência.
 
 Também não se posiciona como uma software house genérica.
 
-Somos uma empresa de engenharia de software especializada em resolver problemas operacionais através de sistemas web, automações, integrações e inteligência artificial aplicada.
+Somos uma empresa de engenharia de software especializada em resolver problemas operacionais através de sistemas web, automações, integrações e recursos de inteligência artificial aplicados ao contexto do negócio.
 
 Nossa abordagem sempre começa pelo negócio.
 
-Antes de pensar em tecnologia, entendemos processos, gargalos, desperdícios e oportunidades de melhoria.
+Antes de pensar em tecnologia, entendemos processos, gargalos, desperdícios, tarefas repetitivas, informações dispersas e oportunidades de melhoria.
 
 Desenvolvemos soluções sob medida com foco em:
 
 - sistemas web;
 - automações;
 - integrações;
-- inteligência artificial aplicada.
+- presença digital quando necessária;
+- inteligência artificial aplicada como capacidade transversal.
 
-A presença digital faz parte da estratégia quando necessária, funcionando como porta de entrada para empresas que ainda precisam estruturar sua base digital antes de evoluir para soluções mais completas.
+A presença digital faz parte da estratégia quando necessária, funcionando como base para empresas que precisam estruturar sua presença digital antes de evoluir para soluções mais completas.
 
-Nosso objetivo nunca é vender tecnologia.
+A inteligência artificial não é o centro do posicionamento da Conjuga nem precisa estar presente em todos os projetos. Ela é utilizada quando existe um problema real que pode ser melhor resolvido com seu uso.
 
-Nosso objetivo é tornar empresas mais eficientes através da tecnologia.
+Nosso objetivo não é vender tecnologia.
+
+Nosso objetivo é resolver problemas de negócio através da tecnologia.
 
 ---
 
 # 3. O que fazemos
 
-As soluções da Conjuga estão organizadas em quatro áreas.
-
-Os três primeiros pilares representam o foco principal da empresa.
-
-A presença digital complementa esse ecossistema, funcionando como porta de entrada para empresas que ainda estão iniciando sua transformação digital.
-
----
+As soluções da Conjuga estão organizadas em três áreas comerciais principais, com inteligência artificial aplicada e integração como capacidades que podem fazer parte delas conforme a necessidade de cada projeto.
 
 ## Sistemas Web
 
-Painéis administrativos
+- Painéis administrativos
+- Portais
+- CRMs internos
+- Sistemas operacionais
+- Plataformas sob medida
 
-Portais
+## Automações de Processos
 
-CRMs internos
-
-Sistemas operacionais
-
-Plataformas sob medida
-
----
-
-## Automação
-
-Fluxos automatizados
-
-Integrações entre plataformas
-
-Processos internos
-
-Eliminação de tarefas repetitivas
-
----
-
-## Inteligência Artificial Aplicada
-
-Assistentes internos
-
-Busca inteligente
-
-Classificação de informações
-
-Automação com IA
-
-Agentes especializados quando fizer sentido.
-
----
+- Fluxos automatizados
+- Integrações entre plataformas
+- Processos internos
+- Eliminação de tarefas repetitivas
 
 ## Presença Digital
 
-Landing Pages
+- Landing Pages
+- Sites Institucionais
+- Microsites
+- Blogs
+- SEO técnico
 
-Sites Institucionais
+A presença digital funciona como uma base para empresas que precisam estruturar sua presença na internet e pode também ser o primeiro passo para projetos posteriores de sistemas e automações.
 
-Microsites
+### Inteligência Artificial Aplicada
 
-Blogs
+A inteligência artificial é uma capacidade transversal da Conjuga e pode ser aplicada quando gerar valor real para o negócio.
 
-SEO técnico
+Exemplos de aplicação:
 
-A presença digital é utilizada como base para empresas que posteriormente evoluirão para sistemas, automações e inteligência artificial.
+- assistentes internos;
+- busca inteligente;
+- classificação de informações;
+- automação com IA;
+- agentes especializados quando fizer sentido.
+
+A utilização de IA depende do contexto, do problema e da viabilidade da solução. Não deve ser aplicada apenas por tendência tecnológica.
 
 ---
 
@@ -135,29 +117,35 @@ Também evitamos projetos cujo foco seja:
 
 # 5. Cliente Ideal (ICP)
 
-Nosso cliente ideal normalmente possui estas características.
+Nosso cliente ideal normalmente possui estas características:
 
-Empresa de serviços.
+- empresa de serviços;
+- poucos tomadores de decisão;
+- processos internos parcialmente manuais;
+- uso intenso de WhatsApp;
+- uso de planilhas;
+- ferramentas desconectadas;
+- necessidade de ganhar produtividade antes de aumentar equipe;
+- baixa ou média maturidade digital;
+- empresa em fase de crescimento que precisa ganhar capacidade operacional antes de aumentar a equipe.
 
-Poucos tomadores de decisão.
+O cliente pode não procurar inicialmente por “engenharia de software”.
 
-Processos internos parcialmente manuais.
+Ele pode procurar ajuda porque:
 
-Uso intenso de WhatsApp.
+- perde tempo com tarefas manuais;
+- depende de planilhas para controlar processos;
+- mantém informações espalhadas em diferentes ferramentas;
+- depende excessivamente de WhatsApp para operar;
+- possui processos repetitivos;
+- precisa organizar uma operação que está crescendo;
+- percebe que contratar mais pessoas não resolve sozinho determinado problema operacional.
 
-Uso de planilhas.
-
-Ferramentas desconectadas.
-
-Necessidade de ganhar produtividade antes de aumentar equipe.
-
-Baixa ou média maturidade digital.
-
-Empresas em fase de crescimento que precisam ganhar escala operacional antes de aumentar a equipe.
+A Conjuga deve compreender o problema apresentado pelo cliente antes de definir a solução tecnológica.
 
 Não restringimos nossa atuação a um único segmento.
 
-Priorizamos empresas com problemas operacionais semelhantes.
+Priorizamos empresas que apresentem problemas operacionais semelhantes e nos quais uma solução digital possa gerar valor.
 
 ---
 
@@ -165,15 +153,15 @@ Priorizamos empresas com problemas operacionais semelhantes.
 
 A Conjuga não se posiciona como especialista em um único segmento.
 
-Nossa especialidade é resolver problemas operacionais comuns a empresas de serviços.
+Nossa especialidade está na resolução de problemas operacionais comuns a empresas de serviços.
 
-Os segmentos atendidos demonstram a aplicabilidade da nossa metodologia, mas não definem nossa identidade.
+Os segmentos atendidos demonstram a aplicabilidade das nossas soluções, mas não definem nossa identidade.
 
 Não vendemos tecnologia como fim.
 
-Vendemos eficiência operacional através da tecnologia.
+Desenvolvemos soluções de tecnologia para melhorar operações, reduzir trabalho manual, organizar informações e permitir evolução operacional.
 
-Isso nos permite atuar em diferentes mercados mantendo o mesmo padrão de qualidade, processos e engenharia.
+Isso nos permite atuar em diferentes mercados mantendo o mesmo padrão de engenharia, processo e relacionamento.
 
 ---
 
@@ -188,17 +176,21 @@ Sempre começamos entendendo:
 - quais tarefas são repetitivas;
 - quais informações estão espalhadas;
 - quais decisões dependem de pessoas;
-- quais processos podem ser simplificados.
+- quais processos podem ser simplificados;
+- quais ferramentas já fazem parte da operação;
+- onde integrações ou automações podem reduzir trabalho manual.
 
 Depois definimos a solução técnica.
 
 Nunca fazemos o contrário.
 
+A solução pode envolver software, automação, integração, presença digital ou inteligência artificial, de acordo com o problema identificado.
+
 ---
 
 # 8. Diferenciais
 
-A Conjuga diferencia-se por oito princípios que orientam todas as decisões de arquitetura, desenvolvimento e evolução dos projetos.
+A Conjuga diferencia-se por princípios que orientam as decisões de arquitetura, desenvolvimento e evolução dos projetos.
 
 ## Abordagem orientada ao negócio
 
@@ -214,15 +206,15 @@ Criamos soluções claras, objetivas e sustentáveis, priorizando facilidade de 
 
 ## Integração entre sistemas
 
-Conectamos ferramentas, plataformas e processos para eliminar silos, reduzir trabalho manual e centralizar informações.
+Conectamos ferramentas, plataformas e processos para eliminar silos, reduzir trabalho manual e centralizar informações quando isso fizer sentido para a operação.
 
 ## Automação de processos
 
-Automatizamos tarefas repetitivas para aumentar produtividade, reduzir erros operacionais e liberar tempo para atividades estratégicas.
+Automatizamos tarefas repetitivas para aumentar produtividade, reduzir trabalho manual e liberar tempo para atividades de maior valor.
 
 ## Uso responsável de IA
 
-Aplicamos inteligência artificial apenas quando ela gera valor real, sempre com foco em qualidade, controle e confiabilidade.
+Aplicamos inteligência artificial apenas quando ela gera valor real, sempre considerando qualidade, controle, confiabilidade e adequação ao problema.
 
 ## Desenvolvimento sob medida
 
@@ -242,7 +234,9 @@ Sempre buscamos soluções evolutivas.
 
 Não vendemos apenas entregáveis.
 
-Construímos ativos digitais que possam crescer junto com o cliente.
+Construímos ativos digitais que possam evoluir junto com o cliente.
+
+O relacionamento pode continuar após a primeira entrega através de manutenção, evolução, novos projetos ou novas necessidades identificadas ao longo da operação.
 
 ---
 
@@ -268,15 +262,27 @@ Preferimos perder uma venda a vender uma solução inadequada.
 
 ## Avaliação de novos projetos
 
-A aceitação de novos projetos considera a capacidade atual de entrega, a aderência técnica, a viabilidade econômica, o controle de escopo, os riscos e responsabilidades, o impacto sobre clientes e projetos existentes e as possibilidades de manutenção, evolução ou novos projetos.
+A aceitação de novos projetos considera:
 
-Não aceitamos demandas que comprometam compromissos existentes ou gerem dependência operacional excessiva. A capacidade deve ser avaliada conforme o contexto, sem estabelecer um limite fixo de clientes ou projetos.
+- capacidade atual de entrega;
+- aderência técnica;
+- viabilidade econômica;
+- controle de escopo;
+- riscos e responsabilidades;
+- impacto sobre clientes e projetos existentes;
+- possibilidades de manutenção;
+- possibilidades de evolução;
+- possibilidade de novos projetos relacionados.
+
+Não aceitamos demandas que comprometam compromissos existentes ou gerem dependência operacional excessiva.
+
+A capacidade deve ser avaliada conforme o contexto, sem estabelecer um limite fixo de clientes ou projetos.
 
 ---
 
 # 11. Escopo deste documento
 
-Este documento define apenas o modelo de negócio.
+Este documento define o modelo de negócio da Conjuga.
 
 Os demais aspectos são definidos em:
 
