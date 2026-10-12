@@ -12,6 +12,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { Container } from "@/components/ui";
+import { LogoCube } from "@/components/brand/LogoCube";
 import { Button } from "@/components/ui/Button";
 import { servicesNav, mainNav, type NavItem } from "@/config/navigation";
 import { MobileNav } from "./MobileNav";
@@ -26,6 +27,9 @@ interface NavDropdownProps {
 function isPathActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
+
+const navLinkClass =
+  "nav-link flex h-9 items-center px-1 text-small text-text-secondary transition-colors duration-200 hover:text-text-primary";
 
 /**
  * Provides a desktop navigation disclosure that preserves hover behavior while
@@ -161,10 +165,8 @@ function NavDropdown({ label, items, pathname }: NavDropdownProps) {
         ref={triggerRef}
         id={triggerId}
         type="button"
-        className={cn(
-          "flex h-9 items-center gap-1.5 rounded-[10px] px-3 text-[0.9375rem] transition-[background-color,color] hover:bg-surface hover:text-text-primary",
-          isActive ? "bg-surface text-text-primary" : "text-text-secondary",
-        )}
+        className={cn(navLinkClass, "gap-1.5", isActive && "text-text-primary")}
+        data-active={isActive}
         aria-expanded={open}
         aria-controls={menuId}
         aria-haspopup="menu"
@@ -174,17 +176,21 @@ function NavDropdown({ label, items, pathname }: NavDropdownProps) {
         {label}
         <ChevronDown
           size={14}
-          className={cn("transition-transform", open && "rotate-180")}
+          strokeWidth={1.75}
+          className={cn(
+            "transition-transform duration-200",
+            open && "rotate-180",
+          )}
         />
       </button>
 
       {open && (
-        <div className="absolute left-0 top-full z-50 w-72 pt-2">
+        <div className="absolute left-0 top-full z-50 w-72 pt-3">
           <ul
             id={menuId}
             role="menu"
             aria-labelledby={triggerId}
-            className="space-y-0.5 rounded-[16px] border border-border bg-background/95 p-2 shadow-card backdrop-blur-md"
+            className="rounded-[var(--radius-md)] border border-border bg-surface p-2 shadow-[var(--shadow-float)]"
             onKeyDown={handleMenuKeyDown}
           >
             {items.map((item, index) => {
@@ -200,16 +206,16 @@ function NavDropdown({ label, items, pathname }: NavDropdownProps) {
                     role="menuitem"
                     aria-current={itemIsActive ? "page" : undefined}
                     className={cn(
-                      "block rounded-[10px] border border-transparent px-4 py-3 transition-[background-color,border-color,color] hover:bg-surface",
-                      itemIsActive && "border-border/70 bg-surface",
+                      "block rounded-[var(--radius-sm)] border border-transparent px-3 py-2.5 transition-[background-color,border-color,color] duration-200 hover:bg-surface-elevated",
+                      itemIsActive && "border-border bg-surface-elevated",
                     )}
                     onClick={() => setOpen(false)}
                   >
-                    <span className="block text-[0.9375rem] font-medium text-text-primary">
+                    <span className="block text-small font-medium text-text-primary">
                       {item.label}
                     </span>
                     {item.description && (
-                      <span className="mt-0.5 block text-[0.8125rem] text-text-muted">
+                      <span className="mt-0.5 block text-[0.8125rem] leading-relaxed text-text-muted">
                         {item.description}
                       </span>
                     )}
@@ -226,31 +232,41 @@ function NavDropdown({ label, items, pathname }: NavDropdownProps) {
 
 export function Header() {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/90 backdrop-blur-md">
-      <Container className="flex h-[72px] items-center justify-between">
+    <header
+      className={cn(
+        "sticky top-0 z-40 border-b bg-background/90 backdrop-blur-md transition-shadow duration-300",
+        scrolled ? "border-border shadow-[var(--shadow-panel)]" : "border-transparent",
+      )}
+    >
+      <Container className="flex h-[76px] items-center justify-between gap-6">
         <Link
           href="/"
           aria-current={pathname === "/" ? "page" : undefined}
-          className="rounded-sm font-display text-[1.125rem] font-medium tracking-[0.045em] text-text-primary"
+          className="flex items-center gap-2.5 rounded-sm font-display text-[1.0625rem] font-medium leading-none tracking-[0.08em] text-text-primary"
         >
+          <LogoCube className="h-[26px] w-auto shrink-0 text-signal" />
           CONJUGA
         </Link>
 
         <nav
-          className="hidden items-center gap-1 lg:flex"
+          className="hidden items-center gap-7 lg:flex"
           aria-label="Navegação principal"
         >
           <Link
             href="/"
             aria-current={pathname === "/" ? "page" : undefined}
-            className={cn(
-              "flex h-9 items-center rounded-[10px] px-3 text-[0.9375rem] transition-[background-color,color] hover:bg-surface hover:text-text-primary",
-              pathname === "/"
-                ? "bg-surface text-text-primary"
-                : "text-text-secondary",
-            )}
+            className={cn(navLinkClass, pathname === "/" && "text-text-primary")}
+            data-active={pathname === "/"}
           >
             Início
           </Link>
@@ -267,12 +283,8 @@ export function Header() {
                 key={item.href}
                 href={item.href as never}
                 aria-current={isActive ? "page" : undefined}
-                className={cn(
-                  "flex h-9 items-center rounded-[10px] px-3 text-[0.9375rem] transition-[background-color,color] hover:bg-surface hover:text-text-primary",
-                  isActive
-                    ? "bg-surface text-text-primary"
-                    : "text-text-secondary",
-                )}
+                className={cn(navLinkClass, isActive && "text-text-primary")}
+                data-active={isActive}
               >
                 {item.label}
               </Link>

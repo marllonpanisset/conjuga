@@ -1,4 +1,6 @@
 import Link from "next/link";
+
+import { LogoCube } from "@/components/brand/LogoCube";
 import { Container } from "@/components/ui";
 import { footerNav } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
@@ -14,18 +16,15 @@ function FooterColumn({
 }) {
   return (
     <section aria-labelledby={id}>
-      <h2
-        id={id}
-        className="mb-5 font-mono text-[0.75rem] font-medium uppercase tracking-[0.08em] text-text-muted"
-      >
+      <h2 id={id} className="label-mono">
         {title}
       </h2>
-      <ul className="flex flex-col gap-3.5">
+      <ul className="mt-5 flex flex-col gap-3">
         {items.map((item) => (
           <li key={item.href}>
             <Link
               href={item.href as never}
-              className="rounded-sm text-[0.9375rem] leading-relaxed text-text-secondary transition-colors hover:text-text-primary"
+              className="rounded-sm text-small text-text-secondary transition-colors duration-200 hover:text-signal-strong"
             >
               {item.label}
             </Link>
@@ -36,16 +35,22 @@ function FooterColumn({
   );
 }
 
+/**
+ * Rodapé com a assinatura da marca em destaque e a navegação em três colunas
+ * de réguas. A data e os contatos ficam na barra inferior, em monospaciado.
+ */
 export function Footer() {
   return (
-    <footer className="border-t border-border/80 bg-surface/30">
-      <Container className="py-16 md:py-20">
-        <div className="grid gap-12 border-b border-border/70 pb-14 md:gap-16 md:pb-16 lg:grid-cols-12">
-          <div className="max-w-md lg:col-span-4">
-            <span className="font-display text-[1.25rem] font-medium tracking-[0.10em] text-text-primary">
+    <footer className="border-t border-border bg-surface-elevated">
+      <Container className="py-16 lg:py-20">
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-4">
+            <p className="flex items-center gap-3 font-display text-[1.5rem] font-medium leading-none tracking-[0.06em] text-text-primary">
+              <LogoCube className="h-[34px] w-auto shrink-0 text-signal" />
               CONJUGA
-            </span>
-            <p className="mt-5 text-[0.9375rem] leading-[1.7] text-text-secondary">
+            </p>
+
+            <p className="mt-6 max-w-sm text-small leading-[1.7] text-text-secondary">
               Engenharia de software para organizar processos, automatizar
               tarefas e tornar operações mais eficientes.
             </p>
@@ -53,7 +58,7 @@ export function Footer() {
 
           <nav
             aria-label="Navegação do rodapé"
-            className="grid grid-cols-2 gap-x-8 gap-y-12 sm:gap-x-12 md:grid-cols-3 lg:col-span-8 lg:gap-x-8"
+            className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 lg:col-span-7 lg:col-start-6 lg:gap-x-10"
           >
             <FooterColumn
               id="footer-services"
@@ -73,14 +78,13 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="flex flex-col items-start justify-between gap-5 pt-7 sm:flex-row sm:items-center md:pt-8">
-          <p className="text-[0.8125rem] leading-relaxed text-text-muted">
-            © {new Date().getFullYear()} {siteConfig.legalName}. Todos os
-            direitos reservados.
+        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-border pt-6 sm:flex-row sm:items-center">
+          <p className="label-mono">
+            © {new Date().getFullYear()} {siteConfig.legalName}
           </p>
           <a
             href={`mailto:${siteConfig.links.email}`}
-            className="rounded-sm text-[0.8125rem] text-text-secondary transition-colors hover:text-text-primary"
+            className="label-mono transition-colors duration-200 hover:text-signal-strong"
           >
             {siteConfig.links.email}
           </a>

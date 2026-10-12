@@ -224,6 +224,61 @@ Evitamos excesso de:
 
 ---
 
+# Identidade Visual Aplicada (Dark Editorial Industrial)
+
+Os elementos abaixo concretizam a Direção Visual acima no site vigente. Permanecem válidas as exigências de estética sólida, sofisticada e discreta e as proibições de excessos (gradientes, brilhos, animações, efeitos visuais, elementos decorativos sem função).
+
+## Símbolo
+
+- Cubo isométrico modular âmbar `#E8A33D`, formado por seis painéis geométricos separados por vãos na cor do fundo (dois painéis no topo, duas barras na face esquerda, duas faixas na face direita). Fonte visual: `docs/references/logo-cubo-aprovado.png` e `docs/references/manual-identidade-conjuga.png`.
+- No site, o símbolo é o componente `LogoCube` (`components/brand/LogoCube.tsx`), geometria vetorizada da referência aprovada, sempre em `currentColor` sobre o âmbar do contexto (`text-signal`).
+- Precede o wordmark (header, menu mobile, rodapé) ou aparece isolado como marcador de seção e de progresso.
+- Separado do texto e de bordas; o tamanho acompanha o contexto, menor no header e no menu mobile e maior no rodapé e no Open Graph.
+
+## Wordmark
+
+- `CONJUGA`, sempre em caixa alta, Space Grotesk Medium, tracking largo (0,06–0,10 em nos usos vigentes), na cor de texto principal do contexto.
+- Títulos display usam a mesma família em peso Medium, nunca Bold. Em superfícies escuras admite-se o tratamento industrial (caixa alta com empilhamento condensado de sistema) restrito a títulos de abertura.
+
+## Paleta
+
+Tokens globais vigentes:
+
+- Fundos: tinta `#101418`; superfícies `#171D24` e `#1E2630`.
+- Textos: `#EDEAE2`, secundário `#A8B0B8`, atenuado `#7C858E`.
+- Réguas: `#2A323C`, forte `#3A4450`.
+- Sinal: âmbar `#E8A33D`, forte `#F2B45C`, suave `#E8A33D1F`.
+- Anotação (erros e avisos): `#CF6F4E`.
+- O âmbar marca ação e orientação (CTAs primários, marcadores, foco, trilhas, ícones); nunca preenche grandes superfícies.
+
+## Tipografia (funções)
+
+- Space Grotesk: títulos e wordmark.
+- Inter: corpo de texto.
+- JetBrains Mono em caixa alta: rótulos de seção, índices, metadados e marcações técnicas.
+
+## Usos corretos
+
+- Símbolo + wordmark sobre fundo escuro, com texto claro.
+- Réguas finas como separação entre blocos, sem caixas ou sombras expressivas.
+- Mono técnico para rotular, nunca como texto corrido.
+
+## Usos incorretos
+
+- Monograma "G" ou qualquer outra letraforma como símbolo.
+- Destaque em azul ou qualquer cor fora da paleta acima.
+- Gradientes, partículas, glassmorphism, glows ou sombras coloridas.
+- Símbolo arredondado, recolorido ou com letraforma interna.
+- Quadrado sólido âmbar como substituto do cubo modular aprovado.
+- Texto sem contraste suficiente sobre qualquer superfície.
+
+## Favicon e Open Graph
+
+- Alvo aprovado: favicon com o cubo modular âmbar sobre tinta (16 px, 32 px, ICO multi-tamanho e apple-touch-icon 180 px, ícones Android 192 px e 512 px); imagem Open Graph de 1200×630 com fundo tinta, cubo + wordmark, régua âmbar e a descrição institucional vigente.
+- Estado registrado: assets regenerados conforme o alvo acima a partir de `docs/references/logo-cubo-aprovado.png` — favicons com o cubo sobre tinta e Open Graph de 1200×630 sem azul, partículas ou efeitos decorativos.
+
+---
+
 # Inteligência Artificial
 
 A IA faz parte das capacidades da Conjuga e pode fazer parte do processo interno ou das soluções entregues ao cliente quando houver um problema real que justifique sua utilização.

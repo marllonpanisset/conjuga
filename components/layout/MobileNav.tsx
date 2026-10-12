@@ -14,6 +14,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { servicesNav, mainNav } from "@/config/navigation";
+import { LogoCube } from "@/components/brand/LogoCube";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
@@ -124,7 +125,7 @@ function AccordionSection({
                       onClick={onNavigate}
                       aria-current={isActive ? "page" : undefined}
                       className={cn(
-                        "block rounded-[10px] border border-transparent px-3 py-2.5 text-[0.9375rem] leading-snug transition-[background-color,border-color,color] hover:bg-surface hover:text-text-primary",
+                        "block rounded-[var(--radius-sm)] border border-transparent px-3 py-2.5 text-[0.9375rem] leading-snug transition-[background-color,border-color,color] hover:bg-surface hover:text-text-primary",
                         isActive
                           ? "border-border/70 bg-surface text-text-primary"
                           : "text-text-secondary",
@@ -252,7 +253,7 @@ export function MobileNav() {
           exit={{ opacity: 0 }}
           transition={{ duration: reduceMotion ? 0 : 0.18, ease: "easeOut" }}
           onClick={closeMenu}
-          className="fixed inset-0 z-40 bg-black/55"
+          className="fixed inset-0 z-40 bg-[#15181d]/40"
         >
           <m.div
             initial={{ x: reduceMotion ? 0 : 24 }}
@@ -269,20 +270,21 @@ export function MobileNav() {
             aria-labelledby="mobile-nav-title"
             onClick={(event) => event.stopPropagation()}
             onKeyDown={handleDrawerKeyDown}
-            className="absolute inset-y-0 right-0 z-10 flex h-dvh w-full max-w-sm flex-col border-l border-border bg-background shadow-card"
+            className="absolute inset-y-0 right-0 z-10 flex h-dvh w-full max-w-sm flex-col border-l border-border bg-background shadow-[var(--shadow-float)]"
           >
             <div className="flex shrink-0 items-center justify-between border-b border-border px-6 py-4">
               <span
                 id="mobile-nav-title"
-                className="font-display text-[1.125rem] font-medium tracking-[0.04em] text-text-primary"
+                className="flex items-center gap-2.5 font-display text-[1.125rem] font-medium tracking-[0.04em] text-text-primary"
               >
+                <LogoCube className="h-[24px] w-auto shrink-0 text-signal" />
                 CONJUGA
               </span>
               <button
                 type="button"
                 onClick={closeMenu}
                 aria-label="Fechar menu"
-                className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-border text-text-primary transition-[background-color,border-color,color] hover:border-border-strong hover:bg-surface"
+                className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-sm)] border border-border text-text-primary transition-[background-color,border-color,color] hover:border-border-strong hover:bg-surface"
               >
                 <X size={20} />
               </button>
@@ -325,7 +327,7 @@ export function MobileNav() {
                           onClick={closeMenu}
                           aria-current={isActive ? "page" : undefined}
                           className={cn(
-                            "block rounded-[10px] border border-transparent px-3 py-3 text-[1.0625rem] font-medium transition-[background-color,border-color,color] hover:bg-surface",
+                            "block rounded-[var(--radius-sm)] border border-transparent px-3 py-3 text-[1.0625rem] font-medium transition-[background-color,border-color,color] hover:bg-surface",
                             isActive
                               ? "border-border/70 bg-surface text-text-primary"
                               : "text-text-secondary hover:text-text-primary",
@@ -367,7 +369,7 @@ export function MobileNav() {
         aria-expanded={open}
         aria-controls="mobile-nav-drawer"
         aria-haspopup="dialog"
-        className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-border text-text-primary transition-[background-color,border-color,color] hover:border-border-strong hover:bg-surface"
+        className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-sm)] border border-border text-text-primary transition-[background-color,border-color,color] hover:border-border-strong hover:bg-surface"
       >
         <Menu size={20} />
       </button>
