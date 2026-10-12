@@ -42,6 +42,8 @@ A jornada deve conduzir o visitante de:
 
 **reconhecimento do problema → entendimento da abordagem → conhecimento das soluções → confiança → contato.**
 
+O site também funciona como porta de entrada comercial: um projeto de presença digital pode iniciar a relação, que parte do entendimento do negócio e pode evoluir para sistemas, automações, integrações e suporte contínuo conforme a operação exigir. A navegação e a copy devem deixar claro que um site é uma possibilidade de primeiro projeto, não o limite do trabalho da Conjuga.
+
 ---
 
 # Estrutura do Site
@@ -90,7 +92,7 @@ Cada serviço deve possuir, quando aplicável:
 - exemplos de aplicação;
 - CTA.
 
-A apresentação dos serviços deve priorizar o problema e o valor para o negócio, evitando transformar a página em um catálogo puramente técnico.
+A apresentação dos serviços deve priorizar o problema e o valor para o negócio, evitando transformar a página em um catálogo puramente técnico. Deve mostrar presença digital como uma possível porta de entrada e explicar que o trabalho pode evoluir para necessidades operacionais. A relação após a entrega pode incluir suporte, sustentação e evolução contínua, conforme escopo acordado.
 
 A inteligência artificial pode aparecer como capacidade aplicada dentro das soluções quando fizer sentido, sem obrigatoriamente ser apresentada como o centro da oferta.
 

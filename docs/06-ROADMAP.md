@@ -129,6 +129,8 @@ Começar a adquirir clientes e validar o processo comercial.
 
 A conclusão desta fase não depende apenas de quantidade de clientes, mas de aprendizado comercial suficiente para orientar a próxima etapa.
 
+Meta interna de referência: alcançar faturamento mensal de R$ 10 mil a R$ 20 mil combinando projetos e receita recorrente de suporte, sustentação e evolução. Esta é uma meta de planejamento interno, não uma promessa ou afirmação comercial.
+
 ---
 
 # Phase 3 — Growth
@@ -181,6 +183,8 @@ Empresa operando com processos consistentes, capacidade de entrega protegida e g
 Transformar conhecimento e padrões validados em produtos ou ativos reutilizáveis.
 
 Esta fase só deve avançar quando houver evidência suficiente de que determinados problemas, soluções ou processos possuem potencial de padronização e escala.
+
+Produtos ou SaaS não são ofertas consolidadas nas fases atuais. A possibilidade futura deve partir de problemas repetidos observados em projetos reais e de soluções validadas, sem antecipar um produto antes dessa evidência.
 
 ## Prioridades
 

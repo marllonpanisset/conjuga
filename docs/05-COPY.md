@@ -27,7 +27,11 @@ A comunicação deve partir do problema do cliente e apresentar a tecnologia com
 
 # Mensagem Principal
 
-A Conjuga ajuda empresas de serviços a organizar processos, automatizar tarefas e evoluir suas operações através de software, automação, integrações e inteligência artificial aplicada quando fizer sentido.
+A Conjuga é uma empresa de engenharia de software que resolve problemas operacionais de empresas por meio de sistemas web, automações, integrações e inteligência artificial quando fizer sentido.
+
+Princípio estratégico da comunicação:
+
+> Começamos pelo que sua empresa precisa hoje. Construímos a tecnologia para o que ela precisa amanhã.
 
 ---
 
@@ -52,11 +56,17 @@ Nosso foco principal é:
 - integrações entre plataformas;
 - aplicação prática de inteligência artificial quando houver valor real.
 
-Também desenvolvemos sites institucionais e landing pages para empresas que precisam estruturar sua presença digital antes de evoluírem para soluções mais completas.
+Também desenvolvemos sites institucionais e landing pages. Um site pode ser o primeiro projeto e a porta de entrada para entender o negócio; a relação pode evoluir para sistemas, automações e integrações quando essas necessidades existirem. Não apresentar presença digital como o produto final obrigatório nem prometer uma sequência de projetos.
+
+O cliente ideal é uma empresa de serviços com operação real e processos manuais, uso de WhatsApp ou planilhas, ferramentas desconectadas ou necessidade de ganhar eficiência. A comunicação deve ajudá-la a reconhecer esses desafios e mostrar que a conversa começa pelo negócio, sem exigir que a pessoa já saiba qual tecnologia contratar.
+
+Sites são uma das formas de começar um trabalho de engenharia de software, não uma oferta posicionada por baixo preço. A comunicação deve deixar claro o foco em entender problemas do negócio e construir a solução adequada.
 
 ---
 
 # O que Não Fazemos
+
+Não somos agência nem empresa dedicada a sites de baixo custo. Presença digital é uma possível porta de entrada para nosso trabalho de engenharia orientado à operação.
 
 Não vendemos tecnologia pela tecnologia.
 
@@ -69,6 +79,8 @@ Não criamos funcionalidades sem propósito.
 Não utilizamos IA apenas porque ela está em evidência.
 
 Não inventamos cases, resultados, depoimentos ou informações para gerar credibilidade.
+
+Não apresentamos produtos SaaS como ofertas consolidadas. Produtos próprios podem ser considerados no futuro, a partir de problemas recorrentes e soluções validadas em projetos reais.
 
 ---
 
@@ -149,6 +161,7 @@ Boas referências de headline:
 - Menos tarefas repetitivas. Mais tempo para decisões.
 - Software desenvolvido para acompanhar a evolução do seu negócio.
 - Tecnologia aplicada para resolver problemas operacionais.
+- Começamos pelo que sua empresa precisa hoje. Construímos a tecnologia para o que ela precisa amanhã.
 
 As headlines devem priorizar clareza sobre criatividade.
 
@@ -251,6 +264,8 @@ Evitar postagens puramente promocionais.
 
 A comunicação nas redes sociais deve reforçar autoridade sem transformar todo conteúdo em oferta comercial.
 
+No Instagram, partir dos problemas da operação que empresários reconhecem — processos manuais, dependência de WhatsApp ou planilhas e ferramentas desconectadas. A estética de um site não deve ser o principal argumento para atrair esse público; presença digital pode aparecer como uma possível primeira solução dentro de um trabalho orientado ao negócio.
+
 ---
 
 # Microcopy
@@ -290,6 +305,8 @@ Durante reuniões, propostas e apresentações:
 - deixar claros escopo, premissas e limitações.
 
 A comunicação comercial deve vender valor, não horas ou tecnologias isoladas.
+
+Quando houver continuidade após a entrega, apresentar a recorrência como suporte, sustentação e evolução contínua da solução, não apenas hospedagem ou manutenção. Escopo e condições devem permanecer claros e vinculados à proposta acordada.
 
 ---
 

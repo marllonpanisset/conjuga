@@ -2,13 +2,13 @@
 
 ## Purpose
 
-This repository follows a documentation-first approach.
+This repository follows a documentation-first approach. Source code is the authority for what is implemented; canonical business and communication documents remain the authority for approved business rules and public positioning.
 
 Before making any significant decision, consult the appropriate project documentation.
 
-Documentation defines the approved business model, principles, brand, website structure, communication and roadmap.
+Documentation defines the approved business model, principles, brand, website structure, communication, roadmap and operational guidance.
 
-When documentation conflicts with the current implementation, stop and report the conflict before making changes.
+When technical documentation conflicts with implementation, inspect the code and update the documentation to describe verified behavior. When implementation conflicts with an approved business rule or public-positioning document, report the conflict before changing product behavior or public content.
 
 ---
 
@@ -42,7 +42,7 @@ When documentation conflicts with the current implementation, stop and report th
 
 ## Core Principles
 
-- Documentation is the single source of truth.
+- Code is the source of truth for implemented behavior; canonical business documents are the source of truth for approved business rules and positioning.
 - Do not invent business rules.
 - Do not invent copy.
 - Do not invent services.
@@ -371,9 +371,45 @@ Keep each document responsible for its own subject.
 
 If a rule belongs to one canonical document, do not duplicate the full rule in another document merely for convenience.
 
-If implementation and documentation conflict, stop and report the conflict before proceeding.
+If technical documentation and implementation conflict, investigate the implementation and correct the documentation. If implementation conflicts with an approved business rule, positioning, or public communication, stop and report the conflict before changing behavior or copy.
 
-If two documentation files conflict, do not choose one silently. Identify the conflict and determine which document or business decision needs to be updated before implementation.
+If two canonical business documents conflict, do not choose one silently. Identify the conflict and determine which document or business decision needs to be updated before implementation.
+
+## Technical Documentation and Maintenance
+
+Use `docs/README.md` as the documentation index. `docs/project-state.md` describes the verified current implementation and repository state; update it when a relevant implementation, architecture, integration, or release-state change occurs. Technical architecture belongs in `docs/architecture/`, development procedures in `docs/development/`, architectural decisions in `docs/decisions/`, and release records in `docs/releases/`.
+
+After a relevant change, inspect code and impacts, then update only the affected technical documents. Add a `Documentation` or other applicable entry to `docs/changelog/CHANGELOG.md`; do not claim behavior that is not implemented. Record substantial architectural changes as numbered ADRs with context, problem, decision, considered alternatives, consequences, and status. Do not create historical ADRs from assumptions.
+
+Update this file only when permanent agent rules change. Do not duplicate business, brand, or copy guidance here; link to the canonical documents instead.
+
+## Verified Technical Rules
+
+- The application is a Next.js App Router site written in TypeScript and React. Preserve the existing route, component, content, and utility organization unless the task requires a documented change.
+- Keep server-only credentials and Supabase access in server-side modules. Never expose `SUPABASE_SECRET_KEY`, webhook tokens, or other secrets through client code, logs, committed files, or public documentation.
+- Validate and constrain untrusted API input, return deliberate error responses, and avoid leaking internal exception details. Follow existing API conventions and inspect the full route and its dependencies before modifying it.
+- Database schema changes belong in ordered `supabase/migrations/` SQL files. Review existing constraints and row-level security before changing schema or data access. Do not claim a migration was applied to a hosted database unless deployment evidence confirms it.
+- No test script or test framework is currently declared in `package.json`. Do not claim automated tests exist; use available checks and add tests only when the task calls for them or the implementation warrants and permits them.
+- Keep commits focused and descriptive. Do not rewrite or delete history. The requested branch convention is `main` for stable code, `develop` for next-version development, and temporary `feature/*`, `fix/*`, `refactor/*`, `docs/*`, or `chore/*` branches as needed. Confirm the actual current branch before reporting branch status; do not imply a branch exists when it does not.
+- Use semantic version tags for important releases. Release documentation must correspond to actual tags; never invent a tag or release.
+
+## Permanent Development Workflow
+
+Before modifying the project:
+
+1. Read this file and `README.md`.
+2. Read the relevant canonical documents in `docs/` and technical guides linked by `docs/README.md`.
+3. Inspect the current implementation and its dependencies before designing a solution.
+4. Verify relevant runtime, API, database, integration, and deployment details in source/configuration. Mark anything not verifiable as unknown.
+5. Preserve established behavior and patterns; do not invent capabilities, integrations, or historical decisions.
+
+After relevant changes:
+
+1. Review code and impacts.
+2. Update affected technical documentation, project state, and changelog.
+3. Add an ADR only for a significant architectural decision.
+4. Run repository validation commands applicable to the change, including `npm run lint`, `npm run build`, and `git diff --check` for implementation tasks.
+5. Inspect `git status --short`, `git diff --stat`, and the final diff. Do not commit unless asked.
 
 ---
 
@@ -412,8 +448,8 @@ Do not create a commit unless the task explicitly requests it.
 
 For implementation tasks:
 
-1. Read AGENTS.md.
-2. Read only the documentation relevant to the current task.
+1. Read AGENTS.md and README.md.
+2. Read only the canonical and technical documentation relevant to the current task.
 3. Inspect the current implementation and its dependencies.
 4. Identify the equivalent approved visual pattern.
 5. Confirm the allowed files and exclusions.

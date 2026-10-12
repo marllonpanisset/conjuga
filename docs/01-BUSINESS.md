@@ -10,7 +10,7 @@
 
 # 1. Propósito
 
-A Conjuga é uma empresa de engenharia de software para empresas, especializada em transformar problemas operacionais em soluções digitais mais eficientes através de sistemas, automações, integrações e inteligência artificial aplicada quando fizer sentido.
+A Conjuga é uma empresa de engenharia de software que resolve problemas operacionais de empresas por meio de sistemas web, automações, integrações e inteligência artificial quando fizer sentido.
 
 Nosso objetivo não é apenas desenvolver software.
 
@@ -30,15 +30,15 @@ Nossa abordagem sempre começa pelo negócio.
 
 Antes de pensar em tecnologia, entendemos processos, gargalos, desperdícios, tarefas repetitivas, informações dispersas e oportunidades de melhoria.
 
-Desenvolvemos soluções sob medida com foco em:
+Começamos pelo que a empresa precisa hoje e construímos a tecnologia para o que ela precisa amanhã. Desenvolvemos soluções sob medida com foco em:
 
 - sistemas web;
 - automações;
 - integrações;
-- presença digital quando necessária;
+- sites e presença digital como possível porta de entrada para entender e atender outras necessidades da operação;
 - inteligência artificial aplicada como capacidade transversal.
 
-A presença digital faz parte da estratégia quando necessária, funcionando como base para empresas que precisam estruturar sua presença digital antes de evoluir para soluções mais completas.
+Um site ou outra iniciativa de presença digital pode ser o primeiro projeto. A relação pode avançar do entendimento do negócio para sistemas, automações e integrações conforme surgem necessidades operacionais; o site não define o limite do trabalho nem é necessariamente uma etapa obrigatória.
 
 A inteligência artificial não é o centro do posicionamento da Conjuga nem precisa estar presente em todos os projetos. Ela é utilizada quando existe um problema real que pode ser melhor resolvido com seu uso.
 
@@ -75,7 +75,9 @@ As soluções da Conjuga estão organizadas em três áreas comerciais principai
 - Blogs
 - SEO técnico
 
-A presença digital funciona como uma base para empresas que precisam estruturar sua presença na internet e pode também ser o primeiro passo para projetos posteriores de sistemas e automações.
+Um site ou uma landing page pode ser o primeiro projeto e a porta de entrada para uma conversa sobre a operação. O trabalho pode seguir para sistemas, automações e integrações quando o entendimento do negócio revelar essa necessidade. Presença digital é uma oferta de engenharia da Conjuga, não uma promessa de que todo projeto terá etapas posteriores.
+
+A presença digital atende empresas que precisam estruturar sua presença na internet e pode ser um primeiro projeto dentro de uma relação mais ampla de engenharia de software.
 
 ### Inteligência Artificial Aplicada
 
@@ -102,6 +104,7 @@ A Conjuga não tem como objetivo ser:
 - agência de social media;
 - empresa de identidade visual;
 - software house genérica;
+- empresa focada em sites de baixo custo como produto isolado;
 - fábrica de software por hora.
 
 Também evitamos projetos cujo foco seja:
@@ -127,7 +130,8 @@ Nosso cliente ideal normalmente possui estas características:
 - ferramentas desconectadas;
 - necessidade de ganhar produtividade antes de aumentar equipe;
 - baixa ou média maturidade digital;
-- empresa em fase de crescimento que precisa ganhar capacidade operacional antes de aumentar a equipe.
+- empresa em fase de crescimento que precisa ganhar capacidade operacional antes de aumentar a equipe;
+- capacidade e disposição para investir em uma solução adequada ao problema, sem escolher exclusivamente pelo menor preço.
 
 O cliente pode não procurar inicialmente por “engenharia de software”.
 
@@ -236,7 +240,7 @@ Não vendemos apenas entregáveis.
 
 Construímos ativos digitais que possam evoluir junto com o cliente.
 
-O relacionamento pode continuar após a primeira entrega através de manutenção, evolução, novos projetos ou novas necessidades identificadas ao longo da operação.
+O relacionamento pode continuar após a primeira entrega com suporte, sustentação e evolução contínua das soluções, além de novos projetos quando novas necessidades forem identificadas na operação. Esse trabalho recorrente vai além de hospedagem ou manutenção pontual; escopo e condições são definidos para cada relação comercial.
 
 ---
 
@@ -250,7 +254,9 @@ Preferimos construir relacionamentos de longo prazo do que projetos isolados.
 
 Projetos personalizados são apresentados sob consulta e orçados após o entendimento do escopo.
 
-Pacotes poderão ser criados futuramente apenas quando houver escopo suficientemente padronizado e uma decisão específica para isso.
+Produtos próprios ou SaaS não são ofertas consolidadas atualmente. Só devem ser considerados no futuro a partir de problemas repetidos e soluções validadas em projetos reais, com evidência suficiente para justificar sua padronização.
+
+Pacotes de serviços poderão ser criados futuramente apenas quando houver escopo suficientemente padronizado e uma decisão específica para isso.
 
 Não prometemos resultados impossíveis.
 
