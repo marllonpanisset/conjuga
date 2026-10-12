@@ -14,7 +14,7 @@ export function CookieBanner() {
 
   return (
     <div className="fixed inset-x-4 bottom-4 z-50 sm:left-1/2 sm:max-w-3xl sm:-translate-x-1/2">
-      <div className="rounded-[16px] border border-border bg-surface shadow-[var(--shadow-card-hover)]">
+      <div className="rounded-[var(--radius-md)] border border-border bg-surface shadow-[var(--shadow-float)]">
         <div className="flex flex-col gap-6 p-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <p className="font-medium text-text-primary">Privacidade</p>

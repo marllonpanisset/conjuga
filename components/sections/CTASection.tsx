@@ -1,5 +1,9 @@
 import type { ReactNode } from "react";
-import { Container, Heading, Text } from "@/components/ui";
+
+import { Reveal } from "@/components/motion";
+import { Container } from "@/components/ui/Container";
+import { Heading } from "@/components/ui/Heading";
+import { Text } from "@/components/ui/Text";
 
 interface CTASectionProps {
   title: string;
@@ -7,66 +11,49 @@ interface CTASectionProps {
   actions: ReactNode;
 }
 
+/**
+ * Bloco de fechamento da jornada.
+ *
+ * A única superfície escura do site: a inversão marca a passagem para a
+ * conversa sem precisar de caixa, sombra ou gradiente.
+ */
 export function CTASection({ title, description, actions }: CTASectionProps) {
   return (
-    <Container>
-      <div
-        className="
-          overflow-hidden
-          rounded-[16px]
-          border border-signal/25
-          bg-surface-elevated
-          shadow-[0_1px_2px_rgba(0,0,0,0.24),0_24px_52px_-40px_rgba(76,111,255,0.42)]
-        "
-      >
-        <div className="border-b border-border px-6 py-4 sm:px-8 md:px-10">
-          <div className="flex items-center gap-3">
-            <span className="h-1.5 w-1.5 bg-signal" aria-hidden="true" />
-            <Text as="span" variant="caption" className="text-text-secondary">
+    <section className="relative overflow-hidden border-y border-border bg-surface text-text-primary">
+      <Container className="py-[clamp(4rem,8vw,7rem)]">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+          <Reveal y={16} className="lg:col-span-7">
+            <p className="label-mono flex items-center gap-2">
+              <span
+                aria-hidden="true"
+                className="h-1.5 w-1.5 rounded-full bg-signal"
+              />
               Próximo passo
-            </Text>
-          </div>
-        </div>
+            </p>
 
-        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.38fr)]">
-          <div className="px-6 py-10 sm:px-8 sm:py-12 md:px-10 md:py-14 lg:pr-14">
-            <Heading as="h2" className="max-w-3xl">
+            <Heading
+              as="h2"
+              className="mt-7 max-w-[22ch] font-display text-display-m text-[#f7f5f0]"
+            >
               {title}
             </Heading>
+          </Reveal>
 
-            <Text
-              variant="lead"
-              className="mt-5 max-w-2xl text-text-secondary"
-            >
+          <Reveal
+            delay={0.1}
+            y={14}
+            className="lg:col-span-5 lg:border-l lg:border-border lg:pl-12"
+          >
+            <Text className="max-w-xl text-[1.0625rem] leading-[1.6] text-[#f4f1ea]/70">
               {description}
             </Text>
-          </div>
 
-          <div
-            className="
-              flex flex-col justify-center
-              border-t border-border
-              px-6 py-8
-              sm:px-8
-              md:px-10
-              lg:border-l lg:border-t-0 lg:px-10 lg:py-14
-            "
-          >
-            <div className="flex w-full flex-col items-stretch gap-4 [&>*]:w-full">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               {actions}
             </div>
-          </div>
+          </Reveal>
         </div>
-
-        <div
-          className="grid h-3 grid-cols-[2.5rem_1fr_5rem] border-t border-border"
-          aria-hidden="true"
-        >
-          <span className="bg-signal/70" />
-          <span className="border-l border-border" />
-          <span className="border-l border-border bg-background/40" />
-        </div>
-      </div>
-    </Container>
+      </Container>
+    </section>
   );
 }

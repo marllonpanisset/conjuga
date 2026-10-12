@@ -1,11 +1,10 @@
-export { Button } from "./Button";
+export { Button, ButtonArrow } from "./Button";
 export { Badge } from "./Badge";
 export { Tag } from "./Tag";
-export { Card } from "./Card";
 export { Container } from "./Container";
 export { Section } from "./Section";
+export { Divider } from "./Divider";
 export { Heading } from "./Heading";
 export { Text } from "./Text";
-export { Divider } from "./Divider";
-export { Grid } from "./Grid";
 export { Icon } from "./Icon";
+export { SectionHeader } from "./SectionHeader";

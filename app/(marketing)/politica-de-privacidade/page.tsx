@@ -207,7 +207,7 @@ const sections = [
 
 export default function PoliticaPrivacidadePage() {
   return (
-    <PageWrapper withGrid={true}>
+    <PageWrapper>
       <Hero
         eyebrow="Informações legais"
         title="Política de Privacidade"
@@ -216,24 +216,26 @@ export default function PoliticaPrivacidadePage() {
 
       <Section>
         <Container>
-          <div className="mx-auto max-w-4xl">
-            <Text variant="caption">
-              Última atualização: 6 de agosto de 2026.
-            </Text>
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:sticky lg:top-28 lg:self-start">
+              <Text variant="caption">Vigência</Text>
+              <p className="mt-4 max-w-[16ch] font-display text-[1.0625rem] font-medium leading-snug text-text-primary">
+                Última atualização: 6 de agosto de 2026.
+              </p>
+            </div>
 
-            <div className="mt-12 space-y-12">
-              {sections.map((section) => (
-                <section key={section.title}>
-                  <Heading
-                    as="h2"
-                    className="text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.01em]"
-                  >
-                    {section.title}
-                  </Heading>
+            <div className="lg:col-span-8 lg:col-start-5">
+              <div className="divide-y divide-border border-t border-border">
+                {sections.map((section) => (
+                  <section key={section.title} className="py-9 first:pt-0">
+                    <Heading as="h2" className="text-heading-m">
+                      {section.title}
+                    </Heading>
 
-                  {section.content}
-                </section>
-              ))}
+                    {section.content}
+                  </section>
+                ))}
+              </div>
             </div>
           </div>
         </Container>

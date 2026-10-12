@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { PageWrapper } from "@/components/layout";
-import { Container, Section, Card, Heading, Text, Tag } from "@/components/ui";
-
+import { Container, Section, Text } from "@/components/ui";
 import { Hero } from "@/components/sections";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { Stagger, StaggerItem } from "@/components/motion";
 
 import { getAllPostsMeta } from "@/lib/mdx";
 
@@ -53,32 +53,35 @@ export default function BlogPage() {
 
       <Section>
         <Container>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {posts.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`}>
-                <Card className="h-full">
-                  {post.segment && <Tag className="w-fit">{post.segment}</Tag>}
-
-                  <Heading
-                    as="h2"
-                    className="mt-4 text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.01em]"
+          {posts.length > 0 ? (
+            <Stagger as="ul" className="border-t border-border">
+              {posts.map((post) => (
+                <StaggerItem as="li" key={post.slug} className="border-b border-border">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="group grid grid-cols-1 gap-4 py-8 transition-colors duration-200 hover:bg-surface md:grid-cols-12 md:gap-8 lg:py-10"
                   >
-                    {post.title}
-                  </Heading>
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 md:col-span-4">
+                      {post.segment && (
+                        <span className="label-mono text-text-secondary">
+                          {post.segment}
+                        </span>
+                      )}
+                      <span className="label-mono">{post.readingTime}</span>
+                    </div>
 
-                  <Text variant="muted" className="mt-3">
-                    {post.description}
-                  </Text>
+                    <div className="md:col-span-8">
+                      <h2 className="font-display text-heading-m font-medium tracking-[-0.012em] text-balance text-text-primary transition-colors duration-200 group-hover:text-signal-strong">
+                        {post.title}
+                      </h2>
 
-                  <Text variant="caption" className="mt-6">
-                    {post.readingTime}
-                  </Text>
-                </Card>
-              </Link>
-            ))}
-          </div>
-
-          {posts.length === 0 && (
+                      <Text className="mt-3 max-w-2xl">{post.description}</Text>
+                    </div>
+                  </Link>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          ) : (
             <Text variant="muted">Nenhum post publicado ainda.</Text>
           )}
         </Container>

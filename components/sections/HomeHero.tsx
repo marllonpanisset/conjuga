@@ -1,6 +1,10 @@
 import type { ReactNode } from "react";
 
-import { Badge, Container, Heading, Text } from "@/components/ui";
+import { Reveal, RevealText, Stagger, StaggerItem } from "@/components/motion";
+import { Badge } from "@/components/ui/Badge";
+import { Container } from "@/components/ui/Container";
+import { Heading } from "@/components/ui/Heading";
+import { Text } from "@/components/ui/Text";
 
 interface HomeHeroProps {
   eyebrow: string;
@@ -9,6 +13,63 @@ interface HomeHeroProps {
   actions: ReactNode;
 }
 
+/**
+ * Etapas reais do método, nas mesmas palavras usadas na seção Método.
+ * O painel ilustra o processo de trabalho — sem status, métricas ou prazos.
+ */
+const operationStages = [
+  "Entendimento do contexto",
+  "Planejamento",
+  "Implantação",
+  "Suporte e evolução contínua",
+];
+
+interface OperationPanelProps {
+  stages: string[];
+}
+
+/**
+ * Painel de operação: as etapas do método em formato de console,
+ * com numeração de estágio. Leitura estática sem JavaScript.
+ */
+function OperationPanel({ stages }: OperationPanelProps) {
+  return (
+    <div className="border border-border-strong bg-surface">
+      <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-3.5 sm:px-6">
+        <p className="label-mono">Método de operação</p>
+        <span aria-hidden="true" className="h-1.5 w-1.5 bg-signal" />
+      </div>
+
+      <Stagger as="ol" className="divide-y divide-border">
+        {stages.map((stage, index) => (
+          <StaggerItem
+            as="li"
+            key={stage}
+            className="group flex items-baseline gap-4 px-5 py-4 transition-colors duration-200 hover:bg-surface-elevated sm:gap-5 sm:px-6"
+          >
+            <span className="item-index text-signal">
+              S{index + 1}
+            </span>
+            <span className="text-[0.9375rem] font-medium leading-snug text-text-primary">
+              {stage}
+            </span>
+          </StaggerItem>
+        ))}
+      </Stagger>
+
+      <div className="border-t border-border px-5 py-3.5 sm:px-6">
+        <p className="label-mono">Do entendimento à operação</p>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Abertura da Home (Sala de Operações).
+ *
+ * Composição assimétrica: título e CTAs à esquerda, painel do processo de
+ * engenharia à direita. Sem grade decorativa, sem glows.
+ */
 export function HomeHero({
   eyebrow,
   title,
@@ -16,55 +77,41 @@ export function HomeHero({
   actions,
 }: HomeHeroProps) {
   return (
-    <section className="relative isolate overflow-hidden border-b border-border/60">
-      <div
-        className="pointer-events-none absolute inset-0 -z-10"
-        aria-hidden="true"
-      >
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:56px_56px] opacity-[0.16] [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" />
-        <div className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(ellipse_at_top,var(--color-signal-soft),transparent_66%)]" />
-      </div>
+    <section className="relative overflow-hidden border-b border-border">
+      <Container className="relative py-[clamp(4rem,9vw,7.5rem)]">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-7">
+            <Reveal y={10}>
+              <Badge marked>{eyebrow}</Badge>
+            </Reveal>
 
-      <Container className="py-20 sm:py-24 md:py-28 lg:py-32">
-        <div className="relative border-x border-border/70 px-5 sm:px-8 md:px-12 lg:px-16">
-          <span
-            className="absolute -left-1 -top-1 h-2 w-2 border border-border-strong bg-background"
-            aria-hidden="true"
-          />
-          <span
-            className="absolute -right-1 -top-1 h-2 w-2 border border-border-strong bg-background"
-            aria-hidden="true"
-          />
-
-          <div className="flex items-center gap-4">
-            <Badge className="border-border-strong bg-background/80 text-text-secondary">
-              {eyebrow}
-            </Badge>
-            <div
-              className="hidden h-px flex-1 bg-border/80 sm:block"
-              aria-hidden="true"
-            />
-          </div>
-
-          <Heading
-            as="h1"
-            className="mt-8 max-w-4xl text-balance text-[clamp(2.75rem,6.5vw,5rem)] font-medium leading-[1] tracking-[-0.04em]"
-          >
-            {title}
-          </Heading>
-
-          <div className="mt-10 grid gap-8 border-t border-border/70 pt-8 md:mt-12 md:grid-cols-12 md:gap-8 md:pt-10">
-            <Text
-              variant="lead"
-              className="max-w-3xl text-pretty leading-[1.6] md:col-span-7"
+            <Heading
+              as="h1"
+              className="ops-display mt-8 max-w-[22ch] text-balance font-display text-display-xl"
             >
-              {description}
-            </Text>
+              <RevealText text={title} mode="mount" stagger={0.05} />
+            </Heading>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap md:col-span-4 md:col-start-9 md:flex-col md:items-stretch [&>*]:w-full sm:[&>*]:w-auto md:[&>*]:w-full">
-              {actions}
-            </div>
+            <Reveal delay={0.15} y={14}>
+              <Text variant="lead" className="mt-8 max-w-xl">
+                {description}
+              </Text>
+            </Reveal>
+
+            <Reveal delay={0.25} y={14}>
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+                {actions}
+              </div>
+            </Reveal>
           </div>
+
+          <Reveal
+            delay={0.3}
+            y={18}
+            className="lg:col-span-5"
+          >
+            <OperationPanel stages={operationStages} />
+          </Reveal>
         </div>
       </Container>
     </section>

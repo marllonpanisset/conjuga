@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ShieldCheck, Target } from "lucide-react";
+
 import { PageWrapper } from "@/components/layout";
 import { Container, Section, Heading, Text } from "@/components/ui";
-import { Button } from "@/components/ui/Button";
+import { Button, ButtonArrow } from "@/components/ui";
 import { Hero, CTASection } from "@/components/sections";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { FadeIn } from "@/components/motion";
+import { Stagger, StaggerItem } from "@/components/motion";
 import { buildMetadata } from "@/lib/seo";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 
@@ -69,24 +69,24 @@ export default function SobrePage() {
 
       <Section>
         <Container>
-          <div className="grid gap-6 md:grid-cols-12 md:gap-8">
-            <Text variant="caption" className="md:col-span-2 md:pt-2">
-              A empresa
-            </Text>
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:sticky lg:top-28 lg:self-start lg:col-span-3">
+              <Text variant="caption">A empresa</Text>
 
-            <div className="md:col-span-8 md:col-start-4 lg:col-span-7">
-              <Heading as="h2" className="max-w-2xl">
+              <Heading as="h2" className="mt-4 max-w-[20ch] text-heading-m">
                 Engenharia de software aplicada ao dia a dia das empresas
               </Heading>
+            </div>
 
-              <Text variant="lead" className="mt-5 max-w-2xl">
+            <div className="lg:col-span-8 lg:col-start-5">
+              <Text variant="lead" className="max-w-2xl">
                 A Conjuga é uma empresa brasileira de engenharia de software
                 focada em ajudar empresas de serviços a organizar processos,
                 fortalecer sua presença digital e evoluir sua operação de forma
                 estruturada.
               </Text>
 
-              <Text className="mt-5 max-w-2xl">
+              <Text className="mt-6 max-w-2xl">
                 Em vez de começar pela tecnologia, buscamos compreender como o
                 negócio funciona, quais desafios impedem seu crescimento e quais
                 soluções realmente fazem sentido para aquele momento. A partir
@@ -95,208 +95,117 @@ export default function SobrePage() {
                 empresa.
               </Text>
 
-              <Text className="mt-5 max-w-2xl">
-                Nosso compromisso é construir soluções claras, confiáveis e
-                fáceis de manter, priorizando decisões que gerem valor para o
-                negócio hoje e continuem fazendo sentido conforme a operação
-                cresce.
+              <Text className="mt-6 max-w-2xl">
+                Nosso compromisso é construir soluções claras e fáceis de
+                manter, documentadas para acompanhar o crescimento da empresa.
               </Text>
             </div>
           </div>
         </Container>
       </Section>
 
-      <Section surface>
+      <Section tone="raised" rule>
         <Container>
-          <div className="max-w-3xl">
-            <Text variant="caption">Posicionamento</Text>
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-5">
+              <Text variant="caption">Posicionamento</Text>
 
-            <Heading as="h2" className="mt-3">
-              Nossa abordagem
-            </Heading>
+              <p className="mt-6 max-w-[20ch] font-display text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.022em] text-balance text-text-primary">
+                A tecnologia é consequência desse entendimento do contexto.
+              </p>
+            </div>
 
-            <Text variant="lead" className="mt-4">
-              A tecnologia é consequência desse entendimento do contexto.
-            </Text>
-          </div>
+            <div className="lg:col-span-6 lg:col-start-7">
+              <div className="border-t border-border pt-7">
+                <Heading as="h3" className="text-heading-m">
+                  Como atuamos
+                </Heading>
 
-          <div className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 md:gap-5">
-            <article
-              className="
-                group h-full
-                rounded-[16px] border border-border
-                bg-surface p-6
-                shadow-[var(--shadow-card)]
-                transition-[border-color,background-color,box-shadow]
-                duration-200 ease-[var(--ease-signature)]
-                hover:border-border-strong
-                hover:bg-surface-elevated/50
-                hover:shadow-[var(--shadow-card-hover)]
-                md:p-8
-              "
-            >
-              <span className="font-mono text-[0.6875rem] font-semibold tracking-[0.08em] text-text-muted">
-                01
-              </span>
+                <Text className="mt-4 max-w-xl">
+                  Entendemos primeiro o negócio para depois definir a solução.
+                  Cada projeto nasce do contexto da empresa e é desenvolvido para
+                  resolver problemas reais de forma simples, organizada e
+                  preparada para evoluir.
+                </Text>
+              </div>
 
-              <span
-                className="
-                  mt-5 flex h-11 w-11 items-center justify-center
-                  rounded-[12px] border border-border-strong/80
-                  bg-background/60 text-signal-strong
-                  transition-[border-color,background-color]
-                  duration-200 ease-[var(--ease-signature)]
-                  group-hover:border-signal/35
-                  group-hover:bg-signal-soft
-                "
-              >
-                <Target size={20} strokeWidth={1.75} aria-hidden="true" />
-              </span>
+              <div className="mt-10 border-t border-border pt-7">
+                <Heading as="h3" className="text-heading-m">
+                  O que valorizamos
+                </Heading>
 
-              <Heading as="h3" className="mt-6 max-w-md">
-                Como atuamos
-              </Heading>
+                <Text className="mt-4 max-w-xl">
+                  Priorizamos clareza e simplicidade, com decisões tomadas a
+                  partir do contexto do negócio.
+                  A tecnologia deve facilitar a operação da empresa, ser fácil de
+                  manter e acompanhar seu crescimento ao longo do tempo.
+                </Text>
+              </div>
 
-              <Text
-                variant="muted"
-                className="mt-3 max-w-xl leading-relaxed text-text-secondary"
-              >
-                Entendemos primeiro o negócio para depois definir a solução.
-                Cada projeto nasce do contexto da empresa e é desenvolvido para
-                resolver problemas reais de forma simples, organizada e
-                preparada para evoluir.
+              <Text variant="muted" className="mt-10">
+                Conheça as soluções que desenvolvemos para empresas de serviços
+                em nossos{" "}
+                <Link href="/servicos" className="link-underline text-signal-strong">
+                  serviços
+                </Link>
+                .
               </Text>
-            </article>
-
-            <article
-              className="
-                group h-full
-                rounded-[16px] border border-border
-                bg-surface p-6
-                shadow-[var(--shadow-card)]
-                transition-[border-color,background-color,box-shadow]
-                duration-200 ease-[var(--ease-signature)]
-                hover:border-border-strong
-                hover:bg-surface-elevated/50
-                hover:shadow-[var(--shadow-card-hover)]
-                md:p-8
-              "
-            >
-              <span className="font-mono text-[0.6875rem] font-semibold tracking-[0.08em] text-text-muted">
-                02
-              </span>
-
-              <span
-                className="
-                  mt-5 flex h-11 w-11 items-center justify-center
-                  rounded-[12px] border border-border-strong/80
-                  bg-background/60 text-signal-strong
-                  transition-[border-color,background-color]
-                  duration-200 ease-[var(--ease-signature)]
-                  group-hover:border-signal/35
-                  group-hover:bg-signal-soft
-                "
-              >
-                <ShieldCheck size={20} strokeWidth={1.75} aria-hidden="true" />
-              </span>
-
-              <Heading as="h3" className="mt-6 max-w-md">
-                O que valorizamos
-              </Heading>
-
-              <Text
-                variant="muted"
-                className="mt-3 max-w-xl leading-relaxed text-text-secondary"
-              >
-                Priorizamos clareza, simplicidade e decisões bem fundamentadas.
-                A tecnologia deve facilitar a operação da empresa, ser fácil de
-                manter e acompanhar seu crescimento ao longo do tempo.
-              </Text>
-            </article>
+            </div>
           </div>
-
-          <Text variant="muted" className="mt-8">
-            Conheça as soluções que desenvolvemos para empresas de serviços em
-            nossos{" "}
-            <Link
-              href="/servicos"
-              className="link-underline text-signal-strong"
-            >
-              serviços
-            </Link>
-            .
-          </Text>
         </Container>
       </Section>
 
       <Section>
         <Container>
-          <FadeIn>
-            <Text variant="caption">Princípios</Text>
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-3">
+              <Text variant="caption">Princípios</Text>
 
-            <Heading as="h2" className="mt-3 max-w-lg">
-              Princípios que orientam nossas decisões
-            </Heading>
-          </FadeIn>
+              <Heading as="h2" className="mt-4 max-w-[16ch] text-heading-m">
+                Princípios que orientam nossas decisões
+              </Heading>
+            </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-[16px] border border-border bg-border md:mt-16 lg:grid-cols-6">
-            {principles.map((item, index) => (
-              <article
-                key={item.title}
-                className={`
-                  h-full min-h-[220px]
-                  bg-surface p-6
-                  md:p-8
-                  lg:min-h-[240px] lg:p-10
-                  ${index < 3 ? "lg:col-span-2" : "lg:col-span-3"}
-                `}
-              >
-                <div className="flex h-full flex-col justify-between gap-10">
-                  <div className="shrink-0">
-                    <span
-                      className="
-                        flex h-9 w-9 items-center justify-center
-                        border border-border-strong
-                        bg-background
-                        font-mono text-[0.6875rem] font-semibold
-                        tracking-[0.04em]
-                        text-signal-strong
-                      "
-                    >
+            <div className="lg:col-span-9">
+              <Stagger as="ol" className="border-t border-border">
+                {principles.map((item, index) => (
+                  <StaggerItem
+                    as="li"
+                    key={item.title}
+                    className="group grid gap-3 border-b border-border py-7 sm:grid-cols-[4rem_1fr] sm:gap-8"
+                  >
+                    <span className="item-index pt-1.5 transition-colors duration-200 group-hover:text-signal">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                  </div>
 
-                  <div className="max-w-md">
-                    <Heading as="h3">{item.title}</Heading>
+                    <div className="max-w-2xl">
+                      <Heading as="h3" className="text-heading-s">
+                        {item.title}
+                      </Heading>
 
-                    <Text
-                      variant="muted"
-                      className="mt-3 leading-relaxed text-text-secondary"
-                    >
-                      {item.description}
-                    </Text>
-                  </div>
-                </div>
-              </article>
-            ))}
+                      <Text className="mt-2.5">{item.description}</Text>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </Stagger>
+            </div>
           </div>
         </Container>
       </Section>
 
-      <Section surface>
+      <Section tone="raised" rule>
         <Container>
-          <div className="grid gap-6 md:grid-cols-12 md:gap-8">
-            <Text variant="caption" className="md:col-span-2 md:pt-2">
-              Evolução
-            </Text>
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-3">
+              <Text variant="caption">Evolução</Text>
+            </div>
 
-            <div className="md:col-span-8 md:col-start-4 lg:col-span-7">
-              <Heading as="h2" className="max-w-2xl">
+            <div className="lg:col-span-8 lg:col-start-5">
+              <Heading as="h2" className="max-w-[26ch] text-display-m">
                 Soluções que evoluem junto com o seu negócio
               </Heading>
 
-              <Text variant="lead" className="mt-5 max-w-2xl">
+              <Text variant="lead" className="mt-7 max-w-2xl">
                 Cada empresa está em um momento diferente. Algumas precisam
                 fortalecer sua presença digital, enquanto outras já buscam
                 organizar processos ou desenvolver sistemas internos para ganhar
@@ -315,17 +224,15 @@ export default function SobrePage() {
         </Container>
       </Section>
 
-      <Section>
-        <CTASection
-          title="Vamos entender o próximo desafio da sua empresa?"
-          description="Conte como sua empresa funciona hoje e vamos avaliar a solução mais adequada para o seu momento."
-          actions={
-            <Button href="/contato" size="lg">
-              Conversar com a Conjuga
-            </Button>
-          }
-        />
-      </Section>
+      <CTASection
+        title="Vamos entender o próximo desafio da sua empresa?"
+        description="Conheça nossos serviços ou conte o desafio da sua empresa para iniciarmos a conversa."
+        actions={
+          <Button href="/contato" size="lg" variant="onInk">
+            Conversar com a Conjuga <ButtonArrow />
+          </Button>
+        }
+      />
     </PageWrapper>
   );
 }

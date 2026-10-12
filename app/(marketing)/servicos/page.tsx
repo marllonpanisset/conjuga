@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 
 import { PageWrapper } from "@/components/layout";
-import { Container, Section, Grid, Heading, Text } from "@/components/ui";
+import {
+  Button,
+  ButtonArrow,
+  Container,
+  Section,
+  SectionHeader,
+  Text,
+} from "@/components/ui";
 
-import { Hero, ServiceCard, CTASection } from "@/components/sections";
-import { Button } from "@/components/ui/Button";
+import { Hero, ServiceIndex, CTASection } from "@/components/sections";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 import { services } from "@/content/servicos";
@@ -15,7 +21,7 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Serviços",
   description:
-    "Conheça os serviços da Conjuga para empresas de serviços, incluindo sistemas web, automação de processos, presença digital e soluções desenvolvidas para acompanhar o crescimento do negócio.",
+    "Conheça como a Conjuga desenvolve sistemas web, automações, integrações e sites para resolver problemas operacionais de empresas de serviços.",
   path: "/servicos",
 });
 
@@ -37,87 +43,100 @@ export default function ServicosPage() {
 
       <Hero
         eyebrow="Serviços"
-        title="Soluções desenvolvidas para resolver desafios reais do negócio"
-        description="Cada solução nasce do entendimento do problema. Sistemas Web, Automações de Processos e Presença Digital atendem necessidades diferentes e podem ser combinados conforme o contexto da empresa."
+        title="Engenharia de software para resolver problemas da operação"
+        description="A Conjuga desenvolve sistemas web, automações e integrações para empresas com processos manuais, ferramentas desconectadas e desafios operacionais. Aplicamos inteligência artificial quando fizer sentido. Um site também pode ser o primeiro projeto, quando a empresa precisa estruturar sua presença digital."
       />
 
-      <Section surface>
-        <Container>
-          <div className="max-w-3xl">
-            <Text variant="caption">Antes da tecnologia</Text>
-
-            <Heading as="h2" className="mt-3">
-              Comece pelo problema do negócio
-            </Heading>
-
-            <Text variant="lead" className="mt-4">
-              Você não precisa saber qual tecnologia ou serviço contratar. A
-              conversa começa pelo contexto, pelos processos e pelos desafios
-              do negócio para compreender qual solução pode ser adequada.
-            </Text>
-
-            <Text className="mt-4 max-w-2xl">
-              Uma mesma solução pode combinar diferentes serviços para atender
-              às necessidades da empresa de forma integrada.
-            </Text>
-          </div>
-        </Container>
-      </Section>
-
       <Section>
         <Container>
-          <div className="mb-12 max-w-3xl">
-            <Heading as="h2">
-              Escolha a solução mais adequada para o momento da sua empresa
-            </Heading>
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-3">
+              <div className="flex items-baseline gap-3">
+                <span className="item-index text-signal">01</span>
+                <Text variant="caption">Antes da tecnologia</Text>
+              </div>
+            </div>
 
-            <Text variant="lead" className="mt-4">
-              Não acreditamos em uma solução única para todos os negócios. Cada
-              empresa possui desafios diferentes e pode evoluir gradualmente com
-              novas soluções conforme sua operação cresce.
-            </Text>
+            <div className="lg:col-span-9">
+              <p className="max-w-[26ch] font-display text-[clamp(1.75rem,3.6vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.022em] text-balance text-text-primary">
+                Você não precisa saber qual tecnologia ou serviço contratar.
+              </p>
+
+              <div className="mt-10 grid gap-8 border-t border-border pt-8 sm:grid-cols-2 sm:gap-12">
+                <Text variant="lead" className="max-w-md">
+                  A conversa começa pelo contexto, pelos processos e pelos
+                  desafios do negócio para compreender qual solução pode ser
+                  adequada.
+                </Text>
+
+                <Text className="max-w-md">
+                  Uma mesma solução pode combinar diferentes serviços para
+                  atender às necessidades da empresa de forma integrada.
+                </Text>
+              </div>
+            </div>
           </div>
-
-          <Grid cols={2}>
-            {services.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
-            ))}
-          </Grid>
         </Container>
       </Section>
 
-      <Section surface className="py-14 md:py-16">
+      <Section tone="raised" rule>
         <Container>
-          <div className="max-w-3xl">
-            <Heading as="h2">
-              Uma solução pode envolver mais de um serviço
-            </Heading>
+          <SectionHeader
+            label="Soluções"
+            title="Comece pela necessidade da sua empresa"
+            lead="Entendemos o negócio e definimos o que faz sentido agora. Um site pode iniciar o trabalho; sistemas, automações e integrações atendem necessidades operacionais conforme identificadas."
+          />
 
-            <Text className="mt-4">
-              Dependendo do desafio da empresa, uma solução pode combinar
-              Presença Digital, Sistemas Web e Automações de Processos. Novas
-              soluções poderão ser incorporadas conforme a operação evolui e
-              novas necessidades surgem.
-            </Text>
-
-            <Button href="/sobre" variant="secondary" className="mt-5">
-              Entenda como a Conjuga trabalha
-            </Button>
+          <div className="mt-14 lg:mt-20">
+            <ServiceIndex services={services} />
           </div>
         </Container>
       </Section>
 
-      <Section>
-        <CTASection
-          title="Não sabe qual solução faz sentido?"
-          description="Conte como sua empresa funciona hoje e quais desafios deseja resolver. Com esse contexto, podemos avaliar o caminho mais adequado para o seu momento."
-          actions={
-            <Button href="/contato" size="lg">
-              Conversar com a Conjuga
-            </Button>
-          }
-        />
+      <Section rule>
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-3">
+              <div className="flex items-baseline gap-3">
+                <span className="item-index text-signal">02</span>
+                <Text variant="caption">Depois da entrega</Text>
+              </div>
+            </div>
+
+            <div className="lg:col-span-9">
+              <h2 className="max-w-[24ch] font-display text-[clamp(1.75rem,3.6vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.022em] text-balance text-text-primary">
+                O trabalho pode continuar após a primeira entrega
+              </h2>
+
+              <Text className="mt-8 max-w-2xl text-[1.0625rem] leading-[1.6]">
+                Depois de um site ou de outra primeira entrega, a relação pode
+                continuar com suporte e ajustes, com escopo definido para cada
+                projeto. Conforme
+                o contexto do negócio, também podemos desenvolver sistemas,
+                automações e integrações para outros problemas da operação.
+              </Text>
+
+              <Button
+                href="/sobre"
+                variant="secondary"
+                className="mt-9"
+              >
+                Entenda como a Conjuga trabalha <ButtonArrow size={15} />
+              </Button>
+            </div>
+          </div>
+        </Container>
       </Section>
+
+      <CTASection
+        title="Qual dessas necessidades parece a sua?"
+        description="Se você reconheceu algum problema acima, descreva sua operação que indicamos por onde começar."
+        actions={
+          <Button href="/contato" size="lg" variant="onInk">
+            Conversar com a Conjuga <ButtonArrow />
+          </Button>
+        }
+      />
     </PageWrapper>
   );
 }

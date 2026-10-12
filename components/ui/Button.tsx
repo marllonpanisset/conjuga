@@ -6,10 +6,11 @@ import type {
 
 import Link from "next/link";
 import type { Route } from "next";
+import { ArrowRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "onInk" | "onInkGhost" | "accent";
 type ButtonSize = "md" | "lg";
 
 type BaseProps = PropsWithChildren<{
@@ -32,17 +33,13 @@ type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary: `
-    bg-gradient-to-b from-signal-strong to-signal
-    text-white
-    border border-white/15
-    shadow-[var(--shadow-button)]
+    bg-signal text-[#101418]
+    border border-signal
 
-    hover:from-signal hover:to-signal-strong
-    hover:border-white/20
-    hover:shadow-[var(--shadow-button-hover)]
-    hover:brightness-[1.03]
+    hover:bg-signal-strong hover:border-signal-strong
+    hover:shadow-[var(--shadow-float)]
 
-    active:brightness-95
+    active:bg-[#d6932e]
 
     focus-visible:outline-none
     focus-visible:ring-2 focus-visible:ring-signal
@@ -50,15 +47,9 @@ const variantStyles: Record<ButtonVariant, string> = {
   `,
 
   secondary: `
-    border border-border/70
-    bg-surface-elevated/75
-    text-text-primary
-    backdrop-blur-sm
-    shadow-sm
+    border border-border-strong bg-transparent text-text-primary
 
-    hover:border-border
-    hover:bg-surface-elevated
-    hover:shadow-md
+    hover:border-text-secondary hover:bg-surface-elevated
 
     active:bg-surface
 
@@ -68,38 +59,87 @@ const variantStyles: Record<ButtonVariant, string> = {
   `,
 
   ghost: `
-    text-text-secondary
+    text-text-primary
+    px-0
 
-    hover:bg-surface
-    hover:text-text-primary
-
-    active:bg-surface-elevated
+    hover:text-signal-strong
 
     focus-visible:outline-none
     focus-visible:ring-2 focus-visible:ring-signal
     focus-visible:ring-offset-2 focus-visible:ring-offset-background
   `,
+
+  /** Para uso sobre superfícies escuras (blocos de fechamento). */
+  onInk: `
+    bg-[#f4f1ea] text-[#15181d]
+    border border-[#f4f1ea]
+
+    hover:bg-[#ffffff] hover:border-[#ffffff]
+
+    active:bg-[#e8e4da]
+
+    focus-visible:outline-none
+    focus-visible:ring-2 focus-visible:ring-[#f4f1ea]
+    focus-visible:ring-offset-2 focus-visible:ring-offset-[#15181d]
+  `,
+
+  /** Variante de texto sobre superfícies escuras. */
+  onInkGhost: `
+    text-[#f4f1ea]/75 px-0
+
+    hover:text-[#f4f1ea]
+
+    focus-visible:outline-none
+    focus-visible:ring-2 focus-visible:ring-[#f4f1ea]
+    focus-visible:ring-offset-2 focus-visible:ring-offset-[#15181d]
+  `,
+
+  /** Sinal âmbar sobre tinta — uso na Home (Sala de Operações). */
+  accent: `
+    bg-[#e8a33d] text-[#101418]
+    border border-[#e8a33d]
+
+    hover:bg-[#f2b45c] hover:border-[#f2b45c]
+
+    active:bg-[#d6932e]
+
+    focus-visible:outline-none
+    focus-visible:ring-2 focus-visible:ring-[#e8a33d]
+    focus-visible:ring-offset-2 focus-visible:ring-offset-[#101418]
+  `,
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  md: `h-10 px-5 text-[0.9375rem]`,
-  lg: `h-12 px-7 text-base`,
+  md: "h-11 px-5 text-[0.9375rem]",
+  lg: "h-13 px-7 text-[1rem]",
 };
 
 const base = `
-  inline-flex items-center justify-center gap-2
-  rounded-[var(--radius-md)]
-  font-medium
-  leading-none
-  whitespace-nowrap
-  cursor-pointer
-  transition-[background-color,border-color,color,box-shadow,filter]
-  duration-150 ease-out
-  select-none
-  disabled:cursor-not-allowed
-  disabled:opacity-50
-  disabled:shadow-none
+  group inline-flex items-center justify-center gap-2.5
+  rounded-[var(--radius-sm)]
+  font-medium leading-none whitespace-nowrap
+  cursor-pointer select-none
+  transition-[background-color,border-color,color,box-shadow,transform]
+  duration-200 ease-[var(--ease-precise)]
+  hover:-translate-y-px
+  disabled:cursor-not-allowed disabled:opacity-50
+  disabled:hover:translate-y-0 disabled:hover:shadow-none
 `;
+
+/**
+ * Seta que acompanha o botão: desliza levemente no hover do grupo.
+ * Usar como último filho do botão para a microinteração padrão.
+ */
+export function ButtonArrow({ size = 16 }: { size?: number }) {
+  return (
+    <ArrowRight
+      size={size}
+      strokeWidth={1.75}
+      aria-hidden="true"
+      className="transition-transform duration-200 ease-[var(--ease-precise)] group-hover:translate-x-1"
+    />
+  );
+}
 
 export function Button({
   variant = "primary",

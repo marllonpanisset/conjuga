@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { CookieBanner } from "@/components/analytics/CookieBanner";
 import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { NavigationProgress } from "@/components/layout/NavigationProgress";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/config/site";
@@ -17,6 +18,10 @@ const defaultSocialImage = {
   alt: siteConfig.openGraphImage.alt,
 };
 const defaultTitle = `${siteConfig.name} — Engenharia de software para empresas de serviços`;
+
+export const viewport: Viewport = {
+  themeColor: "#101418",
+};
 
 /**
  * Global metadata provides default SEO information for all routes.
@@ -81,6 +86,8 @@ export const metadata: Metadata = {
     email: false,
     telephone: false,
   },
+
+  manifest: "/site.webmanifest",
 
   robots: {
     index: true,
@@ -170,8 +177,17 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body>
+        <a
+          href="#conteudo"
+          className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:left-4 focus-visible:top-4 focus-visible:z-50 focus-visible:rounded-[var(--radius-sm)] focus-visible:bg-[#15181d] focus-visible:px-4 focus-visible:py-2.5 focus-visible:text-small focus-visible:text-[#f4f1ea]"
+        >
+          Ir para o conteúdo
+        </a>
+
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={websiteJsonLd()} />
+
+        <NavigationProgress />
 
         <MotionProvider>
           <Header />

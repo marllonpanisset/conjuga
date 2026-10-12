@@ -76,7 +76,7 @@ export const services: Service[] = [
     benefits: [
       "Mais credibilidade",
       "Comunicação mais clara",
-      "Base preparada para novas soluções",
+      "Presença digital conectada ao negócio",
     ],
     includes: [
       "Landing pages",
@@ -93,7 +93,7 @@ export const services: Service[] = [
     ],
     heroTitle: "Uma presença digital estruturada para a empresa",
     heroDescription:
-      "A Presença Digital organiza a comunicação da empresa, fortalece sua credibilidade e prepara uma base para novas soluções conforme o negócio cresce.",
+      "Sites e landing pages organizam a presença digital da empresa e podem ser o primeiro projeto. A partir do entendimento da operação, o trabalho pode evoluir para sistemas, automações e integrações quando essas necessidades existirem.",
   },
 ];
 

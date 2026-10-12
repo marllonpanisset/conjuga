@@ -3,13 +3,12 @@ import { notFound } from "next/navigation";
 import { Network, ShieldCheck, Target } from "lucide-react";
 
 import { PageWrapper } from "@/components/layout";
-import { Container, Section, Heading, Text } from "@/components/ui";
-
-import { Button } from "@/components/ui/Button";
+import { Container, Section, Heading, Text, Button, ButtonArrow } from "@/components/ui";
 import { Hero, CTASection } from "@/components/sections";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 import { Icon } from "@/components/ui/Icon";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 
 import { services, getServiceBySlug } from "@/content/servicos";
 
@@ -30,7 +29,6 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-
   const service = getServiceBySlug(slug);
 
   if (!service) return {};
@@ -48,7 +46,6 @@ export default async function ServicoPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
   const service = getServiceBySlug(slug);
 
   if (!service) notFound();
@@ -86,210 +83,167 @@ export default async function ServicoPage({
         description={service.heroDescription}
         actions={
           <Button href="/contato" size="lg">
-            Conte seu desafio
+            Conte seu desafio <ButtonArrow />
           </Button>
         }
       />
 
-      <Section surface>
+      <Section>
         <Container>
-          <div className="mx-auto max-w-2xl text-center">
-            <Icon icon={service.icon} size={28} className="mx-auto" />
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-3">
+              <Text variant="caption">O problema</Text>
+            </div>
 
-            <Heading as="h2" className="mt-5">
-              Problemas que essa solução ajuda a resolver
-            </Heading>
-
-            <Text variant="lead" className="mt-4">
-              {service.problem}
-            </Text>
+            <div className="lg:col-span-9">
+              <p className="mx-auto flex max-w-3xl items-start gap-5 text-center font-display text-[clamp(1.5rem,3vw,2.125rem)] font-medium leading-[1.2] tracking-[-0.02em] text-balance text-text-primary sm:items-center sm:text-left">
+                <Icon
+                  icon={service.icon}
+                  size={26}
+                  className="hidden shrink-0 sm:inline-flex"
+                />
+                {service.problem}
+              </p>
+            </div>
           </div>
         </Container>
       </Section>
 
-      <Section>
+      <Section tone="raised" rule>
         <Container>
-          <Text variant="caption">Benefícios</Text>
-
-          <Heading as="h2" className="mt-3 max-w-lg">
-            O que muda na operação
-          </Heading>
-
-          <ul className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
-            {service.benefits.map((benefit, index) => {
-              const BenefitIcon = benefitIcons[index] ?? Target;
-
-              return (
-                <li
-                  key={benefit}
-                  className="
-                    group h-full
-                    rounded-[16px] border border-border
-                    bg-surface p-6
-                    shadow-[var(--shadow-card)]
-                    transition-[border-color,background-color,box-shadow]
-                    duration-200 ease-[var(--ease-signature)]
-                    hover:border-border-strong
-                    hover:bg-surface-elevated/50
-                    hover:shadow-[var(--shadow-card-hover)]
-                    md:p-8
-                  "
-                >
-                  <span className="font-mono text-[0.6875rem] font-semibold tracking-[0.08em] text-text-muted">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <span
-                    className="
-                      mt-5 flex h-11 w-11 items-center justify-center
-                      rounded-[12px] border border-border-strong/80
-                      bg-background/60 text-signal-strong
-                      transition-[border-color,background-color]
-                      duration-200 ease-[var(--ease-signature)]
-                      group-hover:border-signal/35
-                      group-hover:bg-signal-soft
-                    "
-                  >
-                    <BenefitIcon
-                      size={20}
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
-                  </span>
-
-                  <Heading as="h3" className="mt-6 max-w-md">
-                    {benefit}
-                  </Heading>
-                </li>
-              );
-            })}
-          </ul>
-        </Container>
-      </Section>
-
-      <Section>
-        <Container>
-          <Text variant="caption">O que entregamos</Text>
-          <Heading as="h2" className="mt-3 max-w-lg">
-            O que está incluído nesta solução
-          </Heading>
-
-          <ul className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-[16px] border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
-            {service.includes.map((item, index) => (
-              <li
-                key={item}
-                className=" relative h-full min-h-[220px] bg-surface p-6 md:p-8 lg:min-h-[240px] lg:p-10"
-              >
-                <div className="flex h-full flex-col justify-between gap-10">
-                  <span
-                    className="
-                      flex h-9 w-9 shrink-0 items-center justify-center
-                      border border-border-strong
-                      bg-background
-                      font-mono text-[0.6875rem] font-semibold
-                      tracking-[0.04em]
-                      text-signal-strong
-                    "
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <Heading as="h3" className="max-w-md">
-                    {item}
-                  </Heading>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </Section>
-
-      <Section surface>
-        <Container>
-          <Text variant="caption">Como trabalhamos</Text>
-
-          <Heading as="h2" className="mt-3 max-w-lg">
-            Como conduzimos o trabalho
-          </Heading>
-
-          <ol className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-[16px] border border-border bg-border md:grid-cols-2">
-            {service.process.map((step, index) => (
-              <li
-                key={step}
-                className="
-                  relative
-                  h-full
-                  min-h-[220px]
-                  bg-surface
-                  p-6
-                  md:p-8
-                  lg:min-h-[240px] lg:p-10
-                "
-              >
-                <div className="flex h-full flex-col justify-between gap-10">
-                  <span
-                    className="
-                      flex h-9 w-9 shrink-0 items-center justify-center
-                      border border-border-strong
-                      bg-background
-                      font-mono text-[0.6875rem] font-semibold
-                      tracking-[0.04em]
-                      text-signal-strong
-                    "
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <Heading as="h3" className="max-w-md">
-                    {step}
-                  </Heading>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </Container>
-      </Section>
-
-      <Section>
-        <Container>
-          <div className="grid gap-6 md:grid-cols-12 md:gap-8">
-            <Text variant="caption" className="md:col-span-2 md:pt-2">
-              Evolução
-            </Text>
-
-            <div className="md:col-span-8 md:col-start-4 lg:col-span-7">
-              <Heading as="h2" className="max-w-2xl">
-                Uma solução preparada para acompanhar o crescimento da empresa
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-3">
+              <Text variant="caption">Benefícios</Text>
+              <Heading as="h2" className="mt-4 text-heading-m lg:max-w-[12ch]">
+                O que muda na operação
               </Heading>
+            </div>
 
-              <Text variant="lead" className="mt-5 max-w-2xl">
-                Cada projeto resolve uma necessidade atual, mas também pode
-                servir de base para futuras evoluções. Conforme a operação
-                cresce, novos processos podem ser automatizados, integrados ou
-                transformados em soluções mais completas.
-              </Text>
+            <div className="lg:col-span-9">
+              <Stagger as="ul" className="border-t border-border">
+                {service.benefits.map((benefit, index) => {
+                  const BenefitIcon = benefitIcons[index] ?? Target;
 
-              <Text className="mt-5 max-w-2xl">
-                Nosso objetivo não é criar dependência tecnológica, mas
-                desenvolver soluções organizadas, sustentáveis e preparadas para
-                evoluir quando fizer sentido para o negócio.
-              </Text>
+                  return (
+                    <StaggerItem
+                      as="li"
+                      key={benefit}
+                      className="group flex items-start gap-6 border-b border-border py-7"
+                    >
+                      <span className="item-index pt-1.5">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+
+                      <span className="mt-0.5 text-signal transition-transform duration-300 ease-[var(--ease-signature)] group-hover:-translate-y-0.5">
+                        <BenefitIcon size={18} strokeWidth={1.5} aria-hidden="true" />
+                      </span>
+
+                      <Heading as="h3" className="text-heading-m">
+                        {benefit}
+                      </Heading>
+                    </StaggerItem>
+                  );
+                })}
+              </Stagger>
             </div>
           </div>
         </Container>
       </Section>
 
       <Section>
-        <CTASection
-          title="Vamos avaliar o caminho adequado para sua empresa?"
-          description="Conte como sua empresa funciona hoje e quais desafios deseja resolver. Com esse contexto, podemos avaliar o caminho mais adequado para a sua realidade."
-          actions={
-            <Button href="/contato" size="lg">
-              Conversar com a Conjuga
-            </Button>
-          }
-        />
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-3">
+              <Text variant="caption">O que entregamos</Text>
+              <Heading as="h2" className="mt-4 text-heading-m lg:max-w-[12ch]">
+                O que está incluído nesta solução
+              </Heading>
+            </div>
+
+            <Stagger
+              as="ul"
+              className="grid gap-px overflow-hidden rounded-[var(--radius-md)] border border-border bg-border lg:col-span-9 md:grid-cols-2 lg:grid-cols-3"
+            >
+              {service.includes.map((item, index) => (
+                <StaggerItem
+                  as="li"
+                  key={item}
+                  className="flex min-h-[13rem] flex-col justify-between gap-10 bg-surface p-6 lg:p-8"
+                >
+                  <span className="item-index">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  <Heading as="h3" className="max-w-[22ch] text-heading-s">
+                    {item}
+                  </Heading>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        </Container>
       </Section>
+
+      <Section tone="raised" rule>
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-3">
+              <Text variant="caption">Como trabalhamos</Text>
+              <Heading as="h2" className="mt-4 text-heading-m lg:max-w-[12ch]">
+                Como conduzimos o trabalho
+              </Heading>
+            </div>
+
+            <div className="lg:col-span-9">
+              <Stagger as="ol" className="border-t border-border">
+                {service.process.map((step, index) => (
+                  <StaggerItem
+                    as="li"
+                    key={step}
+                    className="group flex items-baseline gap-6 border-b border-border py-5"
+                  >
+                    <span className="item-index transition-colors duration-200 group-hover:text-signal">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-display text-[1.0625rem] font-medium tracking-[-0.008em] text-text-primary transition-colors duration-200 group-hover:text-signal-strong">
+                      {step}
+                    </span>
+                  </StaggerItem>
+                ))}
+              </Stagger>
+
+              <Reveal delay={0.1} className="mt-10 max-w-2xl">
+                <Heading as="h3" className="text-heading-m">
+                  Uma solução preparada para acompanhar o crescimento da empresa
+                </Heading>
+
+                <Text variant="lead" className="mt-5">
+                  Cada projeto resolve uma necessidade atual, mas também pode
+                  servir de base para futuras evoluções. Conforme a operação
+                  cresce, novos processos podem ser automatizados, integrados ou
+                  transformados em soluções mais completas.
+                </Text>
+
+                <Text className="mt-5">
+                  Nosso objetivo não é criar dependência tecnológica, mas
+                  desenvolver soluções organizadas e fáceis de manter, que
+                  continuem fazendo sentido conforme a operação cresce.
+                </Text>
+              </Reveal>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <CTASection
+        title={`Quer aplicar ${service.name} na sua operação?`}
+        description="Descreva o processo que mais consome tempo hoje e avaliamos por onde começar."
+        actions={
+          <Button href="/contato" size="lg" variant="onInk">
+            Conversar com a Conjuga <ButtonArrow />
+          </Button>
+        }
+      />
     </PageWrapper>
   );
 }

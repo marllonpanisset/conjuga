@@ -26,7 +26,7 @@ export function getPostMetaBySlug(slug: string): BlogPostMeta {
     description: data.description,
     date: data.date,
     segment: data.segment,
-    readingTime: stats.text,
+    readingTime: stats.text.replace("min read", "min de leitura"),
   };
 }
 

@@ -1,162 +1,348 @@
 @import "tailwindcss";
 
 /*
-  Conjuga Design System — tokens
-  Direção: minimalista, premium, dark mode, tecnológico, elegante
-  Referência: Linear / Vercel / Stripe / Framer / Raycast
+  Conjuga Design System — direção "Technical Paper"
+
+  A interface é tratada como um documento de engenharia: papel claro, tinta,
+  réguas finas, anotações monospaciadas e um único sinal de cor preciso.
+  Nada de gradientes decorativos, brilhos ou efeitos sem função.
 */
 @theme {
-  /* ---- Cor ---- */
-  --color-background: #0a0a0c;
-  --color-surface: #131316;
-  --color-surface-elevated: #1a1a1f;
-  --color-border: #26262c;
-  --color-border-strong: #34343c;
+  /* ---- Superfície ---- */
+  --color-background: #101418;
+  --color-surface: #171d24;
+  --color-surface-elevated: #1e2630;
 
-  --color-text-primary: #f2f2f4;
-  --color-text-secondary: #b4b4bd;
-  --color-text-muted: #8d8d96;
+  /* ---- Tinta ---- */
+  --color-text-primary: #edeae2;
+  --color-text-secondary: #a8b0b8;
+  --color-text-muted: #7c858e;
 
-  --color-signal: #4c6fff; /* accent primário — CTAs, links, foco */
-  --color-signal-soft: #4c6fff1a;
-  --color-signal-strong: #6f8bff;
-  --color-violet: #8b5cf6; /* accent secundário — usado só em gradientes de hero */
+  /* ---- Réguas ---- */
+  --color-border: #2a323c;
+  --color-border-strong: #3a4450;
 
-  --color-success: #34d399;
-  --color-warning: #f5b544;
+  /* ---- Sinal (interação) ---- */
+  --color-signal: #e8a33d;
+  --color-signal-strong: #f2b45c;
+  --color-signal-soft: #e8a33d1f;
+
+  /* ---- Anotação (marcação pontual) ---- */
+  --color-annotation: #cf6f4e;
+  --color-annotation-soft: #f3e8e0;
 
   /* ---- Tipografia ---- */
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  /* ---- Layout ---- */
-  --container-max: 1200px;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  /* ---- Estágios tipográficos ----
+     Usados via text-[…] arbitrário em conjunto com line-height explícito. */
+  --step-display-xl: clamp(2.75rem, 7.2vw, 5.5rem);
+  --step-display-l: clamp(2.125rem, 5vw, 3.5rem);
+  --step-display-m: clamp(1.75rem, 3.6vw, 2.5rem);
+  --step-heading-m: clamp(1.375rem, 2.4vw, 1.75rem);
+  --step-heading-s: 1.1875rem;
+  --step-lede: clamp(1.0625rem, 1.15vw, 1.1875rem);
+  --step-body: 1rem;
+  --step-small: 0.9375rem;
+  --step-label: 0.6875rem;
 
-  /* ---- Easing (animações) ---- */
+  /* ---- Geometria ---- */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  /* ---- Elevação (discreta, só para camadas que flutuam) ---- */
+  --shadow-panel:
+    0 1px 1px rgba(0, 0, 0, 0.4), 0 12px 28px -18px rgba(0, 0, 0, 0.7);
+  --shadow-float:
+    0 1px 2px rgba(0, 0, 0, 0.5), 0 22px 44px -24px rgba(0, 0, 0, 0.8);
+
+  /* ---- Movimento ---- */
   --ease-signature: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-precise: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
 
-  /* ---- Elevação / glow (uso pontual, accent discreto) ---- */
-  --shadow-card:
-    0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.5);
-  --shadow-card-hover:
-    0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 40px -16px rgba(76, 111, 255, 0.25);
-  --shadow-button:
-    0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 16px -4px rgba(76, 111, 255, 0.45);
-  --shadow-button-hover:
-    0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 24px -4px rgba(76, 111, 255, 0.6);
+  /* ---- Malha ---- */
+  --rule: 1px;
+  --grid-column: 68px;
+  --grid-gutter: 24px;
+  --page-max: 1280px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                               */
+/* ------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  border-color: var(--color-border);
 }
 
 html {
   color-scheme: dark;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   background-color: var(--color-background);
   color: var(--color-text-primary);
   font-family: var(--font-body);
+  font-size: var(--step-body);
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv05" 1;
 }
 
 ::selection {
-  background: var(--color-signal);
+  background-color: var(--color-signal);
   color: #ffffff;
 }
 
-/* Foco visível — acessibilidade, nunca removido sem substituto */
 :focus-visible {
   outline: 2px solid var(--color-signal);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
 }
 
-/*
-  Grid pontilhado sutil — elemento de assinatura visual.
-  Aplicado apenas a um elemento decorativo isolado (::before de .signature-grid),
-  posicionado atrás do conteúdo com altura limitada — NUNCA em um wrapper que
-  contenha conteúdo real, pois mask-image recorta a renderização do elemento
-  inteiro (inclusive filhos), não só o background.
-*/
-.signature-grid {
+/* ------------------------------------------------------------------ */
+/* Padrões reutilizáveis                                              */
+/* ------------------------------------------------------------------ */
+
+/* Rótulo técnico monospaciado — usado como sistema de marcação do site */
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: var(--step-label);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Lede — parágrafo de abertura de seção */
+.lede {
+  font-size: var(--step-lede);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+/* Sublinhado animado — microinteração padrão para links inline */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+  background-image: linear-gradient(
+    currentColor,
+    currentColor
+  );
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% var(--rule);
+  transition: background-size 0.35s var(--ease-signature);
+}
+
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% var(--rule);
+}
+
+/* Malha técnica — substrato sutil, nunca sobre conteúdo real */
+.blueprint-grid {
   position: relative;
   isolation: isolate;
 }
 
-.signature-grid::before {
+.blueprint-grid::before {
   content: "";
-  position: absolute;
-  inset: 0;
-  height: 640px;
-  z-index: -1;
-  pointer-events: none;
-  background-image: radial-gradient(
-    var(--color-border-strong) 1px,
-    transparent 1px
-  );
-  background-size: 28px 28px;
-  -webkit-mask-image: radial-gradient(
-    ellipse 60% 100% at 50% 0%,
-    black 0%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(
-    ellipse 60% 100% at 50% 0%,
-    black 0%,
-    transparent 100%
-  );
-}
-
-/* Glow decorativo do hero — accent aplicado com discrição, único ponto de "brilho" da página */
-.hero-glow {
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  overflow: hidden;
+  background-image:
+    linear-gradient(to right, var(--color-border) var(--rule), transparent var(--rule)),
+    linear-gradient(to bottom, var(--color-border) var(--rule), transparent var(--rule));
+  background-size:
+    var(--grid-column) var(--grid-column),
+    var(--grid-column) var(--grid-column);
+  opacity: 0.5;
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 92%);
+  mask-image: linear-gradient(to bottom, black, transparent 92%);
 }
 
-.hero-glow::before {
-  content: "";
-  position: absolute;
-  top: -180px;
-  left: 50%;
-  width: 900px;
-  height: 560px;
-  transform: translateX(-50%);
-  background: radial-gradient(
-    ellipse 50% 50% at 50% 0%,
-    var(--color-signal) 0%,
-    var(--color-violet) 45%,
-    transparent 75%
-  );
-  opacity: 0.16;
-  filter: blur(60px);
-}
-
-/* Sublinhado animado — microinteração padrão para links inline de texto */
-.link-underline {
+/* Faixa de marcação vertical — usada em painéis laterais */
+.mark-rail {
   position: relative;
-  background-image: linear-gradient(
-    var(--color-signal-strong),
-    var(--color-signal-strong)
-  );
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  background-size: 0% 1px;
-  transition: background-size 0.25s var(--ease-signature);
 }
 
-.link-underline:hover {
-  background-size: 100% 1px;
+.mark-rail::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: var(--rule);
+  background: linear-gradient(
+    to bottom,
+    var(--color-signal) 0%,
+    var(--color-signal) 22%,
+    transparent 22%
+  );
 }
-*,
-*::before,
-*::after {
-  animation-duration: 0.01ms !important;
-  animation-iteration-count: 1 !important;
-  transition-duration: 0.01ms !important;
-  scroll-behavior: auto !important;
+
+/* Numeração técnica de itens (mono, alinhado à malha) */
+.item-index {
+  font-family: var(--font-mono);
+  font-size: var(--step-label);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Links de navegação — sublinhado que se desenha no hover / estado ativo */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--rule);
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease-signature);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+/* ------------------------------------------------------------------ */
+/* Estágios tipográficos                                              */
+/* ------------------------------------------------------------------ */
+
+/*
+  Estágios tipográficos declarados na camada de utilities, depois das
+  utilities geradas pelo Tailwind: assim um `text-heading-m` passado via
+  className sobrescreve com segurança o tamanho padrão do componente.
+*/
+@layer utilities {
+  .text-display-xl {
+    font-size: var(--step-display-xl);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+
+  .text-display-l {
+    font-size: var(--step-display-l);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .text-display-m {
+    font-size: var(--step-display-m);
+    line-height: 1.12;
+    letter-spacing: -0.022em;
+  }
+
+  .text-heading-m {
+    font-size: var(--step-heading-m);
+    line-height: 1.25;
+    letter-spacing: -0.012em;
+  }
+
+  .text-heading-s {
+    font-size: var(--step-heading-s);
+    line-height: 1.3;
+    letter-spacing: -0.008em;
+  }
+
+  .text-body {
+    font-size: var(--step-body);
+    line-height: 1.65;
+  }
+
+  .text-small {
+    font-size: var(--step-small);
+    line-height: 1.6;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Sala de Operações — escopo exclusivo da Home                         */
+/* ------------------------------------------------------------------ */
+
+/*
+  Sobrescreve os tokens do sistema apenas dentro de `.theme-ops`, aplicado
+  na Home. Páginas internas não usam esse escopo e permanecem intactas.
+*/
+.theme-ops {
+  background-color: #101418;
+  color: #edeae2;
+  --color-background: #101418;
+  --color-surface: #171d24;
+  --color-surface-elevated: #1e2630;
+
+  --color-text-primary: #edeae2;
+  --color-text-secondary: #a8b0b8;
+  --color-text-muted: #7c858e;
+
+  --color-border: #2a323c;
+  --color-border-strong: #3a4450;
+
+  --color-signal: #e8a33d;
+  --color-signal-strong: #f2b45c;
+  --color-signal-soft: #e8a33d1f;
+
+  --shadow-panel:
+    0 1px 1px rgba(0, 0, 0, 0.4), 0 12px 28px -18px rgba(0, 0, 0, 0.7);
+  --shadow-float:
+    0 1px 2px rgba(0, 0, 0, 0.5), 0 22px 44px -24px rgba(0, 0, 0, 0.8);
+
+  color-scheme: dark;
+}
+
+/* Display industrial: condensada de sistema, caixa alta, tracking justo.
+   Sem novas fontes — o empilhamento usa o que o sistema oferece e cai para
+   a display do projeto quando necessário. */
+.ops-display {
+  font-family:
+    "Arial Narrow", "HelveticaNeue-CondensedBold", "Roboto Condensed",
+    "Archivo", var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.04;
+}
+
+/* ------------------------------------------------------------------ */
+/* Movimento reduzido                                                 */
+/* ------------------------------------------------------------------ */
+
+/*
+  A redução de movimento deve valer apenas quando o usuário pedir.
+  Manter a regra global incondicional destruía todas as transições do site.
+*/
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

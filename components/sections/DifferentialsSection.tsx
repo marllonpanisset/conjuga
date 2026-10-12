@@ -10,7 +10,11 @@ import {
   Wrench,
 } from "lucide-react";
 
-import { Container, Heading, Section, Text } from "@/components/ui";
+import { Stagger, StaggerItem } from "@/components/motion";
+import { Heading } from "@/components/ui/Heading";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Section } from "@/components/ui/Section";
+import { Text } from "@/components/ui/Text";
 
 interface Differential {
   title: string;
@@ -46,7 +50,7 @@ const differentials: Differential[] = [
   {
     title: "Automação de processos",
     description:
-      "Automatizamos tarefas repetitivas para aumentar produtividade, reduzir erros operacionais e liberar tempo para atividades estratégicas.",
+      "Automatizamos tarefas repetitivas para aumentar produtividade, reduzir erros operacionais e liberar a equipe para o trabalho principal.",
     icon: Cog,
   },
   {
@@ -69,79 +73,56 @@ const differentials: Differential[] = [
   },
 ];
 
+/**
+ * Diferenciais como lista institucional régua-a-régua.
+ *
+ * Os ícones viraram marcas inline de 16px, em vez de chips flutuantes: a
+ * seção ganha densidade editorial e escala para qualquer volume de itens.
+ */
 export function DifferentialsSection() {
   return (
-    <Section className="py-24 md:py-32">
-      <Container>
-        <div className="grid gap-6 md:grid-cols-12 md:gap-8">
-          <Text variant="caption" className="md:col-span-2 md:pt-2">
-            Diferenciais
-          </Text>
+    <Section tone="raised" rule>
+      <div className="mx-auto w-full max-w-[var(--page-max)] px-5 sm:px-8 lg:px-12">
+        <SectionHeader
+          label="Diferenciais"
+          title="A Conjuga diferencia-se por:"
+          lead="Sempre partindo do problema de negócio, nunca da tecnologia."
+        />
 
-          <div className="md:col-span-8 md:col-start-4 lg:col-span-7">
-            <Heading as="h2" className="max-w-2xl">
-              A Conjuga diferencia-se por:
-            </Heading>
-
-            <Text variant="lead" className="mt-5 max-w-2xl">
-              Sempre partindo do problema de negócio, nunca da tecnologia.
-            </Text>
-          </div>
-        </div>
-
-        <div className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 md:gap-5">
-          {differentials.map(({ title, description, icon: Icon }, index) => {
-            const number = String(index + 1).padStart(2, "0");
-
-            return (
-              <article
-                key={title}
-                className="
-                  group h-full
-                  rounded-[16px] border border-border
-                  bg-surface p-6
-                  shadow-[var(--shadow-card)]
-                  transition-[border-color,background-color,box-shadow]
-                  duration-200 ease-[var(--ease-signature)]
-                  hover:border-border-strong
-                  hover:bg-surface-elevated/50
-                  hover:shadow-[var(--shadow-card-hover)]
-                  md:p-8
-                "
-              >
-                <span className="font-mono text-[0.6875rem] font-semibold tracking-[0.08em] text-text-muted">
-                  {number}
+        <Stagger
+          as="ul"
+          className="mt-14 grid gap-x-12 gap-y-0 md:mt-16 lg:grid-cols-2 lg:gap-x-16"
+        >
+          {differentials.map(({ title, description, icon: Icon }, index) => (
+            <StaggerItem
+              as="li"
+              key={title}
+              className="group border-b border-border py-7 first:border-t first:border-border lg:py-8"
+            >
+              <div className="flex items-baseline gap-4">
+                <span className="item-index w-8 shrink-0 transition-colors duration-200 group-hover:text-signal">
+                  {String(index + 1).padStart(2, "0")}
                 </span>
 
-                <span
-                  className="
-                    mt-5 flex h-11 w-11 items-center justify-center
-                    rounded-[12px] border border-border-strong/80
-                    bg-background/60 text-signal-strong
-                    transition-[border-color,background-color]
-                    duration-200 ease-[var(--ease-signature)]
-                    group-hover:border-signal/35
-                    group-hover:bg-signal-soft
-                  "
-                >
-                  <Icon size={20} strokeWidth={1.75} aria-hidden="true" />
-                </span>
+                <Icon
+                  size={16}
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                  className="mt-1 shrink-0 text-signal"
+                />
 
-                <Heading as="h3" className="mt-6 max-w-md">
+                <Heading as="h3" className="text-heading-s">
                   {title}
                 </Heading>
+              </div>
 
-                <Text
-                  variant="muted"
-                  className="mt-3 max-w-xl leading-relaxed text-text-secondary"
-                >
-                  {description}
-                </Text>
-              </article>
-            );
-          })}
-        </div>
-      </Container>
+              <Text className="mt-3 max-w-[52ch] pl-12 text-small sm:pl-12">
+                {description}
+              </Text>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </div>
     </Section>
   );
 }

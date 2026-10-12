@@ -1,10 +1,11 @@
 export { Hero } from "./Hero";
-export { ServiceCard } from "./ServiceCard";
+export { HomeHero } from "./HomeHero";
+export { ServiceIndex } from "./ServiceIndex";
+export { MethodTimeline } from "./MethodTimeline";
+export type { MethodStep } from "./MethodTimeline";
+export { DifferentialsSection } from "./DifferentialsSection";
 export { CaseCard } from "./CaseCard";
-export { ProcessStep } from "./ProcessStep";
-export { FeatureGrid } from "./FeatureGrid";
-export { TestimonialBlock } from "./TestimonialBlock";
 export { CTASection } from "./CTASection";
 export { FAQAccordion } from "./FAQAccordion";
-export { StatsBlock } from "./StatsBlock";
+export type { FAQItem } from "./FAQAccordion";
 export { ContactForm } from "./ContactForm";

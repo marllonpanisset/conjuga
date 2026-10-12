@@ -1,5 +1,6 @@
 export { MotionProvider } from "./MotionProvider";
-export { FadeIn } from "./FadeIn";
-export { SlideIn } from "./SlideIn";
-export { StaggerGroup, StaggerItem } from "./StaggerGroup";
-export { RevealOnScroll } from "./RevealOnScroll";
+export { Reveal } from "./Reveal";
+export { RevealText } from "./RevealText";
+export { Stagger, StaggerItem } from "./Stagger";
+export { Parallax } from "./Parallax";
+export { RuleFill } from "./RuleFill";

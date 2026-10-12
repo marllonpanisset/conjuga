@@ -1,20 +1,32 @@
 import type { ReactNode } from "react";
+
 import { cn } from "@/lib/utils";
 
 interface BadgeProps {
   children: ReactNode;
   className?: string;
+  /** Marca a badge com o sinal de cor, usada em rótulos de estado. */
+  marked?: boolean;
 }
 
-/** Eyebrow/rótulo estilo "código" — reforça o posicionamento técnico da marca */
-export function Badge({ children, className }: BadgeProps) {
+/**
+ * Rótulo de seção (eyebrow) no estilo de anotação técnica: monospaciado,
+ * caixa alta, com ou sem marcador de cor.
+ */
+export function Badge({ children, className, marked = false }: BadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex min-h-7 items-center gap-2 rounded-full border border-border-strong bg-surface-elevated/60 px-3 py-1 font-mono text-[0.75rem] font-medium uppercase leading-none tracking-[0.08em] text-text-secondary shadow-sm",
-        className
+        "inline-flex items-center gap-2 font-mono text-[length:var(--step-label)] font-medium uppercase tracking-[0.14em] text-text-muted",
+        className,
       )}
     >
+      {marked && (
+        <span
+          aria-hidden="true"
+          className="h-1.5 w-1.5 shrink-0 rounded-full bg-signal"
+        />
+      )}
       {children}
     </span>
   );

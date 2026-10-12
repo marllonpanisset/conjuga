@@ -30,7 +30,7 @@ const phoneErrorMessage = "Informe um telefone com DDD válido.";
 const submitErrorFallback =
   "Não foi possível enviar sua mensagem. Seus dados continuam preenchidos. Tente novamente.";
 const fieldClassName =
-  "h-11 min-w-0 w-full rounded-[10px] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal";
+  "h-11 w-full min-w-0 rounded-[var(--radius-sm)] border border-border bg-surface px-4 text-[0.9375rem] text-text-primary outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-text-muted focus-visible:border-signal focus-visible:ring-2 focus-visible:ring-signal/20";
 
 function normalizePhone(value: string): string {
   return value.replace(/\D/g, "").slice(0, 11);
@@ -54,7 +54,10 @@ function formatBrazilianPhone(value: string): string {
 
 function FieldError({ id, message }: { id: string; message: string }) {
   return (
-    <p id={id} className="mt-2 text-[0.9375rem] leading-[1.5] text-warning">
+    <p
+      id={id}
+      className="mt-2 text-[0.8125rem] leading-[1.5] text-[color:var(--color-annotation)]"
+    >
       {message}
     </p>
   );
@@ -229,26 +232,26 @@ export function ContactForm() {
         <div
           role="status"
           aria-live="polite"
-          className={`flex flex-col items-center rounded-[16px] border border-border bg-surface p-6 text-center shadow-sm transition-opacity duration-200 ease-out motion-reduce:transition-none sm:p-8 ${
+          className={`flex flex-col items-center rounded-[var(--radius-md)] border border-border bg-surface p-6 text-center shadow-[var(--shadow-panel)] transition-opacity duration-200 ease-out motion-reduce:transition-none sm:p-10 ${
             isSuccessVisible ? "opacity-100" : "opacity-0"
           }`}
         >
           <div
             aria-hidden="true"
-            className="mb-5 flex h-12 w-12 items-center justify-center rounded-full border border-signal/25 bg-signal/10 text-signal-strong"
+            className="mb-6 flex h-12 w-12 items-center justify-center rounded-[var(--radius-sm)] border border-signal/25 bg-signal-soft text-signal"
           >
-            <Check size={24} strokeWidth={2.25} />
+            <Check size={22} strokeWidth={1.75} />
           </div>
           <h2
             ref={successTitleRef}
             tabIndex={-1}
-            className="text-xl font-semibold text-text-primary outline-none focus-visible:ring-2 focus-visible:ring-signal/30"
+            className="font-display text-[1.375rem] font-medium leading-[1.2] tracking-[-0.012em] text-text-primary outline-none focus-visible:ring-2 focus-visible:ring-signal/30"
           >
             Recebemos sua mensagem.
           </h2>
-          <Text className="mt-3 max-w-md">
-            Recebemos sua mensagem. Em breve entraremos em contato para entender
-            melhor o contexto da sua empresa.
+          <Text className="mt-3 max-w-md text-small">
+            Em breve entraremos em contato para entender melhor o contexto da
+            sua empresa.
           </Text>
           <Button
             type="button"
@@ -272,8 +275,7 @@ export function ContactForm() {
         <div
           className="absolute h-px w-px overflow-hidden whitespace-nowrap opacity-0"
           aria-hidden="true"
-        >
-          <label htmlFor="website">Não preencha este campo</label>
+        >          <label htmlFor="website">Não preencha este campo</label>
           <input
             id="website"
             name="website"
@@ -287,7 +289,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="name"
-              className="mb-2 block text-[0.875rem] text-text-secondary"
+              className="label-mono mb-2.5 block"
             >
               Nome
             </label>
@@ -311,7 +313,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="company"
-              className="mb-2 block text-[0.875rem] text-text-secondary"
+              className="label-mono mb-2.5 block"
             >
               Empresa <span className="text-text-muted">(opcional)</span>
             </label>
@@ -330,7 +332,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="email"
-              className="mb-2 block text-[0.875rem] text-text-secondary"
+              className="label-mono mb-2.5 block"
             >
               E-mail
             </label>
@@ -355,7 +357,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="phone"
-              className="mb-2 block text-[0.875rem] text-text-secondary"
+              className="label-mono mb-2.5 block"
             >
               Telefone ou WhatsApp{" "}
               <span className="text-text-muted">(opcional)</span>
@@ -382,7 +384,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="service"
-            className="mb-2 block text-[0.875rem] text-text-secondary"
+            className="label-mono mb-2.5 block"
           >
             O que você procura?
           </label>
@@ -413,7 +415,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="message"
-            className="mb-2 block text-[0.875rem] text-text-secondary"
+            className="label-mono mb-2.5 block"
           >
             Descreva seu desafio
           </label>
@@ -428,7 +430,7 @@ export function ContactForm() {
             aria-invalid={Boolean(fieldErrors.message)}
             aria-describedby={fieldErrors.message ? "message-error" : undefined}
             onChange={clearFieldError}
-            className="min-w-0 w-full resize-y rounded-[10px] border border-border bg-surface px-4 py-3 text-[0.9375rem] text-text-primary outline-none focus-visible:border-signal"
+            className="min-h-[8rem] w-full min-w-0 resize-y rounded-[var(--radius-sm)] border border-border bg-surface px-4 py-3 text-[0.9375rem] leading-[1.6] text-text-primary outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-text-muted focus-visible:border-signal focus-visible:ring-2 focus-visible:ring-signal/20"
           />
           {fieldErrors.message && (
             <FieldError id="message-error" message={fieldErrors.message} />
@@ -446,7 +448,7 @@ export function ContactForm() {
                 fieldErrors.consent ? "consent-error" : undefined
               }
               onChange={clearFieldError}
-              className="mt-1 h-4 w-4 shrink-0 accent-signal"
+              className="mt-1 h-4 w-4 shrink-0 rounded-[var(--radius-xs)] border-border accent-[var(--color-signal)]"
             />
             <span>
               Li e concordo com o tratamento dos dados conforme a{" "}
@@ -469,9 +471,11 @@ export function ContactForm() {
             ref={errorRef}
             role="alert"
             tabIndex={-1}
-            className="rounded-[10px] border border-warning/30 bg-warning/5 px-4 py-3 outline-none"
+            className="rounded-[var(--radius-sm)] border border-[color:var(--color-annotation)]/30 bg-transparent px-4 py-3 outline-none"
           >
-            <Text className="break-words text-warning">{errorMessage}</Text>
+            <Text className="text-small text-[color:var(--color-annotation)]">
+              {errorMessage}
+            </Text>
           </div>
         )}
 

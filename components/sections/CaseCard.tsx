@@ -1,53 +1,51 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { Card, Heading, Text, Tag } from "@/components/ui";
+
+import { Reveal } from "@/components/motion";
+import { Heading } from "@/components/ui/Heading";
+import { Tag } from "@/components/ui/Tag";
+import { Text } from "@/components/ui/Text";
+
 import type { CaseStudy } from "@/types/case-study";
 
-export function CaseCard({ caseStudy }: { caseStudy: CaseStudy }) {
+interface CaseCardProps {
+  caseStudy: CaseStudy;
+}
+
+/**
+ * Card de projeto em faixa larga: metadados na coluna da esquerda, resumo na
+ * coluna de leitura. Composição horizontal para não repetir a grade de
+ * serviços da Home.
+ */
+export function CaseCard({ caseStudy }: CaseCardProps) {
   return (
-    <Link
-      href={`/projetos/${caseStudy.slug}` as never}
-      className="group block h-full"
-    >
-      <Card
-        className="
-          flex h-full flex-col
-          group-hover:border-signal/35
-          group-hover:bg-surface-elevated/70
-          group-hover:shadow-[0_1px_2px_rgba(0,0,0,0.28),0_18px_36px_-28px_rgba(76,111,255,0.38)]
-        "
+    <Reveal y={16}>
+      <Link
+        href={`/projetos/${caseStudy.slug}` as never}
+        className="group grid grid-cols-1 gap-5 border-t border-border py-8 transition-colors duration-200 hover:bg-surface md:grid-cols-12 md:gap-8"
       >
-        <div className="flex flex-wrap gap-2">
-          <Tag className="w-fit">{caseStudy.segment}</Tag>
-
-          <Tag className="w-fit">Estudo de projeto</Tag>
+        <div className="flex flex-wrap items-center gap-2 md:col-span-4">
+          <Tag>{caseStudy.segment}</Tag>
+          <Tag className="bg-transparent">Estudo de projeto</Tag>
         </div>
 
-        <Heading as="h3" className="mt-5">
-          {caseStudy.title}
-        </Heading>
+        <div className="md:col-span-8">
+          <Heading
+            as="h3"
+            className="flex items-center gap-3 text-heading-m transition-colors duration-200 group-hover:text-signal-strong"
+          >
+            {caseStudy.title}
+            <ArrowUpRight
+              size={18}
+              strokeWidth={1.75}
+              aria-hidden="true"
+              className="shrink-0 text-signal opacity-0 transition-[opacity,transform] duration-200 ease-[var(--ease-precise)] group-hover:translate-x-0.5 group-hover:opacity-100"
+            />
+          </Heading>
 
-        <Text variant="muted" className="mt-3 leading-relaxed">
-          {caseStudy.summary}
-        </Text>
-
-        <div
-          className="
-            mt-auto flex items-center gap-2 pt-8
-            border-t border-transparent
-            text-sm font-medium text-text-secondary
-            transition-[border-color,color] duration-200
-            group-hover:border-border
-            group-hover:text-text-primary
-          "
-        >
-          Ver projeto
-          <ArrowUpRight
-            size={16}
-            className="text-text-muted transition-colors duration-200 group-hover:text-signal"
-          />
+          <Text className="mt-3 max-w-2xl">{caseStudy.summary}</Text>
         </div>
-      </Card>
-    </Link>
+      </Link>
+    </Reveal>
   );
 }

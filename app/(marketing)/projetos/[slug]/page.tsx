@@ -77,97 +77,107 @@ export default async function CasePage({
         eyebrow={caseStudy.segment}
         title={caseStudy.title}
         description={caseStudy.summary}
-        align="left"
       />
 
-      <Section surface>
+      <Section tone="raised">
         <Container>
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
-            <div>
-              <Text variant="caption">Contexto do projeto</Text>
-
-              <Text variant="body" className="mt-2 text-text-primary">
+          <dl className="grid grid-cols-1 gap-px overflow-hidden rounded-[var(--radius-md)] border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+            <div className="flex min-h-[9rem] flex-col justify-between gap-6 bg-surface p-6">
+              <dt className="label-mono">Contexto do projeto</dt>
+              <span className="font-display text-[1.0625rem] font-medium text-text-primary">
                 {caseStudy.client}
-              </Text>
+              </span>
             </div>
 
-            <div>
-              <Text variant="caption">Segmento</Text>
-
-              <div className="mt-2">
+            <div className="flex min-h-[9rem] flex-col justify-between gap-6 bg-surface p-6">
+              <dt className="label-mono">Segmento</dt>
+              <span className="flex flex-wrap gap-2">
                 <Tag>{caseStudy.segment}</Tag>
-              </div>
+              </span>
             </div>
 
             {relatedService && (
-              <div>
-                <Text variant="caption">Solução aplicada</Text>
-
-                <Text variant="body" className="mt-2 text-text-primary">
+              <div className="flex min-h-[9rem] flex-col justify-between gap-6 bg-surface p-6">
+                <dt className="label-mono">Solução aplicada</dt>
+                <span className="font-display text-[1.0625rem] font-medium text-text-primary">
                   {relatedService.name}
-                </Text>
+                </span>
               </div>
             )}
-          </div>
+          </dl>
         </Container>
       </Section>
 
       <Section>
         <Container>
-          <div className="max-w-2xl space-y-10">
-            <div>
-              <Heading as="h2">Contexto</Heading>
-              <Text variant="lead" className="mt-4">
-                {caseStudy.context}
-              </Text>
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-3">
+              <Text variant="caption">O case</Text>
             </div>
 
-            <div>
-              <Heading as="h2">Problema</Heading>
-              <Text variant="lead" className="mt-4">
-                {caseStudy.problem}
-              </Text>
-            </div>
-
-            <div>
-              <Heading as="h2">Solução</Heading>
-              <Text variant="lead" className="mt-4">
-                {caseStudy.solution}
-              </Text>
-            </div>
-
-            <div>
-              <Heading as="h2">Tecnologias utilizadas</Heading>
-              <div className="mt-4 flex flex-wrap gap-3">
-                {caseStudy.technologies.map((technology) => (
-                  <Tag key={technology}>{technology}</Tag>
-                ))}
-              </div>
-            </div>
-
-            {caseStudy.results && (
-              <div>
-                <Heading as="h2">Resultados</Heading>
+            <div className="max-w-2xl lg:col-span-9">
+              <div className="border-t border-border pt-8">
+                <Heading as="h2" className="text-heading-m">
+                  Contexto
+                </Heading>
                 <Text variant="lead" className="mt-4">
-                  {caseStudy.results}
+                  {caseStudy.context}
                 </Text>
               </div>
-            )}
+
+              <div className="mt-12 border-t border-border pt-8">
+                <Heading as="h2" className="text-heading-m">
+                  Problema
+                </Heading>
+                <Text variant="lead" className="mt-4">
+                  {caseStudy.problem}
+                </Text>
+              </div>
+
+              <div className="mt-12 border-t border-border pt-8">
+                <Heading as="h2" className="text-heading-m">
+                  Solução
+                </Heading>
+                <Text variant="lead" className="mt-4">
+                  {caseStudy.solution}
+                </Text>
+              </div>
+
+              <div className="mt-12 border-t border-border pt-8">
+                <Heading as="h2" className="text-heading-m">
+                  Tecnologias utilizadas
+                </Heading>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {caseStudy.technologies.map((technology) => (
+                    <Tag key={technology}>{technology}</Tag>
+                  ))}
+                </div>
+              </div>
+
+              {caseStudy.results && (
+                <div className="mt-12 border-t border-border pt-8">
+                  <Heading as="h2" className="text-heading-m">
+                    Resultados
+                  </Heading>
+                  <Text variant="lead" className="mt-4">
+                    {caseStudy.results}
+                  </Text>
+                </div>
+              )}
+            </div>
           </div>
         </Container>
       </Section>
 
-      <Section>
-        <CTASection
-          title="Tem um desafio parecido?"
-          description="Conte o problema e o contexto da sua empresa para avaliarmos a solução mais adequada à sua necessidade."
-          actions={
-            <Button href="/contato" size="lg">
-              Conte seu desafio
-            </Button>
-          }
-        />
-      </Section>
+      <CTASection
+        title="Tem um desafio parecido?"
+        description="Conte o problema e o contexto da sua empresa para avaliarmos a solução mais adequada à sua necessidade."
+        actions={
+          <Button href="/contato" size="lg" variant="onInk">
+            Conte seu desafio
+          </Button>
+        }
+      />
     </PageWrapper>
   );
 }

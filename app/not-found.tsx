@@ -21,7 +21,7 @@ export default function NotFound() {
     <PageWrapper>
       <Container className="flex min-h-[70svh] items-center py-16 sm:py-20">
         <section
-          className="w-full overflow-hidden rounded-[16px] border border-border bg-surface/70 shadow-card"
+          className="w-full overflow-hidden rounded-[var(--radius-md)] border border-border bg-surface shadow-[var(--shadow-panel)]"
           aria-labelledby="not-found-title"
         >
           <div className="grid md:grid-cols-[minmax(0,1fr)_minmax(15rem,0.42fr)]">
@@ -48,7 +48,7 @@ export default function NotFound() {
             </div>
 
             <div
-              className="relative hidden border-l border-border bg-background/45 md:block"
+              className="relative hidden border-l border-border bg-surface-elevated md:block"
               aria-hidden="true"
             >
               <div className="absolute inset-x-8 top-8 h-px bg-border" />

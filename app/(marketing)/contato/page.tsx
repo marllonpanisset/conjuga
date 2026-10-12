@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 import { PageWrapper } from "@/components/layout";
 import { Container, Section, Heading, Text } from "@/components/ui";
-import { Hero, ContactForm } from "@/components/sections";
+import { Hero, ContactForm, FAQAccordion, MethodTimeline } from "@/components/sections";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { Stagger, StaggerItem } from "@/components/motion";
 
 import { buildMetadata } from "@/lib/seo";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
@@ -30,12 +32,35 @@ const processSteps = [
   {
     title: "Implantação",
     description:
-      "Implantamos, configuramos e validamos a solução com foco em qualidade, segurança e facilidade de evolução.",
+      "Implantamos e configuramos a solução, deixando-a pronta para evoluir junto com a operação.",
   },
   {
-    title: "Evolução conforme a necessidade",
+    title: "Suporte e evolução contínua",
     description:
-      "Novas necessidades podem orientar a evolução do ativo digital junto com a operação.",
+      "Após a entrega, o trabalho pode continuar com suporte e ajustes conforme a operação precisa — escopo e condições definidos para cada projeto.",
+  },
+];
+
+const nextSteps = [
+  {
+    title: "Recebemos sua mensagem",
+    description:
+      "Analisamos as informações enviadas para compreender o contexto inicial da empresa.",
+  },
+  {
+    title: "Entendemos o desafio",
+    description:
+      "Se necessário, entramos em contato para esclarecer detalhes e compreender melhor os processos envolvidos.",
+  },
+  {
+    title: "Avaliamos a necessidade",
+    description:
+      "Consideramos quais soluções podem fazer sentido para o momento da empresa, respeitando prioridades e orçamento.",
+  },
+  {
+    title: "Proposta comercial",
+    description:
+      "Quando fizer sentido seguir, apresentamos uma proposta com escopo, investimento, prazo e próximos passos.",
   },
 ];
 
@@ -91,8 +116,15 @@ const faqItems = [
   {
     question: "Existe suporte após a entrega?",
     answer:
-      "Sim. Podemos oferecer manutenção e evolução contínua através de contrato específico.",
+      "Após a entrega, a continuidade pode incluir suporte, sustentação e evolução contínua da solução. Escopo e condições são definidos para cada projeto.",
   },
+];
+
+const beforeSending = [
+  "Comece descrevendo o problema ou objetivo da empresa.",
+  "Não é necessário saber qual solução ou tecnologia utilizar.",
+  "Você recebe o primeiro retorno em até 1 dia útil.",
+  "A proposta será construída após entendermos o contexto do negócio.",
 ];
 
 export default function ContatoPage() {
@@ -113,311 +145,208 @@ export default function ContatoPage() {
 
       <Hero
         eyebrow="Contato"
-        title="Conte o desafio. Nós ajudamos a encontrar a solução."
-        description="Explique o contexto da sua empresa, os principais desafios e o objetivo que deseja alcançar. Essa conversa ajuda a compreender a situação antes de avaliar a abordagem mais adequada."
+        title="Conte o que sua operação precisa resolver."
+        description="Pode ser um site, um processo manual, informações em planilhas ou ferramentas que não se conectam. Começamos entendendo o negócio para avaliar a solução adequada hoje e o que pode evoluir amanhã."
       />
 
       <Section>
         <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-16">
-            {/* Contexto inicial */}
-            <div className="min-w-0">
+          <div className="grid gap-16 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-5">
               <Text variant="caption">Primeira conversa</Text>
 
-              <Heading
-                as="h2"
-                className="mt-3 text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.01em]"
-              >
+              <Heading as="h2" className="mt-4 max-w-[18ch] text-display-m">
                 Vamos começar pelo problema
               </Heading>
 
-              <Text variant="muted" className="mt-3">
+              <Text className="mt-5 max-w-md">
                 Você não precisa decidir qual tecnologia utilizar antes da
-                conversa. Explique o contexto da empresa e o que deseja
-                melhorar. Com esse contexto, podemos avaliar o caminho adequado.
-                Se preferir, conheça nossos{" "}
-                <Link
-                  href="/servicos"
-                  className="link-underline text-signal-strong"
-                >
+                conversa. Explique o contexto da empresa e o que deseja melhorar.
+                Com esse contexto, indicamos os próximos passos. Se
+                preferir, conheça nossos{" "}
+                <Link href="/servicos" className="link-underline text-signal-strong">
                   serviços
                 </Link>
                 .
               </Text>
 
-              <div className="mt-10">
+              <div className="mt-14">
                 <Text variant="caption">Antes de enviar</Text>
 
-                <Heading
-                  as="h3"
-                  className="mt-3 text-[clamp(1.25rem,2vw,1.5rem)] leading-[1.2]"
-                >
+                <Heading as="h3" className="mt-4 text-heading-m">
                   O que você precisa saber
                 </Heading>
 
-                <div className="mt-6 overflow-hidden rounded-[16px] border border-border bg-border">
-                  {[
-                    "Comece descrevendo o problema ou objetivo da empresa.",
-                    "Não é necessário saber qual solução ou tecnologia utilizar.",
-                    "O primeiro contato é sem compromisso.",
-                    "A proposta será construída após entendermos o contexto do negócio.",
-                  ].map((item, index) => (
-                    <div
+                <Stagger as="ol" className="mt-6 border-t border-border">
+                  {beforeSending.map((item, index) => (
+                    <StaggerItem
+                      as="li"
                       key={item}
-                      className="flex gap-5 border-b border-border bg-surface p-6 last:border-b-0"
+                      className="group flex gap-6 border-b border-border py-4"
                     >
-                      <span
-                        className="
-                    flex h-9 w-9 shrink-0 items-center justify-center
-                    border border-border-strong
-                    bg-background
-                    font-mono text-[0.6875rem]
-                    font-semibold
-                    tracking-[0.04em]
-                    text-signal-strong
-                  "
-                      >
+                      <span className="item-index pt-1 transition-colors duration-200 group-hover:text-signal">
                         {String(index + 1).padStart(2, "0")}
                       </span>
-
-                      <Text className="self-center">{item}</Text>
-                    </div>
+                      <Text className="max-w-sm text-small">{item}</Text>
+                    </StaggerItem>
                   ))}
-                </div>
+                </Stagger>
               </div>
             </div>
 
-            {/* ContactForm */}
-            <div className="min-w-0">
-              <Text variant="caption">Mensagem</Text>
+            <div className="lg:col-span-6 lg:col-start-7">
+              <div className="rounded-[var(--radius-md)] border border-border bg-surface p-6 shadow-[var(--shadow-panel)] sm:p-8 lg:p-10">
+                <Text variant="caption">Mensagem</Text>
 
-              <Heading
-                as="h2"
-                className="mt-3 text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[1.2] tracking-[-0.01em]"
-              >
-                Conte sobre sua empresa
-              </Heading>
+                <Heading as="h2" className="mt-4 text-heading-m">
+                  Conte sobre sua empresa
+                </Heading>
 
-              <Text variant="muted" className="mt-3 max-w-xl">
-                Descreva sua empresa, os desafios atuais e o resultado que
-                deseja alcançar.
-              </Text>
+                <Text className="mt-4 max-w-md text-small">
+                  Descreva sua empresa, como a operação funciona hoje e o que
+                  deseja melhorar. Se usa WhatsApp, planilhas ou ferramentas
+                  desconectadas, conte também.
+                </Text>
 
-              <div className="mt-8">
-                <ContactForm />
+                <div className="mt-9">
+                  <ContactForm />
+                </div>
               </div>
             </div>
           </div>
         </Container>
       </Section>
 
-      <Section surface>
+      <Section tone="raised" rule>
         <Container>
           <Text variant="caption">Próximos passos</Text>
 
-          <Heading as="h2" className="mt-3 max-w-2xl">
+          <Heading as="h2" className="mt-4 max-w-[22ch] text-display-m">
             O que acontece depois do contato?
           </Heading>
 
-          <Text variant="lead" className="mt-5 max-w-2xl">
+          <Text variant="lead" className="mt-6 max-w-2xl">
             Primeiro buscamos entender o contexto da sua empresa, os desafios,
             os processos atuais e o resultado que você deseja alcançar. A partir
             dessa conversa, avaliamos a necessidade e os próximos passos que
             fizerem sentido.
           </Text>
 
-          <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-[16px] border border-border bg-border md:grid-cols-2">
-            {[
-              {
-                title: "Recebemos sua mensagem",
-                description:
-                  "Analisamos as informações enviadas para compreender o contexto inicial da empresa.",
-              },
-              {
-                title: "Entendemos o desafio",
-                description:
-                  "Se necessário, entramos em contato para esclarecer detalhes e compreender melhor os processos envolvidos.",
-              },
-              {
-                title: "Avaliamos a necessidade",
-                description:
-                  "Consideramos quais soluções podem fazer sentido para o momento da empresa, respeitando prioridades e orçamento.",
-              },
-              {
-                title: "Proposta comercial",
-                description:
-                  "Quando fizer sentido seguir, apresentamos uma proposta com escopo, investimento, prazo e próximos passos.",
-              },
-            ].map((step, index) => (
-              <div key={step.title} className="bg-surface p-6 md:p-8 lg:p-10">
-                <span
-                  className="
-              flex h-9 w-9 items-center justify-center
-              border border-border-strong
-              bg-background
-              font-mono text-[0.6875rem]
-              font-semibold
-              tracking-[0.04em]
-              text-signal-strong
-            "
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
-                <Heading as="h3" className="mt-8">
-                  {step.title}
-                </Heading>
-
-                <Text className="mt-3">{step.description}</Text>
-              </div>
-            ))}
+          <div className="mt-14">
+            <MethodTimeline steps={nextSteps} />
           </div>
         </Container>
       </Section>
 
       <Section>
         <Container>
-          <Text variant="caption">Processo</Text>
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-3">
+              <Text variant="caption">Processo</Text>
 
-          <Heading as="h2" className="mt-3 max-w-2xl">
-            Como trabalhamos
-          </Heading>
+              <Heading as="h2" className="mt-4 max-w-[14ch] text-heading-m">
+                Como trabalhamos
+              </Heading>
 
-          <Text variant="lead" className="mt-5 max-w-2xl">
-            O processo considera riscos, prioridades e a possibilidade de a
-            solução evoluir conforme as necessidades da operação.
-          </Text>
+              <Text className="mt-5 max-w-xs text-small">
+                O processo considera riscos, prioridades e a possibilidade de o
+                trabalho continuar com suporte, sustentação e evolução conforme
+                as necessidades da operação.
+              </Text>
+            </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-[16px] border border-border bg-border md:grid-cols-2">
-            {processSteps.map((step, index) => (
-              <div
-                key={step.title}
-                className="
-            relative
-            min-h-[220px]
-            bg-surface
-            p-6
-            md:p-8
-            lg:min-h-[240px]
-            lg:p-10
-          "
-              >
-                <div className="flex h-full flex-col justify-between gap-10">
-                  <span
-                    className="
-                flex h-9 w-9 items-center justify-center
-                border border-border-strong
-                bg-background
-                font-mono text-[0.6875rem]
-                font-semibold
-                tracking-[0.04em]
-                text-signal-strong
-              "
+            <div className="lg:col-span-9">
+              <Stagger as="ol" className="border-t border-border">
+                {processSteps.map((step, index) => (
+                  <StaggerItem
+                    as="li"
+                    key={step.title}
+                    className="group grid gap-3 border-b border-border py-6 sm:grid-cols-[4rem_1fr] sm:gap-8"
                   >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+                    <span className="item-index pt-1.5 transition-colors duration-200 group-hover:text-signal">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
 
-                  <div>
-                    <Heading as="h3">{step.title}</Heading>
+                    <div className="max-w-2xl">
+                      <Heading as="h3" className="text-heading-s">
+                        {step.title}
+                      </Heading>
 
-                    <Text className="mt-3">{step.description}</Text>
-                  </div>
-                </div>
-              </div>
-            ))}
+                      <Text className="mt-2 text-small">{step.description}</Text>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </Stagger>
+            </div>
           </div>
         </Container>
       </Section>
 
-      <Section surface>
+      <Section tone="raised" rule>
         <Container>
           <Text variant="caption">Atendimento</Text>
 
-          <Heading as="h2" className="mt-3 max-w-2xl">
+          <Heading as="h2" className="mt-4 max-w-[22ch] text-display-m">
             Escolha como deseja entrar em contato
           </Heading>
 
-          <Text variant="lead" className="mt-5 max-w-2xl">
+          <Text variant="lead" className="mt-6 max-w-2xl">
             Você pode iniciar uma conversa pelo formulário ou utilizar um dos
             canais abaixo. Todos os contatos são respondidos diretamente pela
             Conjuga.
           </Text>
 
-          <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
+          <Stagger as="ul" className="mt-14 grid gap-px overflow-hidden rounded-[var(--radius-md)] border border-border bg-border md:grid-cols-2">
             {contactChannels.map((channel) => (
-              <div
+              <StaggerItem
+                as="li"
                 key={channel.title}
-                className="
-            rounded-[16px]
-            border border-border
-            bg-surface
-            p-6
-            shadow-[var(--shadow-card)]
-          "
+                className="group flex flex-col justify-between gap-8 bg-surface p-7 lg:p-9"
               >
-                <Heading as="h3">{channel.title}</Heading>
+                <div>
+                  <Heading as="h3" className="text-heading-s">
+                    {channel.title}
+                  </Heading>
 
-                <Text className="mt-3">{channel.description}</Text>
+                  <Text className="mt-3 max-w-xs text-small">
+                    {channel.description}
+                  </Text>
+                </div>
 
                 <a
                   href={channel.href}
                   target={channel.external ? "_blank" : undefined}
                   rel={channel.external ? "noopener noreferrer" : undefined}
-                  className="link-underline mt-6 inline-block font-medium text-signal-strong"
+                  className="inline-flex items-center gap-2 text-small font-medium text-signal-strong"
                 >
                   {channel.value}
+                  <ArrowUpRight
+                    size={15}
+                    strokeWidth={1.75}
+                    aria-hidden="true"
+                    className="transition-transform duration-200 ease-[var(--ease-precise)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
                 </a>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </Container>
       </Section>
 
       <Section>
         <Container>
-          <Text variant="caption">Perguntas frequentes</Text>
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-3">
+              <Text variant="caption">Perguntas frequentes</Text>
 
-          <Heading as="h2" className="mt-3 max-w-2xl">
-            Dúvidas comuns antes de iniciar um projeto
-          </Heading>
+              <Heading as="h2" className="mt-4 max-w-[16ch] text-heading-m">
+                Dúvidas comuns antes de iniciar um projeto
+              </Heading>
+            </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-[16px] border border-border bg-border md:grid-cols-2">
-            {faqItems.map((item, index) => (
-              <div
-                key={item.question}
-                className={`
-            bg-surface
-            p-6
-            md:p-8
-            lg:p-10
-            ${
-              index === faqItems.length - 1 && faqItems.length % 2 !== 0
-                ? "md:col-span-2"
-                : ""
-            }
-          `}
-              >
-                <span
-                  className="
-              flex h-9 w-9 items-center justify-center
-              border border-border-strong
-              bg-background
-              font-mono text-[0.6875rem]
-              font-semibold
-              tracking-[0.04em]
-              text-signal-strong
-            "
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
-                <Heading as="h3" className="mt-8">
-                  {item.question}
-                </Heading>
-
-                <Text className="mt-3">{item.answer}</Text>
-              </div>
-            ))}
+            <div className="lg:col-span-9">
+              <FAQAccordion items={faqItems} />
+            </div>
           </div>
         </Container>
       </Section>
