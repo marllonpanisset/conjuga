@@ -21,27 +21,27 @@ const principles = [
   {
     title: "Entender antes de construir",
     description:
-      "Primeiro entendemos a operação, os processos e o problema que precisa ser resolvido.",
+      "Primeiro a operação e o problema; a solução vem depois.",
   },
   {
     title: "Simplicidade intencional",
     description:
-      "Evitamos complexidade, dependências e funcionalidades que não tenham uma justificativa clara.",
+      "Sem complexidade, dependências ou funcionalidades sem justificativa clara.",
   },
   {
     title: "Tecnologia com propósito",
     description:
-      "Utilizamos tecnologia para resolver problemas reais da operação, nunca apenas por tendência ou complexidade.",
+      "Tecnologia para resolver o problema real, nunca por tendência.",
   },
   {
     title: "Manutenção no longo prazo",
     description:
-      "Priorizamos soluções fáceis de entender, manter e expandir conforme novas necessidades aparecem.",
+      "Soluções fáceis de entender, manter e expandir.",
   },
   {
     title: "Decisões com contexto",
     description:
-      "Arquitetura, integrações e escolhas técnicas são definidas a partir da realidade de cada negócio.",
+      "Arquitetura e integrações definidas pela realidade de cada negócio.",
   },
 ];
 
@@ -64,7 +64,7 @@ export default function SobrePage() {
       <Hero
         eyebrow="Sobre a Conjuga"
         title="Engenharia de software para empresas de serviços"
-        description="A Conjuga ajuda empresas de serviços a organizar processos, fortalecer sua presença digital e evoluir sua operação por meio de soluções de engenharia de software."
+        description="Desenvolvemos sistemas web, automações e integrações para empresas que precisam organizar processos manuais, conectar ferramentas e evoluir sua operação. Começamos entendendo o negócio. A tecnologia vem depois, de acordo com o problema e o momento de cada empresa."
       />
 
       <Section>
@@ -80,19 +80,15 @@ export default function SobrePage() {
 
             <div className="lg:col-span-8 lg:col-start-5">
               <Text variant="lead" className="max-w-2xl">
-                A Conjuga é uma empresa brasileira de engenharia de software
-                focada em ajudar empresas de serviços a organizar processos,
-                fortalecer sua presença digital e evoluir sua operação de forma
-                estruturada.
+                A Conjuga é uma empresa de engenharia de software para
+                empresas de serviços com processos manuais e ferramentas
+                desconectadas.
               </Text>
 
               <Text className="mt-6 max-w-2xl">
-                Em vez de começar pela tecnologia, buscamos compreender como o
-                negócio funciona, quais desafios impedem seu crescimento e quais
-                soluções realmente fazem sentido para aquele momento. A partir
-                desse entendimento desenvolvemos sistemas, sites, automações e
-                outras soluções digitais preparados para evoluir junto com a
-                empresa.
+                Em vez de começar pela tecnologia, entendemos a operação e
+                definimos a solução adequada ao momento — preparada para
+                evoluir junto com a empresa.
               </Text>
 
               <Text className="mt-6 max-w-2xl">
@@ -110,35 +106,21 @@ export default function SobrePage() {
             <div className="lg:col-span-5">
               <Text variant="caption">Posicionamento</Text>
 
-              <p className="mt-6 max-w-[20ch] font-display text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.022em] text-balance text-text-primary">
-                A tecnologia é consequência desse entendimento do contexto.
+              <p className="mt-6 max-w-[20ch] font-display text-display-m font-medium leading-[1.12] tracking-[-0.022em] text-balance text-text-primary">
+                Tecnologia por necessidade, nunca por tendência.
               </p>
             </div>
 
             <div className="lg:col-span-6 lg:col-start-7">
               <div className="border-t border-border pt-7">
                 <Heading as="h3" className="text-heading-m">
-                  Como atuamos
-                </Heading>
-
-                <Text className="mt-4 max-w-xl">
-                  Entendemos primeiro o negócio para depois definir a solução.
-                  Cada projeto nasce do contexto da empresa e é desenvolvido para
-                  resolver problemas reais de forma simples, organizada e
-                  preparada para evoluir.
-                </Text>
-              </div>
-
-              <div className="mt-10 border-t border-border pt-7">
-                <Heading as="h3" className="text-heading-m">
                   O que valorizamos
                 </Heading>
 
                 <Text className="mt-4 max-w-xl">
-                  Priorizamos clareza e simplicidade, com decisões tomadas a
-                  partir do contexto do negócio.
-                  A tecnologia deve facilitar a operação da empresa, ser fácil de
-                  manter e acompanhar seu crescimento ao longo do tempo.
+                  Cada projeto nasce do contexto da empresa. Priorizamos
+                  clareza e simplicidade: tecnologia fácil de manter, que
+                  acompanha o crescimento.
                 </Text>
               </div>
 
@@ -206,18 +188,9 @@ export default function SobrePage() {
               </Heading>
 
               <Text variant="lead" className="mt-7 max-w-2xl">
-                Cada empresa está em um momento diferente. Algumas precisam
-                fortalecer sua presença digital, enquanto outras já buscam
-                organizar processos ou desenvolver sistemas internos para ganhar
-                eficiência.
-              </Text>
-
-              <Text className="mt-5 max-w-2xl">
-                Independentemente do ponto de partida, nosso objetivo é
-                construir uma base sólida que permita evoluir sem recomeçar do
-                zero. Conforme a operação cresce, novas soluções podem ser
-                incorporadas de forma gradual, preservando o que já foi
-                construído e acompanhando as novas necessidades do negócio.
+                Cada empresa está em um momento diferente — presença digital,
+                processos ou sistemas internos. O objetivo é uma base que
+                evolui sem recomeçar do zero, incorporada de forma gradual.
               </Text>
             </div>
           </div>

@@ -1,13 +1,9 @@
 import type { LucideIcon } from "lucide-react";
 import {
-  BrainCircuit,
-  Cog,
   DraftingCompass,
   Minimize2,
-  ShieldCheck,
   Target,
   Workflow,
-  Wrench,
 } from "lucide-react";
 
 import { Stagger, StaggerItem } from "@/components/motion";
@@ -24,52 +20,28 @@ interface Differential {
 
 const differentials: Differential[] = [
   {
-    title: "Abordagem orientada ao negócio",
+    title: "Entender antes de construir",
     description:
-      "Entendemos o contexto, os objetivos e os desafios do negócio antes de propor qualquer solução tecnológica.",
+      "Soluções sob medida, definidas a partir do seu processo — nunca de um catálogo.",
     icon: Target,
   },
   {
-    title: "Engenharia antes da implementação",
+    title: "Projetar antes de programar",
     description:
-      "Planejamos arquitetura, fluxos e decisões técnicas antes de iniciar o desenvolvimento para reduzir riscos e retrabalho.",
+      "Arquitetura e fluxos definidos antes do código, para reduzir riscos e retrabalho.",
     icon: DraftingCompass,
   },
   {
-    title: "Foco em simplicidade",
+    title: "Simplicidade que se mantém",
     description:
-      "Criamos soluções claras, objetivas e sustentáveis, priorizando facilidade de uso, manutenção e evolução.",
+      "Soluções claras, documentadas e fáceis de manter e evoluir.",
     icon: Minimize2,
   },
   {
-    title: "Integração entre sistemas",
+    title: "Automação com propósito",
     description:
-      "Conectamos ferramentas, plataformas e processos para reduzir silos e trabalho manual, além de centralizar informações.",
+      "Rotinas automatizadas e ferramentas conectadas; IA apenas quando gera valor real.",
     icon: Workflow,
-  },
-  {
-    title: "Automação de processos",
-    description:
-      "Automatizamos tarefas repetitivas para aumentar produtividade, reduzir erros operacionais e liberar a equipe para o trabalho principal.",
-    icon: Cog,
-  },
-  {
-    title: "Uso responsável de IA",
-    description:
-      "Aplicamos inteligência artificial apenas quando ela gera valor real, sempre com foco em qualidade, controle e confiabilidade.",
-    icon: BrainCircuit,
-  },
-  {
-    title: "Desenvolvimento sob medida",
-    description:
-      "Desenvolvemos soluções adaptadas às necessidades específicas de cada negócio, respeitando seu contexto, processos e objetivos.",
-    icon: Wrench,
-  },
-  {
-    title: "Preocupação com manutenção futura",
-    description:
-      "Construímos sistemas preparados para evoluir com segurança, documentação adequada e facilidade de manutenção.",
-    icon: ShieldCheck,
   },
 ];
 
@@ -85,8 +57,7 @@ export function DifferentialsSection() {
       <div className="mx-auto w-full max-w-[var(--page-max)] px-5 sm:px-8 lg:px-12">
         <SectionHeader
           label="Diferenciais"
-          title="A Conjuga diferencia-se por:"
-          lead="Sempre partindo do problema de negócio, nunca da tecnologia."
+          title="Como nos diferenciamos"
         />
 
         <Stagger

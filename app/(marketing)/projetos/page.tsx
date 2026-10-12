@@ -43,7 +43,7 @@ export default function ProjetosPage() {
       <Hero
         eyebrow="Projetos"
         title="Projetos"
-        description="Os projetos serão publicados conforme autorização dos clientes, com contexto, problema, solução, tecnologias utilizadas e resultados quando for possível verificá-los."
+        description="Publicamos projetos reais com autorização do cliente: contexto, problema, solução e resultado."
       />
 
       <Section>
@@ -61,14 +61,13 @@ export default function ProjetosPage() {
               </div>
 
               <div className="lg:col-span-9">
-                <h2 className="max-w-[24ch] font-display text-[clamp(1.75rem,3.6vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.022em] text-balance text-text-primary">
-                  Projetos serão publicados com autorização dos clientes
+                <h2 className="max-w-[24ch] font-display text-display-m font-medium leading-[1.12] tracking-[-0.022em] text-balance text-text-primary">
+                  Cases reais, quando os clientes autorizarem
                 </h2>
 
                 <Text variant="lead" className="mt-8 max-w-2xl">
-                  Cada publicação apresentará informações reais e verificáveis
-                  sobre o contexto, o problema, a solução e os resultados,
-                  quando possível.
+                  Publicamos apenas informações reais e verificáveis — quando
+                  houver autorização e resultados para mostrar.
                 </Text>
 
                 <dl className="mt-12 grid gap-px overflow-hidden rounded-[var(--radius-md)] border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
@@ -94,18 +93,11 @@ export default function ProjetosPage() {
 
       <CTASection
         title="Vamos conversar sobre o seu projeto"
-        description="Sem case parecido com o seu por aqui? Descreva sua operação — avaliamos se faz sentido uma conversa."
+        description="Sem um projeto parecido com o seu? Conte como sua operação funciona. Publicamos apenas projetos reais, com autorização dos clientes e informações verificáveis."
         actions={
           <>
             <Button href="/servicos" size="lg" variant="onInk">
               Conhecer nossos serviços <ButtonArrow />
-            </Button>
-            <Button
-              href="/sobre"
-              size="lg"
-              className="border-[#f4f1ea]/30 bg-transparent text-[#f4f1ea] hover:border-[#f4f1ea] hover:bg-[#f4f1ea]/10"
-            >
-              Sobre a Conjuga
             </Button>
             <Button href="/contato" size="lg" variant="onInkGhost">
               Conte seu desafio

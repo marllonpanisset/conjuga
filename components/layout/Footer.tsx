@@ -51,8 +51,8 @@ export function Footer() {
             </p>
 
             <p className="mt-6 max-w-sm text-small leading-[1.7] text-text-secondary">
-              Engenharia de software para organizar processos, automatizar
-              tarefas e tornar operações mais eficientes.
+              Sistemas e automações para empresas de serviços — começando pelo
+              seu processo.
             </p>
           </div>
 

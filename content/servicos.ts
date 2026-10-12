@@ -7,13 +7,13 @@ export const services: Service[] = [
     icon: Cpu,
     name: "Sistemas Web",
     shortDescription:
-      "Soluções web desenvolvidas para resolver processos específicos da operação da empresa.",
+      "Sistemas para resolver processos específicos da sua operação.",
     problem:
       "Planilhas, controles paralelos e ferramentas genéricas podem dificultar processos importantes e limitar o crescimento do negócio.",
     benefits: [
-      "Processos mais organizados",
+      "Processos organizados em um só lugar",
       "Informações centralizadas",
-      "Base preparada para futuras evoluções",
+      "Base pronta para evoluir",
     ],
     includes: [
       "Entendimento da operação",
@@ -29,9 +29,9 @@ export const services: Service[] = [
       "Implantação",
       "Evolução conforme a necessidade",
     ],
-    heroTitle: "Soluções web criadas para apoiar a operação da empresa",
+    heroTitle: "Sistemas para organizar a sua operação",
     heroDescription:
-      "Projetamos e implantamos sistemas web para resolver problemas específicos do negócio, sempre com foco em organização, eficiência e evolução.",
+      "Projetamos sistemas para resolver problemas específicos do negócio — organizados, eficientes e prontos para evoluir.",
   },
 
   {
@@ -41,10 +41,10 @@ export const services: Service[] = [
     shortDescription:
       "Automatizamos tarefas repetitivas e conectamos ferramentas para reduzir trabalho manual.",
     problem:
-      "Processos manuais consomem tempo, aumentam a chance de erros e dificultam o crescimento da operação.",
+      "Relatórios manuais, dados digitados duas vezes e tarefas que se repetem toda semana consomem tempo e geram erros.",
     benefits: [
-      "Menos tarefas repetitivas",
-      "Maior produtividade",
+      "Rotinas executadas sem intervenção manual",
+      "Menos erros de digitação",
       "Processos mais consistentes",
     ],
     includes: [
@@ -60,9 +60,9 @@ export const services: Service[] = [
       "Implantação",
       "Acompanhamento",
     ],
-    heroTitle: "Automações que reduzem retrabalho e aumentam a produtividade",
+    heroTitle: "Automações que reduzem retrabalho",
     heroDescription:
-      "Mapeamos processos, automatizamos tarefas repetitivas e integramos ferramentas para tornar a operação mais eficiente.",
+      "Mapeamos processos e automatizamos tarefas repetitivas, conectando as ferramentas que você já usa.",
   },
 
   {
@@ -70,13 +70,13 @@ export const services: Service[] = [
     icon: Globe2,
     name: "Presença Digital",
     shortDescription:
-      "Uma base para empresas que precisam estruturar sua presença na internet.",
+      "Sites e landing pages para empresas sem presença digital.",
     problem:
-      "Uma presença digital desorganizada reduz a credibilidade da empresa e dificulta a geração de oportunidades.",
+      "Uma presença desatualizada ou improvisada passa uma imagem errada da empresa.",
     benefits: [
-      "Mais credibilidade",
-      "Comunicação mais clara",
-      "Presença digital conectada ao negócio",
+      "Site que transmite confiança",
+      "Comunicação clara sobre o que você faz",
+      "Base para evoluir para sistemas",
     ],
     includes: [
       "Landing pages",
@@ -91,9 +91,9 @@ export const services: Service[] = [
       "Implantação",
       "Evolução",
     ],
-    heroTitle: "Uma presença digital estruturada para a empresa",
+    heroTitle: "Presença digital que transmite confiança",
     heroDescription:
-      "Sites e landing pages organizam a presença digital da empresa e podem ser o primeiro projeto. A partir do entendimento da operação, o trabalho pode evoluir para sistemas, automações e integrações quando essas necessidades existirem.",
+      "Sites e landing pages que organizam sua presença — e podem ser o primeiro passo para sistemas e automações.",
   },
 ];
 

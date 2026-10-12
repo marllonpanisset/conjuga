@@ -44,7 +44,7 @@ export default function ServicosPage() {
       <Hero
         eyebrow="Serviços"
         title="Engenharia de software para resolver problemas da operação"
-        description="A Conjuga desenvolve sistemas web, automações e integrações para empresas com processos manuais, ferramentas desconectadas e desafios operacionais. Aplicamos inteligência artificial quando fizer sentido. Um site também pode ser o primeiro projeto, quando a empresa precisa estruturar sua presença digital."
+        description="Sistemas web, automações e integrações para empresas com processos manuais e ferramentas desconectadas — com inteligência artificial quando fizer sentido. Um site pode ser o primeiro passo."
       />
 
       <Section>
@@ -58,20 +58,15 @@ export default function ServicosPage() {
             </div>
 
             <div className="lg:col-span-9">
-              <p className="max-w-[26ch] font-display text-[clamp(1.75rem,3.6vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.022em] text-balance text-text-primary">
-                Você não precisa saber qual tecnologia ou serviço contratar.
+              <p className="max-w-[26ch] font-display text-display-m font-medium leading-[1.12] tracking-[-0.022em] text-balance text-text-primary">
+                Você não precisa saber qual tecnologia contratar.
               </p>
 
-              <div className="mt-10 grid gap-8 border-t border-border pt-8 sm:grid-cols-2 sm:gap-12">
+              <div className="mt-10 border-t border-border pt-8">
                 <Text variant="lead" className="max-w-md">
                   A conversa começa pelo contexto, pelos processos e pelos
                   desafios do negócio para compreender qual solução pode ser
                   adequada.
-                </Text>
-
-                <Text className="max-w-md">
-                  Uma mesma solução pode combinar diferentes serviços para
-                  atender às necessidades da empresa de forma integrada.
                 </Text>
               </div>
             </div>
@@ -84,7 +79,7 @@ export default function ServicosPage() {
           <SectionHeader
             label="Soluções"
             title="Comece pela necessidade da sua empresa"
-            lead="Entendemos o negócio e definimos o que faz sentido agora. Um site pode iniciar o trabalho; sistemas, automações e integrações atendem necessidades operacionais conforme identificadas."
+            lead="Entendemos o negócio e definimos o que faz sentido agora — começando pelo mais simples."
           />
 
           <div className="mt-14 lg:mt-20">
@@ -104,16 +99,13 @@ export default function ServicosPage() {
             </div>
 
             <div className="lg:col-span-9">
-              <h2 className="max-w-[24ch] font-display text-[clamp(1.75rem,3.6vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.022em] text-balance text-text-primary">
+              <h2 className="max-w-[24ch] font-display text-display-m font-medium leading-[1.12] tracking-[-0.022em] text-balance text-text-primary">
                 O trabalho pode continuar após a primeira entrega
               </h2>
 
               <Text className="mt-8 max-w-2xl text-[1.0625rem] leading-[1.6]">
-                Depois de um site ou de outra primeira entrega, a relação pode
-                continuar com suporte e ajustes, com escopo definido para cada
-                projeto. Conforme
-                o contexto do negócio, também podemos desenvolver sistemas,
-                automações e integrações para outros problemas da operação.
+                Depois da primeira entrega, a relação pode continuar com
+                suporte e evolução, com escopo fechado por projeto.
               </Text>
 
               <Button
@@ -130,7 +122,7 @@ export default function ServicosPage() {
 
       <CTASection
         title="Qual dessas necessidades parece a sua?"
-        description="Se você reconheceu algum problema acima, descreva sua operação que indicamos por onde começar."
+        description="Se você reconheceu algum problema acima, descreva sua operação e indicamos por onde começar."
         actions={
           <Button href="/contato" size="lg" variant="onInk">
             Conversar com a Conjuga <ButtonArrow />

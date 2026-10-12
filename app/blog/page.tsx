@@ -48,7 +48,7 @@ export default function BlogPage() {
       <Hero
         eyebrow="Blog"
         title="Conhecimento para operações mais organizadas"
-        description="Artigos objetivos para ensinar, esclarecer dúvidas e compartilhar aprendizados sobre software, automação e processos."
+        description="Aprendizados de quem resolve problemas de operação com software."
       />
 
       <Section>

@@ -18,29 +18,6 @@ export const metadata: Metadata = buildMetadata({
   path: "/contato",
 });
 
-const processSteps = [
-  {
-    title: "Entendimento do contexto",
-    description:
-      "Entendemos como o negócio funciona, onde estão os gargalos e quais tarefas geram atrito.",
-  },
-  {
-    title: "Planejamento",
-    description:
-      "Buscamos definir uma solução simples e adequada ao problema antes de escolher a tecnologia.",
-  },
-  {
-    title: "Implantação",
-    description:
-      "Implantamos e configuramos a solução, deixando-a pronta para evoluir junto com a operação.",
-  },
-  {
-    title: "Suporte e evolução contínua",
-    description:
-      "Após a entrega, o trabalho pode continuar com suporte e ajustes conforme a operação precisa — escopo e condições definidos para cada projeto.",
-  },
-];
-
 const nextSteps = [
   {
     title: "Recebemos sua mensagem",
@@ -67,30 +44,24 @@ const nextSteps = [
 const contactChannels = [
   {
     title: "WhatsApp",
-    description:
-      "Converse diretamente sobre o seu projeto e tire dúvidas iniciais.",
     value: "(21) 98788-1633",
     href: "https://wa.me/5521987881633",
     external: true,
   },
   {
     title: "E-mail",
-    description:
-      "Envie informações detalhadas sobre sua empresa e seu projeto.",
     value: "contato@conjuga.com.br",
     href: "mailto:contato@conjuga.com.br",
     external: false,
   },
   {
     title: "Instagram",
-    description: "Acompanhe novidades e conteúdos da Conjuga.",
     value: "@conjuga.br",
     href: "https://instagram.com/conjuga.br",
     external: true,
   },
   {
     title: "LinkedIn",
-    description: "Acompanhe novidades e atualizações da Conjuga.",
     value: "/company/conjuga-br",
     href: "https://www.linkedin.com/company/conjuga-br",
     external: true,
@@ -111,7 +82,7 @@ const faqItems = [
   {
     question: "Quanto tempo leva para receber um retorno?",
     answer:
-      "O primeiro retorno acontece em até um dia útil. Esse prazo não inclui orçamento, diagnóstico ou solução; em casos mais complexos, usamos esse primeiro contato para alinhar informações antes da proposta.",
+      "O primeiro retorno acontece em até um dia útil. Esse retorno não inclui orçamento, diagnóstico completo ou solução; dependendo da complexidade, podemos precisar alinhar mais informações antes de apresentar uma proposta.",
   },
   {
     question: "Existe suporte após a entrega?",
@@ -124,7 +95,6 @@ const beforeSending = [
   "Comece descrevendo o problema ou objetivo da empresa.",
   "Não é necessário saber qual solução ou tecnologia utilizar.",
   "Você recebe o primeiro retorno em até 1 dia útil.",
-  "A proposta será construída após entendermos o contexto do negócio.",
 ];
 
 export default function ContatoPage() {
@@ -146,7 +116,7 @@ export default function ContatoPage() {
       <Hero
         eyebrow="Contato"
         title="Conte o que sua operação precisa resolver."
-        description="Pode ser um site, um processo manual, informações em planilhas ou ferramentas que não se conectam. Começamos entendendo o negócio para avaliar a solução adequada hoje e o que pode evoluir amanhã."
+        description="Pode ser um site, um processo manual ou ferramentas que não se conectam. Começamos entendendo o negócio."
       />
 
       <Section>
@@ -160,9 +130,8 @@ export default function ContatoPage() {
               </Heading>
 
               <Text className="mt-5 max-w-md">
-                Você não precisa decidir qual tecnologia utilizar antes da
-                conversa. Explique o contexto da empresa e o que deseja melhorar.
-                Com esse contexto, indicamos os próximos passos. Se
+                Explique o contexto da empresa e o que deseja melhorar. Com
+                esse contexto, indicamos os próximos passos. Se
                 preferir, conheça nossos{" "}
                 <Link href="/servicos" className="link-underline text-signal-strong">
                   serviços
@@ -226,58 +195,12 @@ export default function ContatoPage() {
           </Heading>
 
           <Text variant="lead" className="mt-6 max-w-2xl">
-            Primeiro buscamos entender o contexto da sua empresa, os desafios,
-            os processos atuais e o resultado que você deseja alcançar. A partir
-            dessa conversa, avaliamos a necessidade e os próximos passos que
-            fizerem sentido.
+            Entendemos seu contexto, avaliamos o problema e as prioridades
+            da operação e indicamos os próximos passos que fizerem sentido.
           </Text>
 
           <div className="mt-14">
             <MethodTimeline steps={nextSteps} />
-          </div>
-        </Container>
-      </Section>
-
-      <Section>
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-3">
-              <Text variant="caption">Processo</Text>
-
-              <Heading as="h2" className="mt-4 max-w-[14ch] text-heading-m">
-                Como trabalhamos
-              </Heading>
-
-              <Text className="mt-5 max-w-xs text-small">
-                O processo considera riscos, prioridades e a possibilidade de o
-                trabalho continuar com suporte, sustentação e evolução conforme
-                as necessidades da operação.
-              </Text>
-            </div>
-
-            <div className="lg:col-span-9">
-              <Stagger as="ol" className="border-t border-border">
-                {processSteps.map((step, index) => (
-                  <StaggerItem
-                    as="li"
-                    key={step.title}
-                    className="group grid gap-3 border-b border-border py-6 sm:grid-cols-[4rem_1fr] sm:gap-8"
-                  >
-                    <span className="item-index pt-1.5 transition-colors duration-200 group-hover:text-signal">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-
-                    <div className="max-w-2xl">
-                      <Heading as="h3" className="text-heading-s">
-                        {step.title}
-                      </Heading>
-
-                      <Text className="mt-2 text-small">{step.description}</Text>
-                    </div>
-                  </StaggerItem>
-                ))}
-              </Stagger>
-            </div>
           </div>
         </Container>
       </Section>
@@ -291,9 +214,8 @@ export default function ContatoPage() {
           </Heading>
 
           <Text variant="lead" className="mt-6 max-w-2xl">
-            Você pode iniciar uma conversa pelo formulário ou utilizar um dos
-            canais abaixo. Todos os contatos são respondidos diretamente pela
-            Conjuga.
+            Pelo formulário ou por um dos canais abaixo. Todo contato é
+            respondido diretamente pela Conjuga.
           </Text>
 
           <Stagger as="ul" className="mt-14 grid gap-px overflow-hidden rounded-[var(--radius-md)] border border-border bg-border md:grid-cols-2">
@@ -307,10 +229,6 @@ export default function ContatoPage() {
                   <Heading as="h3" className="text-heading-s">
                     {channel.title}
                   </Heading>
-
-                  <Text className="mt-3 max-w-xs text-small">
-                    {channel.description}
-                  </Text>
                 </div>
 
                 <a

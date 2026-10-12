@@ -12,6 +12,10 @@ import {
 
 import { Button } from "@/components/ui/Button";
 import { Text } from "@/components/ui/Text";
+import {
+  analyticsEvents,
+  trackEvent,
+} from "@/components/analytics/events";
 import { contactFieldLimits, contactServices } from "@/lib/contact";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
@@ -118,6 +122,7 @@ export function ContactForm() {
   const successTitleRef = useRef<HTMLHeadingElement>(null);
   const submittingRef = useRef(false);
   const shouldRestoreFormFocusRef = useRef(false);
+  const hasTrackedStartRef = useRef(false);
 
   useEffect(() => {
     if (status === "success") {
@@ -134,6 +139,17 @@ export function ContactForm() {
       firstFieldRef.current?.focus();
     }
   }, [status]);
+
+  /**
+   * Registra o início do preenchimento uma única vez por exibição do
+   * formulário. O foco borbulha dos campos até o <form>, então um único
+   * ouvinte cobre teclado, mouse e toque sem contar re-renders.
+   */
+  function trackStartForm() {
+    if (hasTrackedStartRef.current) return;
+    hasTrackedStartRef.current = true;
+    trackEvent(analyticsEvents.formContatoInicio);
+  }
 
   function clearFieldError(
     event: ChangeEvent<
@@ -209,6 +225,7 @@ export function ContactForm() {
 
       setIsSuccessVisible(false);
       setStatus("success");
+      trackEvent(analyticsEvents.formContatoSucesso);
     } catch {
       setStatus("error");
       setErrorMessage(submitErrorFallback);
@@ -219,6 +236,7 @@ export function ContactForm() {
 
   function handleSendAnotherMessage() {
     formRef.current?.reset();
+    hasTrackedStartRef.current = false;
     setFieldErrors({});
     setErrorMessage("");
     setIsSuccessVisible(false);
@@ -267,6 +285,7 @@ export function ContactForm() {
       <form
         ref={formRef}
         onSubmit={handleSubmit}
+        onFocus={trackStartForm}
         noValidate
         hidden={status === "success"}
         aria-busy={status === "submitting"}

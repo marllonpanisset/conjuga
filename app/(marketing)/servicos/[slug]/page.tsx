@@ -96,7 +96,7 @@ export default async function ServicoPage({
             </div>
 
             <div className="lg:col-span-9">
-              <p className="mx-auto flex max-w-3xl items-start gap-5 text-center font-display text-[clamp(1.5rem,3vw,2.125rem)] font-medium leading-[1.2] tracking-[-0.02em] text-balance text-text-primary sm:items-center sm:text-left">
+              <p className="mx-auto flex max-w-3xl items-start gap-5 text-center font-display text-display-m font-medium tracking-[-0.022em] text-balance text-text-primary sm:items-center sm:text-left">
                 <Icon
                   icon={service.icon}
                   size={26}
@@ -156,7 +156,7 @@ export default async function ServicoPage({
             <div className="lg:col-span-3">
               <Text variant="caption">O que entregamos</Text>
               <Heading as="h2" className="mt-4 text-heading-m lg:max-w-[12ch]">
-                O que está incluído nesta solução
+                O que está incluído
               </Heading>
             </div>
 
@@ -190,7 +190,7 @@ export default async function ServicoPage({
             <div className="lg:col-span-3">
               <Text variant="caption">Como trabalhamos</Text>
               <Heading as="h2" className="mt-4 text-heading-m lg:max-w-[12ch]">
-                Como conduzimos o trabalho
+                Etapas do trabalho
               </Heading>
             </div>
 
@@ -218,16 +218,8 @@ export default async function ServicoPage({
                 </Heading>
 
                 <Text variant="lead" className="mt-5">
-                  Cada projeto resolve uma necessidade atual, mas também pode
-                  servir de base para futuras evoluções. Conforme a operação
-                  cresce, novos processos podem ser automatizados, integrados ou
-                  transformados em soluções mais completas.
-                </Text>
-
-                <Text className="mt-5">
                   Nosso objetivo não é criar dependência tecnológica, mas
-                  desenvolver soluções organizadas e fáceis de manter, que
-                  continuem fazendo sentido conforme a operação cresce.
+                  desenvolver soluções organizadas e fáceis de manter.
                 </Text>
               </Reveal>
             </div>

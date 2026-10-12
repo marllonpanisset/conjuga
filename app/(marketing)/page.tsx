@@ -17,6 +17,7 @@ import {
   ServiceIndex,
 } from "@/components/sections";
 import { Reveal } from "@/components/motion";
+import { TrackedContactCta } from "@/components/analytics/TrackedContactCta";
 
 import { services } from "@/content/servicos";
 import { buildMetadata } from "@/lib/seo";
@@ -32,22 +33,22 @@ const processSteps = [
   {
     title: "Entendimento do contexto",
     description:
-      "Entendemos como o negócio funciona, onde estão os gargalos e quais tarefas geram atrito.",
+      "Mapeamos como o negócio funciona, onde trava e o que gera atrito.",
   },
   {
     title: "Planejamento",
     description:
-      "Buscamos definir uma solução simples e adequada ao problema antes de escolher a tecnologia.",
+      "Definimos a solução mais simples para o problema — antes de escolher tecnologia.",
   },
   {
     title: "Implantação",
     description:
-      "Implantamos e configuramos a solução, deixando-a pronta para evoluir junto com a operação.",
+      "Entregamos a solução configurada e funcionando na sua operação.",
   },
   {
     title: "Suporte e evolução contínua",
     description:
-      "Após a entrega, acompanhamos a solução e a ajustamos conforme a operação muda — escopo definido em proposta.",
+      "Acompanhamos e ajustamos depois da entrega, com escopo fechado em proposta.",
   },
 ];
 
@@ -58,12 +59,10 @@ export default function HomePage() {
         <HomeHero
           eyebrow="Engenharia de software para resolver problemas operacionais"
           title="Começamos pelo que sua empresa precisa hoje."
-          description="Construímos a tecnologia para o que ela precisa amanhã. Desenvolvemos sistemas web, automações e integrações para resolver problemas da operação, com inteligência artificial quando fizer sentido. Atendemos empresas de serviços presas em processos manuais, planilhas e ferramentas desconectadas."
+          description="Desenvolvemos sistemas web, automações e integrações para empresas de serviços presas em processos manuais, planilhas e ferramentas desconectadas."
           actions={
             <>
-              <Button href="/contato" size="lg" variant="accent">
-                Conte seu desafio <ButtonArrow />
-              </Button>
+              <TrackedContactCta bloco="hero" />
 
               <Button href="/servicos" variant="ghost" size="lg">
                 Conhecer nossos serviços
@@ -76,8 +75,8 @@ export default function HomePage() {
           <Container>
             <SectionHeader
               label="Serviços"
-              title="Da presença digital à operação da empresa"
-              lead="Um site pode ser o primeiro projeto. A partir do entendimento do negócio, desenvolvemos sistemas web, automações e integrações para resolver os desafios da operação, conforme a necessidade."
+              title="Do site à operação"
+              lead="Sistemas web, automações e presença digital — começando pelo seu processo, não pelo catálogo."
               actions={
                 <Button href="/servicos" variant="ghost" size="md">
                   Ver todos os serviços <ButtonArrow size={15} />
@@ -96,7 +95,6 @@ export default function HomePage() {
             <SectionHeader
               label="Método"
               title="Antes do código, entendemos o negócio"
-              lead="Antes de escolher qualquer tecnologia, entendemos como a empresa funciona, identificamos os principais gargalos e definimos por onde começar."
             />
 
             <div className="mt-14 lg:mt-20">
@@ -124,21 +122,18 @@ export default function HomePage() {
                     as="h2"
                     className="ops-display mt-6 max-w-[24ch] font-display text-display-m"
                   >
-                    Vamos avaliar o caminho adequado para o seu negócio?
+                    Vamos olhar para a sua operação?
                   </Heading>
                 </div>
 
                 <div className="lg:col-span-5 lg:border-l lg:border-border lg:pl-12">
                   <Text className="max-w-xl text-[1.0625rem] leading-[1.6]">
-                    Conte como sua empresa funciona hoje e quais desafios
-                    deseja resolver. Com esse contexto, podemos avaliar o
-                    caminho mais adequado para a sua realidade.
+                    Conte como sua empresa funciona hoje e o que precisa
+                    resolver.
                   </Text>
 
                   <div className="mt-9">
-                    <Button href="/contato" size="lg" variant="accent">
-                      Falar com a Conjuga <ButtonArrow />
-                    </Button>
+                    <TrackedContactCta bloco="final" />
                   </div>
                 </div>
               </div>
