@@ -8,7 +8,6 @@
 # Environment
 .env
 .env.*
-!.env.example
 
 # Next
 next-env.d.ts
@@ -31,3 +30,6 @@ coverage/
 # Agent runtime
 .agents/reports/*.md
 .agents/memory/*
+.vercel
+.env*
+!.env.example
