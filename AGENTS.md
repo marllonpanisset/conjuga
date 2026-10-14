@@ -38,6 +38,10 @@ When technical documentation conflicts with implementation, inspect the code and
 
 - docs/06-ROADMAP.md
 
+### Initial commercial and operational playbook (subordinate)
+
+- docs/07-COMMERCIAL-PLAYBOOK.md — subordinate working document to docs/01-BUSINESS.md. It records the approved initial commercial and operational strategy. Its values, deadlines and packages are provisional hypotheses requiring economic validation and must not be published on the site without explicit approval. In case of conflict, docs/01-BUSINESS.md prevails.
+
 ---
 
 ## Core Principles

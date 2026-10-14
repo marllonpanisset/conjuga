@@ -106,6 +106,8 @@ Começar a adquirir clientes e validar o processo comercial.
 - networking;
 - indicações.
 
+Regra operacional inicial (cf. `07-COMMERCIAL-PLAYBOOK.md` §7): enquanto houver capacidade para assumir um projeto, manter prospecção ativa diária com registro simples de pipeline (empresa, contato público, hipótese de problema, etapa e próximo passo). Quando houver um contrato em execução, pausar a prospecção ativa de novas empresas para proteger a entrega, mantendo respostas a contatos em andamento e oportunidades recebidas em lista de espera, com prazos realistas, e só retomar quando a capacidade estiver novamente disponível. A pausa é decisão temporária de gestão de capacidade na operação inicial, não regra permanente, e concretiza o princípio de proteger a capacidade de entrega; não contradiz o objetivo desta fase de validar o processo comercial.
+
 ### Conteúdo
 
 - construir conteúdo continuamente para gerar autoridade e demanda no médio e longo prazo;
@@ -149,6 +151,8 @@ Aumentar a capacidade de entrega e aquisição sem perder qualidade.
 - uso aplicado de IA;
 - melhoria contínua dos processos.
 
+Ferramentas de IA pagas não são contratadas antecipadamente. Após o primeiro cliente, a contratação de um plano pago (cf. `07-COMMERCIAL-PLAYBOOK.md` §8) é avaliada caso a caso conforme necessidade técnica clara, cabimento no orçamento e na margem do projeto, ganho concreto de produtividade ou qualidade e adequação das condições de privacidade e uso de dados, com o custo registrado no planejamento do projeto.
+
 ### Portfólio
 
 - novos cases;
@@ -169,6 +173,8 @@ Aumentar a capacidade de entrega e aquisição sem perder qualidade.
 - métricas;
 - melhoria contínua;
 - documentação operacional.
+
+O crescimento da capacidade segue ordem gradual por evidências (cf. `07-COMMERCIAL-PLAYBOOK.md` §9): primeiro validar proposta, contrato, estimativa e entrega com projetos reais dentro da capacidade existente; depois padronizar templates, checklists e processo de proposta e criar suporte recorrente apenas com limites claros de escopo e capacidade; só então avaliar ampliação. A contratação de um tech lead é possibilidade futura e condicional — demanda qualificada superando repetidamente a capacidade segura, receita e caixa suficientes, necessidade de continuidade técnica e processos que permitam transferir contexto —, com alternativas proporcionais (apoio por projeto ou dedicação parcial) avaliadas antes de qualquer custo fixo. Nenhum item deste roadmap autoriza contratação antecipada nem compromete receita futura.
 
 ## Critério de conclusão
 
@@ -251,3 +257,4 @@ Esses itens pertencem às ferramentas de gerenciamento de projetos.
 - COPY.md define nossa comunicação.
 - ROADMAP.md define como evoluímos.
 - AGENTS.md define como os agentes de IA devem trabalhar.
+- COMMERCIAL-PLAYBOOK.md detalha a estratégia comercial e operacional inicial de forma subordinada ao BUSINESS.md; seus valores, prazos e escopos de referência são hipóteses provisórias que exigem validação econômica e não autorizam publicação de preços no site nem alteração das fases acima. Em caso de conflito, prevalece o BUSINESS.md.

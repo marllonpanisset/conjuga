@@ -258,6 +258,8 @@ Produtos próprios ou SaaS não são ofertas consolidadas atualmente. Só devem 
 
 Pacotes de serviços poderão ser criados futuramente apenas quando houver escopo suficientemente padronizado e uma decisão específica para isso.
 
+A estratégia comercial e operacional inicial está registrada em `07-COMMERCIAL-PLAYBOOK.md`, documento de trabalho subordinado a este BUSINESS.md. Os escopos de referência descritos no playbook são hipóteses internas provisórias, não pacotes validados nem preços publicados, e só podem ser publicados ou tratados como oferta padrão após validação econômica de esforço, custos, riscos, tributos e margem, sem antecipar publicação de valores ou prazos no site. Em caso de conflito entre os documentos, prevalece este BUSINESS.md.
+
 Não prometemos resultados impossíveis.
 
 Não utilizamos cases fictícios para gerar credibilidade.
@@ -298,3 +300,4 @@ Os demais aspectos são definidos em:
 - COPY.md
 - ROADMAP.md
 - AGENTS.md
+- COMMERCIAL-PLAYBOOK.md (documento de trabalho subordinado a este BUSINESS.md; registra a estratégia comercial e operacional inicial sem autoridade para alterar regras de negócio nem publicar preços)
