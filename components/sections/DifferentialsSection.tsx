@@ -20,27 +20,27 @@ interface Differential {
 
 const differentials: Differential[] = [
   {
-    title: "Entender antes de construir",
+    title: "Entender o problema antes da tecnologia",
     description:
-      "Soluções sob medida, definidas a partir do seu processo — nunca de um catálogo.",
+      "O contexto do negócio orienta a escolha da solução.",
     icon: Target,
   },
   {
-    title: "Projetar antes de programar",
+    title: "Planejar antes de implementar",
     description:
-      "Arquitetura e fluxos definidos antes do código, para reduzir riscos e retrabalho.",
+      "Arquitetura e fluxos são definidos antes do desenvolvimento.",
     icon: DraftingCompass,
   },
   {
-    title: "Simplicidade que se mantém",
+    title: "Soluções adequadas à necessidade real",
     description:
-      "Soluções claras, documentadas e fáceis de manter e evoluir.",
+      "Escopo e funcionalidades respondem ao problema identificado.",
     icon: Minimize2,
   },
   {
-    title: "Automação com propósito",
+    title: "Estrutura preparada para evoluir",
     description:
-      "Rotinas automatizadas e ferramentas conectadas; IA apenas quando gera valor real.",
+      "Soluções claras, documentadas e fáceis de manter e expandir.",
     icon: Workflow,
   },
 ];

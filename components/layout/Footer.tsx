@@ -51,8 +51,8 @@ export function Footer() {
             </p>
 
             <p className="mt-6 max-w-sm text-small leading-[1.7] text-text-secondary">
-              Sistemas e automações para empresas de serviços — começando pelo
-              seu processo.
+              Engenharia de software para empresas — presença digital, sistemas
+              web e automações.
             </p>
           </div>
 

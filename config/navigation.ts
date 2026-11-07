@@ -4,24 +4,10 @@ export interface NavItem {
   description?: string;
 }
 
-export const servicesNav: NavItem[] = [
-  { label: "Todos os serviços", href: "/servicos" },
-  {
-    label: "Sistemas Web",
-    href: "/servicos/sistemas-web",
-    description: "Painéis, portais, MVPs e ferramentas internas",
-  },
-  {
-    label: "Automações de Processos",
-    href: "/servicos/automacao",
-    description: "Fluxos mais organizados e menos tarefas manuais",
-  },
-  {
-    label: "Presença Digital",
-    href: "/servicos/presenca-digital",
-    description: "Sites, landing pages, blogs e SEO técnico",
-  },
-];
+export const serviceNav = {
+  label: "Serviços",
+  href: "/servicos",
+} as const satisfies NavItem;
 
 export const mainNav: NavItem[] = [
   { label: "Projetos", href: "/projetos" },
@@ -31,7 +17,7 @@ export const mainNav: NavItem[] = [
 ];
 
 export const footerNav = {
-  servicos: servicesNav,
+  servicos: [{ label: "Todos os serviços", href: serviceNav.href }] as NavItem[],
   empresa: [
     { label: "Início", href: "/" },
     { label: "Sobre", href: "/sobre" },

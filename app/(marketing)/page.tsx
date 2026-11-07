@@ -1,71 +1,85 @@
 import type { Metadata } from "next";
 
 import { PageWrapper } from "@/components/layout/PageWrapper";
+import { ArrowUpRight } from "lucide-react";
 import {
   Button,
   ButtonArrow,
   Container,
-  Heading,
   Section,
   SectionHeader,
   Text,
 } from "@/components/ui";
 import {
+  CaseCard,
+  CTASection,
   DifferentialsSection,
   HomeHero,
-  MethodTimeline,
   ServiceIndex,
 } from "@/components/sections";
-import { Reveal } from "@/components/motion";
+import { Stagger, StaggerItem } from "@/components/motion";
 import { TrackedContactCta } from "@/components/analytics/TrackedContactCta";
 
 import { services } from "@/content/servicos";
+import { caseStudies } from "@/content/projetos";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Engenharia de software para empresas de serviços",
+  title: "Engenharia de software para empresas",
   description:
-    "A Conjuga desenvolve sistemas web, automações e integrações para resolver problemas operacionais, com inteligência artificial quando fizer sentido. Um site pode ser o primeiro projeto.",
+    "A Conjuga ajuda empresas a organizar e evoluir suas operações com presença digital, sistemas web e automações. Atendimento remoto em todo o Brasil.",
   path: "/",
 });
 
-const processSteps = [
-  {
-    title: "Entendimento do contexto",
-    description:
-      "Mapeamos como o negócio funciona, onde trava e o que gera atrito.",
-  },
-  {
-    title: "Planejamento",
-    description:
-      "Definimos a solução mais simples para o problema — antes de escolher tecnologia.",
-  },
-  {
-    title: "Implantação",
-    description:
-      "Entregamos a solução configurada e funcionando na sua operação.",
-  },
-  {
-    title: "Suporte e evolução contínua",
-    description:
-      "Acompanhamos e ajustamos depois da entrega, com escopo fechado em proposta.",
-  },
+const homeServiceOrder = [
+  "presenca-digital",
+  "sistemas-web",
+  "automacao",
+] as const;
+
+const homeServiceDescriptions: Record<(typeof homeServiceOrder)[number], string> = {
+  "presenca-digital":
+    "Sites institucionais, landing pages e experiências digitais.",
+  "sistemas-web":
+    "Sistemas personalizados, painéis administrativos, portais e aplicações web.",
+  automacao:
+    "Integrações e automações para reduzir tarefas manuais e conectar ferramentas.",
+};
+
+const homeServices = homeServiceOrder.flatMap((slug) => {
+  const service = services.find((item) => item.slug === slug);
+
+  return service
+    ? [{ ...service, shortDescription: homeServiceDescriptions[slug] }]
+    : [];
+});
+
+const businessSignals = [
+  "Informações espalhadas em diferentes ferramentas.",
+  "Tarefas repetitivas que consomem tempo.",
+  "Processos difíceis de acompanhar e organizar.",
+  "Presença digital que já não acompanha a empresa.",
 ];
+
+const featuredProject = caseStudies.find(
+  (project) => project.slug === "portfolio-tais",
+);
 
 export default function HomePage() {
   return (
     <PageWrapper withGrid={false}>
       <div className="theme-ops">
         <HomeHero
-          eyebrow="Engenharia de software para resolver problemas operacionais"
+          eyebrow="Engenharia de software para empresas"
           title="Começamos pelo que sua empresa precisa hoje."
-          description="Desenvolvemos sistemas web, automações e integrações para empresas de serviços presas em processos manuais, planilhas e ferramentas desconectadas."
+          description="Organizamos e evoluímos operações com presença digital, sistemas web e automações."
+          complement="Entendemos o desafio do seu negócio antes de definir a tecnologia."
           actions={
             <>
               <TrackedContactCta bloco="hero" />
 
               <Button href="/servicos" variant="ghost" size="lg">
-                Conhecer nossos serviços
+                Conheça as soluções
               </Button>
             </>
           }
@@ -74,72 +88,115 @@ export default function HomePage() {
         <Section rule>
           <Container>
             <SectionHeader
+              label="Sinais da operação"
+              title="Seu negócio ainda depende de processos manuais?"
+              lead="Cada empresa tem um contexto próprio. Estas são algumas situações que podem indicar uma oportunidade de organizar melhor a operação."
+            />
+
+            <Stagger as="ul" className="mt-12 border-t border-border">
+              {businessSignals.map((signal, index) => (
+                <StaggerItem
+                  as="li"
+                  key={signal}
+                  className="flex items-start gap-6 border-b border-border py-5 sm:items-center"
+                >
+                  <span className="item-index pt-1 text-signal sm:pt-0">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <Text className="max-w-3xl text-text-primary">{signal}</Text>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </Container>
+        </Section>
+
+        <Section rule>
+          <Container>
+            <SectionHeader
               label="Serviços"
-              title="Do site à operação"
-              lead="Sistemas web, automações e presença digital — começando pelo seu processo, não pelo catálogo."
+              title="Três áreas para necessidades diferentes"
+              lead="A solução começa pelo que sua empresa precisa e é definida a partir do contexto do negócio."
               actions={
                 <Button href="/servicos" variant="ghost" size="md">
-                  Ver todos os serviços <ButtonArrow size={15} />
+                  Conheça as soluções <ButtonArrow size={15} />
                 </Button>
               }
             />
 
             <div className="mt-14 lg:mt-20">
-              <ServiceIndex services={services} />
+              <ServiceIndex
+                services={homeServices}
+                actionLabels={{
+                  "presenca-digital": "Conheça Presença Digital",
+                  "sistemas-web": "Conheça Sistemas Web",
+                  automacao: "Conheça Automações de Processos",
+                }}
+              />
             </div>
           </Container>
         </Section>
 
-        <Section tone="raised" rule>
-          <Container>
-            <SectionHeader
-              label="Método"
-              title="Antes do código, entendemos o negócio"
-            />
+        {featuredProject && (
+          <Section tone="raised" rule>
+            <Container>
+              <SectionHeader
+                label="Projeto desenvolvido"
+                title="Um projeto publicado pela Conjuga"
+                lead="O site de portfólio profissional de Taís inclui CMS próprio e painel administrativo."
+                actions={
+                  <a
+                    href="https://taissales.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-underline inline-flex items-center gap-2 text-small font-medium text-signal-strong"
+                  >
+                    Acessar o site <ArrowUpRight size={15} aria-hidden="true" />
+                  </a>
+                }
+              />
 
-            <div className="mt-14 lg:mt-20">
-              <MethodTimeline steps={processSteps} />
-            </div>
-          </Container>
-        </Section>
+              <div className="mt-10 lg:mt-14">
+                <CaseCard caseStudy={featuredProject} />
+                <div className="mt-6 flex flex-wrap gap-2">
+                  <span className="label-mono px-2.5 py-1">
+                    Gerenciamento de projetos
+                  </span>
+                  <span className="label-mono px-2.5 py-1">
+                    Gerenciamento de mídias
+                  </span>
+                </div>
+              </div>
+            </Container>
+          </Section>
+        )}
 
         <DifferentialsSection />
 
-        <Section rule>
-          <Container>
-            <Reveal y={16}>
-              <div className="grid gap-10 border border-border-strong bg-surface px-6 py-12 sm:px-10 sm:py-14 lg:grid-cols-12 lg:gap-12 lg:px-14">
-                <div className="lg:col-span-7">
-                  <p className="label-mono flex items-center gap-2.5">
-                    <span
-                      aria-hidden="true"
-                      className="h-1.5 w-1.5 shrink-0 bg-signal"
-                    />
-                    Próximo passo
-                  </p>
-
-                  <Heading
-                    as="h2"
-                    className="ops-display mt-6 max-w-[24ch] font-display text-display-m"
-                  >
-                    Vamos olhar para a sua operação?
-                  </Heading>
-                </div>
-
-                <div className="lg:col-span-5 lg:border-l lg:border-border lg:pl-12">
-                  <Text className="max-w-xl text-[1.0625rem] leading-[1.6]">
-                    Conte como sua empresa funciona hoje e o que precisa
-                    resolver.
-                  </Text>
-
-                  <div className="mt-9">
-                    <TrackedContactCta bloco="final" />
-                  </div>
-                </div>
+        <CTASection
+          title="Qual necessidade sua empresa quer resolver?"
+          description="Conte um pouco sobre seu negócio e o desafio que deseja superar. Vamos entender o contexto e avaliar como podemos ajudar."
+          actions={
+            <>
+              <TrackedContactCta bloco="final" />
+              <div className="flex flex-wrap gap-x-5 gap-y-2 text-small">
+                <a
+                  href="https://wa.me/5521987881633"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline text-[#f4f1ea]/75 hover:text-[#f4f1ea]"
+                >
+                  WhatsApp: (21) 98788-1633
+                </a>
+                <a
+                  href="mailto:contato@conjuga.com.br"
+                  className="link-underline text-[#f4f1ea]/75 hover:text-[#f4f1ea]"
+                >
+                  contato@conjuga.com.br
+                </a>
               </div>
-            </Reveal>
-          </Container>
-        </Section>
+            </>
+          }
+        />
       </div>
     </PageWrapper>
   );

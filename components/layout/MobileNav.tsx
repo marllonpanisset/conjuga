@@ -11,14 +11,12 @@ import {
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
-import { servicesNav, mainNav } from "@/config/navigation";
+import { mainNav, serviceNav } from "@/config/navigation";
 import { LogoCube } from "@/components/brand/LogoCube";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
-
-type NavItem = { href: string; label: string; description?: string };
 
 const focusableSelector = [
   "a[href]",
@@ -61,94 +59,6 @@ function getFocusableElements(container: HTMLElement | null): HTMLElement[] {
   return Array.from(container.querySelectorAll<HTMLElement>(focusableSelector));
 }
 
-function AccordionSection({
-  id,
-  title,
-  items,
-  isOpen,
-  onToggle,
-  onNavigate,
-  pathname,
-  reduceMotion,
-}: {
-  id: string;
-  title: string;
-  items: NavItem[];
-  isOpen: boolean;
-  onToggle: () => void;
-  onNavigate: () => void;
-  pathname: string;
-  reduceMotion: boolean;
-}) {
-  return (
-    <div className="border-b border-border/60">
-      <button
-        type="button"
-        onClick={onToggle}
-        aria-expanded={isOpen}
-        aria-controls={id}
-        className="flex w-full items-center justify-between py-4 text-left transition-colors hover:text-text-primary"
-      >
-        <span className="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.1em] text-text-muted">
-          {title}
-        </span>
-        <ChevronDown
-          size={16}
-          className={cn(
-            "text-text-muted transition-transform duration-200 ease-out motion-reduce:transition-none",
-            isOpen && "rotate-180 text-text-primary",
-          )}
-        />
-      </button>
-
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <m.div
-            id={id}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{
-              duration: reduceMotion ? 0 : 0.2,
-              ease: [0.4, 0, 0.2, 1],
-            }}
-            className="overflow-hidden"
-          >
-            <ul className="flex flex-col gap-0.5 pb-3">
-              {items.map((item) => {
-                const isActive = pathname === item.href;
-
-                return (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href as never}
-                      onClick={onNavigate}
-                      aria-current={isActive ? "page" : undefined}
-                      className={cn(
-                        "block rounded-[var(--radius-sm)] border border-transparent px-3 py-2.5 text-[0.9375rem] leading-snug transition-[background-color,border-color,color] hover:bg-surface hover:text-text-primary",
-                        isActive
-                          ? "border-border/70 bg-surface text-text-primary"
-                          : "text-text-secondary",
-                      )}
-                    >
-                      {item.label}
-                      {item.description && (
-                        <span className="mt-0.5 block text-[0.75rem] font-normal text-text-muted">
-                          {item.description}
-                        </span>
-                      )}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </m.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
-
 /**
  * Renders the mobile navigation as a modal dialog so keyboard users cannot
  * reach background content while it is open. Focus returns to the trigger on
@@ -164,18 +74,11 @@ export function MobileNav() {
     getClientEnvironmentSnapshot,
     getServerEnvironmentSnapshot,
   );
-  const [openSection, setOpenSection] = useState<string | null>("servicos");
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
 
   /** Opens the dialog while preserving the trigger as the focus-return target. */
-  const openMenu = useCallback(() => {
-    if (isPathActive(pathname, "/servicos")) {
-      setOpenSection("servicos");
-    }
-
-    setOpen(true);
-  }, [pathname]);
+  const openMenu = useCallback(() => setOpen(true), []);
 
   /**
    * Closes the dialog and restores focus after React has committed the state.
@@ -184,10 +87,6 @@ export function MobileNav() {
   const closeMenu = useCallback(() => {
     setOpen(false);
     window.requestAnimationFrame(() => menuButtonRef.current?.focus());
-  }, []);
-
-  const toggleSection = useCallback((key: string) => {
-    setOpenSection((current) => (current === key ? null : key));
   }, []);
 
   useEffect(() => {
@@ -306,16 +205,19 @@ export function MobileNav() {
                 >
                   Início
                 </Link>
-                <AccordionSection
-                  id="mobile-nav-servicos"
-                  title="Serviços"
-                  items={servicesNav}
-                  isOpen={openSection === "servicos"}
-                  onToggle={() => toggleSection("servicos")}
-                  onNavigate={closeMenu}
-                  pathname={pathname}
-                  reduceMotion={reduceMotion}
-                />
+                <Link
+                  href={serviceNav.href}
+                  onClick={closeMenu}
+                  aria-current={isPathActive(pathname, serviceNav.href) ? "page" : undefined}
+                  className={cn(
+                    "border-b border-border/60 py-4 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.1em] transition-colors hover:text-text-primary",
+                    isPathActive(pathname, serviceNav.href)
+                      ? "text-text-primary"
+                      : "text-text-muted",
+                  )}
+                >
+                  {serviceNav.label}
+                </Link>
                 <ul className="flex flex-col gap-1 py-4">
                   {mainNav.map((item) => {
                     const isActive = isPathActive(pathname, item.href);
@@ -350,7 +252,7 @@ export function MobileNav() {
                 onClick={closeMenu}
                 aria-current={pathname === "/contato" ? "page" : undefined}
               >
-                Falar com especialista
+                Conte seu desafio
               </Button>
             </div>
           </m.div>

@@ -9,6 +9,7 @@ import type { Service } from "@/types/service";
 
 interface ServiceIndexProps {
   services: Service[];
+  actionLabels?: Partial<Record<Service["slug"], string>>;
 }
 
 /**
@@ -16,9 +17,9 @@ interface ServiceIndexProps {
  *
  * Uma lista régua-a-régua, e não uma grade de cartões: o nome do serviço
  * lidera a linha, a descrição ocupa a coluna de leitura e o hover revela a
- * seta de navegação. A mesma composição serve à Home e a /servicos.
+ * seta de navegação. Na Home, cada oferta leva ao índice geral.
  */
-export function ServiceIndex({ services }: ServiceIndexProps) {
+export function ServiceIndex({ services, actionLabels }: ServiceIndexProps) {
   return (
     <Stagger as="ul" className="border-t border-border">
       {services.map((service, index) => (
@@ -28,7 +29,7 @@ export function ServiceIndex({ services }: ServiceIndexProps) {
           className="border-b border-border"
         >
           <Link
-            href={`/servicos/${service.slug}` as never}
+            href="/servicos"
             className="group grid grid-cols-1 gap-3 py-7 transition-colors duration-200 hover:bg-surface md:grid-cols-12 md:items-baseline md:gap-8 md:py-9"
           >
             <span className="item-index transition-colors duration-200 group-hover:text-signal md:col-span-1">
@@ -51,9 +52,17 @@ export function ServiceIndex({ services }: ServiceIndexProps) {
               />
             </span>
 
-            <Text className="max-w-xl md:col-span-6 md:col-start-6">
+            <Text
+              className={`max-w-xl md:col-start-6 ${actionLabels?.[service.slug] ? "md:col-span-5" : "md:col-span-6"}`}
+            >
               {service.shortDescription}
             </Text>
+
+            {actionLabels?.[service.slug] && (
+              <span className="label-mono text-signal-strong md:col-span-7 md:col-start-6">
+                {actionLabels[service.slug]}
+              </span>
+            )}
           </Link>
         </StaggerItem>
       ))}

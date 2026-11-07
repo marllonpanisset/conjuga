@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { PageWrapper } from "@/components/layout";
@@ -99,9 +100,12 @@ export default async function CasePage({
             {relatedService && (
               <div className="flex min-h-[9rem] flex-col justify-between gap-6 bg-surface p-6">
                 <dt className="label-mono">Solução aplicada</dt>
-                <span className="font-display text-[1.0625rem] font-medium text-text-primary">
+                <Link
+                  href={`/servicos/${relatedService.slug}` as never}
+                  className="link-underline font-display text-[1.0625rem] font-medium text-text-primary transition-colors duration-200 hover:text-signal-strong"
+                >
                   {relatedService.name}
-                </span>
+                </Link>
               </div>
             )}
           </dl>

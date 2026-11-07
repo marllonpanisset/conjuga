@@ -70,31 +70,60 @@ const contactChannels = [
 
 const faqItems = [
   {
-    question: "Ainda não sei qual solução minha empresa precisa.",
+    question: "Quanto custa desenvolver um site?",
     answer:
-      "Não tem problema. Começamos entendendo sua operação para definir a solução mais adequada.",
+      "Landing Pages começam em R$ 2.490, sites institucionais em R$ 4.900 e sites com CMS em R$ 7.900. Sistemas e automações são sob consulta. O investimento final depende do escopo.",
   },
   {
-    question: "Quanto custa um projeto?",
+    question: "Qual a diferença entre um site institucional e um site com CMS?",
     answer:
-      "Cada projeto possui um escopo diferente. O investimento é definido após entendermos o contexto, a complexidade e os objetivos da empresa.",
+      "O site institucional apresenta a empresa e seus serviços. A oferta com CMS inclui um painel administrativo para gerenciar conteúdos e informações definidos para o projeto.",
   },
   {
-    question: "Quanto tempo leva para receber um retorno?",
+    question: "A Conjuga desenvolve sistemas personalizados?",
     answer:
-      "O primeiro retorno acontece em até um dia útil. Esse retorno não inclui orçamento, diagnóstico completo ou solução; dependendo da complexidade, podemos precisar alinhar mais informações antes de apresentar uma proposta.",
+      "Sim. Desenvolvemos sistemas e automações conforme as necessidades operacionais de cada empresa. Os projetos são avaliados individualmente.",
   },
   {
-    question: "Existe suporte após a entrega?",
+    question: "A hospedagem e o domínio estão incluídos?",
     answer:
-      "Após a entrega, a continuidade pode incluir suporte, sustentação e evolução contínua da solução. Escopo e condições são definidos para cada projeto.",
+      "Não. Domínio, hospedagem e serviços de terceiros são contratados separadamente. A Conjuga pode auxiliar na configuração mediante contratação específica.",
+  },
+  {
+    question: "A Conjuga faz manutenção de sites existentes?",
+    answer:
+      "Sim. A manutenção de sites começa em R$ 390 por mês, conforme os limites e as condições definidos na contratação.",
+  },
+  {
+    question: "O que está incluído na manutenção mensal?",
+    answer:
+      "Até duas solicitações por mês, limitadas a duas horas de execução no total. Inclui pequenas atualizações de conteúdo, substituições de imagens, informações de contato, ajustes visuais e correções simples. Horas não utilizadas não acumulam; solicitações adicionais e mudanças estruturais são orçadas à parte. O atendimento ocorre em dias úteis, das 9h às 18h (horário de Brasília), com primeira resposta em até dois dias úteis; o prazo de resolução é informado após análise.",
+  },
+  {
+    question: "Quanto tempo leva para desenvolver um projeto?",
+    answer:
+      "O prazo depende da solução, das funcionalidades e do escopo. Ele é definido após entendermos a necessidade.",
+  },
+  {
+    question: "Como funciona a contratação?",
+    answer:
+      "Primeiro entendemos a necessidade. Depois definimos solução, escopo, investimento e condições. O trabalho começa após a aprovação da proposta e a formalização da contratação.",
+  },
+  {
+    question: "A Conjuga atende empresas de outras cidades?",
+    answer:
+      "Sim. Os projetos podem ser desenvolvidos remotamente para empresas de diferentes regiões do Brasil.",
+  },
+  {
+    question: "Como solicitar suporte ou melhorias em um projeto existente?",
+    answer:
+      "Entre em contato e descreva a necessidade. A Conjuga avaliará o escopo, a disponibilidade e as condições de atendimento antes de iniciar o trabalho.",
   },
 ];
 
 const beforeSending = [
   "Comece descrevendo o problema ou objetivo da empresa.",
   "Não é necessário saber qual solução ou tecnologia utilizar.",
-  "Você recebe o primeiro retorno em até 1 dia útil.",
 ];
 
 export default function ContatoPage() {

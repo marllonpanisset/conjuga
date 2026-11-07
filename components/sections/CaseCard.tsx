@@ -26,7 +26,9 @@ export function CaseCard({ caseStudy }: CaseCardProps) {
       >
         <div className="flex flex-wrap items-center gap-2 md:col-span-4">
           <Tag>{caseStudy.segment}</Tag>
-          <Tag className="bg-transparent">Estudo de projeto</Tag>
+          {caseStudy.segment !== "Portfólio profissional" && (
+            <Tag className="bg-transparent">Estudo de projeto</Tag>
+          )}
         </div>
 
         <div className="md:col-span-8">

@@ -2,7 +2,7 @@
 
 > Documento de trabalho subordinado a `01-BUSINESS.md`. Registra a estratégia comercial e operacional aprovada para a fase inicial da Conjuga. Não autoriza automaticamente alterações no site, publicação de preços ou mudanças de código.
 >
-> Status: estratégia aprovada; valores e pacotes comerciais ainda precisam de validação econômica antes de serem publicados.
+> Status: estratégia aprovada. A tabela pública de preços abaixo foi aprovada em WEB-004.6; custos, margem e limites de escopo continuam sujeitos a validação por projeto.
 
 ---
 
@@ -45,7 +45,7 @@ Escopo de referência proposto:
 
 Prazo de referência para planejamento: 2–3 semanas após o recebimento dos materiais e acessos necessários.
 
-Preço inicial sugerido para avaliação: **a partir de R$ 2.900**.
+Preço inicial aprovado para apresentação pública em WEB-004.6: **a partir de R$ 2.490**.
 
 ### 3.2 Site Institucional — oferta principal
 
@@ -63,29 +63,27 @@ Escopo de referência proposto:
 
 Prazo de referência para planejamento: 3–5 semanas após o recebimento dos materiais e acessos necessários.
 
-Preço inicial sugerido para avaliação: **a partir de R$ 4.900**.
+Preço inicial aprovado para apresentação pública em WEB-004.6: **a partir de R$ 4.900**.
 
-### 3.3 Presença Digital Avançada — opção premium
+### 3.3 Site Profissional com CMS
 
-Escopo de referência proposto:
+Oferta com painel administrativo para gerenciar conteúdos, projetos e informações. O escopo do site e os itens gerenciáveis pelo CMS devem ser definidos na proposta. CMS não está incluído automaticamente nos demais sites.
 
-- Até 8 páginas.
-- Arquitetura de conteúdo mais elaborada.
-- Componentes visuais reutilizáveis e páginas de serviços estruturadas.
-- Formulários e integrações simples, definidos antes da contratação.
-- SEO técnico básico e configuração de métricas.
-- Testes, publicação e documentação básica.
-- Até 2 rodadas de revisão consolidada.
+Preço inicial aprovado para apresentação pública em WEB-004.6: **a partir de R$ 7.900**.
 
-Prazo de referência para planejamento: 5–7 semanas após definição do escopo e recebimento dos materiais.
+### 3.4 Sistemas e Automações
 
-Preço inicial sugerido para avaliação: **a partir de R$ 8.900**.
+Desenvolvimento de sistemas personalizados, integrações e automações para necessidades operacionais. Funcionalidades, integrações, dependências e escopo devem ser avaliados antes da proposta.
 
-### 3.4 Status de preços e prazos
+Preço: **sob consulta**.
 
-Os valores e prazos acima são hipóteses comerciais iniciais, não preços validados nem compromisso de aceitar qualquer projeto pelo valor anunciado. **Não publicar esses preços no site até validar esforço, custos, riscos, impostos e margem.**
+### 3.5 Status de preços e prazos
 
-Antes de aprovar os pacotes para publicação, registrar pelo menos:
+Os preços iniciais de Landing Page, Site Institucional e Site Profissional com CMS foram aprovados para apresentação pública em WEB-004.6. A expressão “a partir de” não garante que qualquer escopo seja executado pelo valor inicial. O investimento final depende das necessidades, dependências e limites definidos na proposta. Sistemas e Automações são orçados conforme o escopo.
+
+Os prazos de referência desta seção continuam hipóteses de planejamento, não compromissos publicados. Antes de aceitar cada projeto, estimar esforço, custos, riscos, impostos e margem.
+
+Para proteger a viabilidade econômica de cada projeto, registrar pelo menos:
 
 - horas previstas para qualificação, reuniões, conteúdo, desenvolvimento, testes, publicação e comunicação;
 - custo interno estimado do trabalho;
@@ -95,7 +93,28 @@ Antes de aprovar os pacotes para publicação, registrar pelo menos:
 - margem operacional pretendida;
 - critérios para recusar ou reorçar projetos que excedam os limites.
 
-A oferta premium de Presença Digital não inclui automaticamente funcionalidades de um sistema personalizado. Login, permissões, painéis administrativos sob medida, regras de negócio complexas ou integrações de alto risco devem ser avaliados como Sistemas Web ou orçamento específico.
+Funcionalidades não descritas na oferta, regras de negócio complexas ou integrações de maior risco devem ser avaliadas e delimitadas na proposta antes da contratação.
+
+### 3.6 Suporte e evolução
+
+- **Manutenção de sites:** preço inicial público de **R$ 390/mês**. Inclui manutenção técnica, atualizações de conteúdo, correções e ajustes básicos, limitada a até 2 solicitações por mês e até 2 horas de execução no total. Horas não utilizadas não acumulam; solicitações adicionais dependem de orçamento e aprovação. Demandas estruturais são tratadas como evolução.
+- Exemplos incluídos na manutenção: alterações simples de texto, substituição de imagens, atualização de informações de contato, pequenos ajustes visuais e correções simples de conteúdo.
+- Não estão incluídos na manutenção: novas páginas ou funcionalidades, integrações, redesign, refatorações estruturais ou novos módulos. Esses trabalhos exigem orçamento de evolução.
+- **Evolução de sites e sistemas:** melhorias, novas funcionalidades e adaptações em soluções existentes. Preço sob consulta e conforme escopo.
+- **Suporte técnico:** apoio contínuo para demandas técnicas, conforme disponibilidade e escopo contratado. Preço sob consulta.
+
+Manutenção, evolução e suporte são serviços contratados separadamente. Não implicam suporte ilimitado nem estão incluídos automaticamente em um projeto novo. Disponibilidade, horário e limites do suporte técnico devem constar da proposta ou contrato.
+
+### 3.7 Atendimento e garantia
+
+Para manutenção mensal:
+
+- Atendimento em dias úteis, de segunda a sexta-feira, das 9h às 18h, horário de Brasília, exceto feriados.
+- Primeira resposta em até 2 dias úteis após o recebimento da solicitação.
+- O prazo de resolução é informado após análise técnica; o prazo de primeira resposta não é prazo de resolução.
+- Demandas urgentes podem ser avaliadas separadamente, sem garantia de disponibilidade imediata.
+
+Para projetos desenvolvidos pela Conjuga, a política comercial inicial prevê garantia técnica de 30 dias corridos após entrega e aceite. Ela cobre defeitos reproduzíveis em funcionalidades entregues e aprovadas, quando decorrentes da implementação da Conjuga. Não cobre novas funcionalidades, mudanças de escopo, alterações solicitadas após aprovação nem falhas de serviços externos. As condições devem constar da contratação e respeitar as obrigações legais aplicáveis. A garantia não substitui manutenção adicional.
 
 ## 4. Limites e exclusões padrão
 
@@ -106,9 +125,10 @@ Cada proposta deve dizer claramente o que está e o que não está incluído. Co
 - Revisões devem ser consolidadas em até 2 rodadas; mudança de direção ou escopo é orçada separadamente.
 - Páginas extras, funcionalidades extras e integrações não descritas exigem aprovação de orçamento adicional antes da execução.
 - Identidade visual completa, produção contínua de conteúdo, SEO recorrente, tráfego pago e gestão de redes sociais não estão incluídos.
-- Hospedagem, domínio, licenças, APIs e demais serviços de terceiros são custos separados e devem ser identificados na proposta.
+- Domínio, hospedagem, licenças, APIs e demais serviços externos não estão incluídos nos preços dos projetos; os custos ficam a cargo do cliente e devem ser identificados na proposta. Sempre que possível, domínio e contas de infraestrutura ficam sob titularidade do cliente. A Conjuga pode auxiliar na contratação, configuração ou administração mediante contratação específica.
 - Manutenção e evolução contínua não são ilimitadas nem fazem parte automaticamente da entrega.
-- Correções pós-publicação devem ter prazo, critérios e limites descritos no contrato; a proposta de 30 dias para defeitos reproduzíveis é uma referência a validar, não uma garantia publicada até ser formalmente aprovada.
+- Problemas originados em hospedagem, domínio/DNS, APIs, plugins, ferramentas, pagamentos, e-mail ou infraestrutura externa não estão incluídos automaticamente na manutenção. A Conjuga pode realizar diagnóstico e apresentar orçamento específico.
+- Defeitos reproduzíveis no trabalho desenvolvido pela Conjuga são tratados pela garantia técnica definida em §3.7 e na contratação, sem confundir garantia com manutenção adicional.
 - Prazos dependem de o cliente entregar materiais, acessos e feedback no tempo acordado.
 - Nunca prometer resultado comercial, posição em buscadores ou aumento de conversão como garantido.
 
@@ -150,9 +170,13 @@ Essas condições são o padrão proposto para a fase inicial; podem ser adaptad
 
 ## 7. Estratégia de prospecção e capacidade
 
+### Gate de preparação
+
+A prospecção ativa permanece suspensa até a conclusão e revisão humana das prioridades pré-lançamento da Phase 1 em `06-ROADMAP.md`: revisão final do site e canais, diagnóstico de infraestrutura, preparação dos três posts institucionais fixados e validação comercial, operacional, jurídica e tributária. Não presumir que a capacidade disponível, por si só, autoriza iniciar aquisição antes desse gate.
+
 ### Antes do primeiro contrato em execução
 
-- Fazer prospecção ativa diariamente enquanto houver capacidade para assumir um projeto.
+- Após a abertura do gate de preparação, fazer prospecção ativa enquanto houver capacidade para assumir um projeto.
 - Priorizar empresas de serviços que apresentem uma necessidade observável e compatível com a oferta.
 - Personalizar o contato a partir de informações reais; não inventar problemas nem enviar alegações sem evidência.
 - Registrar empresa, contato público, hipótese de problema, última interação, etapa e próximo passo em um pipeline simples.
@@ -232,7 +256,7 @@ Se os pontos essenciais não puderem ser respondidos, realizar um diagnóstico d
 Agentes que apoiam a Conjuga devem:
 
 - consultar este documento e os documentos canônicos antes de propor oferta, preço ou plano operacional;
-- tratar os preços e prazos como provisórios até validação explícita;
+- tratar preços como provisórios até aprovação comercial explícita ou validação econômica e tratar prazos de referência como provisórios até validação;
 - nunca publicar preços, criar novas promessas comerciais ou alterar páginas sem autorização explícita;
 - não inventar capacidades, clientes, cases, métricas ou garantias;
 - preferir escopos pequenos e verificáveis, preservar a capacidade de entrega e sinalizar dependências ou riscos;

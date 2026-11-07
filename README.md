@@ -143,7 +143,7 @@ docs/
 └── releases/           Notas relacionadas a tags de versão
 ```
 
-`AGENTS.md` é o ponto de entrada para agentes de IA, com o fluxo permanente de trabalho e as políticas do projeto. A estratégia comercial e operacional inicial está em `docs/07-COMMERCIAL-PLAYBOOK.md`, documento de trabalho subordinado a `docs/01-BUSINESS.md`, com valores e prazos provisórios que não devem ser publicados no site sem validação.
+`AGENTS.md` é o ponto de entrada para agentes de IA, com o fluxo permanente de trabalho e as políticas do projeto. A estratégia comercial e operacional inicial está em `docs/07-COMMERCIAL-PLAYBOOK.md`, documento de trabalho subordinado a `docs/01-BUSINESS.md`, com escopos e prazos de referência e a tabela de preços aprovada para publicação em WEB-004.6.
 
 O conteúdo desses documentos não é duplicado aqui; consulte-os como fonte.
 

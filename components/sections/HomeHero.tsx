@@ -10,6 +10,7 @@ interface HomeHeroProps {
   eyebrow: string;
   title: string;
   description: string;
+  complement?: string;
   actions: ReactNode;
 }
 
@@ -18,10 +19,10 @@ interface HomeHeroProps {
  * O painel ilustra o processo de trabalho — sem status, métricas ou prazos.
  */
 const operationStages = [
-  "Entendimento do contexto",
-  "Planejamento",
-  "Implantação",
-  "Suporte e evolução contínua",
+  "Entendimento do negócio e do desafio",
+  "Planejamento da solução",
+  "Desenvolvimento e implementação",
+  "Evolução conforme as necessidades",
 ];
 
 interface OperationPanelProps {
@@ -58,7 +59,7 @@ function OperationPanel({ stages }: OperationPanelProps) {
       </Stagger>
 
       <div className="border-t border-border px-5 py-3.5 sm:px-6">
-        <p className="label-mono">Do entendimento à operação</p>
+        <p className="label-mono">Continuidade conforme escopo acordado</p>
       </div>
     </div>
   );
@@ -74,6 +75,7 @@ export function HomeHero({
   eyebrow,
   title,
   description,
+  complement,
   actions,
 }: HomeHeroProps) {
   return (
@@ -96,6 +98,9 @@ export function HomeHero({
               <Text variant="lead" className="mt-8 max-w-xl">
                 {description}
               </Text>
+              {complement && (
+                <Text className="mt-4 max-w-xl">{complement}</Text>
+              )}
             </Reveal>
 
             <Reveal delay={0.25} y={14}>

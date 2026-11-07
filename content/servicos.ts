@@ -7,31 +7,31 @@ export const services: Service[] = [
     icon: Cpu,
     name: "Sistemas Web",
     shortDescription:
-      "Sistemas para resolver processos específicos da sua operação.",
+      "Sistemas personalizados para apoiar processos específicos da operação.",
     problem:
-      "Planilhas, controles paralelos e ferramentas genéricas podem dificultar processos importantes e limitar o crescimento do negócio.",
+      "Planilhas, controles paralelos e ferramentas genéricas podem dificultar o acompanhamento de processos e a organização das informações.",
     benefits: [
-      "Processos organizados em um só lugar",
-      "Informações centralizadas",
-      "Base pronta para evoluir",
+      "Apoio à organização das informações do processo",
+      "Funcionalidades definidas para a necessidade identificada",
+      "Evolução futura mediante novo escopo acordado",
     ],
     includes: [
       "Entendimento da operação",
       "Definição do escopo da solução",
-      "Painéis e áreas administrativas",
+      "Painéis administrativos",
       "Portais e ferramentas internas",
       "MVPs e aplicações web",
       "Implantação e publicação",
     ],
     process: [
       "Entendimento do contexto",
-      "Planejamento da solução",
-      "Implantação",
-      "Evolução conforme a necessidade",
+      "Planejamento e definição do escopo",
+      "Desenvolvimento e implementação",
+      "Evolução posterior, se contratada, conforme escopo acordado",
     ],
     heroTitle: "Sistemas para organizar a sua operação",
     heroDescription:
-      "Projetamos sistemas para resolver problemas específicos do negócio — organizados, eficientes e prontos para evoluir.",
+      "Desenvolvemos aplicações para apoiar processos específicos. Funcionalidades e integrações são definidas conforme a necessidade e o escopo acordado.",
   },
 
   {
@@ -39,30 +39,30 @@ export const services: Service[] = [
     icon: Workflow,
     name: "Automações de Processos",
     shortDescription:
-      "Automatizamos tarefas repetitivas e conectamos ferramentas para reduzir trabalho manual.",
+      "Automação de tarefas repetitivas e integração de ferramentas, conforme a necessidade e o escopo.",
     problem:
-      "Relatórios manuais, dados digitados duas vezes e tarefas que se repetem toda semana consomem tempo e geram erros.",
+      "Relatórios manuais, dados digitados mais de uma vez e tarefas recorrentes podem consumir tempo e aumentar o risco de inconsistências.",
     benefits: [
-      "Rotinas executadas sem intervenção manual",
-      "Menos erros de digitação",
-      "Processos mais consistentes",
+      "Possibilidade de reduzir tarefas repetitivas, conforme viabilidade",
+      "Fluxos organizados a partir do processo mapeado",
+      "Integrações definidas conforme as ferramentas e o escopo",
     ],
     includes: [
       "Mapeamento dos processos",
       "Identificação de oportunidades",
-      "Automação de rotinas",
-      "Integração entre ferramentas",
-      "Testes e implantação",
+      "Automação de rotinas selecionadas",
+      "Integrações entre ferramentas, quando previstas no escopo",
+      "Testes e implementação",
     ],
     process: [
       "Entendimento do contexto",
-      "Planejamento",
-      "Implantação",
-      "Acompanhamento",
+      "Planejamento e definição do escopo",
+      "Desenvolvimento e implementação",
+      "Evolução posterior, se contratada, conforme escopo acordado",
     ],
-    heroTitle: "Automações que reduzem retrabalho",
+    heroTitle: "Automação de tarefas repetitivas",
     heroDescription:
-      "Mapeamos processos e automatizamos tarefas repetitivas, conectando as ferramentas que você já usa.",
+      "Mapeamos processos para identificar tarefas que podem ser automatizadas e ferramentas que podem ser conectadas. As possibilidades dependem da necessidade, da viabilidade e do escopo.",
   },
 
   {
@@ -70,30 +70,30 @@ export const services: Service[] = [
     icon: Globe2,
     name: "Presença Digital",
     shortDescription:
-      "Sites e landing pages para empresas sem presença digital.",
+      "Sites e landing pages para empresas que precisam criar ou atualizar sua presença digital.",
     problem:
-      "Uma presença desatualizada ou improvisada passa uma imagem errada da empresa.",
+      "Uma presença digital desatualizada ou inexistente pode dificultar a apresentação clara da empresa, de seus serviços e soluções.",
     benefits: [
-      "Site que transmite confiança",
-      "Comunicação clara sobre o que você faz",
-      "Base para evoluir para sistemas",
+      "Apresentação estruturada da empresa e de seus serviços",
+      "Informações organizadas nas páginas previstas no projeto",
+      "Estrutura técnica definida conforme o escopo",
     ],
     includes: [
-      "Landing pages",
       "Sites institucionais",
-      "Páginas de serviços",
-      "SEO técnico inicial",
-      "Publicação da aplicação",
+      "Landing pages",
+      "Páginas de serviços e microsites",
+      "Estrutura técnica e SEO",
+      "Publicação do site, conforme escopo",
     ],
     process: [
       "Entendimento do contexto",
-      "Planejamento",
-      "Implantação",
-      "Evolução",
+      "Planejamento e definição do escopo",
+      "Desenvolvimento e implementação",
+      "Evolução posterior, se contratada, conforme escopo acordado",
     ],
-    heroTitle: "Presença digital que transmite confiança",
+    heroTitle: "Sites para apresentar sua empresa e seus serviços",
     heroDescription:
-      "Sites e landing pages que organizam sua presença — e podem ser o primeiro passo para sistemas e automações.",
+      "Criamos ou atualizamos sites e landing pages para apresentar a empresa, seus serviços e soluções, conforme o escopo do projeto.",
   },
 ];
 

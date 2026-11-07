@@ -19,7 +19,7 @@ Este diretório reúne os documentos estratégicos existentes e a documentação
 - [`04-WEBSITE.md`](04-WEBSITE.md): arquitetura e estrutura do site.
 - [`05-COPY.md`](05-COPY.md): comunicação institucional.
 - [`06-ROADMAP.md`](06-ROADMAP.md): evolução estratégica.
-- [`07-COMMERCIAL-PLAYBOOK.md`](07-COMMERCIAL-PLAYBOOK.md): estratégia comercial e operacional inicial; documento de trabalho subordinado a `01-BUSINESS.md`, com valores e prazos provisórios que não devem ser publicados no site sem validação econômica.
+- [`07-COMMERCIAL-PLAYBOOK.md`](07-COMMERCIAL-PLAYBOOK.md): estratégia comercial e operacional inicial, subordinada a `01-BUSINESS.md`; contém escopos e prazos de referência, além da tabela de preços aprovada para publicação em WEB-004.6.
 
 Consulte também [`../AGENTS.md`](../AGENTS.md), que define o fluxo permanente de trabalho e as regras para agentes.
 

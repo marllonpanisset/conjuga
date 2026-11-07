@@ -8,7 +8,7 @@ import { Hero, CTASection } from "@/components/sections";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 import { Icon } from "@/components/ui/Icon";
-import { Reveal, Stagger, StaggerItem } from "@/components/motion";
+import { Stagger, StaggerItem } from "@/components/motion";
 
 import { services, getServiceBySlug } from "@/content/servicos";
 
@@ -16,6 +16,15 @@ import { buildMetadata } from "@/lib/seo";
 import { breadcrumbJsonLd, serviceJsonLd } from "@/lib/structured-data";
 
 const benefitIcons = [Target, ShieldCheck, Network];
+
+const contactDescriptions: Record<string, string> = {
+  "presenca-digital":
+    "Conte o que sua empresa precisa apresentar ou atualizar na presença digital. Vamos entender o contexto antes de definir o escopo.",
+  "sistemas-web":
+    "Conte qual processo ou informação sua empresa precisa organizar. Funcionalidades e integrações serão definidas conforme a necessidade e o escopo.",
+  automacao:
+    "Conte quais tarefas se repetem e quais ferramentas participam do fluxo. Vamos avaliar o que pode ser automatizado dentro do escopo.",
+};
 
 export function generateStaticParams() {
   return services.map((service) => ({
@@ -96,14 +105,17 @@ export default async function ServicoPage({
             </div>
 
             <div className="lg:col-span-9">
-              <p className="mx-auto flex max-w-3xl items-start gap-5 text-center font-display text-display-m font-medium tracking-[-0.022em] text-balance text-text-primary sm:items-center sm:text-left">
+              <Heading
+                as="h2"
+                className="mx-auto flex max-w-3xl items-start gap-5 text-center text-display-m tracking-[-0.022em] sm:items-center sm:text-left"
+              >
                 <Icon
                   icon={service.icon}
                   size={26}
                   className="hidden shrink-0 sm:inline-flex"
                 />
                 {service.problem}
-              </p>
+              </Heading>
             </div>
           </div>
         </Container>
@@ -115,7 +127,7 @@ export default async function ServicoPage({
             <div className="lg:col-span-3">
               <Text variant="caption">Benefícios</Text>
               <Heading as="h2" className="mt-4 text-heading-m lg:max-w-[12ch]">
-                O que muda na operação
+                Possíveis benefícios
               </Heading>
             </div>
 
@@ -212,27 +224,17 @@ export default async function ServicoPage({
                 ))}
               </Stagger>
 
-              <Reveal delay={0.1} className="mt-10 max-w-2xl">
-                <Heading as="h3" className="text-heading-m">
-                  Uma solução preparada para acompanhar o crescimento da empresa
-                </Heading>
-
-                <Text variant="lead" className="mt-5">
-                  Nosso objetivo não é criar dependência tecnológica, mas
-                  desenvolver soluções organizadas e fáceis de manter.
-                </Text>
-              </Reveal>
             </div>
           </div>
         </Container>
       </Section>
 
       <CTASection
-        title={`Quer aplicar ${service.name} na sua operação?`}
-        description="Descreva o processo que mais consome tempo hoje e avaliamos por onde começar."
+        title={`Vamos conversar sobre ${service.name}?`}
+        description={contactDescriptions[service.slug] ?? service.heroDescription}
         actions={
           <Button href="/contato" size="lg" variant="onInk">
-            Conversar com a Conjuga <ButtonArrow />
+            Conte seu desafio <ButtonArrow />
           </Button>
         }
       />

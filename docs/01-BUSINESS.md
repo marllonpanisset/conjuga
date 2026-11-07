@@ -240,7 +240,7 @@ Não vendemos apenas entregáveis.
 
 Construímos ativos digitais que possam evoluir junto com o cliente.
 
-O relacionamento pode continuar após a primeira entrega com suporte, sustentação e evolução contínua das soluções, além de novos projetos quando novas necessidades forem identificadas na operação. Esse trabalho recorrente vai além de hospedagem ou manutenção pontual; escopo e condições são definidos para cada relação comercial.
+O relacionamento pode continuar após a primeira entrega com suporte, sustentação e evolução das soluções, além de novos projetos quando novas necessidades forem identificadas na operação. Esses serviços dependem de contratação separada, disponibilidade e limites definidos na proposta; não são ilimitados nem fazem parte automaticamente de uma entrega. Os critérios operacionais estão no playbook comercial.
 
 ---
 
@@ -258,7 +258,7 @@ Produtos próprios ou SaaS não são ofertas consolidadas atualmente. Só devem 
 
 Pacotes de serviços poderão ser criados futuramente apenas quando houver escopo suficientemente padronizado e uma decisão específica para isso.
 
-A estratégia comercial e operacional inicial está registrada em `07-COMMERCIAL-PLAYBOOK.md`, documento de trabalho subordinado a este BUSINESS.md. Os escopos de referência descritos no playbook são hipóteses internas provisórias, não pacotes validados nem preços publicados, e só podem ser publicados ou tratados como oferta padrão após validação econômica de esforço, custos, riscos, tributos e margem, sem antecipar publicação de valores ou prazos no site. Em caso de conflito entre os documentos, prevalece este BUSINESS.md.
+A estratégia comercial e operacional inicial está registrada em `07-COMMERCIAL-PLAYBOOK.md`, documento de trabalho subordinado a este BUSINESS.md. Escopos e prazos de referência permanecem hipóteses até validação. Preços só podem ser publicados após validação econômica ou aprovação comercial explícita do responsável. A tabela inicial aprovada em WEB-004.6 está registrada no playbook; essa aprovação autoriza sua publicação, mas não substitui a estimativa de custos, riscos, tributos, margem e limites de cada proposta. Em caso de conflito entre os documentos, prevalece este BUSINESS.md.
 
 Não prometemos resultados impossíveis.
 
@@ -300,4 +300,4 @@ Os demais aspectos são definidos em:
 - COPY.md
 - ROADMAP.md
 - AGENTS.md
-- COMMERCIAL-PLAYBOOK.md (documento de trabalho subordinado a este BUSINESS.md; registra a estratégia comercial e operacional inicial sem autoridade para alterar regras de negócio nem publicar preços)
+- COMMERCIAL-PLAYBOOK.md (documento de trabalho subordinado a este BUSINESS.md; registra a estratégia comercial e operacional detalhada. A publicação de preços exige aprovação comercial explícita do responsável, conforme a regra deste documento.)
