@@ -44,8 +44,8 @@ const nextSteps = [
 const contactChannels = [
   {
     title: "WhatsApp",
-    value: "(21) 98788-1633",
-    href: "https://wa.me/5521987881633",
+    value: "(21) 98509-7290",
+    href: "https://wa.me/5521985097290",
     external: true,
   },
   {

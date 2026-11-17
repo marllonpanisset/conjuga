@@ -180,12 +180,12 @@ export default function HomePage() {
               <TrackedContactCta bloco="final" />
               <div className="flex flex-wrap gap-x-5 gap-y-2 text-small">
                 <a
-                  href="https://wa.me/5521987881633"
+                  href="https://wa.me/5521985097290"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="link-underline text-[#f4f1ea]/75 hover:text-[#f4f1ea]"
                 >
-                  WhatsApp: (21) 98788-1633
+                  WhatsApp: (21) 98509-7290
                 </a>
                 <a
                   href="mailto:contato@conjuga.com.br"
