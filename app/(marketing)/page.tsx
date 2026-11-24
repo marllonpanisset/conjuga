@@ -25,9 +25,9 @@ import { caseStudies } from "@/content/projetos";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Engenharia de software para empresas",
+  title: "Sites profissionais para empresas de serviços",
   description:
-    "A Conjuga ajuda empresas a organizar e evoluir suas operações com presença digital, sistemas web e automações. Atendimento remoto em todo o Brasil.",
+    "Desenvolvemos sites profissionais, sistemas web e automações para empresas. Soluções digitais pensadas para as necessidades do seu negócio.",
   path: "/",
 });
 
@@ -37,13 +37,16 @@ const homeServiceOrder = [
   "automacao",
 ] as const;
 
-const homeServiceDescriptions: Record<(typeof homeServiceOrder)[number], string> = {
+const homeServiceDescriptions: Record<
+  (typeof homeServiceOrder)[number],
+  string
+> = {
   "presenca-digital":
-    "Sites institucionais, landing pages e experiências digitais.",
+    "Sites profissionais para apresentar sua empresa, seus serviços e facilitar o contato com seus clientes.",
   "sistemas-web":
-    "Sistemas personalizados, painéis administrativos, portais e aplicações web.",
+    "Sistemas web personalizados para organizar informações, processos e atividades do seu negócio.",
   automacao:
-    "Integrações e automações para reduzir tarefas manuais e conectar ferramentas.",
+    "Integrações e automações para reduzir tarefas manuais e conectar ferramentas utilizadas pela sua empresa.",
 };
 
 const homeServices = homeServiceOrder.flatMap((slug) => {
@@ -55,10 +58,10 @@ const homeServices = homeServiceOrder.flatMap((slug) => {
 });
 
 const businessSignals = [
-  "Informações espalhadas em diferentes ferramentas.",
-  "Tarefas repetitivas que consomem tempo.",
+  "Informações importantes espalhadas entre diferentes ferramentas.",
+  "Tarefas repetitivas que consomem tempo da equipe.",
   "Processos difíceis de acompanhar e organizar.",
-  "Presença digital que já não acompanha a empresa.",
+  "Uma presença digital que não representa bem a empresa.",
 ];
 
 const featuredProject = caseStudies.find(
@@ -70,16 +73,16 @@ export default function HomePage() {
     <PageWrapper withGrid={false}>
       <div className="theme-ops">
         <HomeHero
-          eyebrow="Engenharia de software para empresas"
-          title="Começamos pelo que sua empresa precisa hoje."
-          description="Organizamos e evoluímos operações com presença digital, sistemas web e automações."
-          complement="Entendemos o desafio do seu negócio antes de definir a tecnologia."
+          eyebrow="Engenharia de software para empresas de serviços"
+          title="Sua empresa merece uma presença digital profissional."
+          description="Desenvolvemos sites que apresentam seus serviços com clareza, fortalecem a confiança na sua empresa e facilitam o contato com potenciais clientes."
+          complement="Cada projeto começa com uma conversa para entender seu negócio e definir a solução adequada."
           actions={
             <>
               <TrackedContactCta bloco="hero" />
 
               <Button href="/servicos" variant="ghost" size="lg">
-                Conheça as soluções
+                Conheça nossos serviços
               </Button>
             </>
           }
@@ -89,8 +92,8 @@ export default function HomePage() {
           <Container>
             <SectionHeader
               label="Sinais da operação"
-              title="Seu negócio ainda depende de processos manuais?"
-              lead="Cada empresa tem um contexto próprio. Estas são algumas situações que podem indicar uma oportunidade de organizar melhor a operação."
+              title="Sua empresa ainda perde tempo com processos que poderiam ser mais simples?"
+              lead="Informações espalhadas, tarefas repetitivas e processos difíceis de acompanhar podem tornar a rotina da empresa mais trabalhosa. Identificar esses desafios é o primeiro passo para encontrar soluções que façam sentido para o seu negócio."
             />
 
             <Stagger as="ul" className="mt-12 border-t border-border">
@@ -103,7 +106,10 @@ export default function HomePage() {
                   <span className="item-index pt-1 text-signal sm:pt-0">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <Text className="max-w-3xl text-text-primary">{signal}</Text>
+
+                  <Text className="max-w-3xl text-text-primary">
+                    {signal}
+                  </Text>
                 </StaggerItem>
               ))}
             </Stagger>
@@ -114,11 +120,11 @@ export default function HomePage() {
           <Container>
             <SectionHeader
               label="Serviços"
-              title="Três áreas para necessidades diferentes"
-              lead="A solução começa pelo que sua empresa precisa e é definida a partir do contexto do negócio."
+              title="Soluções digitais para as necessidades do seu negócio."
+              lead="Desenvolvemos sites, sistemas web e automações a partir dos desafios da sua empresa — com soluções pensadas para sua realidade, sem complexidade desnecessária."
               actions={
                 <Button href="/servicos" variant="ghost" size="md">
-                  Conheça as soluções <ButtonArrow size={15} />
+                  Conheça nossos serviços <ButtonArrow size={15} />
                 </Button>
               }
             />
@@ -140,9 +146,9 @@ export default function HomePage() {
           <Section tone="raised" rule>
             <Container>
               <SectionHeader
-                label="Projeto desenvolvido"
-                title="Um projeto publicado pela Conjuga"
-                lead="O site de portfólio profissional de Taís inclui CMS próprio e painel administrativo."
+                label="Projeto em destaque"
+                title="Um site profissional com gerenciamento de conteúdo."
+                lead="Desenvolvemos um portfólio profissional com CMS e painel administrativo para facilitar o gerenciamento de projetos e mídias."
                 actions={
                   <a
                     href="https://taissales.vercel.app/"
@@ -150,19 +156,22 @@ export default function HomePage() {
                     rel="noopener noreferrer"
                     className="link-underline inline-flex items-center gap-2 text-small font-medium text-signal-strong"
                   >
-                    Acessar o site <ArrowUpRight size={15} aria-hidden="true" />
+                    Acessar o projeto{" "}
+                    <ArrowUpRight size={15} aria-hidden="true" />
                   </a>
                 }
               />
 
               <div className="mt-10 lg:mt-14">
                 <CaseCard caseStudy={featuredProject} />
+
                 <div className="mt-6 flex flex-wrap gap-2">
                   <span className="label-mono px-2.5 py-1">
-                    Gerenciamento de projetos
+                    CMS personalizado
                   </span>
+
                   <span className="label-mono px-2.5 py-1">
-                    Gerenciamento de mídias
+                    Painel administrativo
                   </span>
                 </div>
               </div>
@@ -173,11 +182,12 @@ export default function HomePage() {
         <DifferentialsSection />
 
         <CTASection
-          title="Qual necessidade sua empresa quer resolver?"
-          description="Conte um pouco sobre seu negócio e o desafio que deseja superar. Vamos entender o contexto e avaliar como podemos ajudar."
+          title="Vamos conversar sobre o que sua empresa precisa?"
+          description="Conte sobre seu negócio e o que você gostaria de melhorar. Vamos entender sua necessidade e avaliar como podemos ajudar."
           actions={
             <>
               <TrackedContactCta bloco="final" />
+
               <div className="flex flex-wrap gap-x-5 gap-y-2 text-small">
                 <a
                   href="https://wa.me/5521985097290"
@@ -187,6 +197,7 @@ export default function HomePage() {
                 >
                   WhatsApp: (21) 98509-7290
                 </a>
+
                 <a
                   href="mailto:contato@conjuga.com.br"
                   className="link-underline text-[#f4f1ea]/75 hover:text-[#f4f1ea]"

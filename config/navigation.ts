@@ -11,7 +11,6 @@ export const serviceNav = {
 
 export const mainNav: NavItem[] = [
   { label: "Projetos", href: "/projetos" },
-  { label: "Blog", href: "/blog" },
   { label: "Sobre", href: "/sobre" },
   { label: "Contato", href: "/contato" },
 ];

@@ -24,6 +24,12 @@ Alterações relevantes registradas em ordem cronológica inversa. Este históri
 - Reorganizada a página `/servicos` para apresentar as três ofertas, formas de escolha, etapas do trabalho e contato, sem alterar as páginas individuais.
 - Alinhado o conteúdo das páginas individuais de serviços para qualificar benefícios, limitar evolução futura a novo escopo contratado e diferenciar CTAs por oferta.
 
+### Projects
+
+- Reinforçada a apresentação comercial do case `portfolio-tais`: título, resumo, contexto, desafio, solução, resultado e lista de funcionalidades alinhados à direção editorial aprovada; página de detalhe reorganizada em introdução, imagem de apresentação, contexto e desafio, solução, galeria do painel administrativo, funcionalidades, tecnologias e acesso ao projeto, com CTA de contato no hero.
+- Publicadas as quatro capturas reais do projeto (`public/portfolio-tais-*.png`) na página do case e como imagem de apresentação na listagem `/projetos`, sempre na proporção original, com legenda, texto alternativo e ampliação em nova aba; nenhuma métrica ou resultado não medido foi adicionado.
+- Apresentação comercial do case `portfolio-tais` alinhada à direção editorial: classificação mantida em "Presença Digital" (`serviceSlug: presenca-digital`), com contexto, problema, solução e resumo revisados para destacar o CMS próprio e o painel administrativo; slug, URL, metadados e estrutura da página preservados.
+
 ### Home
 
 - Reorganizada a Home com a proposta comercial aprovada, sinais de problemas operacionais, três ofertas, etapas de trabalho, diferenciais e contato direto.
