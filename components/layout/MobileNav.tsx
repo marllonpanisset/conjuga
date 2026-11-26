@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -11,9 +12,11 @@ import {
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
+
 import { mainNav, serviceNav } from "@/config/navigation";
+
 import { LogoCube } from "@/components/brand/LogoCube";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -27,15 +30,21 @@ const focusableSelector = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(",");
 
+const solutionsItems = [
+  {
+    label: "Para Hospedagens",
+    href: "/solucoes/hospedagens" as const,
+  },
+  {
+    label: "Para Clínicas",
+    href: "/solucoes/clinicas" as const,
+  },
+];
+
 function isPathActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-/**
- * Provides a hydration-safe client snapshot for portal rendering. The server
- * snapshot stays false to match SSR markup, then React reads the stable client
- * snapshot without scheduling state from an effect.
- */
 function subscribeToClientEnvironment() {
   return () => undefined;
 }
@@ -48,54 +57,47 @@ function getServerEnvironmentSnapshot() {
   return false;
 }
 
-/**
- * Returns only keyboard-reachable controls inside the active dialog. Keeping
- * this query in one utility ensures focus-trap behavior stays consistent as
- * navigation links or controls are added to the drawer.
- */
 function getFocusableElements(container: HTMLElement | null): HTMLElement[] {
   if (!container) return [];
 
-  return Array.from(container.querySelectorAll<HTMLElement>(focusableSelector));
+  return Array.from(
+    container.querySelectorAll<HTMLElement>(focusableSelector),
+  );
 }
 
-/**
- * Renders the mobile navigation as a modal dialog so keyboard users cannot
- * reach background content while it is open. Focus returns to the trigger on
- * close, matching the expected disclosure interaction pattern.
- */
 export function MobileNav() {
   const pathname = usePathname();
   const shouldReduceMotion = useReducedMotion();
   const reduceMotion = shouldReduceMotion === true;
+
   const [open, setOpen] = useState(false);
+
   const mounted = useSyncExternalStore(
     subscribeToClientEnvironment,
     getClientEnvironmentSnapshot,
     getServerEnvironmentSnapshot,
   );
+
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
 
-  /** Opens the dialog while preserving the trigger as the focus-return target. */
   const openMenu = useCallback(() => setOpen(true), []);
 
-  /**
-   * Closes the dialog and restores focus after React has committed the state.
-   * This keeps keyboard context stable for Escape, overlay, and link actions.
-   */
   const closeMenu = useCallback(() => {
     setOpen(false);
-    window.requestAnimationFrame(() => menuButtonRef.current?.focus());
+
+    window.requestAnimationFrame(() => {
+      menuButtonRef.current?.focus();
+    });
   }, []);
 
   useEffect(() => {
     if (!open) return;
 
     const previousOverflow = document.body.style.overflow;
+
     document.body.style.overflow = "hidden";
 
-    // Move focus into the dialog only after the portal has rendered its controls.
     const focusFrame = window.requestAnimationFrame(() => {
       getFocusableElements(drawerRef.current)[0]?.focus();
     });
@@ -106,10 +108,6 @@ export function MobileNav() {
     };
   }, [open]);
 
-  /**
-   * Implements a local focus trap instead of a dependency so the existing
-   * portal remains lightweight. Tab and Shift+Tab cycle through dialog controls.
-   */
   const handleDrawerKeyDown = useCallback(
     (event: KeyboardEvent<HTMLDivElement>) => {
       if (event.key === "Escape") {
@@ -121,6 +119,7 @@ export function MobileNav() {
       if (event.key !== "Tab") return;
 
       const focusableElements = getFocusableElements(drawerRef.current);
+
       const firstElement = focusableElements[0];
       const lastElement = focusableElements.at(-1);
 
@@ -129,13 +128,19 @@ export function MobileNav() {
         return;
       }
 
-      if (event.shiftKey && document.activeElement === firstElement) {
+      if (
+        event.shiftKey &&
+        document.activeElement === firstElement
+      ) {
         event.preventDefault();
         lastElement.focus();
         return;
       }
 
-      if (!event.shiftKey && document.activeElement === lastElement) {
+      if (
+        !event.shiftKey &&
+        document.activeElement === lastElement
+      ) {
         event.preventDefault();
         firstElement.focus();
       }
@@ -150,7 +155,10 @@ export function MobileNav() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: reduceMotion ? 0 : 0.18, ease: "easeOut" }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.18,
+            ease: "easeOut",
+          }}
           onClick={closeMenu}
           className="fixed inset-0 z-40 bg-[#15181d]/40"
         >
@@ -179,6 +187,7 @@ export function MobileNav() {
                 <LogoCube className="h-[24px] w-auto shrink-0 text-signal" />
                 CONJUGA
               </span>
+
               <button
                 type="button"
                 onClick={closeMenu}
@@ -200,15 +209,22 @@ export function MobileNav() {
                   aria-current={pathname === "/" ? "page" : undefined}
                   className={cn(
                     "border-b border-border/60 py-4 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.1em] transition-colors hover:text-text-primary",
-                    pathname === "/" ? "text-text-primary" : "text-text-muted",
+                    pathname === "/"
+                      ? "text-text-primary"
+                      : "text-text-muted",
                   )}
                 >
                   Início
                 </Link>
+
                 <Link
                   href={serviceNav.href}
                   onClick={closeMenu}
-                  aria-current={isPathActive(pathname, serviceNav.href) ? "page" : undefined}
+                  aria-current={
+                    isPathActive(pathname, serviceNav.href)
+                      ? "page"
+                      : undefined
+                  }
                   className={cn(
                     "border-b border-border/60 py-4 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.1em] transition-colors hover:text-text-primary",
                     isPathActive(pathname, serviceNav.href)
@@ -218,16 +234,70 @@ export function MobileNav() {
                 >
                   {serviceNav.label}
                 </Link>
+
+                <details className="group border-b border-border/60 py-3">
+                  <summary
+                    className={cn(
+                      "flex cursor-pointer list-none items-center justify-between py-2 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.1em] transition-colors hover:text-text-primary [&::-webkit-details-marker]:hidden",
+                      pathname.startsWith("/solucoes")
+                        ? "text-text-primary"
+                        : "text-text-muted",
+                    )}
+                  >
+                    Soluções
+
+                    <ChevronDown
+                      size={16}
+                      strokeWidth={1.5}
+                      className="transition-transform duration-200 group-open:rotate-180"
+                    />
+                  </summary>
+
+                  <ul className="flex flex-col gap-1 pb-2 pt-2">
+                    {solutionsItems.map((item) => {
+                      const isActive = isPathActive(
+                        pathname,
+                        item.href,
+                      );
+
+                      return (
+                        <li key={item.href}>
+                          <Link
+                            href={item.href}
+                            onClick={closeMenu}
+                            aria-current={
+                              isActive ? "page" : undefined
+                            }
+                            className={cn(
+                              "block rounded-[var(--radius-sm)] px-3 py-3 text-sm transition-colors hover:bg-surface",
+                              isActive
+                                ? "bg-surface text-text-primary"
+                                : "text-text-secondary hover:text-text-primary",
+                            )}
+                          >
+                            {item.label}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </details>
+
                 <ul className="flex flex-col gap-1 py-4">
                   {mainNav.map((item) => {
-                    const isActive = isPathActive(pathname, item.href);
+                    const isActive = isPathActive(
+                      pathname,
+                      item.href,
+                    );
 
                     return (
                       <li key={item.href}>
                         <Link
                           href={item.href as never}
                           onClick={closeMenu}
-                          aria-current={isActive ? "page" : undefined}
+                          aria-current={
+                            isActive ? "page" : undefined
+                          }
                           className={cn(
                             "block rounded-[var(--radius-sm)] border border-transparent px-3 py-3 text-[1.0625rem] font-medium transition-[background-color,border-color,color] hover:bg-surface",
                             isActive
@@ -250,7 +320,9 @@ export function MobileNav() {
                 size="lg"
                 className="w-full"
                 onClick={closeMenu}
-                aria-current={pathname === "/contato" ? "page" : undefined}
+                aria-current={
+                  pathname === "/contato" ? "page" : undefined
+                }
               >
                 Conte seu desafio
               </Button>

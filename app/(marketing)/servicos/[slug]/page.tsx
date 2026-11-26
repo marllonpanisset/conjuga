@@ -1,9 +1,17 @@
+
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Network, ShieldCheck, Target } from "lucide-react";
 
 import { PageWrapper } from "@/components/layout";
-import { Container, Section, Heading, Text, Button, ButtonArrow } from "@/components/ui";
+import {
+  Container,
+  Section,
+  Heading,
+  Text,
+  Button,
+  ButtonArrow,
+} from "@/components/ui";
 import { Hero, CTASection } from "@/components/sections";
 import { JsonLd } from "@/components/seo/JsonLd";
 
@@ -59,6 +67,32 @@ export default async function ServicoPage({
 
   if (!service) notFound();
 
+  // Distribuição dinâmica dos cards de entregáveis.
+  const includesCount = service.includes.length;
+
+  const includesColumns =
+    includesCount <= 2
+      ? Math.max(includesCount, 1)
+      : includesCount === 4
+        ? 2
+        : 3;
+
+  const includesRemainder = includesCount % includesColumns;
+
+  const defaultSpanClass =
+    includesColumns === 3
+      ? "lg:col-span-2"
+      : includesColumns === 2
+        ? "lg:col-span-3"
+        : "lg:col-span-6";
+
+  const lastRowSpanClass =
+    includesRemainder === 1
+      ? "lg:col-span-6"
+      : includesRemainder === 2
+        ? "lg:col-span-3"
+        : defaultSpanClass;
+
   return (
     <PageWrapper>
       <JsonLd
@@ -99,23 +133,28 @@ export default async function ServicoPage({
 
       <Section>
         <Container>
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-3">
               <Text variant="caption">O problema</Text>
             </div>
 
             <div className="lg:col-span-9">
-              <Heading
-                as="h2"
-                className="mx-auto flex max-w-3xl items-start gap-5 text-center text-display-m tracking-[-0.022em] sm:items-center sm:text-left"
-              >
-                <Icon
-                  icon={service.icon}
-                  size={26}
-                  className="hidden shrink-0 sm:inline-flex"
-                />
-                {service.problem}
-              </Heading>
+              <div className="flex max-w-3xl items-start gap-5">
+                <span className="mt-1 hidden shrink-0 sm:inline-flex">
+                  <Icon
+                    icon={service.icon}
+                    size={18}
+                    className="text-signal"
+                  />
+                </span>
+
+                <Heading
+                  as="h2"
+                  className="max-w-2xl text-heading-m leading-relaxed"
+                >
+                  {service.problem}
+                </Heading>
+              </div>
             </div>
           </div>
         </Container>
@@ -126,7 +165,10 @@ export default async function ServicoPage({
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-3">
               <Text variant="caption">Benefícios</Text>
-              <Heading as="h2" className="mt-4 text-heading-m lg:max-w-[12ch]">
+              <Heading
+                as="h2"
+                className="mt-4 text-heading-m lg:max-w-[12ch]"
+              >
                 Possíveis benefícios
               </Heading>
             </div>
@@ -147,7 +189,11 @@ export default async function ServicoPage({
                       </span>
 
                       <span className="mt-0.5 text-signal transition-transform duration-300 ease-[var(--ease-signature)] group-hover:-translate-y-0.5">
-                        <BenefitIcon size={18} strokeWidth={1.5} aria-hidden="true" />
+                        <BenefitIcon
+                          size={18}
+                          strokeWidth={1.5}
+                          aria-hidden="true"
+                        />
                       </span>
 
                       <Heading as="h3" className="text-heading-m">
@@ -162,36 +208,51 @@ export default async function ServicoPage({
         </Container>
       </Section>
 
+      {/* O que está incluído */}
       <Section>
         <Container>
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-3">
               <Text variant="caption">O que entregamos</Text>
-              <Heading as="h2" className="mt-4 text-heading-m lg:max-w-[12ch]">
+              <Heading
+                as="h2"
+                className="mt-4 text-heading-m lg:max-w-[12ch]"
+              >
                 O que está incluído
               </Heading>
             </div>
 
-            <Stagger
-              as="ul"
-              className="grid gap-px overflow-hidden rounded-[var(--radius-md)] border border-border bg-border lg:col-span-9 md:grid-cols-2 lg:grid-cols-3"
-            >
-              {service.includes.map((item, index) => (
-                <StaggerItem
-                  as="li"
-                  key={item}
-                  className="flex min-h-[13rem] flex-col justify-between gap-10 bg-surface p-6 lg:p-8"
-                >
-                  <span className="item-index">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+            <div className="overflow-hidden rounded-[var(--radius-md)] border border-border lg:col-span-9">
+              <ul className="grid grid-cols-1 gap-px bg-border md:grid-cols-2 lg:grid-cols-6">
+                {service.includes.map((item, index) => {
+                  const isLastRow =
+                    includesRemainder > 0 &&
+                    index >= includesCount - includesRemainder;
 
-                  <Heading as="h3" className="max-w-[22ch] text-heading-s">
-                    {item}
-                  </Heading>
-                </StaggerItem>
-              ))}
-            </Stagger>
+                  const columnClass = isLastRow
+                    ? lastRowSpanClass
+                    : defaultSpanClass;
+
+                  return (
+                    <li
+                      key={item}
+                      className={`flex min-h-[13rem] flex-col justify-between gap-10 bg-surface p-6 lg:p-8 ${columnClass}`}
+                    >
+                      <span className="item-index">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+
+                      <Heading
+                        as="h3"
+                        className="max-w-[22ch] text-heading-s"
+                      >
+                        {item}
+                      </Heading>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
         </Container>
       </Section>
@@ -201,7 +262,10 @@ export default async function ServicoPage({
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-3">
               <Text variant="caption">Como trabalhamos</Text>
-              <Heading as="h2" className="mt-4 text-heading-m lg:max-w-[12ch]">
+              <Heading
+                as="h2"
+                className="mt-4 text-heading-m lg:max-w-[12ch]"
+              >
                 Etapas do trabalho
               </Heading>
             </div>
@@ -217,13 +281,13 @@ export default async function ServicoPage({
                     <span className="item-index transition-colors duration-200 group-hover:text-signal">
                       {String(index + 1).padStart(2, "0")}
                     </span>
+
                     <span className="font-display text-[1.0625rem] font-medium tracking-[-0.008em] text-text-primary transition-colors duration-200 group-hover:text-signal-strong">
                       {step}
                     </span>
                   </StaggerItem>
                 ))}
               </Stagger>
-
             </div>
           </div>
         </Container>
@@ -231,7 +295,9 @@ export default async function ServicoPage({
 
       <CTASection
         title={`Vamos conversar sobre ${service.name}?`}
-        description={contactDescriptions[service.slug] ?? service.heroDescription}
+        description={
+          contactDescriptions[service.slug] ?? service.heroDescription
+        }
         actions={
           <Button href="/contato" size="lg" variant="onInk">
             Conte seu desafio <ButtonArrow />

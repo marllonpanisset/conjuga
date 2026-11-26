@@ -73,9 +73,9 @@ export default function HomePage() {
     <PageWrapper withGrid={false}>
       <div className="theme-ops">
         <HomeHero
-          eyebrow="Engenharia de software para empresas de serviços"
-          title="Sua empresa merece uma presença digital profissional."
-          description="Desenvolvemos sites que apresentam seus serviços com clareza, fortalecem a confiança na sua empresa e facilitam o contato com potenciais clientes."
+          eyebrow="Engenharia de software para empresas"
+          title="Tecnologia para transformar a operação da sua empresa."
+          description="Desenvolvemos sites, sistemas web e automações para ajudar empresas a fortalecer sua presença digital, organizar processos e resolver desafios reais."
           complement="Cada projeto começa com uma conversa para entender seu negócio e definir a solução adequada."
           actions={
             <>
@@ -182,8 +182,8 @@ export default function HomePage() {
         <DifferentialsSection />
 
         <CTASection
-          title="Vamos conversar sobre o que sua empresa precisa?"
-          description="Conte sobre seu negócio e o que você gostaria de melhorar. Vamos entender sua necessidade e avaliar como podemos ajudar."
+          title="Vamos conversar sobre a operação da sua empresa?"
+          description="Conte sobre seu negócio e o que você gostaria de melhorar. Vamos entender seu contexto e avaliar como podemos ajudar com tecnologia e soluções personalizadas."
           actions={
             <>
               <TrackedContactCta bloco="final" />

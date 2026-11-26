@@ -9,7 +9,7 @@ export const services: Service[] = [
     shortDescription:
       "Sistemas personalizados para apoiar processos específicos da operação.",
     problem:
-      "Planilhas, controles paralelos e ferramentas genéricas podem dificultar o acompanhamento de processos e a organização das informações.",
+      "Planilhas, controles paralelos e ferramentas genéricas podem dificultar o acompanhamento de processos e a organização das informações, principalmente para empresas de hospedagem, clínicas e PMEs que precisam estruturar suas rotinas.",
     benefits: [
       "Apoio à organização das informações do processo",
       "Funcionalidades definidas para a necessidade identificada",
@@ -31,7 +31,7 @@ export const services: Service[] = [
     ],
     heroTitle: "Sistemas para organizar a sua operação",
     heroDescription:
-      "Desenvolvemos aplicações para apoiar processos específicos. Funcionalidades e integrações são definidas conforme a necessidade e o escopo acordado.",
+      "Desenvolvemos aplicações para apoiar processos específicos. Funcionalidades e integrações são definidas conforme a necessidade e o escopo acordado, servindo desde pequenas empresas até operações de médio porte.",
   },
 
   {
@@ -41,7 +41,7 @@ export const services: Service[] = [
     shortDescription:
       "Automação de tarefas repetitivas e integração de ferramentas, conforme a necessidade e o escopo.",
     problem:
-      "Relatórios manuais, dados digitados mais de uma vez e tarefas recorrentes podem consumir tempo e aumentar o risco de inconsistências.",
+      "Relatórios manuais, dados digitados mais de uma vez e tarefas recorrentes podem consumir tempo e aumentar o risco de inconsistências, afetando principalmente empresas de hospedagem, clínicas e PMEs que dependem de processos organizados.",
     benefits: [
       "Possibilidade de reduzir tarefas repetitivas, conforme viabilidade",
       "Fluxos organizados a partir do processo mapeado",
@@ -62,7 +62,7 @@ export const services: Service[] = [
     ],
     heroTitle: "Automação de tarefas repetitivas",
     heroDescription:
-      "Mapeamos processos para identificar tarefas que podem ser automatizadas e ferramentas que podem ser conectadas. As possibilidades dependem da necessidade, da viabilidade e do escopo.",
+      "Mapeamos processos para identificar tarefas que podem ser automatizadas e ferramentas que podem ser conectadas. As possibilidades dependem da necessidade, da viabilidade e do escopo. Soluções ideais para empresas que desejam reduzir atividades manuais e conectar suas ferramentas de trabalho.",
   },
 
   {
@@ -72,7 +72,7 @@ export const services: Service[] = [
     shortDescription:
       "Sites e landing pages para empresas que precisam criar ou atualizar sua presença digital.",
     problem:
-      "Uma presença digital desatualizada ou inexistente pode dificultar a apresentação clara da empresa, de seus serviços e soluções.",
+      "Uma presença digital desatualizada ou inexistente pode dificultar a apresentação clara da empresa, de seus serviços e soluções, especialmente para hospedagens que precisam atrair hóspedes, clínicas que precisam mostrar serviços e horários, e PMEs que precisam transmitir credibilidade.",
     benefits: [
       "Apresentação estruturada da empresa e de seus serviços",
       "Informações organizadas nas páginas previstas no projeto",
@@ -93,7 +93,7 @@ export const services: Service[] = [
     ],
     heroTitle: "Sites para apresentar sua empresa e seus serviços",
     heroDescription:
-      "Criamos ou atualizamos sites e landing pages para apresentar a empresa, seus serviços e soluções, conforme o escopo do projeto.",
+      "Criamos ou atualizamos sites e landing pages para apresentar a empresa, seus serviços e soluções, conforme o escopo do projeto. Desenvolvemos presença digital para hospedagens, clínicas e empresas de serviços que precisam transmitir confiança online.",
   },
 ];
 
